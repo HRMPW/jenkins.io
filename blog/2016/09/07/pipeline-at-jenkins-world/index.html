@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Pipeline at Jenkins World 2016
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container blog-post no-margin">
+<div class="row body">
+<div class="col-md-11 col-md-offset-1 main-content" id="content">
+<div id="content-top">
+<h1>
+<a href="/blog/2016/09/07/pipeline-at-jenkins-world/" title="Pipeline at Jenkins World 2016">
+Pipeline at Jenkins World 2016
+</a>
+</h1>
+<!-- starting partial tweetbutton.html.haml -->
+<div style="float: right; clear: all;">
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/share">
+Tweet
+</a>
+</div>
+
+<!-- ending partial tweetbutton.html.haml -->
+<span class="submitted">
+Published on
+2016-09-07
+by
+<a href="https://github.com/rtyler">R. Tyler Croy</a>
+</span>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This is a guest post by <a href="https;//github.com/rtyler">R. Tyler Croy</a>, who is a
+long-time contributor to Jenkins and the primary contact for Jenkins project
+infrastructure. He is also a Jenkins Evangelist at
+<a href="http://cloudbees.com">CloudBees, Inc.</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><span class="image right"><img src="/images/conferences/Jenkins-World_125x125.png" alt="Jenkins World"></span></p>
+</div>
+<div class="paragraph">
+<p>I have been heavily using <a href="/doc/pipeline">Jenkins Pipeline</a> for just about
+every Jenkins-related project I have contributed to over the past year. Whether I am
+building and publishing <a href="https://github.com/jenkins-infra/ircbot">Docker
+containers</a>, <a href="https://github.com/jenkins-infra/jenkins-infra">testing
+infrastructure code</a> or
+<a href="https://github.com/jenkins-infra/jenkins.io">publishing this very web
+site</a>, I have been adding a <code>Jenkinsfile</code> to nearly every Git repository I
+touch.</p>
+</div>
+<div class="paragraph">
+<p>Implementing Pipeline has been rewarding, but has not been without its own
+challenges. That&#8217;s why I&#8217;m excited to see <em>lots</em> of different Jenkins Pipeline
+related content in the <a href="https://www.cloudbees.com/juc/agenda">agenda</a> at
+Jenkins World.</p>
+</div>
+<div class="paragraph">
+<p>I don&#8217;t think it&#8217;s possible for a single person to attend all of the Pipeline
+talks, or the Pipeline-related <a href="/blog/2016/08/30/ask-experts-demos/">demos</a>
+in the "Open Source Hub", but fortunately <a href="http://cloudbees.com">CloudBees</a>
+will be recording the sessions. If you have Pipeline-related questions unanswered by
+all these presentations, feel free to join us at the "Open Source Hub" in the
+expo hall and <a href="/blog/2016/08/26/ask-the-experts-jenkins-world/">Ask the
+Experts</a>.</p>
+</div>
+<hr>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>On the first day of Jenkins World (September 13th), Isaac Cohen is hosting a
+workshop titled
+<a href="https://www.cloudbees.com/let%E2%80%99s-build-jenkins-pipeline"><strong>Let&#8217;s
+Build a Jenkins Pipeline</strong></a> which may be interesting to you if you haven&#8217;t yet
+worked with Pipeline.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="paragraph">
+<p><a href="https://www.cloudbees.com/pipelining-devops-jenkins-and-aws"><strong>Pipelining
+DevOps with Jenkins and AWS</strong></a></p>
+</div>
+<div class="paragraph">
+<p>September 14th 2:00 PM - 2:45 PM, Exhibit Hall A-1</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><span class="image right"><img src="/images/post-images/pipeline-at-jenkinsworld/nextsource_logo.jpg" alt="nextsource logo"></span>
+Automated workflow is a proven method for removing process variability. DevOps
+pipelines are the next step in the evolution of CI/CD/DevOps. This talk covers
+Jenkins pipelines, both with and without AWS integration, and explains how
+Jenkins can be used to create, execute and manage pipelines.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; Jimmy Ray of nextSource
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://www.cloudbees.com/perfecting-your-development-tools-updates-helix-plugin-jenkins"><strong>Perfecting
+Your Development Tools: Updates to the Helix Plugin for Jenkins</strong></a></p>
+</div>
+<div class="paragraph">
+<p>September 14th 5:00 PM - 6:00 PM, Exhibit Hall C</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Considering a mono repo that can manage all your source code, binary and other
+assets? Join us at the Perforce Birds of a Feather Session for updates and
+discussions around the Helix Plugin for Jenkins (or ‘P4 plugin’).</p>
+</div>
+<div class="paragraph">
+<p><span class="image right"><img src="/images/post-images/pipeline-at-jenkinsworld/perforce.png" alt="perforce"></span></p>
+</div>
+<div class="paragraph">
+<p>This session will look at the latest DSL PipeLine support in the ‘P4 plugin’
+for Jenkins and will include a live demo. We will show you how to map your
+Branches and Streams into a Jenkins Workspace, publish assets back into
+Helix, and more. You may even get a sneak preview at the latest ‘P4 plugin’
+for Jenkins that allows you the freedom to query and run commands from
+within Jenkins directly against your Helix connection.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; Paul Allen of Perforce
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://www.cloudbees.com/continuously-deploying-containers-jenkins-pipeline-docker-swarm-cluster"><strong>Continuously
+Deploying Containers with Jenkins Pipeline to Docker Swarm Cluster</strong></a></p>
+</div>
+<div class="paragraph">
+<p>September 14th 3:00 PM - 3:45 PM, Exhibit Hall A-3</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><span class="image left"><img src="/images/post-images/scaling-jenkins-at-jenkinsworld/320px-CloudBees_official_logo.png" alt="320px CloudBees official logo"></span>
+Many of us have already experimented with Docker - for example, by running one
+of the pre-built images from Docker Hub. It is possible that your team might
+have recognized the benefits that Docker provides in building microservices and
+the advantages the technology could bring to development, testing, integration
+and, ultimately, production. However, you must create a comprehensive build
+pipeline before deploying any containers into a live environment. Integrating
+containers into a CD pipeline is far from easy. Along with the benefits Docker
+brings, there are challenges both technically and process-related. This
+presentation attempts to outline the steps you need to take for a
+fully-automated Jenkins pipeline that continuously builds, tests and deploys
+microservices into a Docker Swarm cluster.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; Viktor Farcic
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://www.cloudbees.com/no-you-shouldnt-do-lessons-using-pipeline"><strong>No,
+You Shouldn&#8217;t Do That! Lessons from Using Pipeline</strong></a></p>
+</div>
+<div class="paragraph">
+<p>September 15th 10:30 AM - 11:15 AM, Exhibit Hall A-1</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><span class="image right"><img src="/images/post-images/scaling-jenkins-at-jenkinsworld/320px-CloudBees_official_logo.png" alt="320px CloudBees official logo"></span>
+Pipeline is as powerful as a loaded gun, but with skill can be as delicate as a
+surgeon’s knife. This talk will give an overview of health and safety so that
+you can avoid shooting yourself in the head and walk the path to medical
+school. It will cover not only what not to do, but also why, and share some
+solutions so you are not left high and dry. Both James and Bobby have bullet
+wounds from “Champagning” pipeline to automate the test and release of several
+of the CloudBees products and can occasionally still be seen walking with a
+limp from shooting for the moon and hitting their feet.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; Bobby Sandell and James T. Nord of CloudBees
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://www.cloudbees.com/docker-image-lifecycle-implemented-jenkins-pipeline"><strong>Docker
+Image Lifecycle Implemented with Jenkins Pipeline</strong></a></p>
+</div>
+<div class="paragraph">
+<p>September 15th 11:30 AM - 12:15 PM, Exhibit Hall A-2</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><span class="image right"><img src="/images/post-images/pipeline-at-jenkinsworld/jfrog.png" alt="jfrog"></span>
+While Docker has enabled an unprecedented velocity of software production, it
+is all too easy to spin out of control. A promotion-based model is required to
+control and track the flow of Docker images as much as it is required for a
+traditional software development lifecycle. We will demonstrate how to go from
+development to containerization to distribution utilizing binary management
+promotion in a framework implemented on Jenkins, using the Pipeline
+functionality.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; Mark Galpin
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://www.cloudbees.com/directions-pipeline"><strong>Directions for Pipeline</strong></a></p>
+</div>
+<div class="paragraph">
+<p>September 15th 11:30 AM - 12:15 PM, Exhibit Hall A-1</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><span class="image left"><img src="/images/post-images/scaling-jenkins-at-jenkinsworld/320px-CloudBees_official_logo.png" alt="320px CloudBees official logo"></span>
+The Pipeline feature has matured and is now included in Jenkins 2.0. During the
+time since its release, copious user feedback has been received about missing
+features and pain points. Come hear about some things we know should be worked
+on - or are already in progress - and bring your suggestions.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; Jesse Glick of CloudBees
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://www.cloudbees.com/how-do-continuous-delivery-jenkins-pipeline-docker-and-kubernetes"><strong>How
+to Do Continuous Delivery with Jenkins Pipeline, Docker and Kubernetes</strong></a></p>
+</div>
+<div class="paragraph">
+<p>September 15th 2:30 PM - 3:15 PM, Great America J</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><span class="image right"><img src="/images/post-images/pipeline-at-jenkinsworld/redhat.png" alt="redhat"></span>
+In this talk, we’ll show how to use Jenkins Pipeline together with Docker and
+Kubernetes to implement a complete end-to-end continuous delivery and
+continuous improvement system for microservices and monolithic applications
+using open source software. We’ll demonstrate how to easily create new
+microservices projects or import existing projects, have them automatically
+built, system and integration tested, staged and then deployed. Once deployed,
+we will also see how to manage and update applications using continuous
+delivery practices along with integrated ChatOps - all completely automated!</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; James Strachan of Red Hat
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://www.cloudbees.com/introducing-new-way-define-jenkins-pipelines"><strong>Introducing
+a New Way to Define Jenkins Pipelines</strong></a></p>
+</div>
+<div class="paragraph">
+<p>September 15th 3:45 PM - 4:30 PM, Great America J</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><span class="image left"><img src="/images/post-images/scaling-jenkins-at-jenkinsworld/320px-CloudBees_official_logo.png" alt="320px CloudBees official logo"></span>
+Pipeline is quickly establishing itself as the direction that Jenkins jobs are
+going, enabling the definition of a complete CD pipeline in a single job;
+Pipeline as Code via the “Jenkinsfile”; job durability across master restarts;
+and more. I’ll be talking here about the next evolution for Pipeline: a simple,
+declarative model to define your Pipelines with no need to write scripts. This
+configuration syntax for Pipeline allows you to automatically configure all
+stages of your pipeline, the complete build environment, post-build actions,
+notifications and more. All while providing syntactic and semantic validation
+before the build actually gets going.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; Andrew Bayer of CloudBees
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://www.cloudbees.com/need-speed-building-pipelines-be-faster"><strong>The
+Need For Speed: Building Pipelines To Be Faster</strong></a></p>
+</div>
+<div class="paragraph">
+<p>September 15th 4:45 PM - 5:30 PM, Exhibit Hall A-1</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><span class="image right"><img src="/images/post-images/scaling-jenkins-at-jenkinsworld/320px-CloudBees_official_logo.png" alt="320px CloudBees official logo"></span>
+Response time is paramount for a CI/CD system. In this session, you will see
+how a few best practices in constructing pipelines can yield faster turnaround
+times and reduced resource use. We’ll also run through plugins and tools to
+analyze and visualize performance, including the Pipeline Stage View plugin. If
+time permits, we may briefly discuss some of the computer science theory behind
+different aspects of performance.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; Sam Van Oort of CloudBees
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://www.cloudbees.com/lightning-talks-0"><strong>Continuously Delivering
+Continuous Delivery Pipelines</strong></a></p>
+</div>
+<div class="paragraph">
+<p>September 15th 4:45 PM - 5:30 PM, Exhibit Hall J</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><span class="image left"><img src="/images/post-images/pipeline-at-jenkinsworld/aquilent.png" alt="aquilent"></span>
+Our 600-person IT organization has committed to implementing continuous
+delivery practices enterprise-wide. This isn’t a single momentous event put in
+place overnight. Rather, it’s a strategic journey towards a common goal, and
+through which each application will take its own unique path. A seminal
+component of our CD journey is the Pipeline plugin and it has become our
+standard for CD pipeline orchestration. We will discuss a few of the diverse
+paths taken by the application teams at our company and show how the use of the
+Pipeline plugin has uniquely enabled continuous delivery for us in a way that
+no competing tool can.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; Neil Hunt of Aquilent
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://www.cloudbees.com/lightning-talks-0"><strong>CD Pipelines as Code with
+Github and Bitbucket</strong></a></p>
+</div>
+<div class="paragraph">
+<p>September 15th 4:45 PM - 5:30 PM, Exhibit Hall J</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><span class="image right"><img src="/images/post-images/scaling-jenkins-at-jenkinsworld/320px-CloudBees_official_logo.png" alt="320px CloudBees official logo"></span>
+Pipeline Multibranch projects come as a natural evolution of pipeline as code:
+define your CD pipeline in your source code repository and Jenkins will create
+isolated branch and pull requests jobs for it. This talk is about the
+integration of the Pipeline Multibranch plugin with Github and Bitbucket as
+branch sources.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; Antonio Muñiz of CloudBees
+</div>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Register for <a href="https://www.cloudbees.com/jenkinsworld/home">Jenkins World</a> in
+September with the code <code>JWFOSS</code> for a 20% discount off your pass.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//blog/2016/2016-09-07-pipeline-at-jenkins-world.adoc" title="Edit /blog/2016/2016-09-07-pipeline-at-jenkins-world.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//blog/2016/2016-09-07-pipeline-at-jenkins-world.adoc" title="View /blog/2016/2016-09-07-pipeline-at-jenkins-world.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

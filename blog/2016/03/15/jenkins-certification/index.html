@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Introducing Jenkins Certification
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container blog-post no-margin">
+<div class="row body">
+<div class="col-md-11 col-md-offset-1 main-content" id="content">
+<div id="content-top">
+<h1>
+<a href="/blog/2016/03/15/jenkins-certification/" title="Introducing Jenkins Certification">
+Introducing Jenkins Certification
+</a>
+</h1>
+<!-- starting partial tweetbutton.html.haml -->
+<div style="float: right; clear: all;">
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/share">
+Tweet
+</a>
+</div>
+
+<!-- ending partial tweetbutton.html.haml -->
+<span class="submitted">
+Published on
+2016-03-15
+by
+<a href="https://github.com/fdechery">Francois Dechery</a>
+</span>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This is a guest post by <a href="https://twitter.com/francoisdechery">Francois
+Dechery</a>, he works at CloudBees managing Customer Engagement/Support, Consulting
+and Training. He is also leading the Jenkins Certification program at CloudBees
+which has been discussed in some of our previous (<a href="http://meetings.jenkins-ci.org/jenkins/2015/jenkins.2015-08-05-18.00.html">1</a>,
+<a href="http://meetings.jenkins-ci.org/jenkins-meeting/2016/jenkins-meeting.2016-02-17-19.00.html">2</a>,
+<a href="http://meetings.jenkins-ci.org/jenkins-meeting/2016/jenkins-meeting.2016-03-02-19.00.html">3</a>)
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Governance+Meeting+Agenda">governance
+meetings</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In the IT world, namely in software, "certification" is used in many different
+ways and for many different purposes. From very simple and light certifications
+to very heavy and complex ones. In the "light" category you can usually be
+certified on the basis of a short quiz at the end of an online training. At the
+other end of the spectrum, certifications are based on a proctored
+multiple-choice questionnaire-based exam and/or hands-on labs. In some
+industries, certifications are even more demanding. For instance, to become a
+Certified Public Accountant in the US, you have to pass a standard examination
+and, on top of this, each state/jurisdiction has its own set of education and
+experience requirements that individuals must meet.</p>
+</div>
+<div class="sect1">
+<h2 id="creating-the-jenkins-certification"><a class="anchor" href="#creating-the-jenkins-certification"></a>Creating the Jenkins certification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When we started our internal discussions at CloudBees regarding a certification
+program for Jenkins, we were aware of this broad set of certification
+definitions. Therefore, our first goal was to define what type of certification
+we wanted to develop and for what purpose. We quickly agreed on the fact that it
+should be <em>a professional-grade certification, whose purpose would be to provide
+a professional standard for the Jenkins ecosystem,</em> benefiting both individuals
+and organizations, thanks to a common, respected and well-known body of
+knowledge and practice. "Professional" means that you have the expected level of
+skills and experience in order to leverage them in a professional environment,
+for example in enterprise projects or as a consultant.</p>
+</div>
+<div class="paragraph">
+<p>Many members of the CloudBees team have firsthand experience with certification
+programs developed in other IT ecosystems such as telecoms (Cisco),
+infrastructure (Microsoft, Red Hat) or business applications (SAP), to name a
+few. This was definitely the type of professional certification we wanted to
+bring to Jenkins. We knew it would represent a substantial investment but we
+also knew that the whole Jenkins ecosystem would benefit. Whether at the overall
+community or individual level, as well as IT organizations, system integrators
+or recruiting firms looking for qualified Jenkins personnel.</p>
+</div>
+<div class="paragraph">
+<p>I have had the privilege to supervise the creation and implementation of the
+<a href="https://www.cloudbees.com/jenkins-certification">Jenkins Certification Program</a>
+at CloudBees. The program is comprised of two certifications: "Certified Jenkins
+Engineer" (CJE) for Jenkins certification, and Certified CloudBees Jenkins
+Platform Engineer (CCJPE) for certification on the CloudBees Jenkins Platform.</p>
+</div>
+<div class="paragraph">
+<p>We started by creating a Certification Advisory Board whose members are:
+<a href="https://github.com">Kohsuke Kawaguchi</a>, Jenkins creator and CTO at
+CloudBees; <a href="https://github.com/harpreetsingh">Harpreet Singh</a>, VP Products at
+CloudBees; <a href="https://github.com/olivergondza">Oliver Gondža</a>, initially
+representing the Jenkins community; <a href="https://twitter.com/jsin">Jason Shawn</a>,
+senior director DevOps at Ellucian, representing the CloudBees customer
+constituency; and <a href="https://twitter.com/alvarezjj1">Jose Alvarez</a>,
+managing director at Zivra, representing the CloudBees partner ecosystem.</p>
+</div>
+<div class="paragraph">
+<p>This dedicated group helped us first to create the certification blueprint which
+defines the main sections of the exam and their relative importance in the
+overall scoring. This blueprint also provides the high-level table of contents
+of the certification
+<a href="https://www.cloudbees.com/sites/default/files/cje_study_guide_final.pdf">study guides</a>.
+They also helped to define the Jenkins Engineer profile that the certification
+assesses.</p>
+</div>
+<div class="paragraph">
+<p>With this blueprint in hand, we put together a team of 40 Jenkins subject-matter
+experts (SMEs), mostly from CloudBees with a few from partners. Together they
+worked for several months on the creation of hundreds of exam questions, doing
+iterative peer reviews, filtering out any irrelevant or ambiguous questions and
+narrowing down the pool of questions to the best questions for each section.
+All this, plus a thorough analysis and balancing exercise to make sure the level
+of difficulty was evenly distributed across each section of the exam.</p>
+</div>
+<div class="paragraph">
+<p>The big lesson from the exam creation experience is that creating a
+professional-grade exam is hard! And it requires very specific experience. In
+short, being a subject-matter expert is definitely not enough and we&#8217;re glad to
+have collaborated with <a href="https://www.prometric.com/">Prometric</a>'s
+certification specialists who guided us through this process. The result is
+definitely worth the effort. Either of the two certifications offered within the
+Jenkins Certification Program are truly what we would consider
+"professional-grade certifications."</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="what-does-certification-get-you"><a class="anchor" href="#what-does-certification-get-you"></a>What does certification get you?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Getting certified means being recognized for your skills and experience as a
+Jenkins professional. However, like any exam-based recognition, its actual value
+depends on three criteria: the level of difficulty of the exam, its quality and
+its integrity.</p>
+</div>
+<div class="paragraph">
+<p>As far as <strong>difficulty</strong> is concerned, it is clear that not everyone will pass and
+that is expected from a professional-grade certification, as mentioned earlier.
+We have definitely created an exam that is demanding. It does not only measure
+your theoretical knowledge of Jenkins but also your hands-on practical
+experience. To ensure its <strong>quality</strong>, we have applied best-industry practices
+regarding the exam&#8217;s creation and review process, working with certification
+specialists. It includes the weighing of questions, the distribution of easy,
+medium and difficult ones, the removal of any ambiguous wording, as well as
+alpha and beta final test procedures, in order to only keep the most appropriate
+questions. We are also putting in place a formal maintenance process to capture
+any "bug" in the exam and adapt the questions to Jenkins evolutions over time.
+Last but not least, we ensure the exam&#8217;s <strong>integrity</strong> by working with Prometric
+for the administration of exams. Tests are taken in fully secured and proctored
+test rooms, without any access to any human or electronic resource and
+without any doubt about who takes the test. Thanks to Prometric&#8217;s hundreds
+of test centers around the world, this integrity is ensured in any location.</p>
+</div>
+<div class="paragraph">
+<p>Beyond this external recognition, getting certified is also a process that lets
+you take a step back from your day-to-day practice of Jenkins and assess your
+skills and knowledge. You start this reassessment process by reading the Study
+Guides for the certifications. Then, by taking the test itself, you can identify
+your strengths and weaknesses in a very practical way. In short, a certification
+gives you a measurable goal to achieve.</p>
+</div>
+<div class="paragraph">
+<p>Click <a href="https://www.cloudbees.com/jenkins-certification">here</a> for more
+information on the Jenkins Certification Program by CloudBees.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//blog/2016/2016-03-15-jenkins-certification.adoc" title="Edit /blog/2016/2016-03-15-jenkins-certification.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//blog/2016/2016-03-15-jenkins-certification.adoc" title="View /blog/2016/2016-03-15-jenkins-certification.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

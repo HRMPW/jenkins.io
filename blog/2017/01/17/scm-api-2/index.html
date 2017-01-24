@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+SCM API turns 2.0 and what that means for you
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container blog-post no-margin">
+<div class="row body">
+<div class="col-md-11 col-md-offset-1 main-content" id="content">
+<div id="content-top">
+<h1>
+<a href="/blog/2017/01/17/scm-api-2/" title="SCM API turns 2.0 and what that means for you">
+SCM API turns 2.0 and what that means for you
+</a>
+</h1>
+<!-- starting partial tweetbutton.html.haml -->
+<div style="float: right; clear: all;">
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/share">
+Tweet
+</a>
+</div>
+
+<!-- ending partial tweetbutton.html.haml -->
+<span class="submitted">
+Published on
+2017-01-17
+by
+<a href="https://github.com/stephenc">Stephen Connolly</a>
+</span>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Due to <a href="https://issues.jenkins-ci.org/browse/JENKINS-41121">regressions
+discovered after release</a> it is not recommended to upgrade the plugins listed
+below at this time.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>We are announcing the
+<a href="https://plugins.jenkins.io/scm-api">SCM API</a>
+2.0.x and
+<a href="https://plugins.jenkins.io/branch-api">Branch API</a>
+2.0.x release lines.</p>
+</div>
+<div class="paragraph">
+<p>Downstream of this there are also some great improvements to a number of popular plugins including:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/github-branch-source">GitHub Branch Source</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/cloudbees-bitbucket-branch-source">BitBucket branch source</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/git">Git</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/mercurial">Mercurial</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/workflow-multibranch">Pipeline Multibranch</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/github-organization-folder">GitHub Organization Folders</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>There are some gotcha&#8217;s that Jenkins administrators will need to be aware of.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Always take a backup of your <code>JENKINS_HOME</code> before upgrading any plugins.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>We want to give you the whole story, but the take home message is this:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>When updating the
+<a href="https://plugins.jenkins.io/scm-api">SCM API</a>
+and/or
+<a href="https://plugins.jenkins.io/branch-api">Branch API</a>
+plugins to the 2.0.x release lines, if you have any of the
+<a href="https://plugins.jenkins.io/github-organization-folder">GitHub Organization Folders</a>,
+<a href="https://plugins.jenkins.io/github-branch-source">GitHub Branch Source</a>
+and/or
+<a href="https://plugins.jenkins.io/cloudbees-bitbucket-branch-source">BitBucket branch source</a>
+plugins installed then you <strong>must</strong> upgrade them <strong>all</strong> to 2.0.x at the same time or Bad Things&#8482; will happen.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; A Jenkins Administrator
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Do NOT upgrade some of these plugins but not others!
+Doing so may cause your jobs to fail to load.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If you don&#8217;t care about the hows and whys, you can just skip down to <a href="#tldr">this section</a> but if you are curious&#8230;&#8203; here we go!</p>
+</div>
+<div class="sect1">
+<h2 id="the-back-story"><a class="anchor" href="#the-back-story"></a>The back-story</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Way back in September 2013 we announced the
+<a href="https://jenkins.io/blog/2013/09/23/literate-builds-wtf/">Literate plugin</a>,
+as an experimental new way of modeling branch development in Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>When you are performing an experiment, the recommendation is to do just enough work to let you perform the test.
+However, the culture in Jenkins is to always try and produce reusable components that others can use in ways you have not anticipated.</p>
+</div>
+<div class="paragraph">
+<p>So when releasing the initial version of the
+<a href="https://plugins.jenkins.io/literate">Literate plugin</a>
+we also separated the Literate specific bits from the SCM specific concepts and multi-branch concepts.
+These were lower level concepts were organized into the following plugins:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/scm-api">SCM API</a> -
+which was intended to be a plugin to hold a next generation API for interacting with source control systems.</p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/branch-api">Branch API</a> -
+which was intended to be a plugin to hold the multi-branch functionality that was abstracted from the usage by the Literate plugin.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In addition, we released updates to three of the more common SCM plugins which included implementations of the SCM API:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Git plugin</p>
+</li>
+<li>
+<p>Subversion plugin</p>
+</li>
+<li>
+<p>Mercurial plugin</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>While there was some interest in the Literate plugin, it did not gain much traction - there are only 39 Jenkins instances running the Literate plugin as of December 2016.</p>
+</div>
+<div class="paragraph">
+<p>In terms of the reusable components, we had only made a minimal implementation with some limitations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Very basic event support - events can only trigger a re-scan of the entire repository.
+This was acceptable at the time because the only three implementations use a local cache of the remote state so re-scanning is quick.</p>
+</li>
+<li>
+<p>No implementation of the <code>SCMFileSystem</code> API.
+As a result it is not possible for plugins like
+<a href="https://plugins.jenkins.io/workflow-multibranch">Pipeline Multibranch</a>
+to get the <code>Jenkinsfile</code> from the remote repository without needing to checkout the repository into a workspace.</p>
+</li>
+<li>
+<p>No documentation on how plugin developers are supposed to implement the SCM API</p>
+</li>
+<li>
+<p>No documentation on how plugin developers are supposed to consume the SCM API (if they wanted to do something like Branch API but not the same way as Branch API)</p>
+</li>
+<li>
+<p>No documentation on how plugin developers are supposed to implement the Branch API to create their own multi-branch project types</p>
+</li>
+<li>
+<p>No documentation on for users on how the Branch API based project types are expected to work.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Roll forward to November 2015 and Jenkins Pipeline got a release of the
+<a href="https://plugins.jenkins.io/workflow-multibranch">Pipeline Multibranch</a>.
+It seems that pairing Pipeline with Branch API style multi-branch is much more successful than Literate - there are close to 60,000 instances running the pipeline multi-branch plugin as of December 2016.</p>
+</div>
+<div class="paragraph">
+<p>There also were two new SCM plugins implementing the SCM API:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>GitHub Branch Source Plugin</p>
+</li>
+<li>
+<p>BitBucket Branch Source Plugin</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Unlike the previous implementations of the SCM API, however, these plugins do not maintain a local cache of the repository state.
+Rather they make queries via the GitHub / BitBucket REST APIs on demand.</p>
+</div>
+<div class="paragraph">
+<p>The above design decision exposed one of the initial MVP compromises of the SCM API plugin: <em>very basic event support</em>.
+Under the SCM API 1.x model, the only event that an <code>SCMSource</code> can signal is <em>something changed, go look at everything again</em>.
+When you are accessing an API that only allows 5,000 API calls per hour, performing a full scan of the entire repository just to pick up a change in one branch does not make optimum usage of that 5,000 calls/hour rate limit.</p>
+</div>
+<div class="paragraph">
+<p>So we decided that perhaps the SCM API and Branch API plugins have left their Minimum Viability Experiment state and the corresponding limitations should be addressed.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="enter-scm-api-2-0-x-and-branch-api-2-0-x"><a class="anchor" href="#enter-scm-api-2-0-x-and-branch-api-2-0-x"></a>Enter SCM API 2.0.x and Branch API 2.0.x</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>So what has changed in the
+<a href="https://plugins.jenkins.io/scm-api">SCM API</a>
+2.0.x and
+<a href="https://plugins.jenkins.io/branch-api">Branch API</a>
+2.0.x release lines?
+These plugin releases include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>documentation on how plugin developers are supposed to
+<a href="https://github.com/jenkinsci/scm-api-plugin/blob/master/docs/implementation.adoc">implement the SCM API</a></p>
+</li>
+<li>
+<p>documentation on how plugin developers are supposed to
+<a href="https://github.com/jenkinsci/scm-api-plugin/blob/master/docs/consumer.adoc">consume the SCM API</a>
+(if they wanted to do something like Branch API but not the same way as Branch API)</p>
+</li>
+<li>
+<p>documentation on how plugin developers are supposed to
+<a href="https://github.com/jenkinsci/branch-api-plugin/blob/master/docs/implementation.adoc">implement the Branch API</a>
+to create their own multi-branch project types</p>
+</li>
+<li>
+<p>generic documentation for users on
+<a href="https://github.com/jenkinsci/branch-api-plugin/blob/master/docs/user.adoc">how Branch API based project types are intended to work</a></p>
+</li>
+<li>
+<p>a full featured
+<a href="https://github.com/jenkinsci/scm-api-plugin/blob/master/src/main/java/jenkins/scm/api/SCMEvent.java">event system</a>
+that allows implementers to provide fine grained notifications to consumers</p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/scm-api-plugin/tree/master/src/test/java/jenkins/scm/api">lots</a>
+<a href="https://github.com/jenkinsci/scm-api-plugin/tree/master/src/test/java/jenkins/scm/impl">and</a>
+<a href="https://github.com/jenkinsci/branch-api-plugin/tree/master/src/test/java/integration">lots</a>
+of new automated tests</p>
+</li>
+<li>
+<p>a <a href="https://github.com/jenkinsci/scm-api-plugin/tree/master/src/test/java/jenkins/scm/impl/mock">mock implementation</a>
+of the SCM API to help consumers of the SCM API test their usage.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In addition, we have upgraded the following plugins to include the new fine-grained event support:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Git Plugin</p>
+</li>
+<li>
+<p>Mercurial Plugin</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Ok, that was the good news.
+Here is the bad news.</p>
+</div>
+<div class="paragraph">
+<p>We found out that the GitHub Branch Source and BitBucket Branch Source plugins had made invalid assumptions about how to implement the SCM API.
+To be clear, this was not the plugin developers fault: at the time there was no documentation on how to implement the SCM API.</p>
+</div>
+<div class="paragraph">
+<p>But fixing the issues that we found means that you have to be careful about which specific combinations of plugin versions you have installed.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">SCM API Plugin</dt>
+<dd>
+<p>Technically, the 2.0.x line of this plugin is both API and on-disk compatible with plugins compiled against older version lines.</p>
+<div class="paragraph">
+<p>However, the 1.x lines of both the GitHub Branch Source and BitBucket Branch Source plugins have hard-coded assumptions about internal implementation of the SCM API that are no longer valid in the 2.0.x line.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you upgrade to SCM API 2.0.x and you have either the GitHub Branch Source or the BitBucket Branch Source plugins <strong>and</strong> you do not upgrade those instances to the 2.0.x line then your Jenkins instance will fail to start-up correctly.</p>
+</div>
+<div class="paragraph">
+<p>The solution is just to upgrade the GitHub Branch Source or the BitBucket Branch Source plugin (as appropriate) to the 2.0.x line.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you upgrade the SCM API plugin to the 2.0.x line and do not upgrade the Branch API plugin to the 2.0.x line then you will not get any of the benefits of the new version of the SCM API plugin.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</dd>
+<dt class="hdlist1">Branch API Plugin</dt>
+<dd>
+<p>The 2.0.x line of this plugin makes on-disk file format changes that mean you will be unable to roll back to the 1.x line after an upgrade without restoring the old data files from a back-up.
+Technically, the API is compatible with plugins compiled against older version lines.</p>
+<div class="paragraph">
+<p>The 1.x lines of both the GitHub Branch Source and BitBucket Branch Source plugins have implemented hacks that make assumptions about internal implementation of the Branch API that are no longer valid in the 2.0.x line.</p>
+</div>
+<div class="paragraph">
+<p>The Pipeline Multibranch plugin made a few minor invalid assumptions about how to implement a Multibranch project type.
+For example, if you do not upgrade the Pipeline Multibranch plugin in tandem then you will be unable to manually delete an orphaned item before the orphaned item retention strategy runs, which should be significantly less frequently with the new event support.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you upgrade to Branch API 2.0.x and you have either the GitHub Branch Source or the BitBucket Branch Source plugins <strong>and</strong> you do not upgrade those instances to the 2.0.x line then your Jenkins instance will fail to start-up correctly.</p>
+</div>
+<div class="paragraph">
+<p>The solution is just to upgrade the GitHub Branch Source or the BitBucket Branch Source plugin (as appropriate) to the 2.0.x line.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</dd>
+<dt class="hdlist1">Git Plugin</dt>
+<dd>
+<p>The new releases of this plugin are both API and on-disk compatible with plugins compiled against the previous releases.</p>
+<div class="paragraph">
+<p>The 2.0.x lines of both the GitHub Branch Source and BitBucket Branch Source plugins require that you upgrade your Git Plugin to one of the versions that supports SCM API 2.0.x.
+In general, the required upgrade will be performed automatically when you upgrade your GitHub Branch Source and BitBucket Branch Source plugins.</p>
+</div>
+</dd>
+<dt class="hdlist1">Mercurial Plugin</dt>
+<dd>
+<p>The new release of this plugin is both API and on-disk compatible with plugins compiled against the previous releases.</p>
+<div class="paragraph">
+<p>The 2.0.x line of the BitBucket Branch Source plugins require that you upgrade your Mercurial Plugin to the 2.0.x line.
+In general, the required upgrade will be performed automatically when you upgrade your  BitBucket Branch Source plugins.</p>
+</div>
+</dd>
+<dt class="hdlist1">BitBucket Branch Source Plugin</dt>
+<dd>
+<p>The 2.0.x line of this plugin makes on-disk file format changes that mean you will be unable to roll back to the 1.x line after an upgrade without restoring the old data files from a back-up.</p>
+</dd>
+<dt class="hdlist1">GitHub Branch Source Plugin</dt>
+<dd>
+<p>The 2.0.x line of this plugin makes on-disk file format changes that mean you will be unable to roll back to the 1.x line after an upgrade without restoring the old data files from a back-up.</p>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you upgrade to GitHub Branch Source 2.0.x and you have the GitHub Organization Folders plugin installed, you must upgrade that plugin to the tombstone release.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</dd>
+<dt class="hdlist1">GitHub Organization Folders Plugin</dt>
+<dd>
+<p>The functionality of this plugin has been migrated to the GitHub Branch Source plugin.
+You will need to upgrade to the tombstone release in order to ensure all the data has been migrated to the classes in the GitHub Branch Source plugin.</p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Once you have upgraded to the tombstone version and all GitHub Organization Folders have had a full scan completed successfully, you can disable and uninstall the GitHub Organization Folders plugin.
+There will be no more releases of this plugin after the tombstone.
+The tombstone is only required for data migration.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tldr"><a class="anchor" href="#tldr"></a>Summary for busy Jenkins Administrators</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Upgrading should make multi-branch projects much better.
+When you are ready to upgrade you must ensure that you upgrade all the required plugins.
+If you miss some, just upgrade them and restart to fix the issue.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">SCM API Plugin</dt>
+<dd>
+<p>2.0.1 or newer</p>
+</dd>
+<dt class="hdlist1">Branch API Plugin</dt>
+<dd>
+<p>2.0.0 or newer</p>
+</dd>
+<dt class="hdlist1">Git Plugin</dt>
+<dd>
+<p><strong>Either</strong> 2.6.2 or newer in the 2.6.x line <strong>or</strong> 3.0.2 or newer</p>
+</dd>
+<dt class="hdlist1">Mercurial Plugin</dt>
+<dd>
+<p>2.0.0 or newer</p>
+</dd>
+<dt class="hdlist1">GitHub Branch Source Plugin</dt>
+<dd>
+<p>2.0.0 or newer</p>
+</dd>
+<dt class="hdlist1">BitBucket Branch Source Plugin</dt>
+<dd>
+<p>2.0.0 or newer</p>
+</dd>
+<dt class="hdlist1">GitHub Organization Folders Plugin</dt>
+<dd>
+<p>1.6</p>
+</dd>
+<dt class="hdlist1">Pipeline Multibranch Plugin</dt>
+<dd>
+<p>2.10 or newer</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Other plugins that may require updating:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">GitHub API Plugin</dt>
+<dd>
+<p>1.84 or newer</p>
+</dd>
+<dt class="hdlist1">GitHub Plugin</dt>
+<dd>
+<p>1.25.0 or newer</p>
+</dd>
+<dt class="hdlist1">Folders Plugin</dt>
+<dd>
+<p>5.16 or newer</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>After an upgrade you will see the data migration warning</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-for-busy-jenkins-users"><a class="anchor" href="#summary-for-busy-jenkins-users"></a>Summary for busy Jenkins users</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>SCM API 2.0.x adds fine-grained event support.
+This should significantly improve the responsiveness of multi-branch projects.
+This should significantly reduce your GitHub API rate limit usage.</p>
+</div>
+<div class="paragraph">
+<p>If you are using the
+<a href="https://plugins.jenkins.io/github-branch-source">GitHub Branch Source</a>
+or
+<a href="https://plugins.jenkins.io/github-organization-folder">GitHub Organization Folders</a>
+plugins then upgrading will <strong>significantly</strong> reduce the API calls made by Jenkins to GitHub.</p>
+</div>
+<div class="paragraph">
+<p>If you are using any of the upgraded SCM plugins (e.g. Git, Mercurial, GitHub Branch Source, BitBucket Branch Source) then upgrading will <strong>significantly</strong> improve the responsiveness to push event notifications.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-for-busy-scm-plugin-developers"><a class="anchor" href="#summary-for-busy-scm-plugin-developers"></a>Summary for busy SCM plugin developers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You should read the new
+<a href="https://github.com/jenkinsci/scm-api-plugin/blob/master/docs/implementation.adoc">documentation</a>
+on how plugin developers are supposed to implement the SCM API</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="where-to-now-dear-literate-plugin"><a class="anchor" href="#where-to-now-dear-literate-plugin"></a>Where to now dear Literate Plugin</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The persistent reader may be wondering what happens now to the Literate plugin.</p>
+</div>
+<div class="paragraph">
+<p>For me, the logical heir of the Literate Plugin is the
+<a href="https://plugins.jenkins.io/pipeline-model-definition">Pipeline Model Definition plugin</a>.
+This new plugin has the advantage of an easy to read pipeline syntax with the extra functionality that I suspect was preventing people from adopting Literate.</p>
+</div>
+<div class="paragraph">
+<p>The good news is that the Pipeline Model Definition already has 5000 installations as of December 2016 and I expect up-take to keep on growing.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//blog/2017/2017-01-17-scm-api-2.0-release.adoc" title="Edit /blog/2017/2017-01-17-scm-api-2.0-release.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//blog/2017/2017-01-17-scm-api-2.0-release.adoc" title="View /blog/2017/2017-01-17-scm-api-2.0-release.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Using Docker with Pipeline
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="active nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container">
+<div class="row">
+<div class="col-lg-3">
+<div class="sidebar-nav">
+<h4>
+Pipeline Guided Tour
+</h4>
+<ul>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/pipeline/tour/hello-world">
+Creating your first Pipeline
+</a>
+</li>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/pipeline/tour/agents">
+Controlling your agents and workspaces
+</a>
+</li>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/pipeline/tour/environment">
+Environment variables
+</a>
+</li>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/pipeline/tour/running-multiple-steps">
+Running multiple steps
+</a>
+</li>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/pipeline/tour/reporting-test-results-and-storing-artifacts">
+Reporting test results and storing artifacts
+</a>
+</li>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/pipeline/tour/post">
+Cleaning Up and Notifications
+</a>
+</li>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/pipeline/tour/parallelism">
+Running Parallel Steps
+</a>
+</li>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/pipeline/tour/deployment">
+Deployment
+</a>
+</li>
+</ul>
+<h4>
+Pipeline Resources
+</h4>
+<ul>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/pipeline/steps">
+Pipeline Steps reference
+</a>
+</li>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/book/pipeline/reference">
+Declarative Pipeline reference
+</a>
+</li>
+</ul>
+<h4>
+User Handbook
+</h4>
+<ul>
+<li>
+<a href="/doc/book/getting-started">
+Getting Started with Jenkins
+</a>
+</li>
+<li>
+<a href="/doc/book/using">
+Using Jenkins
+</a>
+</li>
+<li>
+<a href="/doc/book/managing">
+Managing Jenkins
+</a>
+</li>
+<li>
+<a href="/doc/book/best-practice">
+Best Practices
+</a>
+</li>
+<li>
+<a href="/doc/book/pipeline">
+Pipeline
+</a>
+</li>
+<li>
+<a href="/doc/book/use-case">
+Jenkins Use-Cases
+</a>
+</li>
+<li>
+<a href="/doc/book/operating">
+Operating Jenkins
+</a>
+</li>
+<li>
+<a href="/doc/book/scaling">
+Scaling Jenkins
+</a>
+</li>
+<li>
+<a href="/doc/book/appendix">
+Appendix
+</a>
+</li>
+<li>
+<a href="/doc/book/glossary">
+Glossary
+</a>
+</li>
+</ul>
+<h4>
+Developers
+</h4>
+<h5>
+Writing plugins
+</h5>
+<ul>
+<li>
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Extend+Jenkins">
+Extend Jenkins
+</a>
+</li>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/book/pipeline/dev-guide">
+Extend Pipeline
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Extension+points">
+Extension points
+</a>
+</li>
+</ul>
+<h5>
+JavaDoc
+</h5>
+<ul>
+<li>
+<a href="http://javadoc.jenkins.io/">
+Latest
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-2.32">
+2.32
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-2.19">
+2.19
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-2.7">
+2.7
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.651">
+1.651
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.642">
+1.642
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.625">
+1.625
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.609">
+1.609
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.596">
+1.596
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.580">
+1.580
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.565">
+1.565
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.554">
+1.554
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+Using Docker with Pipeline
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#docker-workflow">Docker Pipeline Plugin</a>
+<ul class="sectlevel2">
+<li><a href="#docker-workflow-sect-intro">Introduction</a></li>
+<li><a href="#docker-workflow-sect-inside">Running build steps inside containers</a></li>
+<li><a href="#docker-workflow-sect-node">Customizing agent allocation</a></li>
+<li><a href="#docker-workflow-sect-build">Building and publishing images</a></li>
+<li><a href="#docker-workflow-sect-run">Running and testing containers</a></li>
+<li><a href="#docker-workflow-sect-endpoints">Specifying a custom registry and server</a></li>
+<li><a href="#docker-workflow-sect-advanced">Advanced usage</a></li>
+<li><a href="#docker-workflow-sect-demo">Demonstrations</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Unresolved directive in docker-pipeline.adoc - include::abbr.asc[]</p>
+</div>
+<div class="sect1">
+<h2 id="docker-workflow"><a class="anchor" href="#docker-workflow"></a>Docker Pipeline Plugin</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="docker-workflow-sect-intro"><a class="anchor" href="#docker-workflow-sect-intro"></a>Introduction</h3>
+<div class="paragraph">
+<p>Many organizations are using <a href="https://www.docker.com">Docker</a> to unify their build and test environments across machines and provide an efficient way to deploy applications into production.
+This plugin offers a convenient domain-specific language (DSL) for performing some of the most commonly needed Docker operations in a continuous-deployment pipeline from a Pipeline script.</p>
+</div>
+<div class="paragraph">
+<p>The entry point for all of this plugin’s functionality is a <code>docker</code> global variable, available without import to any flow script when the plugin is enabled.
+To get detailed information on available methods, open the <em>Pipeline Syntax</em> available on any Pipeline Job page:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/doc/book/resources/docker-workflow-screenshots/dsl-help.png" alt="dsl help">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="docker-workflow-sect-inside"><a class="anchor" href="#docker-workflow-sect-inside"></a>Running build steps inside containers</h3>
+<div class="paragraph">
+<p>It is commonplace for Jenkins projects to require a specific toolset or libraries to be available during a build.
+If many projects in a Jenkins installation have the same requirements, and there are few agents, it is not hard to just preconfigure those agents accordingly.
+In other cases it is feasible to keep such files in project source control.
+Finally, for some tools—especially those with a self-contained, platform-independent download, like Maven—it is possible to use the Jenkins tool installer system with the Pipeline <code>tool</code> step to retrieve tools on demand.
+However many cases remain where these techniques are not practical.</p>
+</div>
+<div class="paragraph">
+<p>For builds which can run on Linux, Docker provides an ideal solution to this problem.
+Each project need merely select an image containing all the tools and libraries it would need.
+(This might be a publicly available image like <a href="https://registry.hub.docker.com/_/maven/">maven</a>, or it might have been built by this or another Jenkins project.)
+Developers can also run build steps locally using an environment identical to that used by the Jenkins project.</p>
+</div>
+<div class="paragraph">
+<p>There are two ways to run Jenkins build steps in such an image.
+One is to include a Java runtime and Jenkins slave agent (<code>slave.jar</code>) inside the image, and add a <em>Docker</em> cloud using the Docker plugin.
+Then the entire agent runs wholly inside the image, so any builds tied to that cloud label can assume a particular environment.</p>
+</div>
+<div class="paragraph">
+<p>For cases where you do not want to “pollute” the image with Java and the Jenkins agent, or just want a simpler and more flexible setup, this plugin provides a way to run build steps inside an arbitrary image.
+In the simplest case, just select an <code>image</code> and run your whole build <code>inside</code> it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">maven:3.3.3-jdk-8</span><span style="color:#710">'</span></span>).inside {
+  git <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">…your-sources…</span><span style="color:#710">'</span></span>
+  sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">mvn -B clean install</span><span style="color:#710">'</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above is a complete Pipeline script.
+<code>inside</code> will:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Automatically grab an agent and a workspace (no extra <code>node</code> block is required).</p>
+</li>
+<li>
+<p>Pull the requested image to the Docker server (if not already cached).</p>
+</li>
+<li>
+<p>Start a container running that image.</p>
+</li>
+<li>
+<p>Mount the Jenkins workspace as a “volume” inside the container, using the same file path.</p>
+</li>
+<li>
+<p>Run your build steps. External processes like <code>sh</code> will be wrapped in <code>docker exec</code> so they are run inside the container. Other steps (such as test reporting) run unmodified: they can still access workspace files created by build steps.</p>
+</li>
+<li>
+<p>At the end of the block, stop the container and discard any storage it consumed.</p>
+</li>
+<li>
+<p>Record the fact that the build used the specified image. This unlocks features in other Jenkins plugins: you can track all projects using an image, or configure this project to be triggered automatically when an updated image is pushed to the Docker registry. If you use <a href="#docker-traceability">Cloudbees Docker Traceability</a>, you will be also able to see a history of the image deployments on Docker servers.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you are running a tool like Maven which has a large download cache, running each build inside its own image will mean that a large quantity of data is downloaded from the network on every build, which is usually undesirable.
+The easiest way to avoid this is to redirect the cache to the agent workspace, so that if you run another build on the same agent, it will run much more quickly.
+In the case of Maven:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">maven:3.3.3-jdk-8</span><span style="color:#710">'</span></span>).inside {
+  git <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">…your-sources…</span><span style="color:#710">'</span></span>
+  writeFile <span style="color:#606">file</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">settings.xml</span><span style="color:#710">'</span></span>, <span style="color:#606">text</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">&lt;settings&gt;&lt;localRepository&gt;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>pwd()<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/.m2repo&lt;/localRepository&gt;&lt;/settings&gt;</span><span style="color:#710">&quot;</span></span>
+  sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">mvn -B -s settings.xml clean install</span><span style="color:#710">'</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>(If you wanted to use a cache location elsewhere on the agent, you would need to pass an extra <code>--volume</code> option to <code>inside</code> so that the container could see that path.)</p>
+</div>
+<div class="paragraph">
+<p>Another solution is to pass an argument to <code>inside</code> to mount a sharable volume, such as <code>-v m2repo:/m2repo</code>, and use that path as the <code>localRepository</code>.
+Just beware that the default local repository management in Maven is not thread-safe for concurrent builds, and <code>install:install</code> could pollute the local repository across builds or even across jobs.
+The safest solution is to use a nearby repository mirror as a cache.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>For <code>inside</code> to work, the Docker server and the Jenkins agent must use the same filesystem, so that the workspace can be mounted.
+The easiest way to ensure this is for the Docker server to be running on localhost (the same computer as the agent).
+Currently neither the Jenkins plugin nor the Docker CLI will automatically detect the case that the server is running remotely;
+a typical symptom would be errors from nested <code>sh</code> commands such as</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">cannot create /…@tmp/durable-…/pid: Directory nonexistent</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or negative exit codes.</p>
+</div>
+<div class="paragraph">
+<p>When Jenkins can detect that the agent is itself running inside a Docker container, it will automatically pass the <code>--volumes-from</code> argument to the <code>inside</code> container, ensuring that it can share a workspace with the agent.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="docker-workflow-sect-node"><a class="anchor" href="#docker-workflow-sect-node"></a>Customizing agent allocation</h3>
+<div class="paragraph">
+<p>All DSL functions which run some Docker command automatically acquire an agent (executor) and a workspace if necessary.
+For more complex scripts which perform several commands using the DSL, you will typically want to run a block, or the whole script, on the <em>same</em> agent and workspace.
+In that case just wrap the block in <code>node</code>, selecting a label if desired:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">linux</span><span style="color:#710">'</span></span>) {
+  <span style="color:#080;font-weight:bold">def</span> maven = docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">maven:latest</span><span style="color:#710">'</span></span>)
+  maven.pull() <span style="color:#777">// make sure we have the latest available from Docker Hub</span>
+  maven.inside {
+    <span style="color:#777">// …as above</span>
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here we ensure that the same agent runs both <code>pull</code> and <code>inside</code>, so the local image cache update by the first step is seen by the second.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="docker-workflow-sect-build"><a class="anchor" href="#docker-workflow-sect-build"></a>Building and publishing images</h3>
+<div class="paragraph">
+<p>If your build needs to create a Docker image, use the <code>build</code> method, which takes an image name with an optional tag and creates it from a <code>Dockerfile</code>.
+This also returns a handle to the result image, so you can work with it further:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">node {
+  git <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">…</span><span style="color:#710">'</span></span> <span style="color:#777">// checks out Dockerfile &amp; Makefile</span>
+  <span style="color:#080;font-weight:bold">def</span> myEnv = docker.build <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">my-environment:snapshot</span><span style="color:#710">'</span></span>
+  myEnv.inside {
+    sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">make test</span><span style="color:#710">'</span></span>
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here the <code>build</code> method takes a <code>Dockerfile</code> in your source tree specifying a build environment (for example <code>RUN apt-get install -y libapr1-dev</code>).
+Then a <code>Makefile</code> in the same source tree describes how to build your actual project in that environment.</p>
+</div>
+<div class="paragraph">
+<p>If you want to publish a newly created image to Docker Hub (or your own registry—discussed below), use <code>push</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">node {
+  git <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">…</span><span style="color:#710">'</span></span> <span style="color:#777">// checks out Dockerfile and some project sources</span>
+  <span style="color:#080;font-weight:bold">def</span> newApp = docker.build <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">mycorp/myapp:</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>env.BUILD_TAG<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  newApp.push()
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here we are giving the image a tag which identifies the Jenkins project and build number that created it.
+(See the documentation for the <code>env</code> global variable.)
+The image is pushed under this tag name to the registry.</p>
+</div>
+<div class="paragraph">
+<p>To push an image into a staging or production environment, a common style is to update a predefined tag such as <code>latest</code> in the registry.
+In this case just specify the tag name:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">node {
+  stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Building image</span><span style="color:#710">'</span></span>
+  git <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">…</span><span style="color:#710">'</span></span>
+  <span style="color:#080;font-weight:bold">def</span> newApp = docker.build <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">mycorp/myapp:</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>env.BUILD_TAG<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  newApp.push() <span style="color:#777">// record this snapshot (optional)</span>
+  stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Test image</span><span style="color:#710">'</span></span>
+  <span style="color:#777">// run some tests on it (see below), then if everything looks good:</span>
+  stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Approve image</span><span style="color:#710">'</span></span>
+  newApp.push <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">latest</span><span style="color:#710">'</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>build</code> method records information in Jenkins tied to this project build: what image was built, and what image that was derived from (the <code>FROM</code> instruction at the top of your <code>Dockerfile</code>).
+Other plugins can then identify the build which created an image known to have been used by a downstream build, or deployed to a particular environment.
+You can also have this project be triggered when an update is pushed to the ancestor image (<code>FROM</code>) in a registry.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="docker-workflow-sect-run"><a class="anchor" href="#docker-workflow-sect-run"></a>Running and testing containers</h3>
+<div class="paragraph">
+<p>To run an image you built, or pulled from a registry, you can use the <code>run</code> method.
+This returns a handle to the running container.
+More safely, you can use the <code>withRun</code> method, which automatically stops the container at the end of a block:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">node {
+  git <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">…</span><span style="color:#710">'</span></span>
+  docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">mysql</span><span style="color:#710">'</span></span>).withRun {c -&gt;
+    sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./test-with-local-db</span><span style="color:#710">'</span></span>
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above simply starts a container running a test MySQL database and runs a regular build while that container is running.
+Unlike <code>inside</code>, shell steps inside the block are <strong>not</strong> run inside the container, but they could connect to it using a local TCP port for example.</p>
+</div>
+<div class="paragraph">
+<p>You can also access the <code>id</code> of the running container, which is passed as an argument to the block, in case you need to do anything further with it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">// …as above, but also dump logs before we finish:</span>
+sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">docker logs </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>c.id<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Like <code>inside</code>, <code>run</code> and <code>withRun</code> record the fact that the build used the specified image.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="docker-workflow-sect-endpoints"><a class="anchor" href="#docker-workflow-sect-endpoints"></a>Specifying a custom registry and server</h3>
+<div class="paragraph">
+<p>So far we have assumed that you are using the public Docker Hub as the image registry, and connecting to a Docker server in the default location (typically a daemon running locally on a Linux agent).
+Either or both of these settings can be easily customized.</p>
+</div>
+<div class="paragraph">
+<p>To select a custom registry, wrap build steps which need it in the <code>withRegistry</code> method on <code>docker</code> (inside <code>node</code> if you want to specify an agent explicitly).
+You should pass in a registry URL.
+If the registry requires authentication, you can add the ID of username/password credentials.
+(<em>Credentials</em> link in the Jenkins index page or in a folder; when creating the credentials, use the <em>Advanced</em> section to specify a memorable ID for use in your pipelines.)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">docker.withRegistry(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">https://docker.mycorp.com/</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">docker-login</span><span style="color:#710">'</span></span>) {
+  git <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">…</span><span style="color:#710">'</span></span>
+  docker.build(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">myapp</span><span style="color:#710">'</span></span>).push(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">latest</span><span style="color:#710">'</span></span>)
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The above builds an image from a <code>Dockerfile</code>, and then publishes it (under the <code>latest</code> tag) to a password-protected registry.
+There is no need to preconfigure authentication on the agent.</p>
+</div>
+<div class="paragraph">
+<p>To select a non-default Docker server, such as for <a href="https://docs.docker.com/swarm/">Docker Swarm</a>, use the <code>withServer</code> method.
+You pass in a URI, and optionally the ID of <em>Docker Server Certificate Authentication</em> credentials (which encode a client key and client/server certificates to support TLS).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">docker.withServer(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">tcp://swarm.mycorp.com:2376</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">swarm-certs</span><span style="color:#710">'</span></span>) {
+  docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">httpd</span><span style="color:#710">'</span></span>).withRun(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">-p 8080:80</span><span style="color:#710">'</span></span>) {c -&gt;
+    sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">curl -i http://</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>hostIp(c)<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">:8080/</span><span style="color:#710">&quot;</span></span>
+  }
+}
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">hostIp</span>(container) {
+  sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">docker inspect -f {{.Node.Ip}} </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>container.id<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> &gt; hostIp</span><span style="color:#710">&quot;</span></span>
+  readFile(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">hostIp</span><span style="color:#710">'</span></span>).trim()
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that you cannot use <code>inside</code> or <code>build</code> with a Swarm server, and some versions of Swarm do not support interacting with a custom registry either.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="docker-workflow-sect-advanced"><a class="anchor" href="#docker-workflow-sect-advanced"></a>Advanced usage</h3>
+<div class="paragraph">
+<p>If your script needs to run other Docker client commands or options not covered by the DSL, just use a <code>sh</code> step.
+You can still take advantage of some DSL methods like <code>imageName</code> to prepend a registry ID:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">docker.withRegistry(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">https://docker.mycorp.com/</span><span style="color:#710">'</span></span>) {
+  <span style="color:#080;font-weight:bold">def</span> myImg = docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">myImg</span><span style="color:#710">'</span></span>)
+  <span style="color:#777">// or docker.build, etc.</span>
+  sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">docker pull --all-tags </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>myImg.imageName()<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  <span style="color:#777">// runs: docker pull --all-tags docker.mycorp.com/myImg</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and you can be assured that the environment variables and files needed to connect to any custom registry and/or server will be prepared.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="docker-workflow-sect-demo"><a class="anchor" href="#docker-workflow-sect-demo"></a>Demonstrations</h3>
+<div class="paragraph">
+<p>A Docker image is available for you to run which demonstrates a complete flow script which builds an application as an image, tests it from another container, and publishes the result to a private registry.
+<a href="https://github.com/jenkinsci/docker-workflow-plugin/blob/master/demo/README.md">Instructions on running this demonstration</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//doc/book/pipeline/docker-pipeline.adoc" title="Edit /doc/book/pipeline/docker-pipeline.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//doc/book/pipeline/docker-pipeline.adoc" title="View /doc/book/pipeline/docker-pipeline.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

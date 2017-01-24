@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Tuning Jenkins GC For Responsiveness and Stability with Large Instances
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container blog-post no-margin">
+<div class="row body">
+<div class="col-md-11 col-md-offset-1 main-content" id="content">
+<div id="content-top">
+<h1>
+<a href="/blog/2016/11/21/gc-tuning/" title="Tuning Jenkins GC For Responsiveness and Stability with Large Instances">
+Tuning Jenkins GC For Responsiveness and Stability with Large Instances
+</a>
+</h1>
+<!-- starting partial tweetbutton.html.haml -->
+<div style="float: right; clear: all;">
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/share">
+Tweet
+</a>
+</div>
+
+<!-- ending partial tweetbutton.html.haml -->
+<span class="submitted">
+Published on
+2016-11-21
+by
+<a href="https://github.com/svanoort">Sam Van Oort</a>
+</span>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This is a
+<a href="https://www.cloudbees.com/blog/joining-big-leagues-tuning-jenkins-gc-responsiveness-and-stability">cross
+post</a> by <a href="https://github.com/svanoort">Sam Van Oort</a>, Software Engineer at
+<a href="http://cloudbees.com">CloudBees</a> and contributor to the Jenkins project.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Today I&#8217;m going to show you how easy it is to tune Jenkins Java settings to
+make your masters more responsive and stable, especially with large heap sizes.</p>
+</div>
+<div class="sect2">
+<h3 id="the-magic-settings"><a class="anchor" href="#the-magic-settings"></a>The Magic Settings:</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Basics:</strong> <code>-server -XX:+AlwaysPreTouch</code></p>
+</li>
+<li>
+<p><strong>GC Logging:</strong> <code>-Xloggc:$JENKINS_HOME/gc-%t.log -XX:NumberOfGCLogFiles=5 -XX:+UseGCLogFileRotation -XX:GCLogFileSize=20m -XX:+PrintGC -XX:+PrintGCDateStamps -XX:+PrintGCDetails -XX:+PrintHeapAtGC -XX:+PrintGCCause -XX:+PrintTenuringDistribution -XX:+PrintReferenceGC -XX:+PrintAdaptiveSizePolicy</code></p>
+</li>
+<li>
+<p><strong>G1 GC settings:</strong> <code>-XX:+UseG1GC -XX:+ExplicitGCInvokesConcurrent -XX:+ParallelRefProcEnabled -XX:+UseStringDeduplication -XX:+UnlockExperimentalVMOptions -XX:G1NewSizePercent=20 -XX:+UnlockDiagnosticVMOptions -XX:G1SummarizeRSetStatsPeriod=1</code></p>
+</li>
+<li>
+<p><strong>Heap settings:</strong> set your minimum heap size (<code>-Xms</code>) to at least 1/2 of your maximum size (<code>-Xmx</code>).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Now, let&#8217;s look at where those came from!  We&#8217;re going to focus on garbage
+collection (GC) here and dig fast and deep to strike for gold; if you&#8217;re not
+familiar with GC fundamentals
+<a href="http://blog.takipi.com/garbage-collectors-serial-vs-parallel-vs-cms-vs-the-g1-and-whats-new-in-java-8/">take a look at this source</a>.</p>
+</div>
+<div class="paragraph">
+<p>Because performance tuning is data driven, I&#8217;m going to use real-world data
+selected three very large Jenkins instances that I help support.</p>
+</div>
+<div class="paragraph">
+<p><strong>What we&#8217;re not going to do:</strong> Jenkins basics, or play with max heap.  See the
+section "what should I do before tuning."  This is for cases where we really
+<strong>do</strong> need a big heap and can&#8217;t easily split our Jenkins masters into smaller
+ones.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="the-problem-hangups"><a class="anchor" href="#the-problem-hangups"></a>The Problem: Hangups</h3>
+<div class="paragraph">
+<p>Symptom: Users report that the Jenkins instance periodically hangs, taking
+several seconds to handle normally fast requests.  We may even see lockups or
+timeouts from systems communicating with the Jenkins master (build agents,
+etc).  In long periods of heavy load, users may report Jenkins running slowly.
+Application monitoring shows that during lockups all or most of the CPU cores
+are fully loaded, but there&#8217;s not enough activity to justify it.  Process and
+JStack dumps will reveal that the most active Java threads are doing garbage
+collection.</p>
+</div>
+<div class="paragraph">
+<p>With Instance A, they had this problem.  Their Jenkins Java arguments are very
+close to the default, aside from sizing the heap:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>24 GB max heap, 4 GB initial, default GC settings (ParallelGC)</p>
+</li>
+<li>
+<p>A few flags set (some coming in as defaults): <code>-XX:-BytecodeVerificationLocal -XX:-BytecodeVerificationRemote -XX:+ReduceSignalUsage -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:-UseLargePagesIndividualAllocation</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>After enabling garbage collection (GC) logging we see the following rough stats:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/gc-tuning/s-bulkstats-CompanyA-red-parallelgc.png" alt="HeapStats Instance A System Red CPU use-parallelGC"></span>.</p>
+</div>
+<div class="paragraph">
+<p>Diving deeper, we get this chart of GC pause durations:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/gc-tuning/s-duration-CompanyA-red-parallelgc.png" alt="Instance A Jenkins Red GC duration use-parallelGC"></span></p>
+</div>
+<div class="paragraph">
+<p><strong>Key stats:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Throughput: 99.64%  (percent of time spent executing application code, not doing garbage collection)</p>
+</li>
+<li>
+<p>Average GC time: 348 ms (ugh!)</p>
+</li>
+<li>
+<p>GC cycles over 2 seconds: 36 (2.7%)</p>
+</li>
+<li>
+<p>Minor/Full GC average time: 263 ms / 2.803 sec</p>
+</li>
+<li>
+<p>Object creation &amp; promotion rate: 42.4 MB/s &amp; 1.99 MB/s</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Explanations:</strong></p>
+</div>
+<div class="paragraph">
+<p>As you can see, young GC cycles very quickly clear away freshly-created
+garbage, but the deeper old-gen GC cycles run very slowly: 2-4 seconds. This is
+where our problems happen.  The default Java garbage collection algorithm
+(ParallelGC) pauses everything when it has to collect garbage (often called a
+"stop the world pause"). During that period, Jenkins is fully halted: normally
+(with small heaps) these pauses are too brief to be an issue.  With heaps of 4
+GB or larger, the time required becomes long enough to be a problem: several
+seconds over short windows, and over a longer interval you occasionally see
+much longer pauses (tens of seconds, or minutes.)</p>
+</div>
+<div class="paragraph">
+<p>This is where the user-visible hangs and lock-ups happen.  It also adds
+significant latency to those build/deploy tasks.  In periods of heavy load, the
+system was even experiencing hangs of 30+ seconds for a single full GC cycle.
+This was long enough to trigger network timeouts (or internal Jenkins thread
+timeouts) and cause even larger problems.</p>
+</div>
+<div class="paragraph">
+<p>Fortunately there&#8217;s a solution: the concurrent low-pause garbage collection
+algorithms, Concurrent Mark Sweep (CMS) and Garbage First (G1). These attempt
+to do much of the garbage collection concurrently with application threads,
+resulting in much shorter pauses (at a slight cost in extra CPU use).  We&#8217;re
+going to focus on G1, because it is slated to become the default in Java 9 and
+is the official recommendation for large heap sizes.</p>
+</div>
+<div class="paragraph">
+<p><strong>Let&#8217;s see what happens when someone uses G1 on a similarly-sized Jenkins
+master with Instance B (17 GB heap):</strong></p>
+</div>
+<div class="paragraph">
+<p>Their settings:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>16 GB max heap, 0.5 GB initial size</p>
+</li>
+<li>
+<p>Java flags (mostly defaults, except for G1): <code>-XX:+UseG1GC -XX:+UseCompressedClassPointers -XX:+UseCompressedOops</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>And the GC log analysis:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/gc-tuning/s-duration-CompanyB-g1.png" alt="Instance B Jenkins G1 duration"></span></p>
+</div>
+<div class="paragraph">
+<p><strong>Key stats:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Throughput: 98.76%  (not great, but still only slowing things down a bit)</p>
+</li>
+<li>
+<p>Average GC time: 128 ms</p>
+</li>
+<li>
+<p>GC cycles over 2 seconds: 11, 0.27%</p>
+</li>
+<li>
+<p>Minor/Full GC average time: 122 ms / 1 sec 232 ms</p>
+</li>
+<li>
+<p>Object creation &amp; promotion rate: 132.53 MB/s &amp; 522 KB/s</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Okay, <strong>much better</strong>: some improvement may be expected from a 30% smaller
+heap, but not as much as we&#8217;ve seen.  Most of the GC pauses are well
+under 2 seconds, but we have 11 outliers - long Full GC pauses of 2-12 seconds.
+Those are troubling; we&#8217;ll take a deeper dive into their causes in a second.
+First, let&#8217;s look at the big picture and at how Jenkins behaves with G1 GC for
+a second instance.</p>
+</div>
+<div class="paragraph">
+<p><strong>G1 Garbage Collection with Instance C (24 GB heap):</strong></p>
+</div>
+<div class="paragraph">
+<p>Their settings:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>24 GB max heap, 24 GB initial heap, 2 GB max metaspace</p>
+</li>
+<li>
+<p>Some custom flags: `-XX:+UseG1GC -XX:+AlwaysPreTouch -XX:+UseStringDeduplication  -XX:+UseCompressedClassPointers -XX:+UseCompressedOops `</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Clearly they&#8217;ve done some garbage collection tuning and optimization.  The
+AlwaysPreTouch pre-zeros allocated heap pages, rather than waiting until
+they&#8217;re first used. This is suggested especially for large heap sizes, because
+it trades slightly slower startup times for improved runtime performance.  Note
+also that they pre-allocated the whole heap.  This is a common optimization.</p>
+</div>
+<div class="paragraph">
+<p>They also enabled StringDeduplication, a G1 option introduced in Java 8 Update
+20 that transparently replaces identical character arrays with pointers to the
+original, reducing memory use (and improving cache performance).  Think of it
+like <code>String.intern()</code> but it silently happens during garbage collection.  This
+is a concurrent operation added on to normal GC cycles, so it doesn&#8217;t pause the
+application.  We&#8217;ll look at its impacts later.</p>
+</div>
+<div class="paragraph">
+<p>Looking at the basics:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/gc-tuning/s-duration-CompanyC-g1.png" alt="Instance C G1 duration"></span></p>
+</div>
+<div class="paragraph">
+<p>Similar picture to Instance B, but it&#8217;s hidden by the sheer number of points
+(this is a longer period here, 1 month).  Those same occasional Full GC
+outliers are present!</p>
+</div>
+<div class="paragraph">
+<p><strong>Key stats:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Throughput: 99.93%</p>
+</li>
+<li>
+<p>Average GC time: 127 ms</p>
+</li>
+<li>
+<p>GC cycles over 2 seconds: 235 (1.56%)</p>
+</li>
+<li>
+<p>Minor/Full GC average time: 56 ms / 3.97 sec</p>
+</li>
+<li>
+<p>Object creation &amp; promotion rate: 34.06 MB/s &amp; 286 kb/s</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Overall fairly similar to Instance B: ~100 ms GC cycles, all the minor GC
+cycles are very fast.  Object promotion rates sound similar.</p>
+</div>
+<div class="paragraph">
+<p><strong>Remember those random long pauses?</strong></p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s find out what caused them and how to get rid of them.  Instance B had 11
+super-long pause outliers.  Let&#8217;s get some more detail, by opening GC Logs in
+<a href="https://github.com/chewiebug/GCViewer">GCViewer</a>.
+This tool gives a tremendous amount of information.  Too much, in fact&#8201;&#8212;&#8201; I
+prefer to use
+<a href="http://gceasy.io/">GCEasy.io</a>
+except where needed.  Since GC logs do not contain compromising information
+(unlike heap dumps or some stack traces), web apps are a great tool for
+analysis.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/gc-tuning/s-gccauses-CompanyB-g1-highlighted.png" alt="Instance B Jenkins G1 causes"></span></p>
+</div>
+<div class="paragraph">
+<p>What we care about are at the Full GC times in the middle (highlighted).  See
+how much longer they are vs. the young and concurrent GC cycles up top (2
+seconds or less)?</p>
+</div>
+<div class="paragraph">
+<p>Now, I lied a bit earlier - sorry!  For concurrent garbage collectors, there
+are actually 3 modes: young GC, concurrent GC, and full GC.  Concurrent GC
+replaces the Full GC mode in Parallel GC with a faster concurrent operation
+that runs in parallel with the application.  But in a few cases, we are
+forced to fall back to a non-concurrent Full GC operation, which will use the
+serial  (single-threaded) garbage collector.  That means that even if we have
+30+ CPU cores, only one is working. This is what is happening here, and on a
+large-heap, multicore system it is S  L  O  W.  How slow?  280 MB/s vs. 12487
+MB/s for Instance B (for instance C, the difference is also about 50:1).</p>
+</div>
+<div class="paragraph">
+<p>What triggers a full GC instead of concurrent:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Explicit calls to <code>System.gc()</code>  (most common culprit, often tricky to trace down)</p>
+</li>
+<li>
+<p>Metadata GC Threshold: Metaspace (used for Class data mostly) has hit the
+defined size to force garbage collection or increase it.  Documentation is
+terrible for this,
+<a href="http://stackoverflow.com/questions/25251388/what-is-the-metadata-gc-threshold-and-how-do-i-tune-it">Stack Overflow</a>
+will be your friend.</p>
+</li>
+<li>
+<p>Concurrent mode failure: concurrent GC can&#8217;t complete fast enough to keep up
+with objects the application is creating (there are JVM arguments to trigger
+concurrent GC earlier)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>How do we fix this?</strong></p>
+</div>
+<div class="paragraph">
+<p>For explicit GC:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>-XX:+DisableExplicitGC</code> will turn off Full GC triggered by <code>System.gc()</code>.  Often set in production, but the below option is safer.</p>
+</li>
+<li>
+<p>We can trigger a concurrent GC in place of a full one with <code>-XX:+ExplicitGCInvokesConcurrent</code> - this will take the explicit call as a hint to do deeper cleanup, but with less performance cost.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Gotcha for people who&#8217;ve used CMS:</strong> if you have used CMS in the past, you
+may have used the option <code>-XX:+ExplicitGCInvokesConcurrentAndUnloadsClasses</code>&#8201;&#8212;&#8201;which does what it says.  This option will silently fail in G1, meaning you
+still see the very long pauses from Full GC cycles as if it wasn&#8217;t set (no
+warning is generated).  I have logged a JVM bug for this issue.</p>
+</div>
+<div class="paragraph">
+<p>For the Metadata GC threshold:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Increase your initial metaspace to the final amount to avoid resizing. For example: <code>-XX:MetaspaceSize=500M</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Instance C also suffered the same problem with explicit GC calls, with almost
+all our outliers accounted for (230 out of 235) by slow, nonconcurrent Full GC
+cycles (all from explicit <code>System.gc()</code> calls, since they tuned metaspace):</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/gc-tuning/s-gccauses-CompanyC-g1-highlighted.png" alt="Instance C Jenkins G1 GC causes"></span></p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s what GC pause durations look like if we remove the log entries for the
+explicit <code>System.gc()</code> calls, assuming that they&#8217;ll blend in with the other
+concurrent GC pauses (not 100% accurate, but a good approximation):</p>
+</div>
+<div class="paragraph">
+<p><strong>Instance B:</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/gc-tuning/s-duration-CompanyB-g1-explicitremoved.png" alt="Instance B Jenkins GC duration - G1 - no explicit pauses"></span></p>
+</div>
+<div class="paragraph">
+<p>The few long Full GC cycles at the start are from metaspace expansion&#8201;&#8212;&#8201;they
+can be removed by increasing initial Metaspace size, as noted above. The
+spikes?  That&#8217;s when we&#8217;re about to resize the Java heap, and memory pressure
+is high.  <strong>You can avoid this by setting the minimum/initial heap to at least
+half of the maximum, to limit resizing.</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>Stats:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Throughput: 98.93%</p>
+</li>
+<li>
+<p>Average GC time: 111 ms</p>
+</li>
+<li>
+<p>GC cycles over 2 seconds: 3</p>
+</li>
+<li>
+<p>Minor &amp; Full or concurrent GC average time: 122 ms / 25 ms (yes, faster than minor!)</p>
+</li>
+<li>
+<p>Object creation &amp; promotion rate: 132.07 MB/s &amp; 522 kB/s</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Instance C:</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/gc-tuning/s-duration-CompanyC-g1-ExplicitRemoved.png" alt="Instance C Jenkins G1 - no explicit pauses"></span></p>
+</div>
+<div class="paragraph">
+<p><strong>Stats:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Throughput: 99.97%</p>
+</li>
+<li>
+<p>Average GC time: 56 ms</p>
+</li>
+<li>
+<p>GC cycles over 2 seconds: 0 (!!!)</p>
+</li>
+<li>
+<p>Minor &amp; Full or concurrent GC average time: 56 ms &amp; 10 ms (yes, faster than minor!)</p>
+</li>
+<li>
+<p>Object creation &amp; promotion rate: 33.31 MB/s &amp; 286 kB/s</p>
+</li>
+<li>
+<p>Side point: GCViewer is claiming GC performance of 128 GB/s (not unreasonable, we clear ~10 GB of young generation in under 100 ms usually)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Okay, so we&#8217;ve tamed the long worst-case pauses!</strong></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="but-what-about-those-long-minor-gc-pauses-we-saw"><a class="anchor" href="#but-what-about-those-long-minor-gc-pauses-we-saw"></a>But What About Those Long Minor GC Pauses We Saw?</h3>
+<div class="paragraph">
+<p>Okay, now we&#8217;re in the home stretch!  We&#8217;ve tamed the old-generation GC pauses
+with concurrent collection, but what about those longer young-generation
+pauses?  Lets look at stats for the different phases and causes again in
+GCViewer.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/gc-tuning/s-gccauses-CompanyB-g1-NOEXPLICIT-highlighted.png" alt="Instance C Jenkins G1 causes -no explicit pauses"></span></p>
+</div>
+<div class="paragraph">
+<p>Highlighted in yellow we see the culprit: the remark phase of G1 garbage
+collection. This stop-the-world phase ensures we&#8217;ve identified all live
+objects, and process references (
+<a href="https://www.infoq.com/articles/G1-One-Garbage-Collector-To-Rule-Them-All">more info</a>).</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s look at a sample execution to get more info:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>2016-09-07T15:28:33.104+0000: 26230.652: [GC remark 26230.652: [GC ref-proc, 1.7204585 secs], 1.7440552 secs]
+
+ [Times: user=1.78 sys=0.03, real=1.75 secs]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This turns out to be typical for the GC log: the longest pauses are spent in
+reference processing. This is not surprising because Jenkins internally uses
+references heavily for caching, especially weak references, and the default
+reference processing algorithm is single-threaded.  Note that user (CPU) time
+matches real time, and it would be higher if we were using multiple cores.</p>
+</div>
+<div class="paragraph">
+<p>So, we add the GC flag <code>-XX:+ParallelRefProcEnabled</code> which enables us to use the multiple cores more effectively.</p>
+</div>
+<div class="paragraph">
+<p><strong>Tuning young-generation GC further based on Instance C:</strong></p>
+</div>
+<div class="paragraph">
+<p>Back to GCViewer we go, to see what&#8217;s time consuming with the GC for Instance C.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/gc-tuning/s-gccauses-CompanyC-g1-NOEXPLICIT-highlighted.png" alt="Instance C Jenkins G1 causes -no explicit pauses"></span></p>
+</div>
+<div class="paragraph">
+<p>That&#8217;s good, because most of the time is just sweeping out the trash
+(evacuation pause).  But the 1.8 second pause looks odd.  Let&#8217;s look at the raw
+GC log for the longest pause:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>2016-09-24T16:31:27.738-0700: 106414.347: [GC pause (G1 Evacuation Pause) (young), 1.8203527 secs]
+[Parallel Time: 1796.4 ms, GC Workers: 8]
+ [GC Worker Start (ms): Min: 106414348.2, Avg: 106414348.3, Max: 106414348.6, Diff: 0.4]
+[Ext Root Scanning (ms): Min: 0.3, Avg: 1.7, Max: 5.7, Diff: 5.4, Sum: 14.0]
+  [Update RS (ms): Min: 0.0, Avg: 7.0, Max: 19.6, Diff: 19.6, Sum: 55.9]
+    [Processed Buffers: Min: 0, Avg: 45.1, Max: 146, Diff: 146, Sum: 361]
+ [Scan RS (ms): Min: 0.2, Avg: 0.4, Max: 0.7, Diff: 0.6, Sum: 3.5]
+ [Code Root Scanning (ms): Min: 0.0, Avg: 0.0, Max: 0.1, Diff: 0.1, Sum: 0.2]
+ [Object Copy (ms): Min: 1767.1, Avg: 1784.4, Max: 1792.6, Diff: 25.5, Sum: 14275.2]
+ [Termination (ms): Min: 0.3, Avg: 2.4, Max: 3.5, Diff: 3.2, Sum: 19.3]
+    [Termination Attempts: Min: 11, Avg: 142.5, Max: 294, Diff: 283, Sum: 1140]
+ [GC Worker Other (ms): Min: 0.0, Avg: 0.1, Max: 0.4, Diff: 0.3, Sum: 0.8]
+ [GC Worker Total (ms): Min: 1795.9, Avg: 1796.1, Max: 1796.2, Diff: 0.3, Sum: 14368.9]
+ [GC Worker End (ms): Min: 106416144.4, Avg: 106416144.5, Max: 106416144.5, Diff: 0.1]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>&#8230;&#8203;oh, well dang. Almost the entire time (1.792 s out of 1.820) is walking
+through the live objects and copying them.  And wait, what about this line,
+showing the summary statistics:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>Eden: 13.0G(13.0G)-&gt;0.0B(288.0M) Survivors: 1000.0M-&gt;936.0M Heap: 20.6G(24.0G)-&gt;7965.2M(24.0G)]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Good grief, we flushed out 13 GB (!!!) of freshly-allocated garbage in one
+swoop and compacted the leftovers!  No wonder it was so slow.  I wonder how we
+accumulated so much&#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/images/post-images/gc-tuning/s-younggen-CompanyC-g1-ExplicitRemoved.png" alt="Instance C Jenkins G1-ExplictGC removed"></span></p>
+</div>
+<div class="paragraph">
+<p>Oh, right&#8230;&#8203; we set up for 24 GB of heap initially, and each minor GC clears
+most of the young generation.  Okay, so we&#8217;ve set aside tons of space for trash
+to collect, which means longer but less frequent GC periods.  This also gets
+the best performance from Jenkins memory caches which are using WeakReferences
+(survives until collected by GC) and SoftReferences (more long-lived). Those
+caches boost performance a lot.</p>
+</div>
+<div class="paragraph">
+<p>We could take actions to prevent those rare longer pauses. The best ways are to
+limit total heap size or reduce the value of <code>-XX:MaxGCPauseMillis=200</code> from
+its default (200).  A more advanced way (if those don&#8217;t help enough) is to
+explicitly set the maximum size of the young generation smaller (say
+<code>-XX:G1MaxNewSizePercent=45</code> instead of the default of 60).  We could also
+throw more CPUs at the problem.</p>
+</div>
+<div class="paragraph">
+<p>But if we look up, most pauses are around 100 ms (200 ms is the default value
+for MaxGCPauseMillis).  For Jenkins on this hardware, this appears to work
+<strong>just fine</strong> and a rare longer pause is OK as long as they don&#8217;t get too
+big.  Also remember, if this happens often, G1 GC will try to autotune for
+lower pauses and more predictable performance.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="a-few-final-settings"><a class="anchor" href="#a-few-final-settings"></a>A Few Final Settings</h3>
+<div class="paragraph">
+<p>We mentioned StringDeduplication was on with Instance C, what is the impact?
+This only triggers on Strings that have survived a few generations (most of our
+garbage does not), has limits on the CPU time it can use, and replaces
+duplicate references to their immutable backing character arrays.
+<a href="http://java-performance.info/java-string-deduplication/">For more info, look here</a>.
+So, we should be trading a little CPU time for improved memory efficiently
+(similarly to string interning).</p>
+</div>
+<div class="paragraph">
+<p>At the beginning, this has a huge impact:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>[GC concurrent-string-deduplication, 375.3K-&gt;222.5K(152.8K), avg 63.0%, 0.0     024966 secs]
+[GC concurrent-string-deduplication, 4178.8K-&gt;965.5K(3213.2K), avg 65.3%, 0     .0272168 secs]
+[GC concurrent-string-deduplication, 36.1M-&gt;9702.6K(26.6M), avg 70.3%, 0.09     65196 secs]
+[GC concurrent-string-deduplication, 4895.2K-&gt;394.9K(4500.3K), avg 71.9%, 0     .0114704 secs]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This peaks at an average of about ~90%:</p>
+</div>
+<div class="paragraph">
+<p>After running for a month, less of an impact - many of the strings that can be
+deduplicated already are:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>[GC concurrent-string-deduplication, 138.7K-&gt;39.3K(99.4K), avg 68.2%, 0.0007080 secs]
+[GC concurrent-string-deduplication, 27.3M-&gt;21.5M(5945.1K), avg 68.1%, 0.0554714 secs]
+[GC concurrent-string-deduplication, 304.0K-&gt;48.5K(255.5K), avg 68.1%, 0.0021169 secs]
+[GC concurrent-string-deduplication, 748.9K-&gt;407.3K(341.7K), avg 68.1%, 0.0026401 secs]
+[GC concurrent-string-deduplication, 3756.7K-&gt;663.1K(3093.6K), avg 68.1%, 0.0270676 secs]
+[GC concurrent-string-deduplication, 974.3K-&gt;17.0K(957.3K), avg 68.1%, 0.0121952 secs]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>However it&#8217;s cheap to use: in average, each dedup cycle takes 8.8 ms and
+removes 2.4 kB of duplicates.  The median takes 1.33 ms and removes 17.66 kB
+from the old generation.  A small change per cycle, but in aggregate it adds up
+quickly&#8201;&#8212;&#8201;in periods of heavy load, this can save hundreds of megabytes of
+data. But that&#8217;s still small, relative to multi-GB heaps.</p>
+</div>
+<div class="paragraph">
+<p><strong>Conclusion: turn string deduplication on</strong> string deduplication is fairly
+cheap to use, and reduces the steady-state memory needed for Jenkins.  That
+frees up more room for the young generation, and should overall reduce GC time
+by removing duplicate objects.  I think it&#8217;s worth turning on.</p>
+</div>
+<div class="paragraph">
+<p><strong>Soft reference flushing:</strong> Jenkins uses soft references for caching build
+records and in pipeline FlowNodes.  The only guarantee for these is that they
+will be removed instead of causing an OutOfMemoryError&#8230;&#8203; however Java
+applications can slow to a crawl from memory pressure long before that happens.
+There&#8217;s an option that provides a hint to the JVM based on time &amp; free memory,
+controlled by <code>-XX:SoftRefLRUPolicyMSPerMB</code> (default 1000).  The SoftReferences
+become eligible for garbage collection after this many milliseconds have
+elapsed since last touch&#8230;&#8203; per MB of unused heap (vs the maximum).  The
+referenced objects don&#8217;t count towards that target.  So, with 10 GB of heap
+free and the default 1000 ms setting, soft references stick around for ~2.8
+hours (!).</p>
+</div>
+<div class="paragraph">
+<p>If the system is continuously allocating more soft references, it may trigger
+heavy GC activity, rather than clearing out soft references. See the open bug
+<a href="https://bugs.openjdk.java.net/browse/JDK-6912889">JDK-6912889</a>
+for more details.</p>
+</div>
+<div class="paragraph">
+<p>If Jenkins consumes excessive old generation memory, it <strong>may</strong> help to make soft
+references easier to flush  by reducing -XX:SoftRefLRUPolicyMSPerMB from its
+default (1000) to something smaller (say 10-200).  The catch is that
+SoftReferences are often used for objects that are relatively expensive to
+load, such lazy-loaded build records and pipeline FlowNode data.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="caveats"><a class="anchor" href="#caveats"></a>Caveats</h3>
+<div class="paragraph">
+<p><strong>G1 vs. CMS:</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>G1 was available on later releases of JRE 7, but unstable and slow.</strong>  If you
+use it you absolutely must be using JRE 8, and the later the release the better
+(it&#8217;s gotten a lot of patches).  Googling around will show horrible G1 vs CMS
+benchmarks from around 2014: these are probably best ignored, since the G1
+implementation was still immature then. There&#8217;s probably a niche for CMS use
+still, especially on midsized heaps (1-3 GB) or where settings are already
+tuned.  With appropriate tuning it <strong>can</strong> still perform generally well for
+Jenkins (which mostly generates short-lived garbage), but CMS eventually suffer
+from heap fragmentation and need a slow, non-concurrent Full GC to clear this.
+It also needs considerably more tuning than G1.</p>
+</div>
+<div class="paragraph">
+<p><strong>General GC tuning caveats</strong>:</p>
+</div>
+<div class="paragraph">
+<p>No single setting is perfect for everybody.  We avoid tweaking settings that we
+don&#8217;t have strong evidence for here, but there are of course many additional
+settings to tweak.  One shouldn&#8217;t change them without evidence though, because
+it can cause unexpected side effects.  The GC logs we enabled earlier will
+collect this evidence.  The only setting that jumps out as a likely candidate
+for further tuning is G1 region size (too small and there are many humungous
+object allocations, which hurt performance).  Running on smaller systems,
+I&#8217;ve seen evidence that regions shouldn&#8217;t be smaller than 4 MB because
+there are 1-2 MB objects allocated somewhat regularly&#8201;&#8212;&#8201;but it&#8217;s not
+enough to make solid guidance without more data.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="what-should-i-do-before-tuning-jenkins-gc"><a class="anchor" href="#what-should-i-do-before-tuning-jenkins-gc"></a>What Should I Do Before Tuning Jenkins GC:</h3>
+<div class="paragraph">
+<p>If you&#8217;ve seen
+<a href="https://www.cloudbees.com/so-you-want-build-worlds-biggest-jenkins-cluster">Stephen Connolly&#8217;s excellent Jenkins World talk</a>,
+you know that most Jenkins instances can and should get by with 4 GB or less of
+allocated heap, even up to very large sizes.  You will want to turn on GC
+logging (suggested above) and look at stats over a few weeks (remember
+<a href="http://gceasy.io/">GCeasy.io</a>).
+If you&#8217;re not seeing periodic longer pause times, you&#8217;re probably okay.</p>
+</div>
+<div class="paragraph">
+<p>For this post we assume we&#8217;ve already done the basic performance work for Jenkins:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Jenkins is running on fast, SSD-backed storage.</p>
+</li>
+<li>
+<p>We&#8217;ve set up build rotation for your Jobs, to delete old builds so they don&#8217;t pile up.</p>
+</li>
+<li>
+<p>The weather column is already disabled for folders.</p>
+</li>
+<li>
+<p>All builds/deploys are running on build agents (formerly slaves), not on the master. If the master has executors allocated, they are exclusively used for backup tasks.</p>
+</li>
+<li>
+<p>We&#8217;ve verified that Jenkins really does need the large heap size and can&#8217;t easily be split into separate masters.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>If not, we need to do that FIRST before looking at GC tuning, because those will have larger impacts.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="conclusions"><a class="anchor" href="#conclusions"></a>Conclusions</h3>
+<div class="paragraph">
+<p>We&#8217;ve gone from:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Average 350 ms pauses (bad user experience) including less frequent 2+ second generation pauses</p>
+</li>
+<li>
+<p>To an average pause of ~50 ms, with almost all under 250 ms</p>
+</li>
+<li>
+<p>Reduced total memory footprint from String deduplication</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>How:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Use Garbage First (G1) garbage collection, which performs generally very well for Jenkins.  Usually there&#8217;s enough spare CPU time to enable concurrent running.</p>
+</li>
+<li>
+<p>Ensure explicit <code>System.gc()</code> and metaspace resizing do not trigger a Full GC because this can trigger a very long pause</p>
+</li>
+<li>
+<p>Turn on parallel reference processing for Jenkins to use all CPU cores fully.</p>
+</li>
+<li>
+<p>Use String deduplication, which generates a tidy win for Jenkins</p>
+</li>
+<li>
+<p>Enable GC logging, which can then be used for the next level of tuning and diagnostics, if needed.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>There&#8217;s still a little unpredictability, but using appropriate settings gives a
+<strong>much</strong> more stable, responsive CI/CD server&#8230;&#8203; even up to 20 GB heap sizes!</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="further-reading"><a class="anchor" href="#further-reading"></a>Further Reading:</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://product.hubspot.com/blog/g1gc-fundamentals-lessons-from-taming-garbage-collection">G1GC fundamentals</a></p>
+</li>
+<li>
+<p><a href="http://mechanical-sympathy.blogspot.com/2013/07/java-garbage-collection-distilled.html">MechanicalSympathy: Garbage Collection Distilled</a></p>
+</li>
+<li>
+<p><a href="http://www.oracle.com/technetwork/articles/java/g1gc-1984535.html">Oracle Garbage First Garbage Collector Tuning</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="one-additional-thing"><a class="anchor" href="#one-additional-thing"></a>One additional thing</h3>
+<div class="paragraph">
+<p>I&#8217;ve added <code>-XX:+UnlockExperimentalVMOptions -XX:G1NewSizePercent=20</code> to our
+options above.  This is covering a complex and usually infrequent case where G1
+self-tuning can trigger bad performance for Jenkins&#8201;&#8212;&#8201;but that&#8217;s material for
+another post&#8230;&#8203;</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//blog/2016/2016-11-21-gc-tuning.adoc" title="Edit /blog/2016/2016-11-21-gc-tuning.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//blog/2016/2016-11-21-gc-tuning.adoc" title="View /blog/2016/2016-11-21-gc-tuning.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

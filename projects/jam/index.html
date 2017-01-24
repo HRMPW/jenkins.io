@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Jenkins Area Meetups
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="active dropdown nav-item">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container">
+<div class="row">
+<div class="col-lg-9">
+<h1>
+Jenkins Area Meetups
+</h1>
+<div class="paragraph">
+<p>Jenkins Area Meetups (JAMs) are local meetups intended to bring Jenkins users
+and contributors together for socializing and learning.
+JAMs are organized by local Jenkins community members who have a passion for
+sharing new Jenkins concepts, patterns and tools. JAMs can be found
+<a href="http://www.meetup.com/pro/jenkins/">around the world</a>, and if there isn&#8217;t a
+JAM in your city, you could be the one to start it!</p>
+</div>
+<div class="paragraph">
+<p>Jenkins Area Meetups are driven by local organizers but receive support from
+the Jenkins project via swag (stickers, etc), promotion, and help bootstrapping
+and operating the meetup group.</p>
+</div>
+<div class="sect1">
+<h2 id="getting-started"><a class="anchor" href="#getting-started"></a>Getting Started</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Send us an email <a href="mailto:jenkinsci-jam@googlegroups.com">jenkinsci-jam@googlegroups.com</a> to get started. Let us know the
+city in which you’d like to host the JAM. Our team will create a meetup page on
+meetup.com and we will work with you to organize your JAM.</p>
+</div>
+<div class="paragraph">
+<p><strong>JAM Support</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Swag - We will send you cool swags (stickers, t-shirts, Jenkins bobble-heads, etc) to share with members</p>
+</li>
+<li>
+<p>Promote - We give every JAM continuous social media love via Twitter, blog posts, Facebook, newsletter, and post on the jenkinsci.org events calendar.</p>
+</li>
+<li>
+<p>Jenkins Expertise - We will help you to schedule a Jenkins expert as the key speaker at your JAM, or provide you with presentation materials.</p>
+</li>
+<li>
+<p>Outreach - We will assist in reaching out to your local community for food/venue sponsorship.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="best-practices"><a class="anchor" href="#best-practices"></a>Best Practices</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Attend existing meetup groups to gauge Jenkins interest/market within your area.</p>
+</li>
+<li>
+<p>Reach out to existing JAM organizer(s) to learn best practices and time commitment.</p>
+</li>
+<li>
+<p>Set up a Twitter account (for example, #JenkinsNYC). Email your group’s Twitter ID to <a href="mailto:jenkinsci-jam@googlegroups.com">jenkinsci-jam@googlegroups.com</a> so we can help to promote your JAM.</p>
+</li>
+<li>
+<p>Promote, tweet and post your JAM in advance.</p>
+</li>
+<li>
+<p>Avoid product pitches. Keep it real, it’s not about promotions. This is about - and for - learning opportunities for the community.</p>
+</li>
+<li>
+<p>Shake up the format. Have presentations, panel discussions, roundtables, workshops, hackathons, etc.</p>
+</li>
+<li>
+<p>Set a consistent date, time and location so members will plan for it. Avoid cancelling your meeting as people will lose faith and stop RSVPing for your JAM.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="stepping-down"><a class="anchor" href="#stepping-down"></a>Stepping Down</h3>
+<div class="paragraph">
+<p>In the event you can no longer be a JAM organizer, we ask that you nominate a
+replacement organizer in your place. If this is not possible please send email
+to <a href="mailto:jenkinsci-jam@googlegroups.com">jenkinsci-jam@googlegroups.com</a>, we will work with you to find a replacement.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="supporting-a-jam"><a class="anchor" href="#supporting-a-jam"></a>Supporting a JAM</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you are not able to be a JAM organizer, food or venue, or recording sponsors are always needed. If your company is interested in sponsoring any of these items pls email <a href="mailto:jenkinsci-jam@googlegroups.com">jenkinsci-jam@googlegroups.com</a> or reach out to the local JAM organizer via meetup.com.</p>
+</div>
+<div class="paragraph">
+<p><strong>Benefits of Being a Food or Venue or Recording Sponsor:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Logo and link on the meetup page.</p>
+</li>
+<li>
+<p>Verbal acknowledgement at the opening/closing remark by the host.</p>
+</li>
+<li>
+<p>Sponsor table at the meeting to display collaterals, signage, swag.</p>
+</li>
+<li>
+<p>Opportunity to host a drawing.</p>
+</li>
+<li>
+<p>Mention in social media.</p>
+</li>
+<li>
+<p>A two minute talk to address the attendees.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Food Sponsor:</strong></p>
+</div>
+<div class="paragraph">
+<p>Sponsor food and beverages for the specific month&#8217;s meetup. The cost is about
+$200 to $600 depending on the number of attendees. The money is used to
+purchase pizza, soft drinks and paperware. One sponsor is needed for each
+monthly meeting.</p>
+</div>
+<div class="paragraph">
+<p><strong>Venue Sponsor:</strong></p>
+</div>
+<div class="paragraph">
+<p>Venue sponsors provide the facility to host the meeting for free. One venue sponsor is needed per meeting. A meeting room with chairs and a couple of six feet tables with open space for food/beverages and mingling would be sufficient. Access to a public bathroom would be needed as well. A meetup will need such equipments as projection and screen. In the event where a meeting has more than 50 attendees an audio system will be needed.</p>
+</div>
+<div class="paragraph">
+<p><strong>Recording Sponsor:</strong></p>
+</div>
+<div class="paragraph">
+<p>Recording sponsor volunteer his/her recording equipments and time to record a
+meeting and make it public after the meeting.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="jams-around-the-world"><a class="anchor" href="#jams-around-the-world"></a>JAMs Around the World</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The list below is manually curated, for the most up-to-date information,
+consult this <a href="https://www.meetup.com/pro/jenkins/">meetup.com page</a>.</p>
+</div>
+<div class="paragraph">
+<p>We also have the <a href="http://www.meetup.com/Jenkins-online-meetup/">Jenkins Online Meetup</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="north-america"><a class="anchor" href="#north-america"></a>North America</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://www.meetup.com/Atlanta-Jenkins-Meetup/">Atlanta, GA</a></p>
+</li>
+<li>
+<p><a href="http://www.meetup.com/Austin-Jenkins-Area-Meetup/">Austin, TX</a></p>
+</li>
+<li>
+<p><a href="http://www.meetup.com/Boston-Jenkins-Area-Meetup/">Boston, MA</a></p>
+</li>
+<li>
+<p><a href="http://www.meetup.com/Boulder-Jenkins-Area-Meetup/">Boulder, CO</a></p>
+</li>
+<li>
+<p><a href="http://www.meetup.com/DFW-Jenkins-Area-Meetup/">Dallas/Fort Worth, TX</a></p>
+</li>
+<li>
+<p><a href="http://www.meetup.com/Guadalajara-Jenkins-Area-Meetup/">Guadalajara, Mexico</a></p>
+</li>
+<li>
+<p><a href="http://www.meetup.com/Los-Angeles-Jenkins-Area-Meetup/">Los Angeles, CA</a></p>
+</li>
+<li>
+<p><a href="http://www.meetup.com/NYC-Jenkins-Meetup/">New York, NY</a></p>
+</li>
+<li>
+<p><a href="http://www.meetup.com/Raleigh-Jenkins-Area-Meetup/">Raleigh, NC</a></p>
+</li>
+<li>
+<p><a href="http://www.meetup.com/San-Francisco-Jenkins-Area-Meetup/">San Francisco, CA</a></p>
+</li>
+<li>
+<p><a href="http://www.meetup.com/Seattle-Jenkins-Area-Meetup/">Seattle, WA</a></p>
+</li>
+<li>
+<p><a href="http://www.meetup.com/Washington-DC-Jenkins-Area-Meetup/">Washington, DC</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="europe"><a class="anchor" href="#europe"></a>Europe</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://www.meetup.com/Amsterdam-Jenkins-Area-Meetup/">Amsterdam, Netherlands</a></p>
+</li>
+<li>
+<p><a href="http://www.meetup.com/Barcelona-Jenkins-Area-Meetup/">Barcelona, Spain</a></p>
+</li>
+<li>
+<p><a href="http://www.meetup.com/Brno-Jenkins-Area-Meetup/">Brno, Czech Republic</a></p>
+</li>
+<li>
+<p><a href="http://www.meetup.com/Budapest-JenkinsCI-Users/">Budapest, Hungary</a></p>
+</li>
+<li>
+<p><a href="http://www.meetup.com/Jenkins-Copenhagen-JAM/">Copenhagen, Denmark</a></p>
+</li>
+<li>
+<p><a href="http://www.meetup.com/Dublin-Jenkins-Meetup/">Dublin, Ireland</a></p>
+</li>
+<li>
+<p>Hamburg, Germany</p>
+</li>
+<li>
+<p>London, UK</p>
+</li>
+<li>
+<p>Moscow, Russia</p>
+</li>
+<li>
+<p><a href="http://www.meetup.com/Rennes-Jenkins-Area-Meetup/">Rennes, France</a></p>
+</li>
+<li>
+<p><a href="http://www.meetup.com/Seville-Jenkins-Area-Meetup/">Seville, Spain</a> - <a href="http://seville-jam.es/">website</a></p>
+</li>
+<li>
+<p><a href="http://www.meetup.com/St-Petersburg-Jenkins-Meetup/">St. Petersburg, Russia</a></p>
+</li>
+<li>
+<p><a href="http://www.meetup.com/Stockholm-Jenkins-Meetup/">Stockholm, Sweden</a></p>
+</li>
+<li>
+<p><a href="http://www.meetup.com/Toulouse-Jenkins-Area-Meetup/">Toulouse, France</a></p>
+</li>
+<li>
+<p>Zurich, Switzerland</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="asia"><a class="anchor" href="#asia"></a>Asia</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Bangalore, India</p>
+</li>
+<li>
+<p><a href="http://www.meetup.com/Delhi-Jenkins-Meetup/">Delhi, India</a></p>
+</li>
+<li>
+<p>Hyderabad, India</p>
+</li>
+<li>
+<p>Singapore, Singapore</p>
+</li>
+<li>
+<p><a href="http://www.meetup.com/Tel-Aviv-Jenkins-Area-Meetup/">Tel Aviv, Israel</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="south-america"><a class="anchor" href="#south-america"></a>South America</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://www.meetup.com/Lima-Jenkins-Area-Meetup/">Lima, Perú</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-3">
+<div class="sidebar-nav">
+<h4>
+On this page
+</h4>
+<ul class="sectlevel1">
+<li><a href="#getting-started">Getting Started</a>
+<ul class="sectlevel2">
+<li><a href="#best-practices">Best Practices</a></li>
+<li><a href="#stepping-down">Stepping Down</a></li>
+</ul>
+</li>
+<li><a href="#supporting-a-jam">Supporting a JAM</a></li>
+<li><a href="#jams-around-the-world">JAMs Around the World</a>
+<ul class="sectlevel2">
+<li><a href="#north-america">North America</a></li>
+<li><a href="#europe">Europe</a></li>
+<li><a href="#asia">Asia</a></li>
+<li><a href="#south-america">South America</a></li>
+</ul>
+</li>
+</ul>
+<div>
+<div class="block block-block even blog-posts" id="block-block-15">
+<h4 class="title">
+Recent Blog Posts
+</h4>
+<ul>
+<li>
+<a href="/blog/2016/12/31/what-a-year/">
+Thank you for an amazing 2016
+</a>
+</li>
+<li>
+<a href="/blog/2016/12/10/monthly-jam-recap-november/">
+Monthly JAM Recap - November 2016
+</a>
+</li>
+<li>
+<a href="/blog/2016/12/09/december-jenkins-events/">
+Upcoming December Jenkins Events
+</a>
+</li>
+<li>
+<a href="/blog/2016/11/13/november-jenkins-events/">
+Upcoming November Jenkins Events
+</a>
+</li>
+<li>
+<a href="/blog/2016/08/03/st-petersburg-jam-3-4-report/">
+St. Petersburg Jenkins Meetup #3 and #4 Reports
+</a>
+</li>
+<li>
+<a href="/blog/2016/06/13/june-jenkins-events/">
+Upcoming June Jenkins Events
+</a>
+</li>
+<li>
+<a href="/blog/2016/05/12/sf-jam-jenkins-and-azure/">
+SF JAM Report: Scaling Jenkins for Continuous Delivery with Azure
+</a>
+</li>
+<li>
+<a href="/blog/2016/05/10/jenkins-20-vjam/">
+Jenkins 2.0 Online JAM Wrap-up
+</a>
+</li>
+<li>
+<a href="/blog/2016/04/01/march-2016-jam-st-petersburg/">
+March 2016 St. Petersburg Jenkins Meetup Report
+</a>
+</li>
+<li>
+<a href="/blog/2016/03/21/vjam/">
+vJAM: Virtual Jenkins Area Meetup
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//projects/jam.adoc" title="Edit /projects/jam.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//projects/jam.adoc" title="View /projects/jam.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

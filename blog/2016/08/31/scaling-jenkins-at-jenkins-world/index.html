@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Scaling Jenkins at Jenkins World 2016
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container blog-post no-margin">
+<div class="row body">
+<div class="col-md-11 col-md-offset-1 main-content" id="content">
+<div id="content-top">
+<h1>
+<a href="/blog/2016/08/31/scaling-jenkins-at-jenkins-world/" title="Scaling Jenkins at Jenkins World 2016">
+Scaling Jenkins at Jenkins World 2016
+</a>
+</h1>
+<!-- starting partial tweetbutton.html.haml -->
+<div style="float: right; clear: all;">
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/share">
+Tweet
+</a>
+</div>
+
+<!-- ending partial tweetbutton.html.haml -->
+<span class="submitted">
+Published on
+2016-08-31
+by
+<a href="https://github.com/rtyler">R. Tyler Croy</a>
+</span>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This is a guest post by <a href="https;//github.com/rtyler">R. Tyler Croy</a>, who is a
+long-time contributor to Jenkins and the primary contact for Jenkins project
+infrastructure. He is also a Jenkins Evangelist at
+<a href="http://cloudbees.com">CloudBees, Inc.</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><span class="image right"><img src="/images/conferences/Jenkins-World_125x125.png" alt="Jenkins World"></span></p>
+</div>
+<div class="paragraph">
+<p>I find the topic of "scaling Jenkins" to be incredibly interesting because,
+more often than not, scaling Jenkins isn&#8217;t just about scaling a single instance
+but rather scaling an <em>organization</em> and its continuous delivery processes. In
+many cases when people talk about "scaling Jenkins" they&#8217;re talking about
+"Jenkins as a Service" or "Continuous Delivery as a Service" which introduces a
+much broader scope, and also more organization-specific requirements, to the
+problem.</p>
+</div>
+<div class="paragraph">
+<p>One of my favorite parts of a big conference like
+<a href="https://www.cloudbees.com/jenkinsworld/home">Jenkins World</a> is getting to
+see how other people are solving similar problems at different organizations,
+in essence:
+"<a href="https://english.stackexchange.com/questions/120739/a-peek-into-the-sausage-factory">how
+the sausage is made</a>." This year&#8217;s Jenkins World will be no different, with a number
+of sessions by developers and engineers from the companies leading the way,
+scaling continuous delivery and Jenkins.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Register for <a href="https://www.cloudbees.com/jenkinsworld/home">Jenkins World</a> in
+September with the code <code>JWFOSS</code> for a 20% discount off your pass.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In the realm of "scaling Jenkins" the following sessions stand-out to me as
+"must-attend" for those interested in the space:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.cloudbees.com/jenkinsops-initiative-streamline-and-automate-jenkins"><strong>JenkinsOps:
+An Initiative to Streamline and Automate Jenkins</strong></a></p>
+</div>
+<div class="paragraph">
+<p><em>September 14th 4:15 PM - 5:00 PM, Exhibit Hall A-1</em></p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><span class="image right"><img src="/images/post-images/scaling-jenkins-at-jenkinsworld/159px-National_Public_Radio_logo.svg.png" alt="159px National Public Radio logo.svg"></span>
+NPR’s Digital Media team uses Jenkins to build, test and deploy code to various
+staging and production environments. As the complexity of the software
+components, environments and tests have grown - both generally and due to our
+quest to achieve continuous deployment - management of Jenkins has become a
+challenge. In this talk, we share information about our “JenkinsOps” effort
+which has allowed us to automate many of the administrative tasks necessary to
+manage feature code branches, handle deployments, run tests and configure our
+environments properly.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; Paul Miles and Grant Dickie of NPR
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://www.cloudbees.com/thinking-inside-container-continuous-delivery-story"><strong>Thinking
+Inside the Container: A Continuous Delivery Story</a></strong></p>
+</div>
+<div class="paragraph">
+<p><em>September 15th 1:30 PM - 2:15 PM, Exhibit Hall C</em></p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><span class="image left"><img src="/images/post-images/scaling-jenkins-at-jenkinsworld/Riot_Games_logo.png" alt="Riot Games logo"></span>
+At Riot Games, we build a lot of software. Come learn how we built an
+integrated Docker solution using Jenkins that accepts Docker images submitted
+as build environments by engineers around the company. Our containerized farm
+now creates over 10,000 containers per week and handles nearly 1,000 jobs at a
+rate of about 100 jobs per hour. All this is done with readily available, open
+source Jenkins plugins. We’ll explore lessons learned, best practices and how
+to scale and build your own system, as well as why we chose to solve the
+problem this way…and whether or not we succeeded!</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; Maxfield F Stewart of Riot Games
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://www.cloudbees.com/how-do-continuous-delivery-jenkins-pipeline-docker-and-kubernetes"><strong>How
+to Do Continuous Delivery with Jenkins Pipeline, Docker and Kubernetes</strong></a></p>
+</div>
+<div class="paragraph">
+<p><em>September 15th 2:30 PM - 3:15 PM, Great America J</em></p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><span class="image right"><img src="/images/post-images/pipeline-at-jenkinsworld/redhat.png" alt="redhat"></span>
+In this talk, we’ll show how to use Jenkins Pipeline together with Docker and
+Kubernetes to implement a complete end-to-end continuous delivery and
+continuous improvement system for microservices and monolithic applications
+using open source software. We’ll demonstrate how to easily create new
+microservices projects or import existing projects, have them automatically
+built, system and integration tested, staged and then deployed. Once deployed,
+we will also see how to manage and update applications using continuous
+delivery practices along with integrated ChatOps - all completely automated!</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; James Strachan of Red Hat
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://www.cloudbees.com/scaling-jenkins-docker-swarm-kubernetes-or-mesos"><strong>Scaling
+Jenkins with Docker: Swarm, Kubernetes or Mesos?</strong></a></p>
+</div>
+<div class="paragraph">
+<p><em>September 15th 2:30 PM - 3:15 PM, Exhibit Hall C</em></p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><span class="image right"><img src="/images/post-images/scaling-jenkins-at-jenkinsworld/320px-CloudBees_official_logo.png" alt="320px CloudBees official logo"></span>
+The Jenkins platform can be dynamically scaled by using several Docker cluster
+and orchestration platforms, using containers to run agents and jobs and also
+isolating job execution. But which cluster technology should be used? Docker
+Swarm? Apache Mesos? Kubernetes? How do they compare? All of them can be used
+to dynamically run jobs inside containers. This talk will cover these main
+container clusters, outlining the pros and cons of each, the current state of
+the art of the technologies and Jenkins support. I believe people will be very
+interested in learning about the multiple options available.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; Carlos Sanchez of CloudBees
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://www.cloudbees.com/so-you-want-build-worlds-biggest-jenkins-cluster"><strong>So,
+You Want to Build the World&#8217;s Biggest Jenkins Cluster?</strong></a></p>
+</div>
+<div class="paragraph">
+<p><em>September 15th 3:45 PM - 4:30 PM, Exhibit Hall C</em></p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>How can we do it? We start with some real world results realized by Jenkins
+users who have built large clusters and review how they got there. Next, we
+will do experiments scaling some individual sub-components of Jenkins in
+isolation and see what challenges we will face when integrated. The famous
+large, distributed systems undoubtedly faced problems scaling - and we can
+learn from them, too. The result will be recipes for building Jenkins
+clusters with different scaling capabilities. After all of this, you can
+build the biggest Jenkins cluster in the world…or maybe just make your own
+Jenkins cluster more efficient.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; Stephen Connolly of CloudBees
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://www.cloudbees.com/jenkins-splunk-and-splunking-jenkins"><strong>Jenkins at
+Splunk and Splunking Jenkins</strong></a></p>
+</div>
+<div class="paragraph">
+<p><em>September 15th 3:45 PM - 4:30 PM, Exhibit Hall A-1</em></p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><span class="image right"><img src="/images/post-images/scaling-jenkins-at-jenkinsworld/splunk-logo-300x100.gif" alt="splunk logo 300x100"></span>
+This session will highlight how Splunk uses Jenkins to provide an end-to-end
+solution in the development CI system. Attendees will see how test results are
+delivered to a Splunk indexer, where they can be analyzed and presented in a
+variety of ways. This session will also include a live demonstration.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; Bill Houston of Splunk
+</div>
+</div>
+<div class="paragraph">
+<p><a href="https://www.cloudbees.com/jenkins-inside-google"><strong>Jenkins inside Google</strong></a></p>
+</div>
+<div class="paragraph">
+<p><em>September 15th 4:45 PM - 5:30 PM, Exhibit Hall C</em></p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><span class="image right"><img src="/images/post-images/scaling-jenkins-at-jenkinsworld/272px-Google_2015_logo.svg.png" alt="272px Google 2015 logo.svg"></span>
+Last year, we presented our initial investigations and stress testing as we
+prepared to deploy a large-scale Jenkins installation at Google. Now, with a
+year of real-world use under our belts, we’ll discuss how our expectations held
+up, what new issues we encountered and how we have addressed them.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; David Hoover of Google
+</div>
+</div>
+<div class="paragraph">
+<p>In addition to these, we will also be hosting a
+<a href="http://www.meetup.com/jenkinsmeetup/events/232811529/">Jenkins World
+Contributor Summit</a> where "scaling" relevant topics such as "Storage
+Pluggability" will be discussed.</p>
+</div>
+<div class="paragraph">
+<p>The Jenkins World <a href="https://www.cloudbees.com/juc/agenda">agenda</a> is packed
+with even more sessions, so it should be a very informational event for
+everybody; hope to see you there!</p>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//blog/2016/2016-08-31-scaling-jenkins-at-jenkins-world.adoc" title="Edit /blog/2016/2016-08-31-scaling-jenkins-at-jenkins-world.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//blog/2016/2016-08-31-scaling-jenkins-at-jenkins-world.adoc" title="View /blog/2016/2016-08-31-scaling-jenkins-at-jenkins-world.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

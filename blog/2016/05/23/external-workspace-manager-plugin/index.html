@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+GSoC Project Intro: External Workspace Manager Plugin
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container blog-post no-margin">
+<div class="row body">
+<div class="col-md-11 col-md-offset-1 main-content" id="content">
+<div id="content-top">
+<h1>
+<a href="/blog/2016/05/23/external-workspace-manager-plugin/" title="GSoC Project Intro: External Workspace Manager Plugin">
+GSoC Project Intro: External Workspace Manager Plugin
+</a>
+</h1>
+<!-- starting partial tweetbutton.html.haml -->
+<div style="float: right; clear: all;">
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/share">
+Tweet
+</a>
+</div>
+
+<!-- ending partial tweetbutton.html.haml -->
+<span class="submitted">
+Published on
+2016-05-23
+by
+<a href="https://github.com/alexsomai">Alexandru Somai</a>
+</span>
+</div>
+<div class="sect2">
+<h3 id="about-myself"><a class="anchor" href="#about-myself"></a>About myself</h3>
+<div class="paragraph">
+<p>My name is Alexandru Somai.
+I&#8217;m following a major in Software Engineering at the Babes-Bolyai University of Cluj-Napoca, Romania.
+I have more than two years hands-on experience working in Software Development.</p>
+</div>
+<div class="paragraph">
+<p>I enjoy writing code in Java, Groovy and JavaScript.
+The technologies and frameworks that I&#8217;m most familiar with are: Spring Framework, Spring Security, Hibernate,
+JMS, Web Services, JUnit, TestNG, Mockito.
+As build tools and continuous integration, I&#8217;m using Maven and Jenkins.
+I&#8217;m a passionate software developer who is always learning, always looking for new challenges.
+I want to start contributing to the open source community and Google Summer of Code is a starting point for me.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="project-summary"><a class="anchor" href="#project-summary"></a>Project summary</h3>
+<div class="paragraph">
+<p>Currently, Jenkins’ build workspace may become very large in size due to the fact that some compilers generate
+very large volumes of data.
+The existing plugins that share the workspace across builds are able to do this by copying the files from
+one workspace to another, process which is inefficient.
+A solution is to have a Jenkins plugin that is able to manage and reuse the same workspace between multiple builds.</p>
+</div>
+<div class="paragraph">
+<p>As part of the <a href="https://summerofcode.withgoogle.com/">Google Summer of Code</a> 2016 I will be working on
+the <em>External Workspace Manager</em> plugin.
+My mentors for this project are <a href="https://github.com/oleg-nenashev">Oleg Nenashev</a>
+and <a href="https://github.com/martinda">Martin d&#8217;Anjou</a>.
+This plugin aims to provide an external workspace management system.
+It should facilitate workspace share and reuse across multiple Jenkins jobs.
+It should eliminate the need to copy, archive or move files.
+The plugin will be written for <a href="https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Plugin">Pipeline</a> jobs.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="usage"><a class="anchor" href="#usage"></a>Usage</h3>
+<div class="sect3">
+<h4 id="prerequisites"><a class="anchor" href="#prerequisites"></a>Prerequisites</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Multiple physical disks accessible from Master.</p>
+</li>
+<li>
+<p>The same physical disks must be accessible from Jenkins Nodes (renamed to Agents in Jenkins 2.0).</p>
+</li>
+<li>
+<p>In the Jenkins global configuration, define a disk pool (or many) that will contain the physical disks.</p>
+</li>
+<li>
+<p>In each Node configuration, define the mounting point from the current node to each physical disk.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The following diagram gives you an overview of how an <em>External Workspace Manager</em> configuration may look like:</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/ewm/ewm-config.png" alt="ewm config" title="Simplified EWM config"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example-one"><a class="anchor" href="#example-one"></a>Example one</h4>
+<div class="paragraph">
+<p>Let&#8217;s assume that we have one Jenkins job. In this job, we want to use the same workspace on multiple Jenkins nodes.
+Our pipeline code may look like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">stage (<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Stage 1. Allocate workspace</span><span style="color:#710">'</span></span>)
+<span style="color:#080;font-weight:bold">def</span> extWorkspace = exwsAllocate <span style="color:#606">id</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">diskpool1</span><span style="color:#710">'</span></span>
+
+node (<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">linux</span><span style="color:#710">'</span></span>) {
+    exws (extWorkspace) {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Stage 2. Build on the build server</span><span style="color:#710">'</span></span>)
+        git <span style="color:#606">url</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">...</span><span style="color:#710">'</span></span>
+        sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">mvn clean install</span><span style="color:#710">'</span></span>
+    }
+}
+
+node (<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">test</span><span style="color:#710">'</span></span>) {
+    exws (extWorkspace) {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Stage 3. Run tests on a test machine</span><span style="color:#710">'</span></span>)
+        sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">mvn test</span><span style="color:#710">'</span></span>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note: The <code>stage()</code> steps are optional from the <em>External Workspace Manager</em> plugin perspective.</p>
+</div>
+<div class="sect4">
+<h5 id="stage-1-allocate-workspace"><a class="anchor" href="#stage-1-allocate-workspace"></a>Stage 1. Allocate workspace</h5>
+<div class="paragraph">
+<p>The <code>exwsAllocate</code> step selects a disk from <em>diskpool1</em>
+(default behavior: the disk with the most available size).
+On that disk, let&#8217;s say <em>disk1</em>, it allocates a directory.
+The computed directory path is: <code>/physicalPathOnDisk/$JOB_NAME/$BUILD_NUMBER</code>.</p>
+</div>
+<div class="paragraph">
+<p>For example, Let&#8217;s assume that the <code>$JOB_NAME</code> is <em>integration</em> and the <code>$BUILD_NUMBER</code> is <em>14</em>.
+Then, the resulting path is: <code>/jenkins-project/disk1/integration/14</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="stage-2-build-on-the-build-server"><a class="anchor" href="#stage-2-build-on-the-build-server"></a>Stage 2. Build on the build server</h5>
+<div class="paragraph">
+<p>All the nodes labeled <em>linux</em> must have access to the disks defined in the disk pool.
+In the Jenkins Node configurations we have defined the local paths that are the mounting points to each disk.</p>
+</div>
+<div class="paragraph">
+<p>The <code>exws</code> step concatenates the node&#8217;s local path with the path returned by the <code>exwsAllocate</code> step.
+In our case, the node labeled <em>linux</em> has its local path to <em>disk1</em> defined as: <code>/linux-node/disk1/</code>.
+So, the complete workspace path is: <code>/linux-node/disk1/jenkins-project/disk1/integration/14</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="stage-3-run-tests-on-a-test-machine"><a class="anchor" href="#stage-3-run-tests-on-a-test-machine"></a>Stage 3. Run tests on a test machine</h5>
+<div class="paragraph">
+<p>Further, we want to run our tests on a different node, but we want to reuse the previously created workspace.</p>
+</div>
+<div class="paragraph">
+<p>In the node labeled <em>test</em> we have defined the local path to <em>disk1</em> as: <code>/test-node/disk1/</code>.
+By applying the <code>exws</code> step, our tests will be able to run in the same workspace as the build.
+Therefore, the path is: <code>/test-node/disk1/jenkins-project/disk1/integration/14</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example-two"><a class="anchor" href="#example-two"></a>Example two</h4>
+<div class="paragraph">
+<p>Let&#8217;s assume that we have two Jenkins jobs, one called <em>upstream</em> and the other one called <em>downstream</em>.
+In the <em>upstream</em> job, we clone the repository and build the project, and in the <em>downstream</em> job we run the tests.
+In the <em>downstream</em> job we don&#8217;t want to clone and re-build the project, we need to use the same
+workspace created in the <em>upstream</em> job.
+We have to be able to do so without copying the workspace content from one location to another.</p>
+</div>
+<div class="paragraph">
+<p>The pipeline code in the <em>upstream</em> job is the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">stage (<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Stage 1. Allocate workspace in the upstream job</span><span style="color:#710">'</span></span>)
+<span style="color:#080;font-weight:bold">def</span> extWorkspace = exwsAllocate <span style="color:#606">id</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">diskpool1</span><span style="color:#710">'</span></span>
+
+node (<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">linux</span><span style="color:#710">'</span></span>) {
+    exws (extWorkspace) {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Stage 2. Build in the upstream job</span><span style="color:#710">'</span></span>)
+           git <span style="color:#606">url</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">...</span><span style="color:#710">'</span></span>
+           sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">mvn clean install</span><span style="color:#710">'</span></span>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And the <em>downstream</em>'s pipeline code is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">stage (<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Stage 3. Allocate workspace in the downstream job</span><span style="color:#710">'</span></span>)
+<span style="color:#080;font-weight:bold">def</span> extWorkspace = exwsAllocate <span style="color:#606">id</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">diskpool1</span><span style="color:#710">'</span></span>, <span style="color:#606">upstream</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">upstream</span><span style="color:#710">'</span></span>
+
+node (<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">test</span><span style="color:#710">'</span></span>) {
+    exws (extWorkspace) {
+        stage(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Stage 4. Run tests in the downstream job</span><span style="color:#710">'</span></span>)
+        sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">mvn test</span><span style="color:#710">'</span></span>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="stage-1-allocate-workspace-in-the-upstream-job"><a class="anchor" href="#stage-1-allocate-workspace-in-the-upstream-job"></a>Stage 1. Allocate workspace in the upstream job</h5>
+<div class="paragraph">
+<p>The functionality is the same as in example one - stage 1.
+In our case, the allocated directory on the physical disk is: <code>/jenkins-project/disk1/upstream/14</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="stage-2-build-in-the-upstream-job"><a class="anchor" href="#stage-2-build-in-the-upstream-job"></a>Stage 2. Build in the upstream job</h5>
+<div class="paragraph">
+<p>Same functionality as example one - stage 2.
+The final workspace path is: <code>/linux-node/disk1/jenkins-project/disk1/upstream/14</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="stage-3-allocate-workspace-in-the-downstream-job"><a class="anchor" href="#stage-3-allocate-workspace-in-the-downstream-job"></a>Stage 3. Allocate workspace in the downstream job</h5>
+<div class="paragraph">
+<p>By passing the <em>upstream</em> parameter to the <code>exwsAllocate</code> step,
+it selects the most recent stable upstream workspace (default behavior).
+The workspace path pattern is like this: <code>/physicalPathOnDisk/$UPSTREAM_NAME/$MOST_RECENT_STABLE_BUILD</code>.
+Let&#8217;s assume that the last stable build number is <em>12</em>, then the resulting path is:
+<code>/jenkins-project/disk1/upstream/12</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="stage-4-run-tests-in-the-downstream-job"><a class="anchor" href="#stage-4-run-tests-in-the-downstream-job"></a>Stage 4. Run tests in the downstream job</h5>
+<div class="paragraph">
+<p>The <code>exws</code> step concatenates the node&#8217;s local path with the path returned by the <code>exwsAllocate</code> step in stage 3.
+In this scenario, the complete path for running tests is: <code>/test-node/disk1/jenkins-project/disk1/upstream/12</code>.
+It will reuse the workspace defined in the upstream job.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="additional-details"><a class="anchor" href="#additional-details"></a>Additional details</h3>
+<div class="paragraph">
+<p>You may find the complete project proposal, along with the design details, features, more examples and use cases,
+implementation ideas and milestones in the <a href="https://goo.gl/fq3RAe">design document</a>.
+The plugin repository will be available on <a href="https://github.com/jenkinsci/external-workspace-manager-plugin">GitHub</a>.</p>
+</div>
+<div class="paragraph">
+<p>A prototype version of the plugin should be available in late June and the releasable version in late August.
+I will be holding plugin functionality demos within the community.</p>
+</div>
+<div class="paragraph">
+<p>I do appreciate any feedback.
+You may add comments in the <a href="https://goo.gl/fq3RAe">design document</a>.
+If you are interested to have a verbal conversation, feel free to join our regular meetings on Mondays at
+<a href="http://www.thetimezoneconverter.com/?t=12:00%20PM&amp;tz=UTC&amp;">12:00 PM UTC</a>
+on the <a href="http://jenkins-ci.org/hangout">Jenkins hangout</a>.
+I will be posting updates from time to time about the plugin status on the
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">Jenkins developers</a> mailing list.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="links"><a class="anchor" href="#links"></a>Links</h3>
+<div class="paragraph">
+<p><a href="https://gitter.im/jenkinsci/external-workspace-manager-plugin?utm_source=share-link&amp;utm_medium=link&amp;utm_campaign=share-link"><span class="image"><img src="https://badges.gitter.im/jenkinsci/external-workspace-manager-plugin.svg" alt="title: "Gitter""></span></a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://goo.gl/fq3RAe">Design document</a></p>
+</li>
+<li>
+<p><a href="https://summerofcode.withgoogle.com/">GSoC program</a></p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Google+Summer+Of+Code+2016">Jenkins GSoC Page</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/external-workspace-manager-plugin">Project repository</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//blog/2016/2016-05-23-external-workspace-manager-plugin.adoc" title="Edit /blog/2016/2016-05-23-external-workspace-manager-plugin.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//blog/2016/2016-05-23-external-workspace-manager-plugin.adoc" title="View /blog/2016/2016-05-23-external-workspace-manager-plugin.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

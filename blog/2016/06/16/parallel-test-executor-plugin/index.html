@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Faster Pipelines with the Parallel Test Executor Plugin
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container blog-post no-margin">
+<div class="row body">
+<div class="col-md-11 col-md-offset-1 main-content" id="content">
+<div id="content-top">
+<h1>
+<a href="/blog/2016/06/16/parallel-test-executor-plugin/" title="Faster Pipelines with the Parallel Test Executor Plugin">
+Faster Pipelines with the Parallel Test Executor Plugin
+</a>
+</h1>
+<!-- starting partial tweetbutton.html.haml -->
+<div style="float: right; clear: all;">
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/share">
+Tweet
+</a>
+</div>
+
+<!-- ending partial tweetbutton.html.haml -->
+<span class="submitted">
+Published on
+2016-06-16
+by
+<a href="https://github.com/bitwiseman">Liam Newman</a>
+</span>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This is a guest post by <a href="https://github.com/bitwiseman">Liam Newman</a>,
+Technical Evangelist at <a href="https://cloudbees.com">CloudBees</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In this blog post, I’ll show you how to speed up your pipeline by using the
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Parallel+Test+Executor+Plugin">Parallel Test Executor Plugin</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="so-much-to-do-so-little-time"><a class="anchor" href="#so-much-to-do-so-little-time"></a>So much to do, so little time&#8230;&#8203;</h3>
+<div class="paragraph">
+<p>In my career, I&#8217;ve helped many teams move to continuous integration and delivery. One problem
+we always encounter is how to run all the tests needed to ensure high-quality
+changes while still keeping pipeline times reasonable and changes flowing
+smoothly. More tests mean greater confidence, but also longer wait times.
+Build systems may or may not support running tests in parallel, but they still only use one
+machine even while other lab machines sit idle. In these cases, parallelizing
+test execution across multiple machines is a great way to speed up pipelines.
+The Parallel Test Executor plugin lets us leverage Jenkins do just that with no
+disruption to the rest of the build system.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="serial-test-execution"><a class="anchor" href="#serial-test-execution"></a>Serial Test Execution</h3>
+<div class="paragraph">
+<p>For this post, I’ll be running a pipeline based on the
+<a href="https://github.com/jenkinsci/git-plugin">Jenkins Git Plugin</a>. I&#8217;ve modified
+the Jenkinsfile from that project to allow us to compare execution times to our
+later changes, and I&#8217;ve truncated the "mvn" utility method since it remains
+unchanged.  You can find the original file
+<a href="https://github.com/jenkinsci/git-plugin/blob/7a31858e61d2ca2e752b0e4f1285bddcb7a75c4d/Jenkinsfile">here</a>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">node {
+  stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Checkout</span><span style="color:#710">'</span></span>
+  checkout scm
+
+  stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>
+
+  <span style="color:#777">/* Call the Maven build without tests. */</span>
+  mvn <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">clean install -DskipTests</span><span style="color:#710">&quot;</span></span>
+
+  stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Test</span><span style="color:#710">'</span></span>
+  runTests()
+
+  <span style="color:#777">/* Save Results. */</span>
+  stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Results</span><span style="color:#710">'</span></span>
+
+  <span style="color:#777">/* Archive the build artifacts */</span>
+  archive <span style="color:#606">includes</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">target/*.hpi,target/*.jpi</span><span style="color:#710">'</span></span>
+}
+
+<span style="color:#339;font-weight:bold">void</span> runTests(<span style="color:#080;font-weight:bold">def</span> args) {
+  <span style="color:#777">/* Call the Maven build with tests. */</span>
+  mvn <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">install -Dmaven.test.failure.ignore=true</span><span style="color:#710">&quot;</span></span>
+
+  <span style="color:#777">/* Archive the test results */</span>
+  step([<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">JUnitResultArchiver</span><span style="color:#710">'</span></span>, <span style="color:#B06;font-weight:bold">testResults</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">**/target/surefire-reports/TEST-*.xml</span><span style="color:#710">'</span></span>])
+}
+
+<span style="color:#777">/* Run Maven */</span>
+<span style="color:#339;font-weight:bold">void</span> mvn(<span style="color:#080;font-weight:bold">def</span> args) { <span style="color:#777">/* ... */</span> }</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This pipeline expects to be run from a <code>Jenkinsfile</code> in SCM.
+To copy and paste it directly into a Jenkins Pipeline job, replace the <code>checkout scm</code> step with
+<code>git 'https://github.com/jenkinsci/git-plugin.git'</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>This is a Maven project, so the Jenkinsfile is pretty simple.
+I’ve split the Maven build into separate “Build” and “Test”
+stages. Maven doesn’t support this split very well, it wants to run all
+the steps of the lifecycle in order every time. So, I have to call Maven twice:
+first using the “skipTests” property to do only build steps in the first call,
+and then a second time with out that property to run tests.</p>
+</div>
+<div class="paragraph">
+<p>On my quad-core machine, executing this pipeline takes about 13 minutes and 30
+seconds.  Of that time, it takes 13 minutes to run about 2.7 thousand tests in
+serial.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/2016-06-16/serial.png" alt="Serial Test Pipeline">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="parallel-test-execution"><a class="anchor" href="#parallel-test-execution"></a>Parallel Test Execution</h3>
+<div class="paragraph">
+<p>This looks like an ideal project for parallel test execution: a short build
+followed by a large number of serially executed tests that consume the most of
+the pipeline time. There are a number of things I could try to speed this up.
+For example, I could modify test harness to look for ways to parallelize
+the test execution on this single machine. Or I could try speed up the tests
+themselves. Both of those can be time-consuming and both risk destabilizing the
+tests. I&#8217;d need to know more about the project to do it well.</p>
+</div>
+<div class="paragraph">
+<p>I&#8217;ll avoid that risk by using Jenkins and the
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Parallel+Test+Executor+Plugin">Parallel Test Executor Plugin</a> to
+parallelize the tests across multiple nodes instead. This will isolate the tests
+from each other, while still giving us speed gains from parallel execution.</p>
+</div>
+<div class="paragraph">
+<p>The plugin reads the list of tests from the results archived in the previous execution of this
+job and splits that list into a specified number of sublists. I can then use
+those sublists to execute the tests in parallel, passing a different sublist to
+each node.</p>
+</div>
+<div class="paragraph">
+<p>Let’s look at how this changes the pipeline:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">node { <span style="color:#777">/* ...unchanged... */</span> }
+
+<span style="color:#339;font-weight:bold">void</span> runTests(<span style="color:#080;font-weight:bold">def</span> args) {
+  <span style="color:#777">/* Request the test groupings.  Based on previous test results. */</span>
+  <span style="color:#777">/* see https://wiki.jenkins-ci.org/display/JENKINS/Parallel+Test+Executor+Plugin and demo on github
+  /* Using arbitrary parallelism of 4 and &quot;generateInclusions&quot; feature added in v1.8. */</span>
+  <span style="color:#080;font-weight:bold">def</span> splits = splitTests <span style="color:#606">parallelism</span>: [<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">CountDrivenParallelism</span><span style="color:#710">'</span></span>, <span style="color:#B06;font-weight:bold">size</span>: <span style="color:#00D">4</span>], <span style="color:#606">generateInclusions</span>: <span style="color:#069">true</span>
+
+  <span style="color:#777">/* Create dictionary to hold set of parallel test executions. */</span>
+  <span style="color:#080;font-weight:bold">def</span> testGroups = [:]
+
+  <span style="color:#080;font-weight:bold">for</span> (<span style="color:#339;font-weight:bold">int</span> i = <span style="color:#00D">0</span>; i &lt; splits.size(); i++) {
+    <span style="color:#080;font-weight:bold">def</span> split = splits[i]
+
+    <span style="color:#777">/* Loop over each record in splits to prepare the testGroups that we'll run in parallel. */</span>
+    <span style="color:#777">/* Split records returned from splitTests contain { includes: boolean, list: List&lt;String&gt; }. */</span>
+    <span style="color:#777">/*     includes = whether list specifies tests to include (true) or tests to exclude (false). */</span>
+    <span style="color:#777">/*     list = list of tests for inclusion or exclusion. */</span>
+    <span style="color:#777">/* The list of inclusions is constructed based on results gathered from */</span>
+    <span style="color:#777">/* the previous successfully completed job. One additional record will exclude */</span>
+    <span style="color:#777">/* all known tests to run any tests not seen during the previous run.  */</span>
+    testGroups[<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">split-</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>i<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>] = {  <span style="color:#777">// example, &quot;split3&quot;</span>
+      node {
+        checkout scm
+
+        <span style="color:#777">/* Clean each test node to start. */</span>
+        mvn <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">clean</span><span style="color:#710">'</span></span>
+
+        <span style="color:#080;font-weight:bold">def</span> mavenInstall = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">install -DMaven.test.failure.ignore=true</span><span style="color:#710">'</span></span>
+
+        <span style="color:#777">/* Write includesFile or excludesFile for tests.  Split record provided by splitTests. */</span>
+        <span style="color:#777">/* Tell Maven to read the appropriate file. */</span>
+        <span style="color:#080;font-weight:bold">if</span> (split.includes) {
+          writeFile <span style="color:#606">file</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">target/parallel-test-includes-</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>i<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">.txt</span><span style="color:#710">&quot;</span></span>, <span style="color:#606">text</span>: split.list.join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>)
+          mavenInstall += <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> -Dsurefire.includesFile=target/parallel-test-includes-</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>i<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">.txt</span><span style="color:#710">&quot;</span></span>
+        } <span style="color:#080;font-weight:bold">else</span> {
+          writeFile <span style="color:#606">file</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">target/parallel-test-excludes-</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>i<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">.txt</span><span style="color:#710">&quot;</span></span>, <span style="color:#606">text</span>: split.list.join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>)
+          mavenInstall += <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> -Dsurefire.excludesFile=target/parallel-test-excludes-</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>i<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">.txt</span><span style="color:#710">&quot;</span></span>
+        }
+
+        <span style="color:#777">/* Call the Maven build with tests. */</span>
+        mvn mavenInstall
+
+        <span style="color:#777">/* Archive the test results */</span>
+        step([<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">JUnitResultArchiver</span><span style="color:#710">'</span></span>, <span style="color:#B06;font-weight:bold">testResults</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">**/target/surefire-reports/TEST-*.xml</span><span style="color:#710">'</span></span>])
+      }
+    }
+  }
+  parallel testGroups
+}
+
+<span style="color:#777">/* Run Maven */</span>
+<span style="color:#339;font-weight:bold">void</span> mvn(<span style="color:#080;font-weight:bold">def</span> args) { <span style="color:#777">/* ... */</span> }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That’s it!  The change is significant but it is all encapsulated in this one
+method in the <code>Jenkinsfile</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="great-ish-success"><a class="anchor" href="#great-ish-success"></a>Great (ish) Success!</h3>
+<div class="paragraph">
+<p>Here&#8217;s the results for the new pipeline with parallel test execution:</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/2016-06-16/serial-vs-parallel.png" alt="Pipeline Duration Comparison">
+</div>
+</div>
+<div class="paragraph">
+<p>The tests ran almost twice as fast, without changes outside pipeline.  Great!</p>
+</div>
+<div class="paragraph">
+<p>However, I used 4 test executors, so why am I not seeing a 4x? improvement.
+A quick review of the logs shows the problem: A small number of tests are taking up
+to 5 minutes each to complete! This is actually good news. It means that I
+should be able to see further improvement in pipeline throughput just by refactoring
+those few long running tests into smaller parts.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="conclusion"><a class="anchor" href="#conclusion"></a>Conclusion</h3>
+<div class="paragraph">
+<p>While I would like to have seen closer to a 4x improvement to match to number
+of executors, 2x is still perfectly respectable. If I were working on a group of projects
+with similar pipelines, I&#8217;d be completely comfortable reusing these same changes
+on my other project and I&#8217;d expect to similar improvement without any disruption to
+other tools or processes.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="links"><a class="anchor" href="#links"></a>Links</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Parallel+Test+Executor+Plugin" class="bare">https://wiki.jenkins-ci.org/display/JENKINS/Parallel+Test+Executor+Plugin</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//blog/2016/2016-06-16-parallel-test-executor-plugin.adoc" title="Edit /blog/2016/2016-06-16-parallel-test-executor-plugin.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//blog/2016/2016-06-16-parallel-test-executor-plugin.adoc" title="View /blog/2016/2016-06-16-parallel-test-executor-plugin.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

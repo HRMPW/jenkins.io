@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Architecting for Manageability
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  .row {
+    margin-right: 5em;
+    margin-left: 5em;
+  }
+  .toc {
+      float: right;
+  }
+</style>
+<div class="container">
+<div class="row body">
+<h1>
+Architecting for Manageability
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#architecting-for-manageability">Architecting for Manageability</a>
+<ul class="sectlevel2">
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#test-instances">Test Instances</a></li>
+<li><a href="#troubleshooting-for-stability">Troubleshooting for Stability</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="architecting-for-manageability"><a class="anchor" href="#architecting-for-manageability"></a>Architecting for Manageability</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="introduction"><a class="anchor" href="#introduction"></a>Introduction</h3>
+<div class="paragraph">
+<p>With over 1,000 plugins and countless versions of said plugins in the
+open-source community, testing for all possible conflicts before upgrading one
+or more production Jenkins instances is simply not feasible. While Jenkins
+itself will warn of potential incompatibility if it detects that a plugin
+requires a newer version of the Jenkins core, there is no automatic way to
+detect conflicts between plugins or to automatically quantifying the impact of
+upgrading a plugin before doing the upgrade.</p>
+</div>
+<div class="paragraph">
+<p>Instead, Jenkins administrators should be made responsible for manually testing
+their own instance&#8217;s plugin and core version updates before performing them on
+the production instance. This kind of testing requires a copy or "test
+instance" of the production server to act as the sandbox for such tests and can
+prevent production master downtime.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="test-instances"><a class="anchor" href="#test-instances"></a>Test Instances</h3>
+<div class="paragraph">
+<p>A test master is a Jenkins master used solely for testing configurations and
+plugins in a non-production environment. For organizations with a
+mission-critical Jenkins instance, having a test master is highly recommended.</p>
+</div>
+<div class="paragraph">
+<p>Upgrading or downgrading either the Jenkins core or any plugins can sometimes
+have the unintended side effect of crippling another plugin&#8217;s functionality or
+even crashing a master. As of today, there is no better way to pre-test for
+such catastrophic conflicts than with a test master.</p>
+</div>
+<div class="paragraph">
+<p>Test masters should have identical configurations, jobs, and plugins as the
+production master so that test upgrades  will most closely resemble the
+outcomes of a similar change on your production master. For example, installing
+the Folders plugin while running a version of the Jenkins core older than
+1.554.1 will cause the instance crash and be inaccessible until the plugin is
+manually uninstalled from the <em>plugin</em> folder.</p>
+</div>
+<div class="sect3">
+<h4 id="setting-up-a-test-instance"><a class="anchor" href="#setting-up-a-test-instance"></a>Setting up a test instance</h4>
+<div class="paragraph">
+<p>There are many methods for setting up a test instance, but the commonality
+between them all is that the <em>$JENKINS_HOME</em> between them is nearly identical.
+Whether this means that most all of the production masters' <em>$JENKINS_HOME</em>
+folder is version controlled in a service like GitHub and mounted manually or
+programmatically to a test server or Docker container, the result is nearly the
+same.</p>
+</div>
+<div class="paragraph">
+<p>It is ideal to first ensure sure the master is idle (no running or queued jobs)
+before attempting to create a test master.</p>
+</div>
+<div class="paragraph">
+<p><strong>With GitHub + manual commands</strong></p>
+</div>
+<div class="paragraph">
+<p>You will simply need to open up your command-line interface and "cd" to the
+folder that contains the <em>$JENKINS_HOME</em> directory for your production master
+and run the "git init" command. For the location of this folder, please refer
+to section 3.</p>
+</div>
+<div class="paragraph">
+<p>It is recommended that before running the "git add" command that you create a
+good <em>.gitignore</em> file. This file will prevent you from accidentally
+version-controlling a file that is too large to be stored in GitHub (anything
+&gt;50 MB).</p>
+</div>
+<div class="paragraph">
+<p>Here is an example <em>.gitignore</em> file for a Jenkins master running on OS X:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+*.log
+*.tmp
+*.old
+*.jar
+*.son
+.Xauthority
+.bash_history
+.bash_profile
+.fontconfig
+.gitconfig
+.gem
+.lesshst
+.mysql_history
+.owner
+.ri
+.rvm
+.ssh
+.viminfo
+.vnc
+bin/
+tools/
+**/.owner
+**/queue.xml
+**/fingerprints/
+**/shelvedProjects/
+**/updates/
+**/jobs/*/workspace/
+**/war/
+/tools/
+**/custom_deps/
+**/slave/workspace/
+**/slave-slave.log.*
+cache/
+fingerprints/
+**/wars/jenkins*.war
+*.log
+*.zip
+*.rrd
+*.gz</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once you have a good <em>.gitignore</em> file, you can run the follow git commands to
+commit your <em>$JENKINS_HOME</em> to a git repository like GitHub:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">git add -—all
+git commit -m &quot;first commit&quot;
+git push</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now you can install Jenkins to a fresh instance and "git clone" this
+<em>$JENKINS_HOME</em> from the git repository to your new instance. You will need to
+replace the files in the new instance with your version-controlled files to
+complete the migration, whether through scripts or through a drag-and-drop
+process.</p>
+</div>
+<div class="paragraph">
+<p>Once this is done, you will need to restart the new test master&#8217;s Jenkins
+service or reload its configuration from the Jenkins UI ("Manage Jenkins" &gt;&gt;
+"Reload Configuration").</p>
+</div>
+<div class="paragraph">
+<p><strong>With GitHub + Docker (Linux-only)</strong></p>
+</div>
+<div class="paragraph">
+<p>When it comes to version controlling your $JENKINS_HOME, just follow the
+instructions in the previous section.</p>
+</div>
+<div class="paragraph">
+<p>The next step will be to create a Docker image with identical configurations to
+your production instance&#8217;s - operating system (Linux-only), installed
+libraries/tools, and open ports. This can be accomplished through Dockerfiles.</p>
+</div>
+<div class="paragraph">
+<p>You will then just need to create mounted storage on your Docker server with a
+clone of your version-controlled <em>$JENKINS_HOME</em> home and a simple image to
+clone the <em>$JENKINS_HOME</em> into.</p>
+</div>
+<div class="paragraph">
+<p>For example, we can create a Docker image called <em>jenkins-storage</em> and version
+control our <em>$JENKINS_HOME</em> in a Github repository known as "demo-joc". The
+"jenkins-storage" Docker image can be built from a Dockerfile similar to this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">FROM debian:jessie
+RUN apt-get update &amp;&amp; apt-get -y upgrade
+RUN apt-get install -y --no-install-recommends \
+    openjdk-7-jdk \
+    openssh-server \
+    curl \
+    ntp \
+    ntpdate  \
+    git  \
+    maven  \
+    less  \
+    vim
+RUN printf &quot;AddressFamily inet&quot; &gt;&gt; /etc/ssh/ssh_config
+ENV MAVEN_HOME /usr/bin/mvn
+ENV GIT_HOME /usr/bin/git
+# Install Docker client
+RUN curl https://get.docker.io/builds/Linux/x86_64/docker-latest -o /usr/local/bin/docker
+RUN chmod +x /usr/local/bin/docker
+RUN groupadd docker
+# Create Jenkins user
+RUN useradd jenkins -d /home/jenkins
+RUN echo &quot;jenkins:jenkins&quot; | chpasswd
+RUN usermod -a -G docker jenkins
+# Make directories for [masters] JENKINS_HOME, jenkins.war lib and [slaves] remote FS root, ssh privilege separation directory
+RUN mkdir /usr/lib/jenkins /var/lib/jenkins /home/jenkins /var/run/sshd
+# Set permissions
+RUN chown -R jenkins:jenkins /usr/lib/jenkins /var/lib/jenkins /home/jenkins
+#create data folder for cloning
+RUN [&quot;mkdir&quot;, &quot;/data&quot;]
+RUN [&quot;chown&quot;, &quot;-R&quot;, &quot;jenkins:jenkins&quot;, &quot;/data&quot;]
+USER jenkins
+VOLUME [&quot;/data&quot;]
+WORKDIR /data
+# USER jenkins
+CMD [&quot;git&quot;, &quot;clone&quot;, &quot;https://github.com/[your-github-id]/docker-jenkins-storage.git&quot;, &quot;.&quot;]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Creating mounted storage for containers would just require something similar to
+the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">docker run --name storage [your-dockerhub-id]/jenkins-storage git clone https://github.com/[your-github-id]/docker-jenkins-storage.git .</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And Jenkins images that rely on the mounted storage for their <em>$JENKNIS_HOME</em>
+will then need to point to the mounted volume:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">docker run -d --dns=172.17.42.1 --name joc-1 --volumes-from storage -e JENKINS_HOME=/data/var/lib/jenkins/jenkins [your-dockerhub-id]/jenkins --prefix=&quot;&quot;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Test master slaves</div>
+<p>Test masters can be connected to test slaves, but this will require further
+configurations. Depending on your implementation of a test instance, you will
+either need to create a Jenkins Docker slave image or a slave VM. Of course,
+open-source plugins like the EC2 plugin also the option of spinning up new
+slaves on-demand.</p>
+</div>
+<div class="paragraph">
+<p>The slave connection information will also need to be edited in the config.xml
+located in your test master&#8217;s <em>$JENKINS_HOME</em>.</p>
+</div>
+<div class="paragraph">
+<div class="title">Rolling back plugins that cause failures</div>
+<p>If you discover that a plugin update is causing conflict within the test
+master, you can rollback in several ways:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For bad plugins, you can rollback the plugin from the UI by going to the
+plugin manager ("Manage Jenkins" &gt;&gt; "Manage Plugins") and going to the
+"Available" tab. Jenkins will show a "downgrade" button next to any plugins
+that can be downgraded.</p>
+</li>
+<li>
+<p>If the UI is unavailable, then enter your <em>$JENKINS_HOME</em> folder and go to
+the plugins folder. From there, delete the .hpi or .jpi file for the
+offending plugin, then restart Jenkins. If you need to rollback to an older
+version, you will need to manually copy in an older version of that .jpi or
+.hpi. To do this, go to the plugin&#8217;s page on the
+<a href="http://updates.jenkins-ci.org/download/plugins">Jenkins wiki</a> and download one
+of its archived versions.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="troubleshooting-for-stability"><a class="anchor" href="#troubleshooting-for-stability"></a>Troubleshooting for Stability</h3>
+<div class="paragraph">
+<p>Jenkins masters can suffer instability problems when the master is not properly
+sized for its hardware or a buggy plugin wastes resources. To combat this,
+Jenkins administrators should begin their troubleshooting by identifying which
+components are behaving abnormally and which resources are insufficient. The
+administrator can
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Obtaining+a+thread+dump">take thread
+dumps</a> and head dumps to get some of this information, but in some cases where
+the instance has become non-operational and taking a thread dump is impossible,
+it is useful to have a persistent record outside of Jenkins itself to reference
+when such troubleshooting is required.</p>
+</div>
+<div class="sect3">
+<h4 id="using-the-jenkins-metrics-plugin"><a class="anchor" href="#using-the-jenkins-metrics-plugin"></a>Using the Jenkins Metrics Plugin</h4>
+<div class="paragraph">
+<p>The <a href="https://wiki.jenkins-ci.org/display/JENKINS/Metrics+Plugin">Jenkins Metrics
+Plugin</a> is an open-source plugin which exposes metrics on a Jenkins instance.
+Metrics are exposed using the
+<a href="https://dropwizard.github.io/metrics/3.1.0">Dropwizard Metrics API</a></p>
+</div>
+<div class="paragraph">
+<div class="title">Metrics exposed</div>
+<p>The exact list of exposed metrics varies depending on your installed plugins.
+To get a full list of available metrics for your own master, run the following
+script on
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Jenkins+Script+Console">your
+master&#8217;s script console</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#080;font-weight:bold">for</span> (j <span style="color:#080;font-weight:bold">in</span> Jenkins.instance.getExtensionList(jenkins.metrics.api.MetricProvider.class)) {
+     <span style="color:#080;font-weight:bold">for</span> (m <span style="color:#080;font-weight:bold">in</span> j.getMetricSet()) {
+          <span style="color:#080;font-weight:bold">for</span> (i <span style="color:#080;font-weight:bold">in</span> m.metrics)
+               { println i.getKey() }
+     }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>CloudBees has
+<a href="https://documentation.cloudbees.com/docs/cje-user-guide/monitoring-sect-reference.html#monitoring-sect-reference-metrics">documented</a>
+the full list of exposed metrics, along with in-depth explanations of each.</p>
+</div>
+<div class="paragraph">
+<div class="title">Metrics Usage</div>
+<p>Metrics are protected by a set of permissions for viewing, accessing the thread
+dump, and posting a health check. The Metrics Operational Menu can be access
+via the web UI by visiting &lt;jenkins-url&gt;/metrics/currentUser, and the 4 menu
+options (Metrics, Ping, Threads, Healthcheck) lead to a JSON string containing
+the requested metrics or thread dump.</p>
+</div>
+<div class="paragraph">
+<p>Access to the Metrics Servlet can also be provided by issuing API keys. API
+keys can be configured from the Jenkins global configuration screen
+(&lt;jenkins-url&gt;/configure) under the "Metrics" section. Multiple access can be
+generated and permissions associated with those keys can also be restricted at
+this level.</p>
+</div>
+<div class="paragraph">
+<p>More information on Metrics basic and advanced usages can be found
+<a href="https://documentation.cloudbees.com/docs/cje-user-guide/monitoring-sect-getting-started.html">here</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//doc/book/architecting-for-manageability.adoc" title="Edit /doc/book/architecting-for-manageability.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//doc/book/architecting-for-manageability.adoc" title="View /doc/book/architecting-for-manageability.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

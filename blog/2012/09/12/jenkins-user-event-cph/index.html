@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Jenkins User Event CPH
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container blog-post no-margin">
+<div class="row body">
+<div class="col-md-11 col-md-offset-1 main-content" id="content">
+<div id="content-top">
+<h1>
+<a href="/blog/2012/09/12/jenkins-user-event-cph/" title="Jenkins User Event CPH">
+Jenkins User Event CPH
+</a>
+</h1>
+<!-- starting partial tweetbutton.html.haml -->
+<div style="float: right; clear: all;">
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/share">
+Tweet
+</a>
+</div>
+
+<!-- ending partial tweetbutton.html.haml -->
+<span class="submitted">
+Published on
+2012-09-12
+by
+ndeloof
+</span>
+</div>
+This article was originally posted on my <a href="http://blog.loof.fr/2012/09/jenkins-user-event-cph.html">personal blog</a><br/>
+<br/>
+<div class="separator" style="clear: both; text-align: center;"><br/>
+<a href="http://4.bp.blogspot.com/-U254sLok_CA/UEyaAzMGpYI/AAAAAAAAHuI/--wuCdF0j2Y/s1600/IMAG0397.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="102" src="http://4.bp.blogspot.com/-U254sLok_CA/UEyaAzMGpYI/AAAAAAAAHuI/--wuCdF0j2Y/s640/IMAG0397.jpg" width="640" /></a></div><br/>
+<br /><br/>
+Last week, <a href="http://www.praqma.com/">praqma</a> was organizing in Copenhague a "Jenkins User Event". A User Event, compared to JenkinsConf, is a lighter meeting with (suposed to be) reduced costs organized by volunteers. Praqma got sponsorship from both <a href="http://www.cloudbees.com/">CloudBees</a> and <a href="http://www.programmingresearch.com/">Programing Research</a> so that they can book a high quality conference room and prepare a nice meeting with all commodities.<br /><br/>
+<br /><br/>
+<div class="separator" style="clear: both; text-align: center;"><br/>
+<a href="http://3.bp.blogspot.com/-v4CkSM9Sdog/UEyXZlXwSFI/AAAAAAAAHt4/D8g72T1meas/s1600/IMAG0388.jpg" imageanchor="1" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"><img border="0" height="320" src="http://3.bp.blogspot.com/-v4CkSM9Sdog/UEyXZlXwSFI/AAAAAAAAHt4/D8g72T1meas/s320/IMAG0388.jpg" width="240" /></a></div><br/>
+That was my first travel to Danemark. I enjoyed the winds-farm on northern sea as well as the duty-free lego shop at airport, but didn't have much time to discover the city - so will have to come back next year ;)<br /><br/>
+<div class="separator" style="clear: both; text-align: center;"><br/>
+<a href="http://3.bp.blogspot.com/-GrC_1TF4XMY/UEyXRU5U7rI/AAAAAAAAHtw/nB_jKjSbiFE/s1600/IMAG0412.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="130" src="http://3.bp.blogspot.com/-GrC_1TF4XMY/UEyXRU5U7rI/AAAAAAAAHtw/nB_jKjSbiFE/s320/IMAG0412.jpg" width="320" /></a></div><br/>
+<br style="clear: both;" /><br/>
+<br /><br/>
+<div class="separator" style="clear: both; text-align: center;"><br/>
+<a href="http://www.praqma.com/sites/default/files/img/codecamp.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="139" src="http://www.praqma.com/sites/default/files/img/codecamp.jpg" width="320" /></a></div><br/>
+Thursday was about a <a href="http://www.praqma.com/jcicodecamp12">Jenkins Code Camp</a> (aka "hackathon"), that I joined late at 2pm due to flight being delayed. 20 geeks were talking about some technical issues, new features, implementation strategies for a large set of topics. I contribute a group to solve an integration issue by <a href="https://github.com/jenkinsci/jenkins/pull/558">creating a new extension</a> point in jenkins-core. Those already confident with jenkins development helped to write this code, some discovered the extension point design as well as way to contribute to jenkins (github pull request, etc), some were looking at jenkins source code for first time so learned a lot.<br /><br/>
+<br /><br/>
+<div class="separator" style="clear: both; text-align: center;"><br/>
+<a href="http://3.bp.blogspot.com/-8aFBYs3PV2I/UEyZp3x53sI/AAAAAAAAHuA/T0_1zOKFVn8/s1600/IMAG0391.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="292" src="http://3.bp.blogspot.com/-8aFBYs3PV2I/UEyZp3x53sI/AAAAAAAAHuA/T0_1zOKFVn8/s640/IMAG0391.jpg" width="640" /></a></div><br/>
+<br /><br/>
+<br /><br/>
+Day ended with beer then a chinese&nbsp;restaurant (typical Danish food :P), with lots of fun and nice discussions.<br /><br/>
+<br /><br/>
+<div class="separator" style="clear: both; text-align: center;"><br/>
+<a href="http://www.praqma.com/sites/default/files/img/event_logo.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="138" src="http://www.praqma.com/sites/default/files/img/event_logo.png" width="320" /></a></div><br/>
+<div class="separator" style="clear: both; text-align: center;"><br/>
+<br /></div><br/>
+<table cellpadding="0" cellspacing="0" class="tr-caption-container" style="float: left; margin-right: 1em; text-align: left;"><tbody><br/>
+<tr><td style="text-align: center;"><a href="http://3.bp.blogspot.com/-5Sa6Zq5IJLc/UEyad103oMI/AAAAAAAAHuQ/-8tgTK_uERE/s1600/IMAG0401.jpg" imageanchor="1" style="clear: left; margin-bottom: 1em; margin-left: auto; margin-right: auto;"><img border="0" height="320" src="http://3.bp.blogspot.com/-5Sa6Zq5IJLc/UEyad103oMI/AAAAAAAAHuQ/-8tgTK_uERE/s320/IMAG0401.jpg" width="240" /></a></td></tr><br/>
+</tbody></table><br/>
+Friday was the Jenkins User Event. To reduce costs for such an event, compared to other Jenkins Conferences organized by CloudBees this year, lunch was not provided and conference program was "packed" into&nbsp;afternoon. This let praqma get a "reasonable" cost for this nice event, but still have a high quality conference, with printed programs, goodies, and coffee break. All praqma team was involved to make this event as pleasant as possible for all attendees, thanks a lot to them for contributing !<br /><br/>
+<br /><br/>
+Conference was sold-out on friday morning, with 80 attendees.<br /><br/>
+<br style="clear: both;" /><br/>
+After&nbsp;Lars Kruse&nbsp;welcome speak, and CloudBees to announce partnership with Praqma for DK, the conference started with two options : either an introduction to Jenkins, or an open-space discussion (~barcamp-like) for those that already know it well. I joined a small group first discussing about pre-tested commit, and then we divert speaking about best-practices, job and test performances issues, etc. Was a great exchange with interesting feedback.<br /><br/>
+<br /><br/>
+The rest of the conference was single-track.<br /><br/>
+<br /><br/>
+<div class="separator" style="clear: both; text-align: center;"><br/>
+<a href="http://3.bp.blogspot.com/-oCA1lQnDBeE/UEybtag0JmI/AAAAAAAAHuY/QSofsZ_ae1M/s1600/IMAG0408.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="300" src="http://3.bp.blogspot.com/-oCA1lQnDBeE/UEybtag0JmI/AAAAAAAAHuY/QSofsZ_ae1M/s400/IMAG0408.jpg" width="400" /></a></div><br/>
+<br /><br/>
+1rst session was about "<i>facilitate strategic reuse of software</i>" using jenkins CI. This session exposed how a industrial company changed it's internal software development practices and team organization to share components and be more efficient. This for sure introduced some coordinations and integration costs but resulted in a significant productivity improvement. This talk was interesting as it demonstrate that highly industrial companies (here, a low energy consuming water pumps producer) today follow development practice to share component and use continuous integration practice to help. I just wondered speaker said "Clearcase facilitated" sharing components &nbsp;-I wouldn't expected those two words in same sentence :P<br /><br/>
+<br /><br/>
+"<i>Tales from the trenches</i>" was a funny session explaining how Nokia came from stone age (manual integration with code freezes) to modern development practices. After reinventing the wheel with ~15 home made, perl-script based CI tools, they switched to Jenkins and Git as common tooling. Explanation on Git selection, evaluating multiple DVCS popularity, then migration from ClearCase,&nbsp;<u>helping a lot</u> early adopters, and later evaluating benefits (1 day / week / developer) was very interesting. Conclusion was that, "some tools a radically better" and "deep process renewal depends heavily on tools renewal".<br /><br/>
+<br /><br/>
+"<i>Continuous Code Inspection</i>" talk explained use of industrial C++ coding standard and normative coding convention, with dedicated analysis tools. After explanation on those rules and tooling, a dedicated jenkins plugin was demonstrated. Such jenkins integration makes QA mostly a single checkbox to enable, and provide history graphs, reports, and external tools integration. Introduction was a little slow imho but content was demonstrating the power of jenkins plugin model to adapt software factory to specific industrial needs.<br /><br/>
+<br /><br/>
+<div class="separator" style="clear: both; text-align: center;"><br/>
+<a href="http://4.bp.blogspot.com/-Vgq2K5JLj30/UEyfE86usmI/AAAAAAAAHuw/q4vbgqguyuY/s1600/IMAG0409.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="240" src="http://4.bp.blogspot.com/-Vgq2K5JLj30/UEyfE86usmI/AAAAAAAAHuw/q4vbgqguyuY/s320/IMAG0409.jpg" width="320" /></a></div><br/>
+<br /><br/>
+Coffee break with delicious Danish chocolates ...<br /><br/>
+<br /><br/>
+Sony was presenting its "<i>Huge Jenkins Cluster</i>", with 4 master, some of them handling up to 6000 jobs, 300 slaves, 7000 builds a day an executing 175,000 tests a day for android platforms. Development teams use a dedicated slave machine with android devices connected through USB.<br /><br/>
+<br /><br/>
+Such a build farm requires a dedicated support team and monitoring/maintenance tooling. IT only provides the computer and maintain the OS, but all Jenkins stuff is under the hands of a dedicated team. They evaluate plugins and core upgrades, educate teams, and analyse errors.<br /><br/>
+<br /><br/>
+With 45Gb for a single full android build, they have to monitor available disk space, and developed maintenance scripts to delete old build artifacts and cleanup /tmp. They also use a local git mirror to speed-up cloning, and integrated with CFEngine-managed infrastructure to ensure no update occurs as a slave is running a build. They also significantly optimized build speed by switching from NFS to SAN, and are now evaluating XFS.<br /><br/>
+<br /><br/>
+Remaining issue is about jenkins build queue (subject discussed on Jenkins Code Camp) because a 9 in the morning, thousand users connect to jenkins master and the UI widget to expose the queue status hits the queue synchronisation bottleneck.<br /><br/>
+<br /><br/>
+<br /><br/>
+Next talk was mine, exposing <a href="http://www.cloudbees.com/jenkins-enterprise-by-cloudbees-overview.cb">Jenkins Enterprise</a> and demonstrating one ouf our Enterprise plugins. I'm not pleased by my talk, both because my english is crappy (maybe you already noticed?) and also because I was not confident with the standard JE slides. Assuming I had more time to prepare this talk, and as a tribute to this Danish event, I'd have used a bunch of lego bricks pictures to present Cloudbee plugins. So I quickly left the slides to run a demo, setting-up Jenkins Enterprise to run <a href="http://www.cloudbees.com/jenkins-enterprise-by-cloudbees-features-validated-merge-plugin.cb">pre-tested commits</a>. Hope you enjoyed the talk.<br /><br/>
+<br /><br/>
+<a href="http://4.bp.blogspot.com/-mnHy9gx9uGw/UEyixY_2Q0I/AAAAAAAAHvI/_KDQbGOTjw8/s1600/IMAG0407.jpg" imageanchor="1" style="clear: left; float: left; margin-bottom: 1em; margin-right: 1em;"><img border="0" height="320" src="http://4.bp.blogspot.com/-mnHy9gx9uGw/UEyixY_2Q0I/AAAAAAAAHvI/_KDQbGOTjw8/s320/IMAG0407.jpg" width="240" /></a>Last talk was Lars one, exposing praqma "<i>Corporate approach to opensource</i>". This light, generalist talk was welcome as last one after a heavy-technical afternoon. Lars exposed reason to switch to open-source :<br /><br/>
+<br /><br/>
+<ul><br/>
+<li>costs - for sure,&nbsp;</li><br/>
+<li>but also open standards and interoperability,&nbsp;</li><br/>
+<li>and contribution to public good.&nbsp;</li><br/>
+</ul><br/>
+This last point distinguish "<i>innovators</i>" that create new content and contribute to the oss project, and "<i>free riders</i>" that only want to save money and consume other efforts. Lars didn't went deeper into what "contributing" can be about, but spending some time joining the mailing lists, exposing detailled bug report, or writing blogs or documentation about the issues you encounter is already a huge contribution to opensource. Organizing such a great user event also is ;)<br /><br/>
+<br /><br/>
+<br /><br/>
+<br style="clear: both;" /><br/>
+Meeting ended with a "socialize" time, sponsored by Pragmatic Research, with beer and sandwiches. A nice time to discuss with speakers, know a face to match an #irc nickname, discuss about everything geeks like to discuss about, and round off this pleasant day.<br />
+
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//blog/2012/2012-09-12-jenkins-user-event-cph.html" title="Edit /blog/2012/2012-09-12-jenkins-user-event-cph.html on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//blog/2012/2012-09-12-jenkins-user-event-cph.html" title="View /blog/2012/2012-09-12-jenkins-user-event-cph.html history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Building Branches and Pull Requests
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="active nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container">
+<div class="row">
+<div class="col-lg-3">
+<div class="sidebar-nav">
+<h4>
+Pipeline Guided Tour
+</h4>
+<ul>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/pipeline/tour/hello-world">
+Creating your first Pipeline
+</a>
+</li>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/pipeline/tour/agents">
+Controlling your agents and workspaces
+</a>
+</li>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/pipeline/tour/environment">
+Environment variables
+</a>
+</li>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/pipeline/tour/running-multiple-steps">
+Running multiple steps
+</a>
+</li>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/pipeline/tour/reporting-test-results-and-storing-artifacts">
+Reporting test results and storing artifacts
+</a>
+</li>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/pipeline/tour/post">
+Cleaning Up and Notifications
+</a>
+</li>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/pipeline/tour/parallelism">
+Running Parallel Steps
+</a>
+</li>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/pipeline/tour/deployment">
+Deployment
+</a>
+</li>
+</ul>
+<h4>
+Pipeline Resources
+</h4>
+<ul>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/pipeline/steps">
+Pipeline Steps reference
+</a>
+</li>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/book/pipeline/reference">
+Declarative Pipeline reference
+</a>
+</li>
+</ul>
+<h4>
+User Handbook
+</h4>
+<ul>
+<li>
+<a href="/doc/book/getting-started">
+Getting Started with Jenkins
+</a>
+</li>
+<li>
+<a href="/doc/book/using">
+Using Jenkins
+</a>
+</li>
+<li>
+<a href="/doc/book/managing">
+Managing Jenkins
+</a>
+</li>
+<li>
+<a href="/doc/book/best-practice">
+Best Practices
+</a>
+</li>
+<li>
+<a href="/doc/book/pipeline">
+Pipeline
+</a>
+</li>
+<li>
+<a href="/doc/book/use-case">
+Jenkins Use-Cases
+</a>
+</li>
+<li>
+<a href="/doc/book/operating">
+Operating Jenkins
+</a>
+</li>
+<li>
+<a href="/doc/book/scaling">
+Scaling Jenkins
+</a>
+</li>
+<li>
+<a href="/doc/book/appendix">
+Appendix
+</a>
+</li>
+<li>
+<a href="/doc/book/glossary">
+Glossary
+</a>
+</li>
+</ul>
+<h4>
+Developers
+</h4>
+<h5>
+Writing plugins
+</h5>
+<ul>
+<li>
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Extend+Jenkins">
+Extend Jenkins
+</a>
+</li>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/book/pipeline/dev-guide">
+Extend Pipeline
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Extension+points">
+Extension points
+</a>
+</li>
+</ul>
+<h5>
+JavaDoc
+</h5>
+<ul>
+<li>
+<a href="http://javadoc.jenkins.io/">
+Latest
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-2.32">
+2.32
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-2.19">
+2.19
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-2.7">
+2.7
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.651">
+1.651
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.642">
+1.642
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.625">
+1.625
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.609">
+1.609
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.596">
+1.596
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.580">
+1.580
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.565">
+1.565
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.554">
+1.554
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+Building Branches and Pull Requests
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#creating-a-multibranch-pipeline">Creating a Multibranch Pipeline</a>
+<ul class="sectlevel2">
+<li><a href="#additional-environment-variables">Additional Environment Variables</a></li>
+<li><a href="#supporting-pull-requests">Supporting Pull Requests</a></li>
+</ul>
+</li>
+<li><a href="#organization-folders">Using Organization Folders</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the <a href="../jenkinsfile/">previous section</a> a <code>Jenkinsfile</code> which could be
+checked into source control was implemented. This section covers the concept of
+<strong>Multibranch</strong> Pipelines which build on the <code>Jenkinsfile</code> foundation to provide
+more dynamic and automatic functionality in Jenkins.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="creating-a-multibranch-pipeline"><a class="anchor" href="#creating-a-multibranch-pipeline"></a>Creating a Multibranch Pipeline</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <strong>Multibranch Pipeline</strong> project type enables you to implement different
+Jenkinsfiles for different branches of the same project.
+In a Multibranch Pipeline project, Jenkins automatically discovers, manages and
+executes Pipelines for branches which contain a <code>Jenkinsfile</code> in source control.</p>
+</div>
+<div class="paragraph">
+<p>This eliminates the need for manual Pipeline creation and management.</p>
+</div>
+<div class="paragraph">
+<p>To create a Multibranch Pipeline:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Click <strong>New Item</strong> on Jenkins home page.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/doc/book/resources/pipeline/new-item-selection.png" alt="Click *New Item* on the Jenkins home page">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Enter a name for your Pipeline, select <strong>Multibranch Pipeline</strong> and click <strong>OK</strong>.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Jenkins uses the name of the Pipeline to create directories on disk. Pipeline
+names which include spaces may uncover bugs in scripts which do not expect
+paths to contain spaces.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/doc/book/resources/pipeline/new-item-multibranch-creation.png" alt="Enter a name, select *Multibranch Pipeline*, and click *OK*">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add a <strong>Branch Source</strong> (for example, Git) and enter the location of the
+repository.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/doc/book/resources/pipeline/multibranch-branch-source.png" alt="Add a Branch Source">
+</div>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/doc/book/resources/pipeline/multibranch-branch-source-configuration.png" alt="Add the URL to the project repository">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Save</strong> the Multibranch Pipeline project.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Upon <strong>Save</strong>, Jenkins automatically scans the designated repository and creates
+appropriate items for each branch in the repository which contains a
+<code>Jenkinsfile</code>.</p>
+</div>
+<div class="paragraph">
+<p>By default, Jenkins will not automatically re-index the repository for branch
+additions or deletions (unless using an <a href="#organization-folders">Organization Folder</a>),
+so it is often useful to configure a Multibranch Pipeline to periodically
+re-index in the configuration:</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/doc/book/resources/pipeline/multibranch-branch-indexing.png" alt="Setting up branch re-indexing">
+</div>
+</div>
+<div class="sect2">
+<h3 id="additional-environment-variables"><a class="anchor" href="#additional-environment-variables"></a>Additional Environment Variables</h3>
+<div class="paragraph">
+<p>Multibranch Pipelines expose additional information about the branch being
+built through the <code>env</code> global variable, such as:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">BRANCH_NAME</dt>
+<dd>
+<p>Name of the branch for which this Pipeline is executing, for
+example <code>master</code>.</p>
+</dd>
+<dt class="hdlist1">CHANGE_ID</dt>
+<dd>
+<p>An identifier corresponding to some kind of change request, such as a pull request number</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Additional environment variables are listed in the
+<a href="../getting-started/#global-variable-reference">Global Variable Reference</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="supporting-pull-requests"><a class="anchor" href="#supporting-pull-requests"></a>Supporting Pull Requests</h3>
+<div class="paragraph">
+<p>With the "GitHub" or "Bitbucket" Branch Sources, Multibranch Pipelines can be
+used for validating pull/change requests. This functionality is provided,
+respectively, by the
+<a href="https://plugins.jenkins.io/github-branch-source">GitHub Branch Source</a>
+and
+<a href="https://plugins.jenkins.io/cloudbees-bitbucket-branch-source">Bitbucket Branch Source</a>
+plugins. Please consult their documentation for further information on how to
+use those plugins.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="organization-folders"><a class="anchor" href="#organization-folders"></a>Using Organization Folders</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Organization Folders enable Jenkins to monitor an entire GitHub
+Organization, or Bitbucket Team/Project and automatically create new
+Multibranch Pipelines for repositories which contain branches and pull requests
+containing a <code>Jenkinsfile</code>.</p>
+</div>
+<div class="paragraph">
+<p>Currently, this functionality exists only for GitHub and Bitbucket, with
+functionality provided by the
+<a href="https://plugins.jenkins.io/github-organization-folder">GitHub Organization Folder</a>
+and
+<a href="https://plugins.jenkins.io/cloudbees-bitbucket-branch-source">Bitbucket Branch Source</a>
+plugins.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//doc/book/pipeline/multibranch.adoc" title="Edit /doc/book/pipeline/multibranch.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//doc/book/pipeline/multibranch.adoc" title="View /doc/book/pipeline/multibranch.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

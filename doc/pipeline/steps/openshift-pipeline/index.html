@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+openshift-pipeline
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  .row {
+    margin-right: 5em;
+    margin-left: 5em;
+  }
+  .toc {
+      float: right;
+  }
+</style>
+<div class="container">
+<div class="row body">
+<h1>
+openshift-pipeline
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#openshift-pipeline">openshift-pipeline</a>
+<ul class="sectlevel2">
+<li><a href="#code-openshiftbuild-code-trigger-openshift-build"><code>openshiftBuild</code>: Trigger OpenShift Build</a></li>
+<li><a href="#code-openshiftcreateresource-code-create-openshift-resource-s"><code>openshiftCreateResource</code>: Create OpenShift Resource(s)</a></li>
+<li><a href="#code-openshiftdeleteresourcebyjsonyaml-code-delete-openshift-resource-s-from-json-yaml"><code>openshiftDeleteResourceByJsonYaml</code>: Delete OpenShift Resource(s) from JSON/YAML</a></li>
+<li><a href="#code-openshiftdeleteresourcebykey-code-delete-openshift-resource-s-by-key"><code>openshiftDeleteResourceByKey</code>: Delete OpenShift Resource(s) by Key</a></li>
+<li><a href="#code-openshiftdeleteresourcebylabels-code-delete-openshift-resource-s-using-labels"><code>openshiftDeleteResourceByLabels</code>: Delete OpenShift Resource(s) using Labels</a></li>
+<li><a href="#code-openshiftdeploy-code-trigger-openshift-deployment"><code>openshiftDeploy</code>: Trigger OpenShift Deployment</a></li>
+<li><a href="#code-openshiftexec-code-openshift-exec"><code>openshiftExec</code>: OpenShift Exec</a></li>
+<li><a href="#code-openshiftimagestream-code-openshift-imagestreams"><code>openshiftImageStream</code>: OpenShift ImageStreams</a></li>
+<li><a href="#code-openshiftscale-code-scale-openshift-deployment"><code>openshiftScale</code>: Scale OpenShift Deployment</a></li>
+<li><a href="#code-openshifttag-code-tag-openshift-image"><code>openshiftTag</code>: Tag OpenShift Image</a></li>
+<li><a href="#code-openshiftverifybuild-code-verify-openshift-build"><code>openshiftVerifyBuild</code>: Verify OpenShift Build</a></li>
+<li><a href="#code-openshiftverifydeployment-code-verify-openshift-deployment"><code>openshiftVerifyDeployment</code>: Verify OpenShift Deployment</a></li>
+<li><a href="#code-openshiftverifyservice-code-verify-openshift-service"><code>openshiftVerifyService</code>: Verify OpenShift Service</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="openshift-pipeline"><a class="anchor" href="#openshift-pipeline"></a>openshift-pipeline</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="code-openshiftbuild-code-trigger-openshift-build"><a class="anchor" href="#code-openshiftbuild-code-trigger-openshift-build"></a><code>openshiftBuild</code>: Trigger OpenShift Build</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>bldCfg</code></dt>
+<dd>
+<div class="paragraph">
+<p>If you run <code>oc get bc</code> for the project
+  listed in "nameSpace", that is the value you want to put here.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>apiURL</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>authToken</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>buildName</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>The value here is what
+  you supply with the --from-build option when invoking the OpenShift <code>oc start-build</code> command.
+  It allows you to point to OpenShift build to a previously run build, and run another build
+  with exactly the same source and destination metadata.  If you do
+  not supply a value, the plugin will generate a new OpenShift build based on the Build Configuration
+  referenced.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>checkForTriggeredDeployments</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>This flag is the toggle for turning on or off the verification that any deployments triggered by this build&#8217;s output fired.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>commitID</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>The value here is what
+  you supply with the --commit option when invoking the OpenShift <code>oc start-build</code> command.
+  It allows you to point the OpenShift build to a specific commit hash from the git-log of the
+  source repository.  If you do
+  not supply a value, the plugin assumes the latest version from the source repository should
+  be used.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>env</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>Specify a list of environment variables to include in the build (see <code>oc start-build -e ...</code>).
+<strong>Array/List</strong></p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Nested Object</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>name</code></dt>
+<dd>
+<div class="paragraph">
+<p>The name of the environment variable to set.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>value</code></dt>
+<dd>
+<div class="paragraph">
+<p>The value for the environment variable.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>namespace</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>showBuildLogs</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>Indicates whether the build logs get dumped to the console of the Jenkins build.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>verbose</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>waitTime</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>waitUnit</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-openshiftcreateresource-code-create-openshift-resource-s"><a class="anchor" href="#code-openshiftcreateresource-code-create-openshift-resource-s"></a><code>openshiftCreateResource</code>: Create OpenShift Resource(s)</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>jsonyaml</code></dt>
+<dd>
+<div class="paragraph">
+<p>The JSON or YAML formatted text that conforms to the schema for defining the various OpenShift resources.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>apiURL</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>authToken</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>namespace</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>verbose</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-openshiftdeleteresourcebyjsonyaml-code-delete-openshift-resource-s-from-json-yaml"><a class="anchor" href="#code-openshiftdeleteresourcebyjsonyaml-code-delete-openshift-resource-s-from-json-yaml"></a><code>openshiftDeleteResourceByJsonYaml</code>: Delete OpenShift Resource(s) from JSON/YAML</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>jsonyaml</code></dt>
+<dd>
+<div class="paragraph">
+<p>The JSON or YAML formatted text that conforms to the schema for defining the various OpenShift resources.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>apiURL</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>authToken</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>namespace</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>verbose</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-openshiftdeleteresourcebykey-code-delete-openshift-resource-s-by-key"><a class="anchor" href="#code-openshiftdeleteresourcebykey-code-delete-openshift-resource-s-by-key"></a><code>openshiftDeleteResourceByKey</code>: Delete OpenShift Resource(s) by Key</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>types</code></dt>
+<dd>
+<div class="paragraph">
+<p>The comma separated list of types of API objects to delete.  See <a href="https://docs.openshift.org/latest/rest_api/index.html" class="bare">https://docs.openshift.org/latest/rest_api/index.html</a> for the supported types.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>keys</code></dt>
+<dd>
+<div class="paragraph">
+<p>The comma separated list of keys of the API objects to delete.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>apiURL</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>authToken</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>namespace</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>verbose</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-openshiftdeleteresourcebylabels-code-delete-openshift-resource-s-using-labels"><a class="anchor" href="#code-openshiftdeleteresourcebylabels-code-delete-openshift-resource-s-using-labels"></a><code>openshiftDeleteResourceByLabels</code>: Delete OpenShift Resource(s) using Labels</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>types</code></dt>
+<dd>
+<div class="paragraph">
+<p>The comma separated list of types of API objects to delete, where those objects have labels corresponding to the specified key/value pairs.  See <a href="https://docs.openshift.org/latest/rest_api/index.html" class="bare">https://docs.openshift.org/latest/rest_api/index.html</a> for the supported types.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>keys</code></dt>
+<dd>
+<div class="paragraph">
+<p>The comma separated list of keys of the labels in the API objects to delete.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>values</code></dt>
+<dd>
+<div class="paragraph">
+<p>The comma separated list of values of the labels in the API objects to delete.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>apiURL</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>authToken</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>namespace</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>verbose</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-openshiftdeploy-code-trigger-openshift-deployment"><a class="anchor" href="#code-openshiftdeploy-code-trigger-openshift-deployment"></a><code>openshiftDeploy</code>: Trigger OpenShift Deployment</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>depCfg</code></dt>
+<dd>
+<div class="paragraph">
+<p>If you run <code>oc get dc</code> for the project
+  listed in "nameSpace", that is the value you want to put here.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>apiURL</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>authToken</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>namespace</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>verbose</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>waitTime</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>waitUnit</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-openshiftexec-code-openshift-exec"><a class="anchor" href="#code-openshiftexec-code-openshift-exec"></a><code>openshiftExec</code>: OpenShift Exec</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>pod</code></dt>
+<dd>
+<div class="paragraph">
+<p>The pod in which to execute a command.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>apiURL</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>arguments</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>Specify a list of arguments to pass to the command.
+<strong>Array/List</strong></p>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Nested Object</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>value</code></dt>
+<dd>
+<div class="paragraph">
+<p>The value for the environment variable.
+<strong>Type:</strong> String</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>authToken</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>command</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>The name of the command to execute.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>container</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>The container in which to execute a command. If not specified, the first container in the pod will be used.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>namespace</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>verbose</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>waitTime</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>waitUnit</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-openshiftimagestream-code-openshift-imagestreams"><a class="anchor" href="#code-openshiftimagestream-code-openshift-imagestreams"></a><code>openshiftImageStream</code>: OpenShift ImageStreams</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>name</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>The name of the ImageStream is what shows up in the NAME column if
+  you dump all the ImageStream&#8217;s with the <code>oc get is</code> command invocation.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>tag</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>The specific image tag within the ImageStream to monitor.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>namespace</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>apiURL</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>authToken</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>changelog</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>poll</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> boolean</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>verbose</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-openshiftscale-code-scale-openshift-deployment"><a class="anchor" href="#code-openshiftscale-code-scale-openshift-deployment"></a><code>openshiftScale</code>: Scale OpenShift Deployment</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>depCfg</code></dt>
+<dd>
+<div class="paragraph">
+<p>If you run <code>oc get dc</code> for the project
+  listed in "nameSpace", that is the value you want to put here.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>replicaCount</code></dt>
+<dd>
+<div class="paragraph">
+<p>The value here should be the number of started pods desired for the deployment specified. It is the
+  equivalent of the value supplied to --replicas with an <code>oc scale</code> command invocation. This is a required parameter.
+  If an integer is not specified here, this build step can not be added to the job.
+  Note: specifying a 0 is allowed, and means you do not want any pods for the specified deployment config running.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>apiURL</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>authToken</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>namespace</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>verbose</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>verifyReplicaCount</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>This flag is the toggle for turning on or off the verification that the specified replica count for the deployment has been reached.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>waitTime</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>waitUnit</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-openshifttag-code-tag-openshift-image"><a class="anchor" href="#code-openshifttag-code-tag-openshift-image"></a><code>openshiftTag</code>: Tag OpenShift Image</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>srcStream</code></dt>
+<dd>
+<div class="paragraph">
+<p>The name of the ImageStream for the existing tag.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>srcTag</code></dt>
+<dd>
+<div class="paragraph">
+<p>The name of the existing tag, or an actual, existing image ID.  The image referenced will have the new tag applied to it.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>destStream</code></dt>
+<dd>
+<div class="paragraph">
+<p>One or more ImageStream names in a comma delimited list. If multiple
+  streams and multiple destination tags are specified, the two lists
+  must contain the same number of elements.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>destTag</code></dt>
+<dd>
+<div class="paragraph">
+<p>One or more tag names in a comma delimited list. If multiple
+  streams and multiple destination tags are specified, the two lists
+  must contain the same number of elements.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>alias</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>This flag is the equivalent of the <code>--alias</code> option for the <code>oc tag</code> command.  When false, the destination tag type is "ImageStreamImage", and when true, the destination tag type is "ImageStreamTag".
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>apiURL</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>authToken</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>destinationAuthToken</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>The value here is what
+  you supply with the --token option when invoking the OpenShift <code>oc</code> command.  If you do
+  not supply a value, the plugin will assume it is running in the OpenShift Jenkins
+  image and attempt to load the kubernetes service account token stored in that image.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>destinationNamespace</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>The value here should match the value from the output from <code>oc project</code> if you created the resources related to this task from the command line.
+  If nothing is specified, the plugin will inspect the PROJECT_NAME environment variable.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>namespace</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>verbose</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-openshiftverifybuild-code-verify-openshift-build"><a class="anchor" href="#code-openshiftverifybuild-code-verify-openshift-build"></a><code>openshiftVerifyBuild</code>: Verify OpenShift Build</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>bldCfg</code></dt>
+<dd>
+<div class="paragraph">
+<p>If you run <code>oc get bc</code> for the project
+  listed in "nameSpace", that is the value you want to put here.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>apiURL</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>authToken</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>checkForTriggeredDeployments</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>This flag is the toggle for turning on or off the verification that any deployments triggered by this build&#8217;s output fired.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>namespace</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>verbose</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>waitTime</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>waitUnit</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-openshiftverifydeployment-code-verify-openshift-deployment"><a class="anchor" href="#code-openshiftverifydeployment-code-verify-openshift-deployment"></a><code>openshiftVerifyDeployment</code>: Verify OpenShift Deployment</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>depCfg</code></dt>
+<dd>
+<div class="paragraph">
+<p>If you run <code>oc get dc</code> for the project
+  listed in "nameSpace", that is the value you want to put here.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>apiURL</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>authToken</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>namespace</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>replicaCount</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>This optional field&#8217;s value represents the number expected running pods for the deployment for the DeploymentConfig specified.
+  If no value is specified it will work the number of running pods against the desired replica count in the DeploymentConfig.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>verbose</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>verifyReplicaCount</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p>This flag is the toggle for turning on or off the verification that the specified replica count for the deployment has been reached.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>waitTime</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>waitUnit</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-openshiftverifyservice-code-verify-openshift-service"><a class="anchor" href="#code-openshiftverifyservice-code-verify-openshift-service"></a><code>openshiftVerifyService</code>: Verify OpenShift Service</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>svcName</code></dt>
+<dd>
+<div class="paragraph">
+<p>The equivalent to the name supplied to a <code>oc get service</code> command line invocation.
+<strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>apiURL</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>authToken</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>namespace</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>retryCount</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+<dt class="hdlist1"><code>verbose</code> (optional)</dt>
+<dd>
+<div class="paragraph">
+<p><strong>Type:</strong> String</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//doc/pipeline/steps/openshift-pipeline.adoc" title="Edit /doc/pipeline/steps/openshift-pipeline.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//doc/pipeline/steps/openshift-pipeline.adoc" title="View /doc/pipeline/steps/openshift-pipeline.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

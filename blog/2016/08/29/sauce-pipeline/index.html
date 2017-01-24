@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Browser-testing with Sauce OnDemand and Pipeline
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container blog-post no-margin">
+<div class="row body">
+<div class="col-md-11 col-md-offset-1 main-content" id="content">
+<div id="content-top">
+<h1>
+<a href="/blog/2016/08/29/sauce-pipeline/" title="Browser-testing with Sauce OnDemand and Pipeline">
+Browser-testing with Sauce OnDemand and Pipeline
+</a>
+</h1>
+<!-- starting partial tweetbutton.html.haml -->
+<div style="float: right; clear: all;">
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/share">
+Tweet
+</a>
+</div>
+
+<!-- ending partial tweetbutton.html.haml -->
+<span class="submitted">
+Published on
+2016-08-29
+by
+<a href="https://github.com/bitwiseman">Liam Newman</a>
+</span>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This is a guest post by <a href="https://github.com/bitwiseman">Liam Newman</a>,
+Technical Evangelist at <a href="https://cloudbees.com">CloudBees</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Testing web applications across multiple browsers on different platforms can be challenging even for smaller applications.
+With Jenkins and the
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Sauce+OnDemand+Plugin">Sauce OnDemand Plugin</a>,
+you can wrangle that complexity by defining your Pipeline as Code.</p>
+</div>
+<div class="sect2">
+<h3 id="pipeline-ui-testing-too"><a class="anchor" href="#pipeline-ui-testing-too"></a>Pipeline &#9829; UI Testing, Too</h3>
+<div class="paragraph">
+<p>I recently started looking for a way to do browser UI testing for an open-source JavaScript project to which I contribute.
+The project is targeted primarily at
+<a href="https://nodejs.org">Node.js</a>
+but we&#8217;re committed to maintaining browser-client compatibility as well.
+That means we should run tests on a matrix of browsers.
+<a href="https://saucelabs.com/">Sauce Labs</a>
+has an "open-sauce" program that provides free test instances to open-source projects.
+I decided to try using the
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Sauce+OnDemand+Plugin">Sauce OnDemand Plugin</a>
+and
+<a href="http://nightwatchjs.org/">Nightwatch.js</a>
+to run Selenium tests on a sample project first, before trying a full-blown suite of tests.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="starting-from-framework"><a class="anchor" href="#starting-from-framework"></a>Starting from Framework</h3>
+<div class="paragraph">
+<p>I started off by following Sauce Labs' instructions on
+"<a href="https://wiki.saucelabs.com/display/DOCS/Setting+Up+Sauce+Labs+with+Jenkins">Setting up Sauce Labs with Jenkins</a>"
+as far as I could.
+I installed the
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/JUnit+Plugin">JUnit</a> and
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Sauce+OnDemand+Plugin">Sauce OnDemand</a>
+plugins, created an account with Sauce Labs, and
+<a href="https://wiki.saucelabs.com/display/DOCS/Installing+and+Configuring+the+Sauce+OnDemand+Plugin+for+Jenkins">added my Sauce Labs credentials to Jenkins</a>.
+From there I started to get a little lost.
+I&#8217;m new to Selenium and I had trouble understanding how to translate the instructions to my situation.
+I needed a working example that I could play with.</p>
+</div>
+<div class="paragraph">
+<p>Happily, there&#8217;s a whole range of sample projects in
+"<a href="https://github.com/saucelabs-sample-test-frameworks">saucelabs-sample-test-frameworks</a>"
+on GitHub, which show how to integrate Sauce Labs with various test frameworks, including Nightwatch.js.
+I forked the Nightwatch.js sample to
+<a href="https://github.com/bitwiseman/JS-Nightwatch.js">bitwiseman/JS-Nightwatch.js</a>
+and set to writing my <code>Jenkinsfile</code>.
+Between the sample and the Sauce Labs instructions,
+I was able to write a pipeline that ran five tests on one browser via
+<a href="https://wiki.saucelabs.com/display/DOCS/Sauce+Connect+Proxy">Sauce Connect</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">node {
+    stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Build</span><span style="color:#710">&quot;</span></span>
+    checkout scm
+
+    sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">npm install</span><span style="color:#710">'</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+
+    stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Test</span><span style="color:#710">&quot;</span></span>
+    sauce(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">f0a6b8ad-ce30-4cba-bf9a-95afbc470a8a</span><span style="color:#710">'</span></span>) { <i class="conum" data-value="2"></i><b>(2)</b>
+        sauceconnect(<span style="color:#606">options</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>, <span style="color:#606">useGeneratedTunnelIdentifier</span>: <span style="color:#069">false</span>, <span style="color:#606">verboseLogging</span>: <span style="color:#069">false</span>) { <i class="conum" data-value="3"></i><b>(3)</b>
+            sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./node_modules/.bin/nightwatch -e chrome --test tests/guineaPig.js || true</span><span style="color:#710">'</span></span> <i class="conum" data-value="4"></i><b>(4)</b>
+            junit <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">reports/**</span><span style="color:#710">'</span></span> <i class="conum" data-value="5"></i><b>(5)</b>
+            step([<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">SauceOnDemandTestPublisher</span><span style="color:#710">'</span></span>]) <i class="conum" data-value="6"></i><b>(6)</b>
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Install dependencies</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Use my
+<a href="https://wiki.saucelabs.com/display/DOCS/Installing+and+Configuring+the+Sauce+OnDemand+Plugin+for+Jenkins">previously added sauce credentials</a></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Start up the
+<a href="https://wiki.saucelabs.com/display/DOCS/Sauce+Connect+Proxy">Sauce Connect</a>
+tunnel to Sauce Labs</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Run Nightwatch.js</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Use JUnit to track results and show a trend graph</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Link result details from Sauce Labs</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This pipeline expects to be run from a <code>Jenkinsfile</code> in SCM.
+To copy and paste it directly into a Jenkins Pipeline job, replace the <code>checkout scm</code> step with
+<code>git url:'https://github.com/bitwiseman/JS-Nightwatch.js', branch: 'sauce-pipeline'</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>I ran this job a few times to get the JUnit report to show a trend graph.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/2016-08-29/pipeline-report.png" alt="Pipeline Report for "sauce-pipeline" Branch">
+</div>
+</div>
+<div class="paragraph">
+<p>This sample app generates the <code>SauceOnDemandSessionID</code> for each test, enabling the Jenkins Sauce OnDemand Plugin&#8217;s result publisher to link results to details Sauce Labs captured during the run.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/2016-08-29/pipeline-results.png" alt="Sauce Test Results">
+</div>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/2016-08-29/sauce-details.png" alt="Sauce Test Result Details">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-platforms"><a class="anchor" href="#adding-platforms"></a>Adding Platforms</h3>
+<div class="paragraph">
+<p>Next I wanted to add a few more platforms to my matrix.
+This would require changing both the test framework configuration and the pipeline.
+I&#8217;d need to add new named combinations of platform, browser, and browser version (called "environments") to the Nightwatch.js configuration file,
+and modify the pipeline to run tests in those new environments.</p>
+</div>
+<div class="paragraph">
+<p>This is a perfect example of the power of pipeline as code.
+If I were working with a separately configured pipeline,
+I&#8217;d have to make the change to the test framework, then change the pipeline manually.
+With my pipeline checked in as code,
+I could change both in one commit,
+preventing errors resulting from pipeline configurations going out of sync from the rest of the project.</p>
+</div>
+<div class="paragraph">
+<p>I added three new environments to <code>nightwatch.json</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="js"><span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">test_settings</span><span style="color:#710">&quot;</span></span> : {
+  <span style="color:#606"><span style="color:#404">&quot;</span><span>default</span><span style="color:#404">&quot;</span></span>: { <span style="color:#777">/*----8&lt;----8&lt;----8&lt;----*/</span> },
+  <span style="color:#606"><span style="color:#404">&quot;</span><span>chrome</span><span style="color:#404">&quot;</span></span>: { <span style="color:#777">/*----8&lt;----8&lt;----8&lt;----*/</span> },
+
+  <span style="color:#606"><span style="color:#404">&quot;</span><span>firefox</span><span style="color:#404">&quot;</span></span>: {
+    <span style="color:#606"><span style="color:#404">&quot;</span><span>desiredCapabilities</span><span style="color:#404">&quot;</span></span>: {
+      <span style="color:#606"><span style="color:#404">&quot;</span><span>platform</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">linux</span><span style="color:#710">&quot;</span></span>,
+      <span style="color:#606"><span style="color:#404">&quot;</span><span>browserName</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">firefox</span><span style="color:#710">&quot;</span></span>,
+      <span style="color:#606"><span style="color:#404">&quot;</span><span>version</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">latest</span><span style="color:#710">&quot;</span></span>
+    }
+  },
+  <span style="color:#606"><span style="color:#404">&quot;</span><span>ie</span><span style="color:#404">&quot;</span></span>: {
+    <span style="color:#606"><span style="color:#404">&quot;</span><span>desiredCapabilities</span><span style="color:#404">&quot;</span></span>: {
+      <span style="color:#606"><span style="color:#404">&quot;</span><span>platform</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Windows 10</span><span style="color:#710">&quot;</span></span>,
+      <span style="color:#606"><span style="color:#404">&quot;</span><span>browserName</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">internet explorer</span><span style="color:#710">&quot;</span></span>,
+      <span style="color:#606"><span style="color:#404">&quot;</span><span>version</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">latest</span><span style="color:#710">&quot;</span></span>
+    }
+  },
+  <span style="color:#606"><span style="color:#404">&quot;</span><span>edge</span><span style="color:#404">&quot;</span></span>: {
+    <span style="color:#606"><span style="color:#404">&quot;</span><span>desiredCapabilities</span><span style="color:#404">&quot;</span></span>: {
+      <span style="color:#606"><span style="color:#404">&quot;</span><span>platform</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Windows 10</span><span style="color:#710">&quot;</span></span>,
+      <span style="color:#606"><span style="color:#404">&quot;</span><span>browserName</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">MicrosoftEdge</span><span style="color:#710">&quot;</span></span>,
+      <span style="color:#606"><span style="color:#404">&quot;</span><span>version</span><span style="color:#404">&quot;</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">latest</span><span style="color:#710">&quot;</span></span>
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And I modified my <code>Jenkinsfile</code> to call them:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">//----8&lt;----8&lt;----8&lt;----8&lt;----8&lt;----8&lt;----</span>
+sauceconnect(<span style="color:#606">options</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>, <span style="color:#606">useGeneratedTunnelIdentifier</span>: <span style="color:#069">false</span>, <span style="color:#606">verboseLogging</span>: <span style="color:#069">false</span>) {
+    <span style="color:#080;font-weight:bold">def</span> configs = [ <i class="conum" data-value="1"></i><b>(1)</b>
+        <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">chrome</span><span style="color:#710">'</span></span>,
+        <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">firefox</span><span style="color:#710">'</span></span>,
+        <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ie</span><span style="color:#710">'</span></span>,
+        <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">edge</span><span style="color:#710">'</span></span>
+    ].join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">,</span><span style="color:#710">'</span></span>)
+    <span style="color:#777">// Run selenium tests using Nightwatch.js</span>
+    sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">./node_modules/.bin/nightwatch -e </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>configs<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> --test tests/guineaPig.js</span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+} <span style="color:#777">//----8&lt;----8&lt;----8&lt;----8&lt;----8&lt;----8&lt;----</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Using an array to improve readability and make it easy to add more platforms later.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Changed from single-quoted string to double-quoted to support variable substitution.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Test frameworks have bugs too. Nightwatch.js (v0.9.8) generates incomplete JUnit files,
+reporting results without enough information in them to distinguish between platforms.
+I implemented a fix for it and
+<a href="https://github.com/nightwatchjs/nightwatch/pull/1160">submitted a PR</a> to Nightwatch.js.
+This blog shows output with that fix applied locally.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>As expected, Jenkins picked up the new pipeline and ran Nightwatch.js on four platforms.
+Sauce Labs of course recorded the results and correctly linked them into this build.
+Nightwatch.js was already configured to use multiple worker threads to run tests against those platforms in parallel, and
+my Sauce Labs account supported running them all at the same time,
+letting me cover four configurations in less that twice the time,
+and that added time was most due to individual new environments taking longer to complete.
+When I move to the actual project, this will let me run broad acceptance passes quickly.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/2016-08-29/platforms-results.png" alt="Sauce Labs Results List">
+</div>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/2016-08-29/platforms-report.png" alt="JUnit Report Showing Added Platforms">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="conclusion-to-awesome-and-beyond"><a class="anchor" href="#conclusion-to-awesome-and-beyond"></a>Conclusion: To Awesome and Beyond</h3>
+<div class="paragraph">
+<p>Considering the complexity of the system, I was impressed with how easy it was to integrate Jenkins with Sauce OnDemand to start testing on multiple browsers.
+The plugin worked flawlessly with Jenkins Pipeline.
+I went ahead and ran some additional tests to show that failure reporting also behaved as expected.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">//----8&lt;----8&lt;----8&lt;----8&lt;----8&lt;----8&lt;----</span>
+    sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">./node_modules/.bin/nightwatch -e </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>configs<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+<span style="color:#777">//----8&lt;----8&lt;----8&lt;----8&lt;----8&lt;----8&lt;----</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Removed <code>--test</code> filter to run all tests</td>
+</tr>
+</table>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/2016-08-29/tests-report.png" alt="Tests" width="Platorms" height="Results">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="epilogue-pipeline-vs-freestyle"><a class="anchor" href="#epilogue-pipeline-vs-freestyle"></a>Epilogue: Pipeline vs. Freestyle</h3>
+<div class="paragraph">
+<p>Just for comparison here&#8217;s the final state of this job in Freestyle UI versus fully-commented pipeline code:</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This includes the
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/AnsiColor+Plugin">AnsiColor Plugin</a>
+to support Nightwatch.js' default ANSI color output.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="freestyle"><a class="anchor" href="#freestyle"></a>Freestyle</h4>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/2016-08-29/freestyle-1.png" alt="Freestyle Job Configuration - SCM">
+</div>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/2016-08-29/freestyle-2.png" alt="Freestyle Job Configuration - Wrappers and Sauce">
+</div>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/2016-08-29/freestyle-3.png" alt="Freestyle Job Configuration - Build and Publish">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="pipeline"><a class="anchor" href="#pipeline"></a>Pipeline</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">node {
+    stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Build</span><span style="color:#710">&quot;</span></span>
+    checkout scm
+
+    <span style="color:#777">// Install dependencies</span>
+    sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">npm install</span><span style="color:#710">'</span></span>
+
+    stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Test</span><span style="color:#710">&quot;</span></span>
+
+    <span style="color:#777">// Add sauce credentials</span>
+    sauce(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">f0a6b8ad-ce30-4cba-bf9a-95afbc470a8a</span><span style="color:#710">'</span></span>) {
+        <span style="color:#777">// Start sauce connect</span>
+        sauceconnect(<span style="color:#606">options</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>, <span style="color:#606">useGeneratedTunnelIdentifier</span>: <span style="color:#069">false</span>, <span style="color:#606">verboseLogging</span>: <span style="color:#069">false</span>) {
+
+            <span style="color:#777">// List of browser configs we'll be testing against.</span>
+            <span style="color:#080;font-weight:bold">def</span> platform_configs = [
+                <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">chrome</span><span style="color:#710">'</span></span>,
+                <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">firefox</span><span style="color:#710">'</span></span>,
+                <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ie</span><span style="color:#710">'</span></span>,
+                <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">edge</span><span style="color:#710">'</span></span>
+            ].join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">,</span><span style="color:#710">'</span></span>)
+
+            <span style="color:#777">// Nightwatch.js supports color ouput, so wrap this step for ansi color</span>
+            wrap([<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">AnsiColorBuildWrapper</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">colorMapName</span><span style="color:#710">'</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">XTerm</span><span style="color:#710">'</span></span>]) {
+
+                <span style="color:#777">// Run selenium tests using Nightwatch.js</span>
+                <span style="color:#777">// Ignore error codes. The junit publisher will cover setting build status.</span>
+                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">./node_modules/.bin/nightwatch -e </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>platform_configs<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> || true</span><span style="color:#710">&quot;</span></span>
+            }
+
+            junit <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">reports/**</span><span style="color:#710">'</span></span>
+
+            step([<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">SauceOnDemandTestPublisher</span><span style="color:#710">'</span></span>])
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This pipeline expects to be run from a <code>Jenkinsfile</code> in SCM.
+To copy and paste it directly into a Jenkins Pipeline job, replace the <code>checkout scm</code> step with
+<code>git url:'https://github.com/bitwiseman/JS-Nightwatch.js', branch: 'sauce-pipeline'</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Not only is the pipeline as code more compact,
+it also allows for comments to further clarify what is being done.
+And as I noted earlier,
+changes to this pipeline code are committed the same as changes to the rest of the project,
+keeping everything synchronized, reviewable, and testable at any commit.
+In fact, you can view the full set of commits for this blog post in the
+<a href="https://github.com/bitwiseman/JS-Nightwatch.js/tree/blog/sauce-pipeline">blog/sauce-pipeline</a>
+branch of the
+<a href="https://github.com/bitwiseman/JS-Nightwatch.js">bitwiseman/JS-Nightwatch.js</a>
+repository.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="links"><a class="anchor" href="#links"></a>Links</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Sauce+OnDemand+Plugin">Sauce OnDemand Plugin</a></p>
+</li>
+<li>
+<p><a href="https://github.com/bitwiseman/JS-Nightwatch.js">bitwiseman/JS-Nightwatch.js</a></p>
+</li>
+<li>
+<p><a href="https://github.com/saucelabs-sample-test-frameworks">saucelabs-sample-test-frameworks</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//blog/2016/2016-08-29-sauce-pipeline.adoc" title="Edit /blog/2016/2016-08-29-sauce-pipeline.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//blog/2016/2016-08-29-sauce-pipeline.adoc" title="View /blog/2016/2016-08-29-sauce-pipeline.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

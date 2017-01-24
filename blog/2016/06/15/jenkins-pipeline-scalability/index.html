@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Jenkins Pipeline Scalability in the Enterprise
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container blog-post no-margin">
+<div class="row body">
+<div class="col-md-11 col-md-offset-1 main-content" id="content">
+<div id="content-top">
+<h1>
+<a href="/blog/2016/06/15/jenkins-pipeline-scalability/" title="Jenkins Pipeline Scalability in the Enterprise">
+Jenkins Pipeline Scalability in the Enterprise
+</a>
+</h1>
+<!-- starting partial tweetbutton.html.haml -->
+<div style="float: right; clear: all;">
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/share">
+Tweet
+</a>
+</div>
+
+<!-- ending partial tweetbutton.html.haml -->
+<span class="submitted">
+Published on
+2016-06-15
+by
+<a href="https://github.com/dcoraboeuf">Damien Coraboeuf</a>
+</span>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This is a guest post by <a href="https://github.com/dcoraboeuf">Damien
+Coraboeuf</a>, Jenkins project contributor and <a href="http://nemerosa.com/">Continuous Delivery consultant</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Implementing a CI/CD solution based on Jenkins has become very easy. Dealing
+with hundreds of jobs? Not so much. Having to scale to thousands of jobs?
+Now this is a real challenge.</p>
+</div>
+<div class="paragraph">
+<p>This is the story of a journey to get out of the jungle of jobs&#8230;&#8203;</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/jenkins-pipeline-scalability/journey.png" alt="Journey out of the jungle of jobs">
+</div>
+</div>
+<div class="sect3">
+<h4 id="start-of-the-journey"><a class="anchor" href="#start-of-the-journey"></a>Start of the journey</h4>
+<div class="paragraph">
+<p>At the beginning of the journey there were several projects using roughly the same
+technologies. Those projects had several
+branches, for maintenance of releases, for new features.</p>
+</div>
+<div class="paragraph">
+<p>In turn, each of those branches had to be carefully built, deployed on different
+platforms and versions, promoted so they could be tested for functionalities,
+performances and security, and then promoted again for actual delivery.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, we had to offer the test teams the means to deploy any version of
+their choice on any supported platform in order to carry out some manual tests.</p>
+</div>
+<div class="paragraph">
+<p>This represented, for each branch, around 20 jobs. Multiply this by the number of
+branches and projects, and there you are: more than two years after the start
+of the story, we had more than 3500 jobs.</p>
+</div>
+<div class="paragraph">
+<p>3500 jobs. Half a dozen people to manage them all&#8230;&#8203;</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/jenkins-pipeline-scalability/thousands.png" alt="Thousands of jobs for a small team">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="preparing-the-journey"><a class="anchor" href="#preparing-the-journey"></a>Preparing the journey</h4>
+<div class="paragraph">
+<p>How did we deal with this load?</p>
+</div>
+<div class="paragraph">
+<p>We were lucky enough to have several assets:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>time - we had time to design a solution before the scaling went really out of
+control</p>
+</li>
+<li>
+<p>forecast - we <em>knew</em> that the scaling would occur and we were not taken by
+surprise</p>
+</li>
+<li>
+<p>tooling - the <a href="https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin">Jenkins Job DSL</a>
+was available, efficient and well documented</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We also knew that, in order to scale, we&#8217;d have to provide a solution with the
+following characteristics:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>self-service - we could not have a team of 6 people become a bottleneck for
+enabling CI/CD in projects</p>
+</li>
+<li>
+<p>security - the solution had to be secure enough in order for it to be used by
+remote developers we never met and didn&#8217;t know</p>
+</li>
+<li>
+<p>simplicity - enabling CI/CD had to be simple so that people having
+never heard of it could still use it</p>
+</li>
+<li>
+<p>extensibility - no solution is a one-size-fits-all and must be flexible
+enough to allow for corner cases</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+All the mechanisms described in this article are available through the
+<a href="https://github.com/jenkinsci/seed-plugin">Jenkins Seed plugin</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Creating pipelines using the Job DSL and embedding the scripts in the code was
+simple enough. But what about branching? We needed a mechanism to allow the
+creation of pipelines per branch, by downloading the associated DSL and to
+run it in a dedicated folder.</p>
+</div>
+<div class="paragraph">
+<p>But then, all those projects, all those branches, they were mostly using the
+same pipelines, give or take a few configurable items. Going this way would
+have lead to a terrible duplication of code, transforming a job maintenance
+nightmare into a code maintenance nightmare.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="pipeline-as-configuration"><a class="anchor" href="#pipeline-as-configuration"></a>Pipeline as configuration</h4>
+<div class="paragraph">
+<p>Our trick was to transform this vision of "pipeline as code" into a "pipeline
+as configuration":</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>by maintaining well documented and tested "pipeline libraries"</p>
+</li>
+<li>
+<p>by asking projects to describe their pipeline not as code, but as property
+files which would:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>define the name and version of the DSL pipeline library to use</p>
+</li>
+<li>
+<p>use the rest of the property file to configure the pipeline library, using
+as many sensible default values as possible</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/jenkins-pipeline-scalability/properties.png" alt="Property file">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="piloting-the-pipeline-from-the-scm"><a class="anchor" href="#piloting-the-pipeline-from-the-scm"></a>Piloting the pipeline from the SCM</h4>
+<div class="paragraph">
+<p>Once this was done, the only remaining trick was to automate the creation,
+update, start and deletion of the pipelines using SCM events. By enabling SCM
+hooks (in GitHub, BitBucket or even in Subversion), we could:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>automatically create a pipeline for a new branch</p>
+</li>
+<li>
+<p>regenerate a pipeline when the branch&#8217;s pipeline description was modified</p>
+</li>
+<li>
+<p>start the pipeline on any other commit on the branch</p>
+</li>
+<li>
+<p>remove the pipeline when the branch was deleted</p>
+</li>
+</ul>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/jenkins-pipeline-scalability/hooks.png" alt="Hooks">
+</div>
+</div>
+<div class="paragraph">
+<p>Once a project wants to go in our ecosystem, the Jenkins team "seeds" the
+project into Jenkins, by running a job and giving a few parameters.</p>
+</div>
+<div class="paragraph">
+<p>It will create a folder for the project and grant proper authorisations, using
+Active Directory group names based on the project name.</p>
+</div>
+<div class="paragraph">
+<p>The hook for the project must be registered into the SCM and you&#8217;re up and
+running.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/jenkins-pipeline-scalability/jobs.png" alt="Jobs">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="configuration-em-and-em-code"><a class="anchor" href="#configuration-em-and-em-code"></a>Configuration <em>and</em> code</h4>
+<div class="paragraph">
+<p>Mixing the use of strong pipeline libraries configured by properties and the
+direct use of the Jenkins Job DSL is still possible. The Seed plugin
+supports all kinds of combinations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>use of pipeline libraries only - this can even be enforced</p>
+</li>
+<li>
+<p>use a DSL script which can in turn use some classes and methods defined in
+a pipeline library</p>
+</li>
+<li>
+<p>use of a Job DSL script only</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Usually, we tried to have a maximum reuse, through only pipeline libraries, for
+most of our projects, but in other circumstances, we were less strict and
+allowed some teams to develop their own pipeline script.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/jenkins-pipeline-scalability/modes.png" alt="Mixed modes">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="end-of-the-journey"><a class="anchor" href="#end-of-the-journey"></a>End of the journey</h4>
+<div class="paragraph">
+<p>In the end, what did we achieve?</p>
+</div>
+<div class="paragraph">
+<p><strong>Self service</strong> ✔︎</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pipeline automation from SCM - no intervention from the Jenkins team but for
+the initial bootstrapping</p>
+</li>
+<li>
+<p>Getting a project on board of this system can be done in a few minutes only</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Security</strong> ✔︎</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Project level authorisations</p>
+</li>
+<li>
+<p>No code execution on the master</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Simplicity</strong> ✔︎</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Property files</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Extensibility</strong> ✔︎</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pipeline libraries</p>
+</li>
+<li>
+<p>Direct job DSL still possible</p>
+</li>
+</ul>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/jenkins-pipeline-scalability/responsibilities.png" alt="Responsibilities">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="seed-and-pipeline-plugin"><a class="anchor" href="#seed-and-pipeline-plugin"></a>Seed and Pipeline plugin</h4>
+<div class="paragraph">
+<p>Now, what about the <a href="/doc/pipeline/">Pipeline plugin</a>? Both
+this plugin and the Seed plugin have common functionalities:</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/jenkins-pipeline-scalability/seed-now.png" alt="Seed now">
+</div>
+</div>
+<div class="paragraph">
+<p>What we have found in our journey is that having a "pipeline as configuration"
+was the easiest and most secure way to get a lot of projects on board, with
+developers not knowing Jenkins and even less the DSL.</p>
+</div>
+<div class="paragraph">
+<p>The outcome of the two plugins is different:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>one pipeline job for the Pipeline plugin</p>
+</li>
+<li>
+<p>a list of orchestrated jobs for the Seed plugin</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If time allows, it would be probably a good idea to find a way to integrate the
+functionalities of the Seed plugin into the pipeline framework, and to keep
+what makes the strength of the Seed plugin:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>pipeline as configuration</p>
+</li>
+<li>
+<p>reuseable pipeline libraries, versioned and tested</p>
+</li>
+</ul>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/jenkins-pipeline-scalability/seed-pipeline.png" alt="Seed and Pipeline">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="links"><a class="anchor" href="#links"></a>Links</h4>
+<div class="paragraph">
+<p>You can find additional information about the Seed plugin and its usage at the
+following links:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/jenkinsci/seed-plugin">the Seed plugin itself</a></p>
+</li>
+<li>
+<p><a href="https://www.cloudbees.com/jenkins/juc-2015/abstracts/europe/02-03-1515-coraboeuf">JUC London, June 2015</a></p>
+</li>
+<li>
+<p><a href="http://www.slideshare.net/DamienCoraboeuf/brujug-jenkins-pipeline-scalability">BruJUG Brussels, March 2016</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//blog/2016/2016-06-15-jenkins-pipeline-scalability.adoc" title="Edit /blog/2016/2016-06-15-jenkins-pipeline-scalability.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//blog/2016/2016-06-15-jenkins-pipeline-scalability.adoc" title="View /blog/2016/2016-06-15-jenkins-pipeline-scalability.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

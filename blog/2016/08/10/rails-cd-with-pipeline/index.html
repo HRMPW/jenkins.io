@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Continuous Security for Rails apps with Pipeline and Brakeman
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container blog-post no-margin">
+<div class="row body">
+<div class="col-md-11 col-md-offset-1 main-content" id="content">
+<div id="content-top">
+<h1>
+<a href="/blog/2016/08/10/rails-cd-with-pipeline/" title="Continuous Security for Rails apps with Pipeline and Brakeman">
+Continuous Security for Rails apps with Pipeline and Brakeman
+</a>
+</h1>
+<!-- starting partial tweetbutton.html.haml -->
+<div style="float: right; clear: all;">
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/share">
+Tweet
+</a>
+</div>
+
+<!-- ending partial tweetbutton.html.haml -->
+<span class="submitted">
+Published on
+2016-08-10
+by
+<a href="https://github.com/rtyler">R. Tyler Croy</a>
+</span>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This is a guest post by <a href="https;//github.com/rtyler">R. Tyler Croy</a>, who is a
+long-time contributor to Jenkins and the primary contact for Jenkins project
+infrastructure. He is also a Jenkins Evangelist at
+<a href="http://cloudbees.com">CloudBees, Inc.</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>When the <a href="http://rubyonrails.org">Ruby on Rails</a> framework debuted it
+changed the industry in two noteworthy ways: it created a trend of opinionated web
+application frameworks (<a href="https://www.djangoproject.com/">Django</a>,
+<a href="https://playframework.com/">Play</a>, <a href="https://grails.org/">Grails</a>) and it
+also <em>strongly</em> encouraged thousands of developers to embrace test-driven
+development along with many other modern best practices (source control, dependency
+management, etc). Because Ruby, the language underneath Rails, is interpreted
+instead of compiled there isn&#8217;t a "build" per se but rather tens, if not
+hundreds, of tests, linters and scans which are run to ensure the application&#8217;s
+quality. With the rise in popularity of Rails, the popularity of application
+hosting services with easy-to-use deployment tools like <a href="http://heroku.com">Heroku</a> or
+<a href="http://engineyard.com">Engine Yard</a> rose too.</p>
+</div>
+<div class="paragraph">
+<p>This combination of good <strong>test coverage</strong> and easily <strong>automated deployments</strong>
+makes Rails easy to continuously deliver with Jenkins. In this post we&#8217;ll cover
+testing non-trivial Rails applications with <a href="/doc/pipeline">Jenkins
+Pipeline</a> and, as an added bonus, we will add security scanning via
+<a href="http://brakemanscanner.org">Brakeman</a> and the
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Brakeman+Plugin">Brakeman
+plugin</a>.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/ruby-pipeline-2016/cfpapp-stage-view.png" alt="cfpapp stage view">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Topics</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#preparing-the-app">Preparing the app</a></p>
+</li>
+<li>
+<p><a href="#preparing-jenkins">Preparing Jenkins</a></p>
+</li>
+<li>
+<p><a href="#writing-the-pipeline">Writing the Pipeline</a></p>
+</li>
+<li>
+<p><a href="#security-scanning">Security scanning</a></p>
+</li>
+<li>
+<p><a href="#deploying-the-good-stuff">Deploying the good stuff</a></p>
+</li>
+<li>
+<p><a href="#wrap-up">Wrap up</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For this demonstration, I used <a href="http://rubycentral.org/">Ruby Central</a>'s
+<a href="https://github.com/rubycentral/cfp-app">cfp-app</a>:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>A Ruby on Rails application that lets you manage your conference&#8217;s call for
+proposal (CFP), program and schedule. It was written by Ruby Central to run the
+CFPs for RailsConf and RubyConf.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>I chose this Rails app, not only because it&#8217;s a sizable application with lots
+of tests, but it&#8217;s actually the application we used to collect talk proposals
+for the "<a href="https://www.cloudbees.com/juc/agenda">Community Tracks</a>" at this
+year&#8217;s <a href="http://jenkinsworld.com">Jenkins World</a>. For the most part,
+cfp-app is a standard Rails application. It uses
+<a href="https://www.postgresql.org/">PostgreSQL</a> for its database,
+<a href="http://rspec.info">RSpec</a> for its tests and
+<a href="http://ruby-lang.org">Ruby 2.3.x</a> as its runtime.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you prefer to just to look at the code, skip straight to the
+<a href="https://github.com/rtyler/cfp-app/blob/aff11d97b460ca4b630b1fa4f669c226aeadd8ae/Jenkinsfile">Jenkinsfile</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="preparing-the-app"><a class="anchor" href="#preparing-the-app"></a>Preparing the app</h3>
+<div class="paragraph">
+<p>For <em>most</em> Rails applications there are few, if any, changes needed to enable
+continuous delivery with Jenkins. In the case of
+<a href="https://github.com/rubycentral/cfp-app">cfp-app</a>, I added two gems to get
+the most optimal integration into Jenkins:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://github.com/ci-reporter/ci_reporter">ci_reporter</a>, for test report
+integration</p>
+</li>
+<li>
+<p><a href="https://github.com/presidentbeef/brakeman">brakeman</a>, for security scanning.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Adding these was simple, I just needed to update the <code>Gemfile</code> and the
+<code>Rakefile</code> in the root of the repository to contain:</p>
+</div>
+<div class="listingblock">
+<div class="title">Gemfile</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span style="color:#777"># .. snip ..</span>
+group <span style="color:#A60">:test</span> <span style="color:#080;font-weight:bold">do</span>
+  <span style="color:#777"># RSpec, etc</span>
+  gem <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ci_reporter</span><span style="color:#710">'</span></span>
+  gem <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ci_reporter_rspec</span><span style="color:#710">'</span></span>
+  gem <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">brakeman</span><span style="color:#710">&quot;</span></span>, <span style="color:#A60">:require</span> =&gt; <span style="color:#069">false</span>
+<span style="color:#080;font-weight:bold">end</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Rakefile</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span style="color:#777"># .. snip ..</span>
+require <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ci/reporter/rake/rspec</span><span style="color:#710">'</span></span>
+<span style="color:#777"># Make sure we setup ci_reporter before executing our RSpec examples</span>
+task <span style="color:#A60">:spec</span> =&gt; <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ci:setup:rspec</span><span style="color:#710">'</span></span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="preparing-jenkins"><a class="anchor" href="#preparing-jenkins"></a>Preparing Jenkins</h3>
+<div id="plugins" class="paragraph">
+<p>With the cfp-app project set up, next on the list is to ensure that Jenkins itself
+is ready. Generally I suggest running the <a href="/changelog-stable">latest LTS</a> of
+Jenkins; for this demonstration I used Jenkins 2.7.1 with the following
+plugins:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Plugin">Pipeline plugin</a></p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Brakeman+Plugin">Brakeman plugin</a></p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Docker+Pipeline+Plugin">CloudBees
+Docker Pipeline plugin</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>I also used the
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/GitHub+Organization+Folder+Plugin">GitHub
+Organization Folder plugin</a> to automatically create pipeline items in my
+Jenkins instance; that isn&#8217;t required for the demo, but it&#8217;s pretty cool to see
+repositories and branches with a <code>Jenkinsfile</code> automatically show up in
+Jenkins, so I recommend it!</p>
+</div>
+<div class="paragraph">
+<p>In addition to the <a href="#plugins">plugins</a> listed above, I also needed at least <em>one</em>
+Jenkins agent with the <a href="https://docker.io">Docker</a> daemon installed and
+running on it. I label these agents with "docker" to make it easier to assign
+Docker-based workloads to them in the future.</p>
+</div>
+<div class="paragraph">
+<p>Any Linux-based machine with Docker installed will work, in my case I was
+provisioning on-demand agents with the
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Azure+Slave+plugin">Azure
+plugin</a> which, like the
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Amazon+EC2+Plugin">EC2 plugin</a>,
+helps keep my test costs down.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you&#8217;re using Amazon Web Services, you might also be interested in
+<a href="/blog/2016/06/10/save-costs-with-ec2-spot-fleet">this blog post</a> from
+earlier this year unveiling the
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Amazon+EC2+Fleet+Plugin">EC2
+Fleet plugin</a> for working with EC2 Spot Fleets.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="writing-the-pipeline"><a class="anchor" href="#writing-the-pipeline"></a>Writing the Pipeline</h3>
+<div class="paragraph">
+<p>To make sense of the various things that the <code>Jenkinsfile</code> needs to do, I find
+it easier to start by simply defining the stages of my pipeline. This helps me
+think of, in broad terms, what order of operations my pipeline should have.
+For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">/* Assign our work to an agent labelled 'docker' */</span>
+node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">docker</span><span style="color:#710">'</span></span>) {
+    stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Prepare Container</span><span style="color:#710">'</span></span>
+    stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Install Gems</span><span style="color:#710">'</span></span>
+    stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Prepare Database</span><span style="color:#710">'</span></span>
+    stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Invoke Rake</span><span style="color:#710">'</span></span>
+    stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Security scan</span><span style="color:#710">'</span></span>
+    stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Deploy</span><span style="color:#710">'</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As mentioned previously, this <code>Jenkinsfile</code> is going to rely heavily on the
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Docker+Pipeline+Plugin">CloudBees
+Docker Pipeline plugin</a>. The plugin provides two very important features:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Ability to execute steps <em>inside</em> of a running Docker container</p>
+</li>
+<li>
+<p>Ability to run a container in the "background."</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Like most Rails applications, one can effectively test the application with two
+commands: <code>bundle install</code> followed by <code>bundle exec rake</code>. I already had some
+Docker images prepared with <a href="http://rvm.io">RVM</a> and Ruby 2.3.0 installed,
+which ensures a common and consistent starting point:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">docker</span><span style="color:#710">'</span></span>) {
+    <span style="color:#777">// .. 'stage' steps removed</span>
+    docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">rtyler/rvm:2.3.0</span><span style="color:#710">'</span></span>).inside { <i class="conum" data-value="1"></i><b>(1)</b>
+        rvm <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">bundle install</span><span style="color:#710">'</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+        rvm <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">bundle exec rake</span><span style="color:#710">'</span></span>
+    } <i class="conum" data-value="3"></i><b>(3)</b>
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Run the named container. The <code>inside</code> method can take optional additional flags for the <code>docker run</code> command.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Execute our shell commands using our tiny <code>sh</code> step wrapper
+<a href="https://github.com/rtyler/cfp-app/blob/aff11d97b460ca4b630b1fa4f669c226aeadd8ae/Jenkinsfile#L86-L91"><code>rvm</code></a>. This ensures that the shell code is executed in the correct RVM environment.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>When the closure completes, the container will be destroyed.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Unfortunately, with this application, the <code>bundle exec rake</code> command will fail
+if PostgreSQL isn&#8217;t available when the process starts. This is where the
+<em>second</em> important feature of the CloudBees Docker Pipeline plugin comes
+into effect: the ability to run a container in the "background."</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">docker</span><span style="color:#710">'</span></span>) {
+    <span style="color:#777">// .. 'stage' steps removed</span>
+    <span style="color:#777">/* Pull the latest `postgres` container and run it in the background */</span>
+    docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">postgres</span><span style="color:#710">'</span></span>).withRun { container -&gt; <i class="conum" data-value="1"></i><b>(1)</b>
+        echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">PostgreSQL running in container </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>container.id<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+    } <i class="conum" data-value="3"></i><b>(3)</b>
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Run the container, effectively <code>docker run postgres</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Any number of steps can go inside the closure</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>When the closure completes, the container will be destroyed.</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="running-the-tests"><a class="anchor" href="#running-the-tests"></a>Running the tests</h4>
+<div class="paragraph">
+<p>Combining these two snippets of Jenkins Pipeline is, in my opinion, where the
+power of the <a href="https://en.wikipedia.org/wiki/Domain-specific_language">DSL</a>
+shines:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">docker</span><span style="color:#710">'</span></span>) {
+    docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">postgres</span><span style="color:#710">'</span></span>).withRun { container -&gt;
+        docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">rtyler/rvm:2.3.0</span><span style="color:#710">'</span></span>).inside(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">--link=</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>container.id<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">:postgres</span><span style="color:#710">&quot;</span></span>) { <i class="conum" data-value="1"></i><b>(1)</b>
+            stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Install Gems</span><span style="color:#710">'</span></span>
+            rvm <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bundle install</span><span style="color:#710">&quot;</span></span>
+
+            stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Invoke Rake</span><span style="color:#710">'</span></span>
+            withEnv([<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">DATABASE_URL=postgres://postgres@postgres:5432/</span><span style="color:#710">'</span></span>]) { <i class="conum" data-value="2"></i><b>(2)</b>
+                rvm <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bundle exec rake</span><span style="color:#710">&quot;</span></span>
+            }
+            junit <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">spec/reports/*.xml</span><span style="color:#710">'</span></span> <i class="conum" data-value="3"></i><b>(3)</b>
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>By passing the <code>--link</code> argument, the Docker daemon will allow the RVM container to talk to the PostgreSQL container under the host name <em>postgres</em>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Use the <code>withEnv</code> step to set environment variables for everything that is in the closure. In this case, the cfp-app DB scaffolding will look for the <code>DATABASE_URL</code> variable to override the DB host/user/dbname defaults.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Archive the test reports generated by <a href="https://github.com/ci-reporter/ci_reporter">ci_reporter</a> so that Jenkins can display test reports and trend analysis.</td>
+</tr>
+</table>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/ruby-pipeline-2016/cfpapp-tests.png" alt="cfpapp tests">
+</div>
+</div>
+<div class="paragraph">
+<p>With this done, the basics are in place to consistently run the tests for
+cfp-app in fresh Docker containers for each execution of the pipeline.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="security-scanning"><a class="anchor" href="#security-scanning"></a>Security scanning</h3>
+<div class="paragraph">
+<p>Using <a href="http://brakemanscanner.org">Brakeman</a>, the security scanner for Ruby
+on Rails, is almost trivially easy inside of Jenkins Pipeline, thanks to the
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Brakeman+Plugin">Brakeman
+plugin</a> which implements the <code>publishBrakeman</code> step.</p>
+</div>
+<div class="paragraph">
+<p>Building off our example above, we can implement the "Security scan" stage:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">docker</span><span style="color:#710">'</span></span>) {
+    <span style="color:#777">/* --8&lt;--8&lt;-- snipsnip --8&lt;--8&lt;-- */</span>
+    stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Security scan</span><span style="color:#710">'</span></span>
+    rvm <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">brakeman -o brakeman-output.tabs --no-progress --separate-models</span><span style="color:#710">'</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+    publishBrakeman <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">brakeman-output.tabs</span><span style="color:#710">'</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+    <span style="color:#777">/* --8&lt;--8&lt;-- snipsnip --8&lt;--8&lt;-- */</span>
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Run the <a href="http://brakemanscanner.org">Brakeman</a> security scanner for Rails and store the output for later in <code>brakeman-output.tabs</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Archive the reports generated by Brakeman so that Jenkins can display detailed reports with trend analysis.</td>
+</tr>
+</table>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/ruby-pipeline-2016/cfpapp-brakeman.png" alt="cfpapp brakeman">
+</div>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>As of this writing, there is work in progress
+(<a href="https://issues.jenkins-ci.org/browse/JENKINS-31202">JENKINS-31202</a>) to
+render trend graphs from plugins like Brakeman on a pipeline project&#8217;s main
+page.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deploying-the-good-stuff"><a class="anchor" href="#deploying-the-good-stuff"></a>Deploying the good stuff</h3>
+<div class="paragraph">
+<p>Once the tests and security scanning are all working properly, we can start to
+set up the deployment stage. Jenkins Pipeline provides the variable
+<code>currentBuild</code> which we can use to determine whether our pipeline has been
+successful thus far or not. This allows us to add the logic to only deploy when
+everything is passing, as we would expect:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">docker</span><span style="color:#710">'</span></span>) {
+    <span style="color:#777">/* --8&lt;--8&lt;-- snipsnip --8&lt;--8&lt;-- */</span>
+    stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Deploy</span><span style="color:#710">'</span></span>
+    <span style="color:#080;font-weight:bold">if</span> (currentBuild.result == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">SUCCESS</span><span style="color:#710">'</span></span>) { <i class="conum" data-value="1"></i><b>(1)</b>
+        sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">./deploy.sh</span><span style="color:#710">'</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
+    }
+    <span style="color:#080;font-weight:bold">else</span> {
+        mail <span style="color:#606">subject</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Something is wrong with </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>env.JOB_NAME<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>env.BUILD_ID<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>,
+                  <span style="color:#606">to</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">nobody@example.com</span><span style="color:#710">'</span></span>,
+                <span style="color:#606">body</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">You should fix it</span><span style="color:#710">'</span></span>
+    }
+    <span style="color:#777">/* --8&lt;--8&lt;-- snipsnip --8&lt;--8&lt;-- */</span>
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>currentBuild</code> has the <code>result</code> property which would be <code>'SUCCESS'</code>, <code>'FAILED'</code>, <code>'UNSTABLE'</code>, <code>'ABORTED'</code></td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Only if <code>currentBuild.result</code> is successful should we bother invoking our deployment script (e.g. <code>git push heroku master</code>)</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="wrap-up"><a class="anchor" href="#wrap-up"></a>Wrap up</h3>
+<div class="paragraph">
+<p>I have gratuitously commented the full
+<a href="https://github.com/rtyler/cfp-app/blob/0e85db6d054deefd637de235766468631f551c7f/Jenkinsfile">Jenkinsfile</a>
+which I hope is a useful summation of the work outlined above. Having worked
+on a number of Rails applications in the past, the consistency provided by
+Docker and Jenkins Pipeline above would have definitely improved those
+projects' delivery times. There is still room for improvement however, which
+is left as an exercise for the reader. Such as: preparing new containers with
+all their
+<a href="https://github.com/rtyler/cfp-app/blob/0e85db6d054deefd637de235766468631f551c7f/Jenkinsfile#L36-L46">dependencies
+built-in</a> instead of installing them at run-time. Or utilizing the <code>parallel</code>
+step for executing RSpec across multiple Jenkins agents simultaneously.</p>
+</div>
+<div class="paragraph">
+<p>The beautiful thing about defining your continuous delivery, and continuous
+security, pipeline in code is that you can continue to iterate on it!</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<a class="image" href="https://github.com/rtyler/cfp-app/blob/0e85db6d054deefd637de235766468631f551c7f/Jenkinsfile"><img src="/images/post-images/ruby-pipeline-2016/cfpapp-stage-view.png" alt="cfpapp stage view"></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//blog/2016/2016-08-10-rails-cd-with-pipeline.adoc" title="Edit /blog/2016/2016-08-10-rails-cd-with-pipeline.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//blog/2016/2016-08-10-rails-cd-with-pipeline.adoc" title="View /blog/2016/2016-08-10-rails-cd-with-pipeline.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

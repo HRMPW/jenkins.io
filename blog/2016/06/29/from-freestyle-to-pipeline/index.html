@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Migrating from chained Freestyle jobs to Pipelines
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container blog-post no-margin">
+<div class="row body">
+<div class="col-md-11 col-md-offset-1 main-content" id="content">
+<div id="content-top">
+<h1>
+<a href="/blog/2016/06/29/from-freestyle-to-pipeline/" title="Migrating from chained Freestyle jobs to Pipelines">
+Migrating from chained Freestyle jobs to Pipelines
+</a>
+</h1>
+<!-- starting partial tweetbutton.html.haml -->
+<div style="float: right; clear: all;">
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/share">
+Tweet
+</a>
+</div>
+
+<!-- ending partial tweetbutton.html.haml -->
+<span class="submitted">
+Published on
+2016-06-29
+by
+<a href="https://github.com/rtyler">R. Tyler Croy</a>
+</span>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This is a guest post by <a href="https;//github.com/rtyler">R. Tyler Croy</a>, who is a
+long-time contributor to Jenkins and the primary contact for Jenkins project
+infrastructure. He is also a Jenkins Evangelist at
+<a href="http://cloudbees.com">CloudBees, Inc.</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For ages I have used the "Build After" feature in Jenkins to cobble together
+what one might refer to as a "pipeline" of sorts. The Jenkins project itself, a
+major consumer of Jenkins, has used these daisy-chained Freestyle jobs to drive
+a myriad of delivery pipelines in our infrastructure.</p>
+</div>
+<div class="paragraph">
+<p>One such "pipeline" helped drive the complex process of generating the pretty
+blue charts on
+<a href="http://stats.jenkins-ci.org/jenkins-stats/svg/svgs.html">stats.jenkins-ci.org</a>.
+This statistics generation process primarily performs two major tasks, on rather
+large sets of data:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Generate aggregate monthly "census data."</p>
+</li>
+<li>
+<p>Process the census data and create trend charts</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The chained jobs allowed us to resume the independent stages of the pipeline,
+and allowed us to run different stages on different hardware (different
+capabilities) as needed. Below is a diagram of what this looked like:</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/freestyle-to-pipeline-2016/freestyle-pipeline.png" alt="freestyle pipeline">
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>infra_generate_monthly_json</code> would run periodically creating the
+aggregated census data, which would then be picked up by <code>infra_census_push</code>
+whose sole responsibility was to take census data and publish it to the
+necessary hosts inside the project&#8217;s infrastructure.</p>
+</div>
+<div class="paragraph">
+<p>The second, semi-independent, "pipeline" would also run periodically. The
+<code>infra_statistics</code> job&#8217;s responsibility was to use the census data, pushed
+earlier by <code>infra_census_push</code>, to generate the myriad of pretty blue charts
+before triggering the
+<code>infra_checkout_stats</code> job which would make sure <code>stats.jenkins-ci.org</code> was
+properly updated.</p>
+</div>
+<div class="paragraph">
+<p>Suffice it to say, this "pipeline" had grown organically over a period time when
+<a href="/doc/pipeline">more advanced tools</a> weren&#8217;t quite available.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p>When we migrated to newer infrastructure for
+<a href="https://ci.jenkins.io">ci.jenkins.io</a> earlier this year I took the
+opportunity to do some cleaning up. Instead of migrating jobs verbatim, I pruned
+stale jobs and refactored a number of others into proper
+<a href="/solutions/pipeline">Pipelines</a>, statistics generation being an obvious
+target!</p>
+</div>
+<div class="paragraph">
+<p>Our requirements for statistics generation, in their most basic form, are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Enable a sequence of dependent tasks to be executed as a logical group (a
+pipeline)</p>
+</li>
+<li>
+<p>Enable executing those dependent tasks on various pieces of infrastructure
+which support different requirements</p>
+</li>
+<li>
+<p>Actually generate those pretty blue charts</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you wish to skip ahead, you can jump straight to the
+<a href="https://github.com/jenkins-infra/infra-statistics/blob/a6dcaa29fca9a4f61143954fb9e1300c2f995a89/Jenkinsfile">Jenkinsfile</a>
+which implements our new Pipeline.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The first iteration of the <code>Jenkinsfile</code> simply defined the conceptual stages we
+would need:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">node {
+    stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Sync raw data and census files</span><span style="color:#710">'</span></span>
+
+    stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Process raw logs</span><span style="color:#710">'</span></span>
+
+    stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Generate census data</span><span style="color:#710">'</span></span>
+
+    stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Generate stats</span><span style="color:#710">'</span></span>
+
+    stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Publish census</span><span style="color:#710">'</span></span>
+
+    stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Publish stats</span><span style="color:#710">'</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>How exciting! Although not terrifically useful. When I began actually
+implementing the first couple stages, I noticed that the Pipeline might sync
+<em>dozens</em> of gigabytes of data every time it ran on a new agent in the cluster.
+While this problem will soon be solved by the
+<a href="https://github.com/jenkinsci/external-workspace-manager-plugin">External
+Workspace Manager plugin</a>, which is currently being developed. Until it&#8217;s ready,
+I chose to mitigate the issue by pinning the execution to a consistent agent.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">/* `census` is a node label for a single machine, ideally, which will be
+ * consistently used for processing usage statistics and generating census data
+ */</span>
+node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">census &amp;&amp; docker</span><span style="color:#710">'</span></span>) {
+    <span style="color:#777">/* .. */</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Restricting a workload which previously used multiple agents to a single one
+introduced the next challenge. As an infrastructure administrator, technically
+speaking, I <em>could</em> just install all the system dependencies that I want on this
+one special Jenkins agent. But what kind of example would that be setting!</p>
+</div>
+<div class="paragraph">
+<p>The statistics generation process requires:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>JDK8</p>
+</li>
+<li>
+<p><a href="https://www.groovy-lang.org">Groovy</a></p>
+</li>
+<li>
+<p>A running <a href="https://www.mongodb.org/">MongoDB</a> instance</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Fortunately, with Pipeline we have a couple of useful features at our disposal:
+tool auto-installers and the
+<a href="https://go.cloudbees.com/docs/cloudbees-documentation/cje-user-guide/chapter-docker-workflow.html">CloudBees
+Docker Pipeline plugin</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="tool-auto-installers"><a class="anchor" href="#tool-auto-installers"></a>Tool Auto-Installers</h3>
+<div class="paragraph">
+<p>Tool Auto-Installers are exposed in Pipeline through the <code>tool</code> step and on
+<a href="https://ci.jenkins.io">ci.jenkins.io</a> we already had JDK8 and Groovy
+available. This meant that the <code>Jenkinsfile</code> would invoke <code>tool</code> and Pipeline
+would automatically install the desired tool on the agent executing the current
+Pipeline steps.</p>
+</div>
+<div class="paragraph">
+<p>The <code>tool</code> step does not modify the <code>PATH</code> environment variable, so it&#8217;s usually
+used in conjunction with the <code>withEnv</code> step, for example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">census &amp;&amp; docker</span><span style="color:#710">'</span></span>) {
+    <span style="color:#777">/* .. */</span>
+
+    <span style="color:#080;font-weight:bold">def</span> javaHome = tool(<span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">jdk8</span><span style="color:#710">'</span></span>)
+    <span style="color:#080;font-weight:bold">def</span> groovyHome = tool(<span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">groovy</span><span style="color:#710">'</span></span>)
+
+    <span style="color:#777">/* Set up environment variables for re-using our auto-installed tools */</span>
+    <span style="color:#080;font-weight:bold">def</span> customEnv = [
+        <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">PATH+JDK=</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>javaHome<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/bin</span><span style="color:#710">&quot;</span></span>,
+        <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">PATH+GROOVY=</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>groovyHome<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/bin</span><span style="color:#710">&quot;</span></span>,
+        <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">JAVA_HOME=</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>javaHome<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>,
+    ]
+
+    <span style="color:#777">/* use our auto-installed tools */</span>
+    withEnv(customEnv) {
+        sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">java --version</span><span style="color:#710">'</span></span>
+    }
+
+    <span style="color:#777">/* .. */</span>
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cloudbees-docker-pipeline-plugin"><a class="anchor" href="#cloudbees-docker-pipeline-plugin"></a>CloudBees Docker Pipeline plugin</h3>
+<div class="paragraph">
+<p>Satisfying the MongoDB dependency would still be tricky. If I caved in and installed
+MongoDB on a single unicorn agent in the cluster, what could I say the next time
+somebody asked for a special, one-off, piece of software installed on our
+Jenkins build agents?</p>
+</div>
+<div class="paragraph">
+<p>After doing my usual complaining and whining, I discovered that the CloudBees
+Docker Pipeline plugin provides the ability to <strong>run containers</strong> inside of a
+<code>Jenkinsfile</code>. To make things even better, there are
+<a href="https://hub.docker.com/_/mongo/">official MongoDB docker images</a> readily
+available on DockerHub!</p>
+</div>
+<div class="paragraph">
+<p>This feature requires that the machine has a running Docker daemon which is
+accessible to the user running the Jenkins agent. After that, running a
+container in the background is easy, for example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">census &amp;&amp; docker</span><span style="color:#710">'</span></span>) {
+    <span style="color:#777">/* .. */</span>
+
+    <span style="color:#777">/* Run MongoDB in the background, mapping its port 27017 to our host's port
+     * 27017 so our script can talk to it, then execute our Groovy script with
+     * tools from our `customEnv`
+     */</span>
+    docker.image(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">mongo:2</span><span style="color:#710">'</span></span>).withRun(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">-p 27017:27017</span><span style="color:#710">'</span></span>) { container -&gt;
+        withEnv(customEnv) {
+            sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">groovy parseUsage.groovy --logs </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>usagestats_dir<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> --output </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>census_dir<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> --incremental</span><span style="color:#710">&quot;</span></span>
+        }
+    }
+
+    <span style="color:#777">/* .. */</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The beauty, to me, of this example is that you can pass a
+<a href="http://www.groovy-lang.org/Closures">closure</a> to <code>withRun</code> which will
+execute <em>while</em> the container is running. When the closure is finished executin,
+just the <code>sh</code> step in this case, the container is destroyed.</p>
+</div>
+<div class="paragraph">
+<p>With that system requirement satisfied, the rest of the stages of the Pipeline
+fell into place. We now have a single source of truth, the
+<a href="https://github.com/jenkins-infra/infra-statistics/blob/master/Jenkinsfile">Jenkinsfile</a>,
+for the sequence of dependent tasks which need to be executed, accounting for
+variations in systems requirements, and it actually generates
+<a href="http://stats.jenkins-ci.org/jenkins-stats/svg/svgs.html">those pretty
+blue charts</a>!</p>
+</div>
+<div class="paragraph">
+<p>Of course, a nice added bonus is the beautiful visualization of our
+<a href="https://ci.jenkins.io/job/Infrastructure/job/statistics/">new Pipeline</a>!</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/freestyle-to-pipeline-2016/stats-pipeline.png" alt="The New and Improved Statistics Pipeline">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="links"><a class="anchor" href="#links"></a>Links</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/doc/pipeline">Pipeline documentation</a></p>
+</li>
+<li>
+<p><a href="https://go.cloudbees.com/docs/cloudbees-documentation/cje-user-guide/chapter-docker-workflow.html">CloudBees Docker Pipeline plugin documentation</a></p>
+</li>
+<li>
+<p>Live <a href="https://ci.jenkins.io/job/Infrastructure/job/statistics/">statistics Pipeline</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//blog/2016/2016-06-29-from-freestyle-to-pipeline.adoc" title="Edit /blog/2016/2016-06-29-from-freestyle-to-pipeline.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//blog/2016/2016-06-29-from-freestyle-to-pipeline.adoc" title="View /blog/2016/2016-06-29-from-freestyle-to-pipeline.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

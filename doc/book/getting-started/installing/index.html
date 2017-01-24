@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Installing Jenkins
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="section_nav pagination-links">
+<a class="up page-link" href="../">
+⇑ "Getting Started with Jenkins
+</a>
+<a class="next page-link" href="../../using">
+Using Jenkins ⇒
+</a>
+<br>
+<a class="index page-link" href="../../">
+Index
+</a>
+</div>
+<div class="section">
+<h1>
+Installing Jenkins
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#pre-install">Pre-install</a>
+<ul class="sectlevel2">
+<li><a href="#system-requirements">System Requirements</a></li>
+<li><a href="#experimentation-staging-or-production">Experimentation, Staging, or Production?</a></li>
+<li><a href="#stand-alone-or-servlet">Stand-alone or Servlet?</a></li>
+</ul>
+</li>
+<li><a href="#installation">Installation</a>
+<ul class="sectlevel2">
+<li><a href="#unix-linux">Unix/Linux</a></li>
+<li><a href="#os-x">OS X</a></li>
+<li><a href="#windows">Windows</a></li>
+<li><a href="#docker">Docker</a></li>
+<li><a href="#other">Other</a></li>
+</ul>
+</li>
+<li><a href="#post-install-setup-wizard">Post-install (Setup Wizard)</a>
+<ul class="sectlevel2">
+<li><a href="#create-admin-user-and-password-for-jenkins">Create Admin User and Password for Jenkins</a></li>
+<li><a href="#initial-plugin-installation">Initial Plugin Installation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This is still very much a work in progress</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This section is part of <em>Getting Started</em>.
+It provides instructions for <strong>basic</strong> Jenkins configuration on a number of platforms.
+It <strong>DOES NOT</strong> cover the full range of considerations or options for installing Jenkins.
+See <a href="/doc/book/appendix/advanced-installation/">Advanced Jenkins Installation</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="pre-install"><a class="anchor" href="#pre-install"></a>Pre-install</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="system-requirements"><a class="anchor" href="#system-requirements"></a>System Requirements</h3>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>These are <strong>starting points</strong>.
+For a full discussion of factors see <a href="/doc/book/hardware-recommendations/">Discussion of hardware recommendations</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Minimum Recommended Configuration:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Java 7</p>
+</li>
+<li>
+<p>256MB free memory</p>
+</li>
+<li>
+<p>1GB+ free disk space</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Recommended Configuration for Small Team:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Java 8</p>
+</li>
+<li>
+<p>1GB+ free memory</p>
+</li>
+<li>
+<p>50GB+ free disk space</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="experimentation-staging-or-production"><a class="anchor" href="#experimentation-staging-or-production"></a>Experimentation, Staging, or Production?</h3>
+<div class="paragraph">
+<p>How you configure Jenkins will differ significantly depending on your intended use cases.
+This section is specifically targeted to initial use and experimentation.
+For other scenarios, see <a href="/doc/book/appendix/advanced-installation/">Advanced Jenkins Installation</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="stand-alone-or-servlet"><a class="anchor" href="#stand-alone-or-servlet"></a>Stand-alone or Servlet?</h3>
+<div class="paragraph">
+<p>Jenkins can run stand-alone in it&#8217;s own process using it&#8217;s own web server.
+It can also run as one servlet in an existing framework, such as Tomcat.
+This section is specifically targeted to stand-alone install and execution.
+For other scenarios, see <a href="/doc/book/appendix/advanced-installation/">Advanced Jenkins Installation</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="installation"><a class="anchor" href="#installation"></a>Installation</h2>
+<div class="sectionbody">
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>These are <strong>clean install</strong> instructions for <strong>non-production</strong> environments.
+If you have a <strong>non-production</strong> Jenkins server already running on a system and want to upgrade, see <a href="/doc/book/getting-started/upgrading/">Upgrading Jenkins</a>.
+If you are installing or upgrading a production Jenkins server, see <a href="/doc/book/appendix/advanced-installation/">Advanced Jenkins Installation</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="unix-linux"><a class="anchor" href="#unix-linux"></a>Unix/Linux</h3>
+<div class="sect3">
+<h4 id="debian-ubuntu"><a class="anchor" href="#debian-ubuntu"></a>Debian/Ubuntu</h4>
+<div class="paragraph">
+<p>On Debian-based distributions, such as Ubuntu, you can install Jenkins through <code>apt</code>.</p>
+</div>
+<div class="paragraph">
+<p>Recent versions are available in <a href="https://pkg.jenkins.io/debian/">an apt repository</a>. Older but stable LTS versions are in <a href="https://pkg.jenkins.io/debian-stable/">this apt repository</a>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
+sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ &gt; /etc/apt/sources.list.d/jenkins.list'
+sudo apt-get update
+sudo apt-get install jenkins</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This package installation will:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Setup Jenkins as a daemon launched on start. See <code>/etc/init.d/jenkins</code> for more details.</p>
+</li>
+<li>
+<p>Create a <em><code>jenkins</code></em> user to run this service.</p>
+</li>
+<li>
+<p>Direct console log output to the file <code>/var/log/jenkins/jenkins.log</code>. Check this file if you are troubleshooting Jenkins.</p>
+</li>
+<li>
+<p>Populate <code>/etc/default/jenkins</code> with configuration parameters for the launch, e.g <code>JENKINS_HOME</code></p>
+</li>
+<li>
+<p>Set Jenkins to listen on port 8080. Access this port with your browser to start configuration.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If your <code>/etc/init.d/jenkins</code> file fails to start Jenkins, edit the <code>/etc/default/jenkins</code> to replace the line
+<code>----HTTP_PORT=8080----</code> with <code>----HTTP_PORT=8081----</code>
+Here, "8081" was chosen but you can put another port available.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="os-x"><a class="anchor" href="#os-x"></a>OS X</h3>
+<div class="paragraph">
+<p>To install from the website, using a package:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://mirrors.jenkins.io/osx/latest">Download the latest package</a></p>
+</li>
+<li>
+<p>Open the package and follow the instructions</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Jenkins can also be installed using <code>brew</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Install the latest release version</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">brew install jenkins</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Install the LTS version</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">brew install jenkins-lts</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="windows"><a class="anchor" href="#windows"></a>Windows</h3>
+<div class="paragraph">
+<p>To install from the website, using the installer:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://mirrors.jenkins.io/windows/latest">Download the latest package</a></p>
+</li>
+<li>
+<p>Open the package and follow the instructions</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="docker"><a class="anchor" href="#docker"></a>Docker</h3>
+<div class="paragraph">
+<p>You must have <a href="http://docker.io">Docker</a> properly installed on your machine.
+See the <a href="https://www.docker.io/gettingstarted/#h_installation">Docker installation guide</a> for details.</p>
+</div>
+<div class="paragraph">
+<p>First, pull the official <a href="https://hub.docker.com/_/jenkins/">jenkins</a> image from Docker repository.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">docker pull jenkins</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next, run a container using this image and map data directory from the container to the host; e.g in the example below <code>/var/jenkins_home</code> from the container is mapped to <code>jenkins/</code> directory from the current path on the host. Jenkins <code>8080</code> port is also exposed to the host as <code>49001</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">docker run -d -p 49001:8080 -v $PWD/jenkins:/var/jenkins_home -t jenkins</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="other"><a class="anchor" href="#other"></a>Other</h3>
+<div class="paragraph">
+<p>See <a href="/doc/book/appendix/advanced-installation/">Advanced Jenkins Installation</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="post-install-setup-wizard"><a class="anchor" href="#post-install-setup-wizard"></a>Post-install (Setup Wizard)</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="create-admin-user-and-password-for-jenkins"><a class="anchor" href="#create-admin-user-and-password-for-jenkins"></a>Create Admin User and Password for Jenkins</h3>
+<div class="paragraph">
+<p>Jenkins is initially configured to be secure on first launch.
+Jenkins can no longer be accessed without a username and
+password and open ports are limited. During the initial run of
+Jenkins a security token is generated and printed in the console
+log:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">*************************************************************
+
+Jenkins initial setup is required. A security token is required to proceed.
+Please use the following security token to proceed to installation:
+
+41d2b60b0e4cb5bf2025d33b21cb
+
+*************************************************************</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The install instructions for each of the platforms above includes the default location for when you can find this log output.
+This token must be entered in the "Setup Wizard" the first time you open the Jenkins UI.
+This token will also serve as the default password for the user <em>admin</em> if you skip the user-creation step in the Setup Wizard.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="initial-plugin-installation"><a class="anchor" href="#initial-plugin-installation"></a>Initial Plugin Installation</h3>
+<div class="paragraph">
+<p>The Setup Wizard will also install the initial plugins for this Jenkins server.
+The recommended set of plugins available are based on the most common use cases.
+You are free to add more during the Setup Wizard or install them later as needed.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section_nav pagination-links">
+<a class="up page-link" href="../">
+⇑ "Getting Started with Jenkins
+</a>
+<a class="next page-link" href="../../using">
+Using Jenkins ⇒
+</a>
+<br>
+<a class="index page-link" href="../../">
+Index
+</a>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//doc/book/getting-started/installing.adoc" title="Edit /doc/book/getting-started/installing.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//doc/book/getting-started/installing.adoc" title="View /doc/book/getting-started/installing.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

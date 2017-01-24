@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Introducing Blue Ocean: a new user experience for Jenkins
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container blog-post no-margin">
+<div class="row body">
+<div class="col-md-11 col-md-offset-1 main-content" id="content">
+<div id="content-top">
+<h1>
+<a href="/blog/2016/05/26/introducing-blue-ocean/" title="Introducing Blue Ocean: a new user experience for Jenkins">
+Introducing Blue Ocean: a new user experience for Jenkins
+</a>
+</h1>
+<!-- starting partial tweetbutton.html.haml -->
+<div style="float: right; clear: all;">
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/share">
+Tweet
+</a>
+</div>
+
+<!-- ending partial tweetbutton.html.haml -->
+<span class="submitted">
+Published on
+2016-05-26
+by
+<a href="https://github.com/i386">James Dumay</a>
+</span>
+</div>
+<div class="paragraph">
+<p>In recent years developers have become rapidly attracted to tools that are not
+only functional but are designed to fit into their workflow seamlessly and are
+a joy to use. This shift represents a higher standard of design and user
+experience that Jenkins needs to rise to meet.</p>
+</div>
+<div class="paragraph">
+<p>We are excited to share and invite the community to join us on a project we’ve
+been thinking about over the last few months called Blue Ocean.</p>
+</div>
+<div class="paragraph">
+<p>Blue Ocean is a project that rethinks the user experience of Jenkins, modelling
+and presenting the process of software delivery by surfacing information that&#8217;s
+important to development teams with as few clicks as possible, while still
+staying true to the extensibility that is core to Jenkins.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/blueocean/pipeline-run.png" alt="Pipeline execution"></span></p>
+</div>
+<div class="paragraph">
+<p>While this project is in the alpha stage of development, the intent is that
+Jenkins users can install Blue Ocean side-by-side with the Jenkins Classic UI
+via a plugin.</p>
+</div>
+<div class="paragraph">
+<p>Not all the features listed on this blog are complete but we will be hard at
+work over the next few months preparing Blue Ocean for general use. We intend
+to provide regular updates on this blog as progress is made.</p>
+</div>
+<div class="paragraph">
+<p>Blue Ocean is <a href="https://github.com/cloudbees/blueocean">open source today</a>
+and we invite you to give us feedback and to contribute to the project.</p>
+</div>
+<center>
+<iframe width="853" height="480"
+src="https://www.youtube-nocookie.com/embed/3dITffteCD4?rel=0" frameborder="0"
+allowfullscreen></iframe>
+</center>
+<div class="paragraph">
+<p>Blue Ocean will provide development teams:</p>
+</div>
+<div class="sect3">
+<h4 id="new-modern-user-experience"><a class="anchor" href="#new-modern-user-experience"></a>New modern user experience</h4>
+<div class="paragraph">
+<p>The UI aims to improve clarity, reduce clutter and navigational depth to make
+the user experience very concise. A modern visual design gives developers much
+needed relief throughout their daily usage and screens respond instantly to
+changes on the server making manual page refreshes a thing of the past.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/blueocean/pipeline-dashboard.png" alt="Project dashboard"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="advanced-pipeline-visualisations-with-built-in-failure-diagnosis"><a class="anchor" href="#advanced-pipeline-visualisations-with-built-in-failure-diagnosis"></a>Advanced Pipeline visualisations with built-in failure diagnosis</h4>
+<div class="paragraph">
+<p><a href="/solutions/pipeline">Pipelines</a> are visualised on screen along with the
+steps and logs to allow simplified comprehension of the continuous delivery
+pipeline – from the simple to the most sophisticated scenarios.</p>
+</div>
+<div class="paragraph">
+<p>Scrolling through 10,000 line log files is a thing of the past. Blue Ocean
+breaks down your log per step and calls out where your build failed.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/blueocean/failing-pipeline.png" alt="Failing Pipeline"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="branch-and-pull-request-awareness"><a class="anchor" href="#branch-and-pull-request-awareness"></a>Branch and Pull Request awareness</h4>
+<div class="paragraph">
+<p>Modern pipelines make use of multiple Git branches, and Blue Ocean is designed
+with this in mind. Drop a <a href="/doc/pipeline"><code>Jenkinsfile</code> into your Git
+repository</a> that defines your pipeline and Jenkins will automatically discover
+and start automating any  Branches and validating Pull Requests.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins will report the status of your pipeline right inside Github or
+Bitbucket on all your commits, branches or pull requests.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/blueocean/pr-view.png" alt="Pull request view"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="personalised-view"><a class="anchor" href="#personalised-view"></a>Personalised View</h4>
+<div class="paragraph">
+<p>Favourite any pipelines, branches or pull requests and see them appear on your
+personalised dashboard. Intelligence is being built into the dashboard. Jobs
+that need your attention, say a Pipeline waiting for approval or a failing job
+that you have recently changed, appear on the top of the dashboard.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/blueocean/personalized-dashboard.png" alt="Personalized dashboard"></span></p>
+</div>
+<div class="paragraph">
+<p>You can read more about Blue Ocean and its goals on the
+<a href="/projects/blueocean">project page</a> and developers should watch the
+<a href="/content/mailing-lists">Developers list</a> for more information.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p>For Jenkins developers and plugin authors:</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="jenkins-design-language"><a class="anchor" href="#jenkins-design-language"></a>Jenkins Design “Language”</h4>
+<div class="paragraph">
+<p>The Jenkins Design Language (JDL) is a set of standardised React components and
+a style guide that help developers create plugins that retain the look and feel
+of Blue Ocean in an effortless way. We will be publishing more on the JDL,
+including the style guide and developer documentation, over the next few weeks.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="modern-javascript-toolchain"><a class="anchor" href="#modern-javascript-toolchain"></a>Modern JavaScript toolchain</h4>
+<div class="paragraph">
+<p>The Jenkins plugin tool chain has been extended so that developers can use
+<a href="https://medium.com/@rajaraodv/5-javascript-bad-parts-that-are-fixed-in-es6-c7c45d44fd81">ES6</a>,
+<a href="https://facebook.github.io/react/">React</a>, <a href="https://www.npmjs.com/">NPM</a>
+in their plugins without endless yak-shaving. Jenkins
+<a href="https://github.com/jenkinsci/js-modules">js-modules</a> are already in use in
+Jenkins today, and this builds on this, using the same tooling.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="client-side-extension-points"><a class="anchor" href="#client-side-extension-points"></a>Client side Extension points</h4>
+<div class="paragraph">
+<p>Client Side plugins use Jenkins plugin infrastructure. The Blue Ocean libraries
+built on ES6 and React.js provide an extensible client side component model
+that looks familiar to developers who have built Jenkins plugins before. Client
+side extension points can help isolate failure, so one bad plugin doesn’t take
+a whole page down.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="server-sent-events"><a class="anchor" href="#server-sent-events"></a>Server Sent Events</h4>
+<div class="paragraph">
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events">Server Sent Events</a>
+(SSE) allow plugin developers to tap into changes of state on the server and make
+their UI update in real time (<a href="https://www.youtube.com/watch?v=EttzK5OOpv0">watch this for a
+demo</a>).</p>
+</div>
+<hr>
+<div class="paragraph">
+<p>To make Blue Ocean a success, we&#8217;re asking for help and support from Jenkins
+developers and plugin authors. Please join in our Blue Ocean discussions on the
+<a href="http://groups.google.com/forum/#!forum/jenkinsci-dev">Jenkins Developer
+mailing list</a> and the <code>#jenkins-ux</code> IRC channel on Freenode!</p>
+</div>
+</div>
+<div class="sect1">
+<h2 id="links"><a class="anchor" href="#links"></a>Links</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/projects/blueocean">Blue Ocean project page</a></p>
+</li>
+<li>
+<p><a href="https://github.com/cloudbees/blueocean">Blue Ocean GitHub repository</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//blog/2016/2016-05-26-introducing-blue-ocean.adoc" title="Edit /blog/2016/2016-05-26-introducing-blue-ocean.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//blog/2016/2016-05-26-introducing-blue-ocean.adoc" title="View /blog/2016/2016-05-26-introducing-blue-ocean.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

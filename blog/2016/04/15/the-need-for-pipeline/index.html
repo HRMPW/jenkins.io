@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+The Need For Jenkins Pipeline
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container blog-post no-margin">
+<div class="row body">
+<div class="col-md-11 col-md-offset-1 main-content" id="content">
+<div id="content-top">
+<h1>
+<a href="/blog/2016/04/15/the-need-for-pipeline/" title="The Need For Jenkins Pipeline">
+The Need For Jenkins Pipeline
+</a>
+</h1>
+<!-- starting partial tweetbutton.html.haml -->
+<div style="float: right; clear: all;">
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/share">
+Tweet
+</a>
+</div>
+
+<!-- ending partial tweetbutton.html.haml -->
+<span class="submitted">
+Published on
+2016-04-15
+by
+<a href="https://github.com/rtyler">R. Tyler Croy</a>
+</span>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This is a cross-post of
+<a href="https://www.cloudbees.com/blog/need-jenkins-pipeline">an article</a> authored
+by <a href="https://github.com/vfarcic">Viktor Farcic</a> on the
+<a href="https://www.cloudbees.com/blog/">CloudBees blog</a>. Viktor is also the author
+of <a href="https://leanpub.com/the-devops-2-toolkit">The DevOps 2.0 Toolkit</a>, which
+explores Jenkins, the <a href="/doc/pipeline">Pipeline plugin</a>, and the ecosystem
+around it in much more detail.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><span class="image right"><img src="/images/angry-jenkins_128.png" alt="angry jenkins 128"></span></p>
+</div>
+<div class="paragraph">
+<p>Over the years, Jenkins has become the undisputed ruler among continuous
+integration (CI), delivery and deployment (CD) tools. It, in a way, defined the
+CI/CD processes we use today. As a result of its leadership, many other products
+have tried to overthrow it from its position. Among others, we got Bamboo and
+Team City attempting to get a piece of the market. At the same time, new
+products emerged with a service approach (as opposed to on-premise). Some of
+them are Travis, CircleCI and Shippable. Be that as it may, none managed to get
+even close to Jenkins' adoption. Today, depending on the source we use, Jenkins
+holds between 50-70% of the whole CI/CD tools market. The reason behind such a
+high percentage is its dedication to open source principles set from the very
+beginning by <a href="https://github.com/kohsuke">Kohsuke Kawaguchi</a>. Those same principles were the reason he forked
+Jenkins from Hudson. The community behind the project, as well as commercial
+entities behind enterprise versions, are continuously improving the way it works
+and adding new features and capabilities. They are redefining not only the way
+Jenkins behaves but also the CI/CD practices in a much broader sense. One of
+those new features is the Jenkins <a href="/doc/pipeline">Pipeline plugin</a>. Before we
+dive into it, let us take a step back and discuss the reasons that led us to
+initiate the move away from Freestyle jobs and towards the Pipeline.</p>
+</div>
+<div class="sect2">
+<h3 id="the-need-for-change"><a class="anchor" href="#the-need-for-change"></a>The Need for Change</h3>
+<div class="paragraph">
+<p>Over time, Jenkins, like most other self-hosted CI/CD tools, tends to accumulate
+a vast number of jobs. Having a lot of them causes quite an increase in
+maintenance cost. Maintaining ten jobs is easy. It becomes a bit harder (but
+still bearable) to manage a hundred. When the number of jobs increases to
+hundreds or even thousands, managing them becomes very tedious and time
+demanding.</p>
+</div>
+<div class="paragraph">
+<p>If you are not proficient with Jenkins (or other CI/CD tools) or you do not work
+for a big project, you might think that hundreds of jobs is excessive. The truth
+is that such a number is reached over a relatively short period when teams
+are practicing continuous delivery or deployment. Let&#8217;s say that an average
+CD flow has the following set of tasks that should be run on each commit:
+building, pre-deployment testing, deployment to a staging environment,
+post-deployment testing and deployment to production. That&#8217;s five groups of
+tasks that are often divided into, at least, five separate Jenkins jobs. In
+reality, there are often more than five jobs for a single CD flow, but let
+us keep it an optimistic estimate. How many different CD flows does a medium
+sized company have? With twenty, we are already reaching a three digits
+number. That&#8217;s quite a lot of  jobs to cope with even though the estimates
+we used are too optimistic for all but the smallest entities.</p>
+</div>
+<div class="paragraph">
+<p>Now, imagine that we need to change all those jobs from, let&#8217;s say, Maven to
+Gradle. We can choose to start modifying them through the Jenkins UI, but that
+takes too much time. We can apply changes directly to Jenkins XML files that
+represent those jobs but that is too complicated and error prone. Besides,
+unless we write a script that will do the modifications for us, we would
+probably not save much time with this approach. There are quite a few plugins
+that can help us to apply changes to multiple jobs at once, but none of them is
+truly successful (at least among free plugins). They all suffer from one
+deficiency or another. The problem is not whether we have the tools to perform
+massive changes to our jobs, but whether jobs are defined in a way that they can
+be easily maintained.</p>
+</div>
+<div class="paragraph">
+<p>Besides the sheer number of Jenkins jobs, another critical Jenkins' pain point
+is centralization. While having everything in one location provides a lot of
+benefits (visibility, reporting and so on), it also poses quite a few
+difficulties. Since the emergence of agile methodologies, there&#8217;s been a huge
+movement towards self-sufficient teams. Instead of horizontal organization with
+separate development, testing, infrastructure, operations and other groups, more
+and more companies are moving (or already moved) towards self-sufficient teams
+organized vertically. As a result, having one centralized place that defines all
+the CD flows becomes a liability and often impedes us from splitting teams
+vertically based on projects. Members of a team should be able to collaborate
+effectively without too much reliance on other teams or departments. Translated
+to CD needs, that means that each team should be able to define the deployment
+flow of the application they are developing.</p>
+</div>
+<div class="paragraph">
+<p>Finally, Jenkins, like many other tools, relies heavily on its UI. While that is
+welcome and needed as a way to get a visual overview through dashboards and
+reports, it is suboptimal as a way to define the delivery and deployment flows.
+Jenkins originated in an era when it was fashionable to use UIs for everything.
+If you worked in this industry long enough you probably saw the swarm of tools
+that rely completely on UIs, drag &amp; drop operations and a lot of forms that
+should be filled. As a result, we got tools that produce artifacts that cannot
+be easily stored in a code repository and are hard to reason with when anything
+but simple operations are to be performed. Things changed since then, and now we
+know that many things (deployment flow being one of them) are much easier to
+express through code. That can be observed when, for example, we try to define a
+complex flow through many Jenkins jobs. When deployment complexity requires
+conditional executions and some kind of a simple intelligence that depends on
+results of different steps, chained jobs are truly complicated and often
+impossible to create.</p>
+</div>
+<div class="paragraph">
+<p>All things considered, the major pain points Jenkins had until recently are as
+follows.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Tendency to create a vast number of jobs</p>
+</li>
+<li>
+<p>Relatively hard and costly maintenance</p>
+</li>
+<li>
+<p>Centralization of everything</p>
+</li>
+<li>
+<p>Lack of powerful and easy ways to specify deployment flow through code</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This list is, by no means, unique to Jenkins. Other CI/CD tools have at least
+one of the same problems or suffer from deficiencies that Jenkins solved a long
+time ago. Since the focus of this article is Jenkins, I won&#8217;t dive into a
+comparison between the CI/CD tools.</p>
+</div>
+<div class="paragraph">
+<p>Luckily, all those, and many other deficiencies are now a thing of the past.
+With the emergence of the
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Plugin">Pipeline
+plugin</a> and many others that were created on
+top of it, Jenkins entered a new era and proved itself as a dominant player in
+the CI/CD market. A whole new ecosystem was born, and the door was opened for
+very exciting possibilities in the future.</p>
+</div>
+<div class="paragraph">
+<p>Before we dive into the Jenkins Pipeline and the toolset that surrounds it, let
+us quickly go through the needs of a modern CD flow.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="continuous-delivery-or-deployment-flow-with-jenkins"><a class="anchor" href="#continuous-delivery-or-deployment-flow-with-jenkins"></a>Continuous Delivery or Deployment Flow with Jenkins</h3>
+<div class="paragraph">
+<p>When embarking on the CD journey for the first time, newcomers tend to think
+that the tasks that constitute the flow are straightforward and linear. While
+that might be true with small projects, in most cases things are much more
+complicated than that. You might think that the flow consists of building,
+testing and deployment, and that the approach is linear and follows the
+all-or-nothing rule. Build invokes testing and testing invokes deployment. If
+one of them fails, the developer gets a notification, fixes the problem and
+commits the code that will initiate the repetition of the process.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><a class="image" href="/images/post-images/need-for-pipeline/simple-cd-flow.png"><img src="/images/post-images/need-for-pipeline/simple-cd-flow-small.png" alt="simple cd flow small" title="A simple and, in most cases, insufficient CD flow"></a></span></p>
+</div>
+<div class="paragraph">
+<p>In most instances, the process is far more complex. There are many tasks to run,
+and each of them might produce a failure. In some cases, a failure should only
+stop the process. However, more often than not, some additional logic should be
+executed as part of the after-failure cleanup. For example, what happens if
+post-deployment tests fail after a new release was deployed to production? We
+cannot just stop the flow and declare the build a failure. We might need to
+revert to the previous release, rollback the proxy, de-register the service and
+so on. I won&#8217;t go into many examples of situations that require complex flow
+with many tasks, conditionals that depend on results, parallel execution and so
+on. Instead, I&#8217;ll share a diagram of one of the flows I worked on.</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><a class="image" href="/images/post-images/need-for-pipeline/complex-cd-flow.png"><img src="/images/post-images/need-for-pipeline/complex-cd-flow-small.png" alt="complex cd flow small" title="A more compelx CD flow"></a></span></p>
+</div>
+<div class="paragraph">
+<p>Some tasks are run in one of the testing servers (yellow) while others are run
+on the production cluster (blue). While any task might produce an error, in some
+cases such an outcome triggers a separate set of tasks. Some parts of the flow
+are not linear and depend on task results. Some tasks should be executed in
+parallel to improve the overall time required to run them. The list goes on and
+on. Please note that this discussion is not about the best way to execute the
+deployment flow but only a demonstration that the complexity can be, often, very
+high and cannot be solved by a simple chaining of Freestyle jobs. Even in cases
+when such chaining is possible, the maintenance cost tends to be very high.</p>
+</div>
+<div class="paragraph">
+<p>One of the CD objectives we are unable to solve through chained jobs, or is
+proved to be difficult to implement, is conditional logic. In many cases, it is
+not enough to simply chain jobs in a linear fashion. Often, we do not want only
+to create a job A that, once it&#8217;s finished running, executes job B, which, in
+turn, invokes job C. In real-world situations, things are more complicated than
+that. We want to run some tasks (let&#8217;s call them job A), and, depending on the
+result, invoke jobs B1 or B2, then run in parallel C1, C2 and C3, and, finally,
+execute job D only when all C jobs are finished successfully. If this were a
+program or a script, we would have no problem accomplishing something like that,
+since all modern programming languages allow us to employ conditional logic in a
+simple and efficient way. Chained Jenkins jobs, created through its UI, pose
+difficulties to create even a simple conditional logic. Truth be told, some
+plugins can help us with conditional logic. We have Conditional Build Steps,
+Parameterised Trigger, Promotions and others. However, one of the major issues
+with these plugins is configuration. It tends to be scattered across multiple
+locations, hard to maintain and with little visibility.</p>
+</div>
+<div class="paragraph">
+<p>Resource allocation needs a careful thought and is, often, more complicated than
+a simple decision to run a job on a predefined slave. There are cases when slave
+should be decided dynamically, workspace should be defined during runtime and
+cleanup depends on a result of some action.</p>
+</div>
+<div class="paragraph">
+<p>While a continuous deployment process means that the whole pipeline ends with
+deployment to production, many businesses are not ready for such a goal or have
+use-cases when it is not appropriate. Any other process with a smaller scope, be
+it continuous delivery or continuous integration, often requires some human
+interaction. A step in the pipeline might need someone&#8217;s confirmation, a failed
+process might require a manual input about reasons for the failure, and so on.
+The requirement for human interaction should be an integral part of the pipeline
+and should allow us to pause, inspect and resume the flow. At least, until we
+reach the true continuous deployment stage.</p>
+</div>
+<div class="paragraph">
+<p>The industry is, slowly, moving towards microservices architectures. However,
+the transformation process might take a long time to be adopted, and even more
+to be implemented. Until then, we are stuck with monolithic applications that
+often require a long time for deployment pipelines to be fully executed. It is
+not uncommon for them to run for a couple of hours, or even days. In such cases,
+failure of the process, or the whole node the process is running on, should not
+mean that everything needs to be repeated. We should have a mechanism to
+continue the flow from defined checkpoints, thus avoiding costly repetition,
+potential delays and additional costs. That is not to say that long-running
+deployment flows are appropriate or recommended. A well-designed CD process
+should run within minutes, if not seconds. However, such a process requires not
+only the flow to be designed well, but also the architecture of our applications
+to be changed. Since, in many cases, that does not seem to be a viable option,
+resumable points of the flow are a time saver.</p>
+</div>
+<div class="paragraph">
+<p>All those needs, and many others, needed to be addressed in Jenkins if it was to
+continue being a dominant CI/CD tool. Fortunately, developers behind the project
+understood those needs and, as a result, we got the Jenkins Pipeline plugin. The
+future of Jenkins lies in a <strong>transition from Freestyle chained jobs to a single
+pipeline expressed as code</strong>. Modern delivery flows cannot be expressed and easily
+maintained through UI drag 'n drop features, nor through chained jobs. They can
+neither be defined through YAML (Yet Another Markup Language) definitions
+proposed by some of the newer tools (which I&#8217;m not going to name). <strong>We need to go
+back to code as a primary way to define not only the applications and services
+we are developing but almost everything else</strong>. Many other types of tools adopted
+that approach, and it was time for us to get that option for CI/CD processes as
+well.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//blog/2016/2016-04-15-the-need-for-pipeline.adoc" title="Edit /blog/2016/2016-04-15-the-need-for-pipeline.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//blog/2016/2016-04-15-the-need-for-pipeline.adoc" title="View /blog/2016/2016-04-15-the-need-for-pipeline.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

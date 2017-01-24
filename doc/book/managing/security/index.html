@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Managing Security
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="section_nav pagination-links">
+<a class="prev page-link" href="../system-configuration">
+⇐ Configuring the System
+</a>
+<a class="up page-link" href="../">
+⇑ "Managing Jenkins
+</a>
+<a class="next page-link" href="../tools">
+Managing Tools ⇒
+</a>
+<br>
+<a class="index page-link" href="../../">
+Index
+</a>
+</div>
+<div class="section">
+<h1>
+Managing Security
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#enabling-security">Enabling Security</a>
+<ul class="sectlevel2">
+<li><a href="#jnlp-tcp-port">JNLP TCP Port</a></li>
+<li><a href="#access-control">Access Control</a></li>
+<li><a href="#markup-formatter">Markup Formatter</a></li>
+</ul>
+</li>
+<li><a href="#cross-site-request-forgery">Cross Site Request Forgery</a>
+<ul class="sectlevel2">
+<li><a href="#caveats">Caveats</a></li>
+</ul>
+</li>
+<li><a href="#agent-master-access-control">Agent/Master Access Control</a>
+<ul class="sectlevel2">
+<li><a href="#customizing-access">Customizing Access</a></li>
+<li><a href="#disabling">Disabling</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins is used everywhere from workstations on corporate intranets, to
+high-powered servers connected to the public internet. To safely support this
+wide spread of security and threat profiles, Jenkins offers many configuration
+options for enabling, editing, or disabling various security features.</p>
+</div>
+<div class="paragraph">
+<p>As of Jenkins 2.0, many of the security options were enabled by default to
+ensure that Jenkins environments remained secure unless an administrator
+explicitly disabled certain protections.</p>
+</div>
+<div class="paragraph">
+<p>This section will introduce the various security options available to a Jenkins
+administrator, explaining the protections offered, and trade-offs to disabling
+some of them.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="enabling-security"><a class="anchor" href="#enabling-security"></a>Enabling Security</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When the <strong>Enable Security</strong> checkbox is checked, which has been the default
+since Jenkins 2.0, users can log in with a username and password in order to
+perform operations not available to anonymous users. Which operations require
+users to log in depends on the chosen authorization strategy and its configuration;
+by default anonymous users have no permissions, and logged in users have full
+control. This checkbox should <strong>always</strong> be enabled for any non-local (test) Jenkins
+environment.</p>
+</div>
+<div class="paragraph">
+<p>The Enable Security section of the web UI allows a Jenkins administrator to
+enable, configure, or disable key security features which apply to the entire
+Jenkins environment.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/doc/book/resources/managing/configure-global-security-enable-security.png" alt="Configure Global Security - Enable Security">
+</div>
+</div>
+<div class="sect2">
+<h3 id="jnlp-tcp-port"><a class="anchor" href="#jnlp-tcp-port"></a>JNLP TCP Port</h3>
+<div class="paragraph">
+<p>Jenkins uses a TCP port to communicate with agents launched via the JNLP
+protocol, such as Windows-based agents. As of Jenkins 2.0, by default this port
+is disabled.</p>
+</div>
+<div class="paragraph">
+<p>For administrators wishing to use JNLP-based agents, the two port options are:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Random</strong>: The JNLP port is chosen random to avoid collisions on the Jenkins
+<a href="../../glossary/#master">master</a>. The downside to randomized JNLP ports is that
+they&#8217;re chosen during the boot of the Jenkins master, making it difficult to
+manage firewall rules allowing JNLP traffic.</p>
+</li>
+<li>
+<p><strong>Fixed</strong>: The JNLP port is chosen by the Jenkins administrator and is
+consistent across reboots of the Jenkins master. This makes it easier to manage
+firewall rules allowing JNLP-based agents to connect to the master.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="access-control"><a class="anchor" href="#access-control"></a>Access Control</h3>
+<div class="paragraph">
+<p>Access Control is the primary mechanism for securing a Jenkins environment
+against unauthorized usage. Two facets of configuration are necessary for
+configuring Access Control in Jenkins:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A <strong>Security Realm</strong> which informs the Jenkins environment how and where to
+pull user (or identity) information from. Also commonly known as "authentication."</p>
+</li>
+<li>
+<p><strong>Authorization</strong> configuration which informs the Jenkins environment as to
+which users and/or groups can access which aspects of Jenkins, and to what
+extent.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Using both the Security Realm and Authorization configurations it is possible
+to configure very relaxed or very rigid authentication and authorization
+schemes in Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, some plugins such as the
+<a href="https://plugins.jenkins.io/role-strategy">Role-based Authorization Strategy</a>
+plugin can extend the Access Control capabilities of Jenkins to support even
+more nuanced authentication and authorization schemes.</p>
+</div>
+<div class="sect3">
+<h4 id="security-realm"><a class="anchor" href="#security-realm"></a>Security Realm</h4>
+<div class="paragraph">
+<p>By default Jenkins includes support for a few different Security Realms:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Delegate to servlet container</dt>
+<dd>
+<p>For delegating authentication a servlet
+container running the Jenkins master, such as
+<a href="http://www.eclipse.org/jetty/">Jetty</a>. If using this option, please consult
+the servlet container&#8217;s authentication documentation.</p>
+</dd>
+<dt class="hdlist1">Jenkins’ own user database</dt>
+<dd>
+<p>Use Jenkins&#8217;s own built-in user data store for
+authentication instead of delegating to an external system. This is enabled by
+default with new Jenkins 2.0 or later installations and is suitable for smaller
+environments.</p>
+</dd>
+<dt class="hdlist1">LDAP</dt>
+<dd>
+<p>Delegate all authentication to a configured LDAP server, including both
+users and groups. This option is more common for larger installations in
+organizations which already have configured an external identity provider such
+as LDAP. This also supports Active Directory installations.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This feature is provided by the <a href="https://plugins.jenkins.io/ldap">LDAP plugin</a>
+that may not be installed on your instance.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Unix user/group database</dt>
+<dd>
+<p>Delegates the authentication to the underlying Unix
+OS-level user database on the Jenkins master. This mode will also allow re-use
+of Unix groups for authorization. For example, Jenkins can be configured such
+that "Everyone in the <code>developers</code> group has administrator access." To support this feature, Jenkins relies on
+<a href="http://en.wikipedia.org/wiki/Pluggable_Authentication_Modules">PAM</a>
+which may need to be configured external to the Jenkins environment.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Unix allows an user and a group to have the same name. In order to
+disambiguate, use the <code>@</code> prefix to force the name to be interpreted as
+a group. For example, <code>@dev</code> would mean the <code>dev</code> group and not the <code>dev</code> user.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<hr>
+<div class="paragraph">
+<p>Plugins can provide additional security realms which may be useful for
+incorporating Jenkins into existing identity systems, such as:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/active-directory">Active Directory</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/github-oauth">GitHub Authentication</a></p>
+</li>
+<li>
+<p><a href="https://plugins.jenkins.io/crowd2">Atlassian Crowd 2</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="authorization"><a class="anchor" href="#authorization"></a>Authorization</h4>
+<div class="paragraph">
+<p>The Security Realm, or authentication, indicates <em>who</em> can access the Jenkins
+environment. The other piece of the puzzle is <strong>Authorization</strong>, which indicates
+<em>what</em> they can access in the Jenkins environment. By default Jenkins supports
+a few different Authorization options:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Anyone can do anything</dt>
+<dd>
+<p>Everyone gets full control of Jenkins, including
+anonymous users who haven&#8217;t logged in. <strong>Do not use this setting</strong> for anything
+other than local test Jenkins masters.</p>
+</dd>
+<dt class="hdlist1">Legacy mode</dt>
+<dd>
+<p>Behaves exactly the same as Jenkins &lt;1.164. Namely, if a user has
+the "admin" role, they will be granted full control over the system, and otherwise
+(including anonymous users) will only have the read access. <strong>Do not use this
+setting</strong> for anything other than local test Jenkins masters.</p>
+</dd>
+<dt class="hdlist1">Logged in users can do anything</dt>
+<dd>
+<p>In this mode, every logged-in user gets full
+control of Jenkins. Depending on an advanced option, anonymous users get read
+access to Jenkins, or no access at all. This mode is useful to force users to
+log in before taking actions, so that there is an audit trail of users' actions.</p>
+</dd>
+<dt class="hdlist1">Matrix-based security</dt>
+<dd>
+<p>This authorization scheme allows for granular control
+over which users and groups are able to perform which actions in the Jenkins
+environment (see the screenshot below).</p>
+</dd>
+<dt class="hdlist1">Project-based Matrix Authorization Strategy</dt>
+<dd>
+<p>This authorization scheme is an
+extension to Matrix-based security which allows additional access control lists
+(ACLs) to be defined for <strong>each project</strong> separately in the Project configuration
+screen. This allows granting specific users or groups access only to specified
+projects, instead of all projects in the Jenkins environment. The ACLs defined
+with Project-based Matrix Authorization are additive such that access grants
+defined in the Configure Global Security screen will be combined with
+project-specific ACLs.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Matrix-based security and Project-based Matrix Authorization Strategy are provided
+by the <a href="https://plugins.jenkins.io/matrix-auth">Matrix Authorization Strategy Plugin</a>
+and may not be installed on your Jenkins.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For most Jenkins environments, Matrix-based security provides the most security
+and flexibility so it is recommended as a starting point for "production"
+environments.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/doc/book/resources/managing/configure-global-security-matrix-authorization.png" alt="Configure Global Security - Enable Security - Matrix authorization">
+</div>
+<div class="title">Figure 1. Matrix-based security</div>
+</div>
+<div class="paragraph">
+<p>The table shown above can get quite wide as each column represents a permission
+provided by Jenkins core or a plugin. Hovering the mouse over a permission will
+display more information about the permission.</p>
+</div>
+<div class="paragraph">
+<p>Each row in the table represents a user or group (also known as a "role"). This
+includes special entries named "anonymous" and "authenticated." The "anonymous"
+entry represents permissions granted to all unauthenticated users accessing the
+Jenkins environment. Whereas "authenticated' can be used to grant permissions
+to all authenticated users accessing the environment.</p>
+</div>
+<div class="paragraph">
+<p>The permissions granted in the matrix are additive. For example, if a user
+"kohsuke" is in the groups "developers" and "administrators", then the
+permissions granted to "kohsuke" will be a union of all those permissions
+granted to "kohsuke", "developers", "administrators", "authenticated", and
+"anonymous."</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="markup-formatter"><a class="anchor" href="#markup-formatter"></a>Markup Formatter</h3>
+<div class="paragraph">
+<p>Jenkins allows user-input in a number of different configuration fields and
+text areas which can lead to users inadvertently, or maliciously, inserting
+unsafe HTML and/or JavaScript.</p>
+</div>
+<div class="paragraph">
+<p>By default the <strong>Markup Formatter</strong> configuration is set to <strong>Plain Text</strong> which
+will escape unsafe characters such as <code>&lt;</code> and <code>&amp;</code> to their respective character
+entities.</p>
+</div>
+<div class="paragraph">
+<p>Using the <strong>Safe HTML</strong> Markup Formatter allows for users and
+administrators to inject useful and information HTML snippets into Project
+Descriptions and elsewhere.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cross-site-request-forgery"><a class="anchor" href="#cross-site-request-forgery"></a>Cross Site Request Forgery</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A cross site request forgery (or CSRF/XSRF)
+<sup class="footnote" id="_footnote_csrf">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>
+is an exploit that enables an unauthorized third party to perform requests
+against a web application by impersonating another, authenticated, user. In the
+context of a Jenkins environment, a CSRF attack could allow an malicious actor
+to delete projects, alter builds, or modify Jenkins' system configuration. To
+guard against this class of vulnerabilities, CSRF protection has been enabled
+by default with all Jenkins versions since 2.0.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/doc/book/resources/managing/configure-global-security-prevent-csrf.png" alt="Configure Global Security - Prevent Cross Site Request Forgery exploits">
+</div>
+</div>
+<div class="paragraph">
+<p>When the option is enabled, Jenkins will check for a CSRF token, or "crumb",
+on any request that may change data in the Jenkins environment. This includes
+any form submission and calls to the remote API, including those using "Basic"
+authentication.</p>
+</div>
+<div class="paragraph">
+<p>It is <strong>strongly recommended</strong> that this option be left <strong>enabled</strong>, including on
+instances operating on private, fully trusted networks.</p>
+</div>
+<div class="sect2">
+<h3 id="caveats"><a class="anchor" href="#caveats"></a>Caveats</h3>
+<div class="paragraph">
+<p>CSRF protection <em>may</em> result in challenges for more advanced usages of Jenkins,
+such as:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Some Jenkins features, like the remote API, are more difficult to use when
+this option is enabled. Consult the <a href="../../using/remote-api/#csrf">Remote API</a>
+documentation for more information.</p>
+</li>
+<li>
+<p>Accessing Jenkins through a poorly-configured reverse proxy may result in the
+CSRF HTTP header being stripped from requests, resulting in protected actions
+failing.</p>
+</li>
+<li>
+<p>Out-dated plugins, not tested with CSRF protection enabled, may not properly
+function.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>More information about CSRF exploits can be found
+<a href="http://www.owasp.org/index.php/Cross-Site_Request_Forgery">on the OWASP
+website</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="agent-master-access-control"><a class="anchor" href="#agent-master-access-control"></a>Agent/Master Access Control</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Conceptually, the Jenkins master and agents can be thought of as a cohesive
+system which happens to execute across multiple discrete processes and
+machines. This allows an agent to ask the master process for information
+available to it, for example, the contents of files, etc.</p>
+</div>
+<div class="paragraph">
+<p>For larger or mature Jenkins environments where a Jenkins administrator might
+enable agents provided by other teams or organizations, a flat agent/master
+trust model is insufficient.</p>
+</div>
+<div class="paragraph">
+<p>The Agent/Master Access Control system was introduced
+<sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup>
+to allow Jenkins administrators to add more granular access control definitions
+between the Jenkins master and the connected agents.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/doc/book/resources/managing/configure-global-security-enable-agent-master.png" alt="Configure Global Security - Enable Agent =&gt; Master Access Control">
+</div>
+</div>
+<div class="paragraph">
+<p>As of Jenkins 2.0, this subsystem has been turned on by default.</p>
+</div>
+<div class="sect2">
+<h3 id="customizing-access"><a class="anchor" href="#customizing-access"></a>Customizing Access</h3>
+<div class="paragraph">
+<p>For advanced users who may wish to allow certain access patterns from the
+agents to the Jenkins master, Jenkins allows administrators to create specific
+exemptions from the built-in access control rules.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/doc/book/resources/managing/configure-global-security-access-control-rules.png" alt="Configure Global Security - Enable Agent =&gt; Master Access Control - Editing Rules">
+</div>
+</div>
+<div class="paragraph">
+<p>By following the link highlighted above, an administrator may edit <strong>Commands</strong>
+and <strong>File Access</strong> Agent/Master access control rules.</p>
+</div>
+<div class="sect3">
+<h4 id="commands"><a class="anchor" href="#commands"></a>Commands</h4>
+<div class="paragraph">
+<p>"Commands" in Jenkins and its plugins are identified by their fully-qualified
+class names. The majority of these commands are intended to be executed on
+agents by a request of a master, but some of them are intended to be executed
+on a master by a request of an agent.</p>
+</div>
+<div class="paragraph">
+<p>Plugins not yet updated for this subsystem may not classify which category each
+command falls into, such that when an agent requests that the master execute a
+command which is not explicitly allowed, Jenkins will err on the side of
+caution and refuse to execute the command.</p>
+</div>
+<div class="paragraph">
+<p>In such cases, Jenkins administrators may "whitelist"
+<sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup>
+certain commands as acceptable for execution on the master.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/doc/book/resources/managing/configure-global-security-whitelist-commands.png" alt="Configure Global Security - Enable Agent =&gt; Master Access Control - Editing Rules - Command Whitelisting">
+</div>
+</div>
+<div class="sect4">
+<h5 id="advanced"><a class="anchor" href="#advanced"></a>Advanced</h5>
+<div class="paragraph">
+<p>Administrators may also whitelist classes by creating files with the <code>.conf</code>
+extension in the directory <code>JENKINS_HOME/secrets/whitelisted-callables.d/</code>.
+The contents of these <code>.conf</code> files should list command names on separate
+lines.</p>
+</div>
+<div class="paragraph">
+<p>The contents of all the <code>.conf</code> files in the directory will be read by Jenkins
+and combined to create a <code>default.conf</code> file in the directory which lists all
+known safe command. The <code>default.conf</code> file will be re-written each time
+Jenkins boots.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins also manages a file named <code>gui.conf</code>, in the <code>whitelisted-callables.d</code>
+directory, where commands added via the web UI are written. In order to disable
+the ability of administrators to change whitelisted commands from the web UI,
+place an empty <code>gui.conf</code> file in the directory and change its permissions such
+that is not writeable by the operating system user Jenkins run as.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="file-access-rules"><a class="anchor" href="#file-access-rules"></a>File Access Rules</h4>
+<div class="paragraph">
+<p>The File Access Rules are used to validate file access requests made from
+agents to the master. Each File Access Rule is a triplet which must contain each
+of the following elements:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>allow</code> / <code>deny</code>: if the following two parameters match the current request
+being considered, an <code>allow</code> entry would allow the request to be carried out
+and a <code>deny</code> entry would deny the request to be rejected, regardless of what
+later rules might say.</p>
+</li>
+<li>
+<p><em>operation</em>: Type of the operation requested. The following 6 values exist.
+The operations can also be combined by comma-separating the values. The value
+of <code>all</code> indicates all the listed operations are allowed or denied.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>read</code>: read file content or list directory entries</p>
+</li>
+<li>
+<p><code>write</code>: write file content</p>
+</li>
+<li>
+<p><code>mkdirs</code>: create a new directory</p>
+</li>
+<li>
+<p><code>create</code>: create a file in an existing directory</p>
+</li>
+<li>
+<p><code>delete</code>: delete a file or directory</p>
+</li>
+<li>
+<p><code>stat</code>: read metadata of a file/directory, such as timestamp, length, file access modes.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><em>file path</em>: regular expression that specifies file paths that matches this
+rule. In addition to the base regexp syntax, it supports the following
+tokens:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>&lt;JENKINS_HOME&gt;</code> can be used as a prefix to match the master&#8217;s
+<code>JENKINS_HOME</code> directory.</p>
+</li>
+<li>
+<p><code>&lt;BUILDDIR&gt;</code> can be used as a prefix to match the build record directory,
+such as <code>/var/lib/jenkins/job/foo/builds/2014-10-17_12-34-56</code>.</p>
+</li>
+<li>
+<p><code>&lt;BUILDID&gt;</code> matches the timestamp-formatted build IDs, like
+<code>2014-10-17_12-34-56</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The rules are ordered, and applied in that order. The earliest match wins.
+For example, the following rules allow access to all files in <code>JENKINS_HOME</code>
+except the <code>secrets</code> folders:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code># To avoid hassle of escaping every '\' on Windows, you can use / even on Windows.
+deny all &lt;JENKINS_HOME&gt;/secrets/.*
+allow all &lt;JENKINS_HOME&gt;/.*</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ordering is very important! The following rules are incorrectly written because
+the 2nd rule will never match, and allow all agents to access all files and
+folders under <code>JENKINS_HOME</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>allow all &lt;JENKINS_HOME&gt;/.*
+deny all &lt;JENKINS_HOME&gt;/secrets/.*</code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="advanced-2"><a class="anchor" href="#advanced-2"></a>Advanced</h5>
+<div class="paragraph">
+<p>Administrators may also add File Access Rules by creating files with the
+<code>.conf.</code> extension in the directory <code>JENKINS_HOME/secrets/filepath-filters.d/</code>.
+Jenkins itself generates the <code>30-default.conf</code> file on boot in this directory
+which contains defaults considered the best balance between compatibility and
+security by the Jenkins project. In order to disable these built-in defaults,
+replace <code>30-default.conf</code> with an empty file which is not writable by the
+operating system user Jenkins run as.</p>
+</div>
+<div class="paragraph">
+<p>On each boot, Jenkins will read all <code>.conf</code> files in the <code>filepath-filters.d</code>
+directory in alphabetical order, therefore it is good practice to name files in a
+manner which indicates their load order.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins also manages <code>50-gui.conf</code>, in the <code>filepath-filters/</code> directory, where
+File Access Rules added via the web UI are written. In order to disable the
+ability of administrators to change the File Access Rules from the web UI,
+place an empty <code>50-gui.conf</code> file in the directory and change its permissions
+such that is not writeable by the operating system user Jenkins run as.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="disabling"><a class="anchor" href="#disabling"></a>Disabling</h3>
+<div class="paragraph">
+<p>While it is not recommended, if all agents in a Jenkins environment can be
+considered "trusted" to the same degree that the master is trusted, the
+Agent/Master Access Control feature may be disabled.</p>
+</div>
+<div class="paragraph">
+<p>Additionally, all the users in the Jenkins environment should have the same
+level of access to all configured projects.</p>
+</div>
+<div class="paragraph">
+<p>An administrator can disable Agent/Master Access Control in the web UI by
+un-checking the box on the <strong>Configure Global Security</strong> page. Alternatively an
+administrator may create a file in <code>JENKINS_HOME/secrets</code> named
+<code>slave-to-master-security-kill-switch</code> with the contents of <code>true</code> and restart
+Jenkins.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Most Jenkins environments grow over time requiring their trust models to evolve
+as the environment grows. Please consider scheduling regular "check-ups" to
+review whether any disabled security settings should be re-enabled.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. <a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery" class="bare">www.owasp.org/index.php/Cross-Site_Request_Forgery</a>
+</div>
+<div class="footnote" id="_footnote_2">
+<a href="#_footnoteref_2">2</a>. Starting with 1.587, and 1.580.1, releases
+</div>
+<div class="footnote" id="_footnote_3">
+<a href="#_footnoteref_3">3</a>. <a href="https://en.wikipedia.org/wiki/Whitelist" class="bare">en.wikipedia.org/wiki/Whitelist</a>
+</div>
+</div>
+</div>
+<div class="section_nav pagination-links">
+<a class="prev page-link" href="../system-configuration">
+⇐ Configuring the System
+</a>
+<a class="up page-link" href="../">
+⇑ "Managing Jenkins
+</a>
+<a class="next page-link" href="../tools">
+Managing Tools ⇒
+</a>
+<br>
+<a class="index page-link" href="../../">
+Index
+</a>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//doc/book/managing/security.adoc" title="Edit /doc/book/managing/security.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//doc/book/managing/security.adoc" title="View /doc/book/managing/security.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

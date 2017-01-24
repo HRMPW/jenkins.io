@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Getting Started with Pipelines
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  .row {
+    margin-right: 5em;
+    margin-left: 5em;
+  }
+  .toc {
+      float: right;
+  }
+</style>
+<div class="container">
+<div class="row body">
+<h1>
+Getting Started with Pipelines
+</h1>
+<div class="sect1">
+<h2 id="audience-and-purpose"><a class="anchor" href="#audience-and-purpose"></a>Audience and Purpose</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This document is intended for novice users of the Jenkins pipeline feature. The document explains what a pipeline is, why that matters, and how to create the different kinds of pipelines.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="why-pipeline"><a class="anchor" href="#why-pipeline"></a>Why Pipeline?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>While standard Jenkins “freestyle” jobs support simple continuous integration by allowing you to define sequential tasks in an application lifecycle, they do not create a persistent record of execution, enable one script to address all the steps in a complex workflow, or confer the other advantages of pipelines.</p>
+</div>
+<div class="paragraph">
+<p>In contrast to freestyle jobs, pipelines enable you to define the whole application lifecycle.  Pipeline functionality helps Jenkins to support continuous delivery (CD). The Pipeline plugin was built with requirements for a flexible, extensible, and script-based CD workflow capability in mind.</p>
+</div>
+<div class="paragraph">
+<p>Accordingly, pipeline functionality is:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Durable: Pipelines can survive both planned and unplanned restarts of your Jenkins master.</p>
+</li>
+<li>
+<p>Pausable: Pipelines can optionally stop and wait for human input or approval before completing the jobs for which they were built.</p>
+</li>
+<li>
+<p>Versatile: Pipelines support complex real-world CD requirements, including the ability to fork or join, loop, and work in parallel with each other.</p>
+</li>
+<li>
+<p>Efficient: Pipelines can restart from any of several saved checkpoints.</p>
+</li>
+<li>
+<p>Extensible: The Pipeline plugin supports custom extensions to its DSL (domain scripting language) and multiple options for integration with other plugins.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The flowchart below is an example of one continuous delivery scenario enabled by the Pipeline plugin:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/pipeline/jenkins-workflow.png" alt="jenkins workflow" width="800">
+</div>
+<div class="title">Figure 1. Jenkins Workflow</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="pipeline-defined"><a class="anchor" href="#pipeline-defined"></a>Pipeline Defined</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Pipelines are Jenkins jobs enabled by the Pipeline (formerly called “workflow”) plugin and built with simple text scripts that use a Pipeline DSL (domain-specific language) based on the Groovy programming language.</p>
+</div>
+<div class="paragraph">
+<p>Pipelines leverage the power of multiple steps to execute both simple and complex tasks according to parameters that you establish. Once created, pipelines can build code and orchestrate the work required to drive applications from commit to delivery.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="pipeline-vocabulary"><a class="anchor" href="#pipeline-vocabulary"></a>Pipeline Vocabulary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Pipeline terms such as “step,” “node,” and “stage” are a subset of the vocabulary used for Jenkins in general.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Step</dt>
+<dd>
+<p>A “step” (often called a “build step”) is a single task that is part of sequence. Steps tell Jenkins what to do.</p>
+</dd>
+<dt class="hdlist1">Node</dt>
+<dd>
+<p>In pipeline coding contexts, as opposed to Jenkins generally, a “node” is a step that does two things, typically by enlisting help from available executors on agents:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Schedules the steps contained within it to run by adding them to the Jenkins build queue (so that as soon as an executor slot is free on a node, the appropriate steps run).</p>
+</li>
+<li>
+<p>Creates a workspace, meaning a file directory specific to a particular job, where resource-intensive processing can occur without negatively impacting your pipeline performance. Workspaces last for the duration of the tasks assigned to them.</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>(In Jenkins generally, a “node” means any computer that is part of your Jenkins installation, whether that computer is used as a master or as an agent).</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Stage</dt>
+<dd>
+<p>A “stage” is a step that calls supported APIs. Pipeline syntax is comprised of stages. Each stage can have one or more build steps within it.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Familiarity with Jenkins  terms such as “master,” “agent,” and “executor” also helps with understanding how pipelines work. These terms are not specific to pipelines:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>master - A “master” is the basic installation of Jenkins on a computer; it handles tasks for your build system. Pipeline scripts are parsed on masters, and steps wrapped in node blocks are performed on available executors.</p>
+</li>
+<li>
+<p>agent - An “agent” (formerly "slave")  is a computer set up to offload particular projects from the master. Your configuration determines the number and scope of operations that an agent can perform. Operations are performed by executors.</p>
+</li>
+<li>
+<p>executor - An “executor” is a computational resource for compiling code. It can run on master or agent machines, either by itself or in parallel with other executors. Jenkins assigns a <em>java.lang.Thread</em> to each executor.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="preparing-jenkins-to-run-pipelines"><a class="anchor" href="#preparing-jenkins-to-run-pipelines"></a>Preparing Jenkins to Run Pipelines</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To run pipelines, you need to have a Jenkins instance that is set up with the appropriate plugins. This requires:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Jenkins 1.580.1 or later (Jenkins 2.0 is recommended)</p>
+</li>
+<li>
+<p>The core Pipeline plugin</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="installing-the-pipeline-plugin"><a class="anchor" href="#installing-the-pipeline-plugin"></a>Installing the Pipeline Plugin</h3>
+<div class="paragraph">
+<p>The Pipeline plugin is installed in the same way as other Jenkins plugins. Installing the Pipeline plugin also installs the suite of related plugins on which it depends:
+Open Jenkins in your web browser.
+On the Manage Jenkins page for your installation, navigate to Manage Plugins.
+Find Pipeline Plugin from among the plugins listed on the Available tab.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Plugin" class="bare">https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Plugin</a> (You can do this by scrolling through the plugin list or by using “Pipeline” as a term to filter results)
+Select the checkbox for Pipeline Plugin.
+Select either <strong>Install without restart</strong> or <strong>Download now and install after restart</strong>. Pipeline plugin installation automatically includes all necessary dependencies.
+Restart Jenkins.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="pipeline-plugin-reference-list"><a class="anchor" href="#pipeline-plugin-reference-list"></a>Pipeline Plugin Reference List</h3>
+<div class="paragraph">
+<p>The Pipeline plugin works with a suite of related plugins that enhance the pipeline functionality of your Jenkins setup. The additional plugins typically introduce additional pipeline syntax or visualizations.</p>
+</div>
+<div class="paragraph">
+<p>The table below describes pipeline-related plugins in terms of their importance to pipeline functionality (required, recommended, or optional). To get the basic pipeline functionality, you only need to install the main Pipeline plugin, but recommended plugins add additional capabilities that you will probably want.</p>
+</div>
+<div class="paragraph">
+<p>Optional plugins are mainly useful if you are creating pipelines that are related to the technologies that they support.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Plugin Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pipeline (workflow-aggregator)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Installs the core pipeline engine and its dependent plugins:
+Pipeline: API,
+Pipeline: Basic Steps,
+Pipeline: Durable Task Step,
+Pipeline: Execution Support,
+Pipeline: Global Shared Library for CPS pipeline,
+Pipeline: Groovy CPS Execution,
+Pipeline: Job,
+Pipeline: SCM Step,
+Pipeline: Step API</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">required</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pipeline: Stage View</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provides a graphical swimlane view of pipeline stage execution (as well as a build history of the stages)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">recommended</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Multibranch Pipeline</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adds "Multibranch Pipeline" item type which allows Jenkins to automatically build branches that contain jenkinsfile</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">recommended</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CloudBees GitHub Branch Source</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adds GitHub Organization Folder item type and adds "Github" as a branch source on Multibranch pipelines</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">recommended for teams hosting repositories in Github</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CloudBees Bitbucket Branch Source</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adds Bitbucket Team item type and adds "Bitbucket" as a branch source on Multibranch pipelines</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">recommended for teams hosting repositories in Bitbucket</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CloudBees Docker Pipeline</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enables pipeline to build and use Docker containers inside pipeline scripts.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">optional</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Pipeline-related plugins other than those listed above are regularly “whitelisted” as compatible with or designed for Pipeline usage. For more information, see the <a href="https://github.com/jenkinsci/workflow-plugin/blob/541faf611659e1e6b8f2cbbd3435756b27633db4/COMPATIBILITY.md">Plugin Compatibility With Pipeline</a> wiki. Current contents of that wiki are summarized in the following table:</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<colgroup>
+<col style="width: 37.5%;">
+<col style="width: 62.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">SCMs</th>
+<th class="tableblock halign-left valign-top">SCM Plugins</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GitSCM (git)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SubversionSCM (subversion)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MercurialSCM (mercurial)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PerforceScm (p4, not the older perforce)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IntegritySCM (integrity-plugin)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RepoScm (repo)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">teamconcert</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CVSSCM (cvs)</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<colgroup>
+<col style="width: 37.5%;">
+<col style="width: 62.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Build/Post-Build</th>
+<th class="tableblock halign-left valign-top">Build/Post-Build Plugins</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ArtifactArchiver (core)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fingerprinter (core)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JUnitResultArchiver (junit)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JavadocArchiver (javadoc)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mailer (mailer)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CopyArtifact (copyartifact)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Analysis publishers</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HtmlPublisher (htmlpublisher)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HipChatNotifier (hipchat)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LogParserPublisher (log-parser)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SeleniumHtmlReportPublisher (seleniumhtmlreport)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ScoveragePublisher (scoverage)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AnsiblePlaybookBuilder (ansible)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GitHubCommitNotifier, GitHubSetCommitStatusBuilder (github)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">XUnitPublisher and XUnitBuilder (xunit)</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<colgroup>
+<col style="width: 37.5%;">
+<col style="width: 62.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Build Wrappers</th>
+<th class="tableblock halign-left valign-top">Build Wrapper Plugins</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ConfigFileBuildWrapper (config-file-provider)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Xvnc (xvnc)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BuildUser (build-user-vars)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TimestamperBuildWrapper (timestamper)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MaskPasswordsBuildWrapper (mask-passwords)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">XvfbBuildWrapper (xvfb)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GCloudBuildWrapper (gcloud-sdk)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NpmPackagesBuildWrapper (nodejs)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AnsiColorBuildWrapper (ansicolor)</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<colgroup>
+<col style="width: 37.5%;">
+<col style="width: 62.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Triggers</th>
+<th class="tableblock halign-left valign-top">Trigger Plugins</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gerrit-trigger</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">github</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">deployment-notification</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gitlab-plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bitbucket</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<colgroup>
+<col style="width: 37.5%;">
+<col style="width: 62.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Clouds</th>
+<th class="tableblock halign-left valign-top">Cloud Plugins</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mock-slave (for prototyping)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">docker</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nectar-vmware</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">operations-center-cloud</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ec2</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<colgroup>
+<col style="width: 37.5%;">
+<col style="width: 62.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Miscellaneous</th>
+<th class="tableblock halign-left valign-top">Miscellaneous Plugins</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">rebuild</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">parameterized-trigger</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">build-token-root</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">job-dsl</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">zentimestamp</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">claim</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">listSubversionTagsParameterValue</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">authorize-project</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">customize-build-now</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">embeddable-build-status</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">groovy-postbuild</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">buildtriggerbadge</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">build-monitor-plugin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">radiatorview</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<colgroup>
+<col style="width: 37.5%;">
+<col style="width: 62.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Custom Steps</th>
+<th class="tableblock halign-left valign-top">Custom Step Plugins</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">docker-workflow</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">credentials-binding</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ssh-agen</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">parallel-test-executor</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mailer</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">email-ext</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Note:</strong> Several plugins available in the Jenkins ecosystem but not actually related to the Pipeline feature set described in this guide also use the terms "pipeline" or "DSL" in their names. For example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Build Pipeline plugin - provides a way to execute Jenkins jobs sequentially</p>
+</li>
+<li>
+<p>Build Flow Plugin - introduces a job type that lets you define an orchestration process as a script.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="more-information"><a class="anchor" href="#more-information"></a>More Information</h3>
+<div class="paragraph">
+<p>As with any Jenkins plugin, you have the option of installing the Pipeline plugin from the Plugins web page at <a href="https://wiki.jenkins-ci.org/display/JENKINS/Plugins" class="bare">https://wiki.jenkins-ci.org/display/JENKINS/Plugins</a>, but using the Plugin Manager interface is preferred because you do not then have to make allowances for plugin dependencies or compatibility issues.
+To investigate Pipeline without installing Jenkins separately or accessing your production system, you can run a <a href="https://github.com/jenkinsci/workflow-plugin/blob/master/demo/README.md">Docker demo</a> of Pipeline functionality.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="approaches-to-defining-pipeline-script"><a class="anchor" href="#approaches-to-defining-pipeline-script"></a>Approaches to Defining Pipeline Script</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can create pipelines in either of the following ways:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Through script entered in the configuration page of the user interface for your Jenkins instance.</p>
+</li>
+<li>
+<p>Through script that you create with a Groovy editor outside Jenkins but import into a designated Jenkins repository by selecting the <strong>Pipeline Script from SCM</strong> option during initial setup.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="creating-a-simple-pipeline"><a class="anchor" href="#creating-a-simple-pipeline"></a>Creating a Simple Pipeline</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Initial pipeline usage typically involves the following tasks:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Downloading and installing the Pipeline plugin (Unless it is already part of your Jenkins  installation)</p>
+</li>
+<li>
+<p>Creating a Pipeline of a specific type</p>
+</li>
+<li>
+<p>Configuring your Pipeline</p>
+</li>
+<li>
+<p>Controlling Flow through your Pipeline</p>
+</li>
+<li>
+<p>Scaling your Pipeline</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>To create a simple pipeline from the Jenkins interface, perform the following steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Click <strong>New Item</strong> on your Jenkins home page,  enter a name for your (pipeline) job, select <strong>Pipeline</strong>, and click <strong>OK</strong>.</p>
+</li>
+<li>
+<p>In the Script text area of the configuration screen, enter your pipeline syntax. If you are new to pipeline creation, you might want to start by opening Snippet Generator and selecting the “Hello Word” snippet.
+<strong>Note:</strong> Pipelines are written as Groovy scripts that tell Jenkins what to do when they are run, but because relevant bits of syntax are introduced as needed, you do not need deep expertise in Groovy to create them, although basic understanding of Groovy is helpful.</p>
+</li>
+<li>
+<p>Check the Use Groovy Sandbox option below the Script text area.
+<strong>Note:</strong> If you are a Jenkins administrator (in other words, authorized to approve your own scripts), sandboxing is optional but efficient, because it lets scripts run without approval as long as they limit themselves to operations that Jenkins considers inherently safe.</p>
+</li>
+<li>
+<p>Click <strong>Save</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Build Now</strong> to create the pipeline.</p>
+</li>
+<li>
+<p>Click ▾ and select <strong>Console Output</strong> to see the output.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The following example shows a successful build of a pipeline created with a one-line script that uses the “echo” step to output the phrase, “hello from pipeline:”</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>Started by user anonymous
+[Pipeline] echo
+hello from Pipeline
+[Pipeline] End of Pipeline
+Finished: SUCCESS</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> You can also create complex and multi-branch pipelines in the script entry area of the Jenkins configuration page, but because they contain multiple stages and the configuration page UI provides limited scripting space, pipeline creation is more commonly done using an editor of your choice from which scripts can be loaded into Jenkins using the <strong>Pipeline script from SCM</strong> option.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="creating-multi-branch-pipelines"><a class="anchor" href="#creating-multi-branch-pipelines"></a>Creating Multi-branch Pipelines</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <strong>Multibranch Pipeline</strong> project type enables you to configure different jobs for different branches of the same project. In a multi-branch pipeline configuration, Jenkins automatically discovers, manages, and executes jobs for multiple source repositories and branches. This eliminates the need for manual job creation and management, as would otherwise be necessary when, for example, a developer adds a new feature to an existing product. Multi-branch pipelines also enable you to stop or suspend jobs automatically if circumstances make that appropriate.</p>
+</div>
+<div class="paragraph">
+<p>A multi-branch pipeline project always includes a <em>Jenkinsfile</em> in its repository root. Jenkins automatically creates a sub-project for each branch that it finds in a repository with a Jenkinsfile.</p>
+</div>
+<div class="paragraph">
+<p>Multi-branch pipelines use the same version control as the rest of your software development process. This “pipeline as code” approach has the following advantages:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You can modify pipeline code without special editing permissions.</p>
+</li>
+<li>
+<p>Finding out who changed what and why no longer depends on whether developers remember to comment their code changes in configuration files.</p>
+</li>
+<li>
+<p>Version control makes the history of changes to code readily apparent.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To create a Multi-branch Pipeline:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Click New Item on your Jenkins home page, enter a name for your job, select Multibranch Pipeline, and click OK.</p>
+</li>
+<li>
+<p>Configure your SCM source (options include Git, GitHub, Mercurial, Subversion, and Bitbucket), supplying information about the owner, scan credentials, and repository in appropriate fields.
+For example, if you select Git as the branch source, you are prompted for the usual connection information, but then rather than enter a fixed refspec (Git’s name for a source/destination pair), you would enter a branch name pattern (Use default settings to look for any branch).</p>
+</li>
+<li>
+<p>Configure the other multi-branch pipeline options:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>API endpoint - an alternate API endpoint to use a self-hosted GitHub Enterprise</p>
+</li>
+<li>
+<p>Checkout credentials - alternate credentials to use when checking out the code (cloning)</p>
+</li>
+<li>
+<p>Include branches - a regular expression to specify branches to include</p>
+</li>
+<li>
+<p>Exclude branches - a regular expression to specify branches to exclude; note that this will takes precedence over the contents of include expressions</p>
+</li>
+<li>
+<p>Property strategy - where you can optionally define custom properties for each branch</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Save your configuration.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Jenkins automatically scans the designated repository and creates appropriate branches.</p>
+</div>
+<div class="paragraph">
+<p>For example (again in Git), if you started with a master branch, and then wanted to experiment with some changes, and so did git checkout -b newfeature and pushed some commits, Jenkins would automatically detect the new branch in your repository and create a new sub-project for it. That sub-project would have its own build history unrelated to the trunk (main line).</p>
+</div>
+<div class="paragraph">
+<p>If you choose, you can ask for the sub-project to be automatically removed after its branch is merged with the main line and deleted. To change your Pipeline script—for example, to add a new Jenkins publisher step corresponding to new reports that your Makefile/pom.xml/etc. is creating—you edit the Jenkinsfile in your change. Your Pipeline script is always synchronized with the rest of the source code you are working on: the checkout scm command checks out the same revision as the script is loaded from.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="writing-pipeline-scripts-in-the-jenkins-ui"><a class="anchor" href="#writing-pipeline-scripts-in-the-jenkins-ui"></a>Writing Pipeline Scripts in the Jenkins UI</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Because Pipelines are comprised of text scripts, they can be written (edited) in the same script creation area of the Jenkins user interface where you create them:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/pipeline/pipeline-editor.png" alt="pipeline editor" width="800">
+</div>
+<div class="title">Figure 2. Pipeline Editor</div>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> Pipeline script writing adds stages and steps to a pipeline; it does not convert one pipeline type into another. You determine which kind of pipeline you want to set up before writing it.</p>
+</div>
+<div class="sect2">
+<h3 id="using-snippet-generator"><a class="anchor" href="#using-snippet-generator"></a>Using Snippet Generator</h3>
+<div class="paragraph">
+<p>You can automate much of the pipeline configuration process by using the Snippet Generator tool.</p>
+</div>
+<div class="paragraph">
+<p>Snippet Generator is dynamically populated with a list of the steps available for pipeline configuration. Depending on the plugins installed to your Jenkins environment, you may see more or fewer items in the list exposed by Snippet Generator.</p>
+</div>
+<div class="paragraph">
+<p>To add one or more steps from Snippet Generator to your pipeline code:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open Snippet Generator</p>
+</li>
+<li>
+<p>Scroll to the step you want</p>
+</li>
+<li>
+<p>Click that step</p>
+</li>
+<li>
+<p>Configure the selected step, if presented with configuration options</p>
+</li>
+<li>
+<p>Click <strong>Generate Groovy</strong> to see a Groovy snippet that runs the step as configured</p>
+</li>
+<li>
+<p>Optionally select and configure additional steps</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/pipeline/snippet-generator.png" alt="snippet generator" width="800">
+</div>
+<div class="title">Figure 3. Snippet Generator</div>
+</div>
+<div class="paragraph">
+<p>When you click <strong>Generate Groovy</strong> after selecting a step, you see the function name used for that step, the names of any parameters it takes (if they are not default parameters), and the syntax used by Snippet Generator to create that step.</p>
+</div>
+<div class="paragraph">
+<p>You can copy and paste the generated code right into your Pipeline, or use it as a starting point, perhaps deleting any optional parameters that you do not need.</p>
+</div>
+<div class="paragraph">
+<p>To access information about steps marked with the help icon (question mark), click on that icon.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="basic-groovy-syntax-for-pipeline-configuration"><a class="anchor" href="#basic-groovy-syntax-for-pipeline-configuration"></a>Basic Groovy Syntax for Pipeline Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You typically add functionality to a new pipeline by performing the following tasks:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Adding nodes</p>
+</li>
+<li>
+<p>Adding more complex logic (usually expressed as stages and steps)</p>
+</li>
+<li>
+<p>Using the “ws” step to create additional workspace on an agent without taking another executor slot</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To configure a pipeline you have created through the Jenkins UI, select the pipeline and click <strong>Configure</strong>.</p>
+</div>
+<div class="paragraph">
+<p>If you run Jenkins on Linux or another Unix-like operating system with a Git repository that you want to test, for example, you can do that with syntax like the following, substituting your own name for “joe-user”:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">node {
+    git <span style="color:#606">url</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">https://github.com/joe_user/simple-maven-project-with-tests.git</span><span style="color:#710">'</span></span>
+    <span style="color:#080;font-weight:bold">def</span> mvnHome = tool <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">M3</span><span style="color:#710">'</span></span>
+    sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>mvnHome<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/bin/mvn -B verify</span><span style="color:#710">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In Windows environments, use “bat” in place of “sh,” and use backslashes as the file separator where needed (backslashes need to be escaped inside strings).</p>
+</div>
+<div class="paragraph">
+<p>For example, rather than:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>sh "${mvnHome}/bin/mvn -B verify"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>you would use:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>bat "${mvnHome}\\bin\\mvn -B verify"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Your Groovy pipeline script can include functions, conditional tests, loops, try/catch/finally blocks, and so on.</p>
+</div>
+<div class="paragraph">
+<p>Sample syntax for one node in a Java environment that is using the open source Maven build automation tool (hence the definition for “mvnHome”) is shown below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/pipeline/pipeline-sample.png" alt="pipeline sample" width="800">
+</div>
+<div class="title">Figure 4. Pipeline Sample</div>
+</div>
+<div class="paragraph">
+<p>Sample key:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>def is a keyword to define a function (you can also give a Java type in place of def to make it look more like a Java method)</p>
+</li>
+<li>
+<p>=~ is Groovy syntax to match text against a regular expression</p>
+</li>
+<li>
+<p>[0] looks up the first match</p>
+</li>
+<li>
+<p>[1] looks up the first (…) group within that match</p>
+</li>
+<li>
+<p>readFile step loads a text file from the workspace and returns its content (Note: Do not use java.io.File methods — these refer to files on the master where Jenkins is running, not files in the current workspace).</p>
+</li>
+<li>
+<p>The writeFile step saves content to a text file in the workspace</p>
+</li>
+<li>
+<p>The fileExists step checks whether a file exists without loading it.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The tool step makes sure a tool with the given name is installed on the current node. The script needs to know where it was installed, so the tool can be run later. For this, you need a variable.</p>
+</div>
+<div class="paragraph">
+<p>The <strong>def</strong> keyword in Groovy is the quickest way to define a new variable (with no specific type).</p>
+</div>
+<div class="paragraph">
+<p>In the sample syntax discussed above, a variable is defined by the following expression:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>def mvnHome = tool 'M3'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This ensures that M3 is installed somewhere accessible to Jenkins and assigns the return value of the step (an installation path) to the mvnHome variable.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="advanced-groovy-syntax-for-pipeline-configuration"><a class="anchor" href="#advanced-groovy-syntax-for-pipeline-configuration"></a>Advanced Groovy Syntax for Pipeline Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Groovy lets you omit parentheses around function arguments. The named-parameter syntax is also a shorthand for creating a map, which in Groovy uses the syntax [key1: value1, key2: value2], so you could write:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>git([url: 'https://github.com/joe_user/simple-maven-project-with-tests.git', branch: 'master'])</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For convenience, when calling steps taking only one parameter (or only one mandatory parameter) you can omit the parameter name. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>sh 'echo hello'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>is really shorthand for:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>sh([script: 'echo hello'])</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="managing-the-environment"><a class="anchor" href="#managing-the-environment"></a>Managing the Environment</h3>
+<div class="paragraph">
+<p>One way to use tools by default is to add them to your executable path using the special variable env that is defined for all pipelines:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>node {
+    git url: 'https://github.com/joe_user/simple-maven-project-with-tests.git'
+    def mvnHome = tool 'M3'
+    env.PATH = "${mvnHome}/bin:${env.PATH}"
+    sh 'mvn -B verify'
+}</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Properties of this variable are environment variables on the current node.</p>
+</li>
+<li>
+<p>You can override certain environment variables and the overrides are seen by subsequent sh steps (or anything else that pays attention to environment variables).</p>
+</li>
+<li>
+<p>You can run mvn without a fully-qualified path.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Setting a variable such as PATH in this way is only safe if you are using a single agent for this build. As an alternative, you can use the withEnv step to set a variable within a scope:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>node {
+    git url: 'https://github.com/jglick/simple-maven-project-with-tests.git'
+    withEnv(["PATH+MAVEN=${tool 'M3'}/bin"]) {
+        sh 'mvn -B verify'
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Jenkins defines some environment variables by default:</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> env.BUILD_TAG can be used to get a tag like jenkins-projname-1 from Groovy code, or $BUILD_TAG can be used from a sh script.
+The Snippet Generator help for the withEnv step has additional detail on this topic.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="build-parameters"><a class="anchor" href="#build-parameters"></a>Build Parameters</h3>
+<div class="paragraph">
+<p>If you configured your pipeline to accept parameters using the <strong>Build with Parameters</strong> option, those parameters are accessible as Groovy variables of the same name.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="recording-test-results-and-artifacts"><a class="anchor" href="#recording-test-results-and-artifacts"></a>Recording Test Results and Artifacts</h3>
+<div class="paragraph">
+<p>If there are any test failures in a given build, you want Jenkins to record them, and then proceed, rather than stopping. If you want it saved, you must capture the JAR that you built. The following sample code for a node shows how (As previously seen in several examples from this guide, Maven is being used as a build tool):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>node {
+    git url: 'https://github.com/joe_user/simple-maven-project-with-tests.git'
+    def mvnHome = tool 'M3'
+    sh "${mvnHome}/bin/mvn -B -Dmaven.test.failure.ignore verify"
+    step([$class: 'ArtifactArchiver', artifacts: '**/target/*.jar', fingerprint: true])
+    step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+}</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If tests fail, the Pipeline is marked unstable (as denoted by a yellow ball in the Jenkins UI), and you can browse the Test Result Trend to see the involved history.</p>
+</li>
+<li>
+<p>You should see Last Successful Artifacts on the Pipeline index page.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="loading-pipeline-scripts-from-scm"><a class="anchor" href="#loading-pipeline-scripts-from-scm"></a>Loading Pipeline Scripts from SCM</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Complex pipelines would be cumbersome to write and maintain if you could only do that in the text area provided by the Jenkins job configuration page.</p>
+</div>
+<div class="paragraph">
+<p>Accordingly, you also have the option of writing pipeline scripts in in your IDE (integrated development environment) or SCM system, and then loading those scripts into Jenkins using the <strong>Pipeline Script from SCM</strong> option enabled by the workflow-scm-step plugin, which is one of the plugins that the Pipeline plugin depends on and automatically installs.</p>
+</div>
+<div class="paragraph">
+<p>Loading pipeline scripts from another source leverages the idea of “pipeline as code,” and lets you maintain that source using version control and standalone Groovy editors.</p>
+</div>
+<div class="paragraph">
+<p>To do this, select <strong>Pipeline script from SCM</strong> when defining the pipeline.</p>
+</div>
+<div class="paragraph">
+<p>With the <strong>Pipeline script from SCM</strong> option selected, you do not enter any Groovy code in the Jenkins UI; you just indicate by specifying a path where in source code you want to retrieve the pipeline from. When you update the designated repository, a new build will be triggered, as long as your job is configured with an SCM polling trigger.</p>
+</div>
+<div class="paragraph">
+<p><strong>Multibranch Pipeline</strong> projects expose the name of the branch being built with the BRANCH_NAME environment variable. They also provide a special <strong>checkout scm</strong> Pipeline command, which checks out the specific commit that the Jenkinsfile originated, so that branch integrity is automatically maintained.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//pipeline/getting-started-pipelines.adoc" title="Edit /pipeline/getting-started-pipelines.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//pipeline/getting-started-pipelines.adoc" title="View /pipeline/getting-started-pipelines.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

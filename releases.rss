@@ -1,0 +1,1930 @@
+<feed xmlns='http://www.w3.org/2005/Atom'>
+  <title>Jenkins plugin releases</title>
+  <link href='http://jenkins-ci.org/' />
+  <link href='http://kohsuke.org/test.atom' rel='self' type='application/atom+xml' />
+  <updated>2017-01-24T15:30:26.203-08:00</updated>
+  <author>
+    <name>Jenkins History Bot</name>
+  </author>
+  <id>urn:63067410335c11e0bc8e0800200c9a66:feed</id>
+  <entry>
+    <title>Cloud Statistics Plugin 0.7</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Cloud+Statistics+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:cloud-stats:0.7</id>
+    <pubished>2017-01-24T01:04:22.000-08:00</pubished>
+    <updated>2017-01-24T01:04:22.000-08:00</updated>
+    <summary>Cloud Statistics Plugin 0.7</summary>
+  </entry>
+  <entry>
+    <title>GitHub Pull Request Builder 1.35.0</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/GitHub+pull+request+builder+plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:ghprb:1.35.0</id>
+    <pubished>2017-01-24T06:02:54.000-08:00</pubished>
+    <updated>2017-01-24T06:02:54.000-08:00</updated>
+    <summary>GitHub Pull Request Builder 1.35.0</summary>
+  </entry>
+  <entry>
+    <title>ontrack Jenkins plug-in 2.28.2</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Ontrack+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:ontrack:2.28.2</id>
+    <pubished>2017-01-23T20:35:02.000-08:00</pubished>
+    <updated>2017-01-23T20:35:02.000-08:00</updated>
+    <summary>ontrack Jenkins plug-in 2.28.2</summary>
+  </entry>
+  <entry>
+    <title>Parallels Desktop Cloud 0.4</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Parallels+Desktop+Cloud+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.parallels:parallels-desktop:0.4</id>
+    <pubished>2017-01-24T11:19:56.000-08:00</pubished>
+    <updated>2017-01-24T11:19:56.000-08:00</updated>
+    <summary>Parallels Desktop Cloud 0.4</summary>
+  </entry>
+  <entry>
+    <title>White Source Jenkins plugin 1.7.5</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Whitesource+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:whitesource:1.7.5</id>
+    <pubished>2017-01-24T06:19:12.000-08:00</pubished>
+    <updated>2017-01-24T06:19:12.000-08:00</updated>
+    <summary>White Source Jenkins plugin 1.7.5</summary>
+  </entry>
+  <entry>
+    <title>CloudBees Amazon Web Services Credentials Plugin 1.18</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+AWS+Credentials+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:aws-credentials:1.18</id>
+    <pubished>2017-01-23T12:42:28.000-08:00</pubished>
+    <updated>2017-01-23T12:42:28.000-08:00</updated>
+    <summary>CloudBees Amazon Web Services Credentials Plugin 1.18</summary>
+  </entry>
+  <entry>
+    <title>Build Graph View Plugin 1.5</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Build+Graph+View+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:buildgraph-view:1.5</id>
+    <pubished>2017-01-22T23:48:24.000-08:00</pubished>
+    <updated>2017-01-22T23:48:24.000-08:00</updated>
+    <summary>Build Graph View Plugin 1.5</summary>
+  </entry>
+  <entry>
+    <title>Bitbucket Branch Source Plugin 2.0.1</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Bitbucket+Branch+Source+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:cloudbees-bitbucket-branch-source:2.0.1</id>
+    <pubished>2017-01-23T09:44:16.000-08:00</pubished>
+    <updated>2017-01-23T09:44:16.000-08:00</updated>
+    <summary>Bitbucket Branch Source Plugin 2.0.1</summary>
+  </entry>
+  <entry>
+    <title>Fortify on Demand Uploader Plugin 2.0.9</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Fortify+On+Demand+Uploader+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:fortify-on-demand-uploader:2.0.9</id>
+    <pubished>2017-01-23T12:40:52.000-08:00</pubished>
+    <updated>2017-01-23T12:40:52.000-08:00</updated>
+    <summary>Fortify on Demand Uploader Plugin 2.0.9</summary>
+  </entry>
+  <entry>
+    <title>Git Parameter Plug-In 0.7.2</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Git+Parameter+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.tools:git-parameter:0.7.2</id>
+    <pubished>2017-01-23T14:35:22.000-08:00</pubished>
+    <updated>2017-01-23T14:35:22.000-08:00</updated>
+    <summary>Git Parameter Plug-In 0.7.2</summary>
+  </entry>
+  <entry>
+    <title>GitHub PR Comment Build Plugin 1.0 (new)</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/GitHub+PR+Comment+Build+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:github-pr-comment-build:1.0</id>
+    <pubished>2017-01-23T06:31:46.000-08:00</pubished>
+    <updated>2017-01-23T06:31:46.000-08:00</updated>
+    <summary>GitHub PR Comment Build Plugin 1.0</summary>
+  </entry>
+  <entry>
+    <title>Jenkins Job Cacher plugin 1.0 (new)</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Job+Cacher+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:jobcacher:1.0</id>
+    <pubished>2017-01-23T08:09:44.000-08:00</pubished>
+    <updated>2017-01-23T08:09:44.000-08:00</updated>
+    <summary>Jenkins Job Cacher plugin 1.0</summary>
+  </entry>
+  <entry>
+    <title>LDAP Plugin 1.14</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/LDAP+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:ldap:1.14</id>
+    <pubished>2017-01-23T05:04:58.000-08:00</pubished>
+    <updated>2017-01-23T05:04:58.000-08:00</updated>
+    <summary>LDAP Plugin 1.14</summary>
+  </entry>
+  <entry>
+    <title>OpenShift Login Plugin 0.11</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/OpenShift+Login+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.openshift.jenkins:openshift-login:0.11</id>
+    <pubished>2017-01-23T03:54:12.000-08:00</pubished>
+    <updated>2017-01-23T03:54:12.000-08:00</updated>
+    <summary>OpenShift Login Plugin 0.11</summary>
+  </entry>
+  <entry>
+    <title>OpenShift Pipeline Jenkins Plugin 1.0.40</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/OpenShift+Pipeline+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.openshift.jenkins:openshift-pipeline:1.0.40</id>
+    <pubished>2017-01-23T10:25:02.000-08:00</pubished>
+    <updated>2017-01-23T10:25:02.000-08:00</updated>
+    <summary>OpenShift Pipeline Jenkins Plugin 1.0.40</summary>
+  </entry>
+  <entry>
+    <title>Chef Sinatra Jenkins plugin 1.15</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Chef+Sinatra+Jenkins+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:sinatra-chef-builder:1.15</id>
+    <pubished>2017-01-23T13:22:46.000-08:00</pubished>
+    <updated>2017-01-23T13:22:46.000-08:00</updated>
+    <summary>Chef Sinatra Jenkins plugin 1.15</summary>
+  </entry>
+  <entry>
+    <title>Server Sent Events (SSE) Gateway Plugin 1.13</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/SSE+Gateway+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:sse-gateway:1.13</id>
+    <pubished>2017-01-23T05:31:30.000-08:00</pubished>
+    <updated>2017-01-23T05:31:30.000-08:00</updated>
+    <summary>Server Sent Events (SSE) Gateway Plugin 1.13</summary>
+  </entry>
+  <entry>
+    <title>Allure Jenkins Plugin 2.11</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Allure+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:ru.yandex.qatools.allure:allure-jenkins-plugin:2.11</id>
+    <pubished>2017-01-22T08:23:14.000-08:00</pubished>
+    <updated>2017-01-22T08:23:14.000-08:00</updated>
+    <summary>Allure Jenkins Plugin 2.11</summary>
+  </entry>
+  <entry>
+    <title>OWASP Dependency-Check Plugin 1.4.5</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/OWASP+Dependency-Check+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:dependency-check-jenkins-plugin:1.4.5</id>
+    <pubished>2017-01-22T15:59:52.000-08:00</pubished>
+    <updated>2017-01-22T15:59:52.000-08:00</updated>
+    <summary>OWASP Dependency-Check Plugin 1.4.5</summary>
+  </entry>
+  <entry>
+    <title>Email Extension Plugin 2.54</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Email-ext+plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:email-ext:2.54</id>
+    <pubished>2017-01-22T03:44:58.000-08:00</pubished>
+    <updated>2017-01-22T03:44:58.000-08:00</updated>
+    <summary>Email Extension Plugin 2.54</summary>
+  </entry>
+  <entry>
+    <title>Timestamper 1.8.8</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Timestamper' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:timestamper:1.8.8</id>
+    <pubished>2017-01-22T10:50:24.000-08:00</pubished>
+    <updated>2017-01-22T10:50:24.000-08:00</updated>
+    <summary>Timestamper 1.8.8</summary>
+  </entry>
+  <entry>
+    <title>Jenkins Accurev plugin 0.7.9</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/AccuRev+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:accurev:0.7.9</id>
+    <pubished>2017-01-20T16:02:02.000-08:00</pubished>
+    <updated>2017-01-20T16:02:02.000-08:00</updated>
+    <summary>Jenkins Accurev plugin 0.7.9</summary>
+  </entry>
+  <entry>
+    <title>Block Build Final Project Plugin 1.0 (new)</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Block+Build+Final+Project+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:block-build-final-project:1.0</id>
+    <pubished>2017-01-21T00:40:12.000-08:00</pubished>
+    <updated>2017-01-21T00:40:12.000-08:00</updated>
+    <summary>Block Build Final Project Plugin 1.0</summary>
+  </entry>
+  <entry>
+    <title>bootstraped-multi-test-results-report 2.0.0</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Bootstraped+Multi+Test+Results+Report' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.github.bogdanlivadariu:bootstraped-multi-test-results-report:2.0.0</id>
+    <pubished>2017-01-21T01:30:46.000-08:00</pubished>
+    <updated>2017-01-21T01:30:46.000-08:00</updated>
+    <summary>bootstraped-multi-test-results-report 2.0.0</summary>
+  </entry>
+  <entry>
+    <title>Device Watcher 0.9 (new)</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Device+Watcher+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:device-watcher:0.9</id>
+    <pubished>2017-01-21T11:59:10.000-08:00</pubished>
+    <updated>2017-01-21T11:59:10.000-08:00</updated>
+    <summary>Device Watcher 0.9</summary>
+  </entry>
+  <entry>
+    <title>Klaros-Testmanagement plugin 2.0.0</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Klaros-Testmanagement+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:hudson.plugins.klaros:klaros-testmanagement:2.0.0</id>
+    <pubished>2017-01-21T11:47:34.000-08:00</pubished>
+    <updated>2017-01-21T11:47:34.000-08:00</updated>
+    <summary>Klaros-Testmanagement plugin 2.0.0</summary>
+  </entry>
+  <entry>
+    <title>TestComplete support plug-in 1.7</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/TestComplete+Support+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:TestComplete:1.7</id>
+    <pubished>2017-01-20T03:34:54.000-08:00</pubished>
+    <updated>2017-01-20T03:34:54.000-08:00</updated>
+    <summary>TestComplete support plug-in 1.7</summary>
+  </entry>
+  <entry>
+    <title>Amazon EC2 Container Service plugin 1.9</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Amazon+EC2+Container+Service+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.cloudbees.jenkins.plugins:amazon-ecs:1.9</id>
+    <pubished>2017-01-20T07:07:44.000-08:00</pubished>
+    <updated>2017-01-20T07:07:44.000-08:00</updated>
+    <summary>Amazon EC2 Container Service plugin 1.9</summary>
+  </entry>
+  <entry>
+    <title>DotCi Plugin 2.39.2</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/DotCi+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.groupon.jenkins-ci.plugins:DotCi:2.39.2</id>
+    <pubished>2017-01-19T00:09:06.000-08:00</pubished>
+    <updated>2017-01-19T00:09:06.000-08:00</updated>
+    <summary>DotCi Plugin 2.39.2</summary>
+  </entry>
+  <entry>
+    <title>Jenkins Accurev plugin 0.7.8</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/AccuRev+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:accurev:0.7.8</id>
+    <pubished>2017-01-19T02:41:04.000-08:00</pubished>
+    <updated>2017-01-19T02:41:04.000-08:00</updated>
+    <summary>Jenkins Accurev plugin 0.7.8</summary>
+  </entry>
+  <entry>
+    <title>AWS CloudWatch Logs Publisher 1.0.0 (new)</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/AWS+CloudWatch+Logs+Publisher+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:aws-cloudwatch-logs-publisher:1.0.0</id>
+    <pubished>2017-01-19T06:57:44.000-08:00</pubished>
+    <updated>2017-01-19T06:57:44.000-08:00</updated>
+    <summary>AWS CloudWatch Logs Publisher 1.0.0</summary>
+  </entry>
+  <entry>
+    <title>Blue Ocean beta 1.0.0-b18</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean:1.0.0-b18</id>
+    <pubished>2017-01-19T08:40:16.000-08:00</pubished>
+    <updated>2017-01-19T08:40:16.000-08:00</updated>
+    <summary>Blue Ocean beta 1.0.0-b18</summary>
+  </entry>
+  <entry>
+    <title>Common API for Blue Ocean 1.0.0-b18</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-commons:1.0.0-b18</id>
+    <pubished>2017-01-19T08:31:08.000-08:00</pubished>
+    <updated>2017-01-19T08:31:08.000-08:00</updated>
+    <summary>Common API for Blue Ocean 1.0.0-b18</summary>
+  </entry>
+  <entry>
+    <title>Config API for Blue Ocean 1.0.0-b18</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-config:1.0.0-b18</id>
+    <pubished>2017-01-19T08:39:30.000-08:00</pubished>
+    <updated>2017-01-19T08:39:30.000-08:00</updated>
+    <summary>Config API for Blue Ocean 1.0.0-b18</summary>
+  </entry>
+  <entry>
+    <title>Dashboard for Blue Ocean 1.0.0-b18</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-dashboard:1.0.0-b18</id>
+    <pubished>2017-01-19T08:36:42.000-08:00</pubished>
+    <updated>2017-01-19T08:36:42.000-08:00</updated>
+    <summary>Dashboard for Blue Ocean 1.0.0-b18</summary>
+  </entry>
+  <entry>
+    <title>Events API for Blue Ocean 1.0.0-b18</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-events:1.0.0-b18</id>
+    <pubished>2017-01-19T08:35:20.000-08:00</pubished>
+    <updated>2017-01-19T08:35:20.000-08:00</updated>
+    <summary>Events API for Blue Ocean 1.0.0-b18</summary>
+  </entry>
+  <entry>
+    <title>Git Pipeline for Blue Ocean 1.0.0-b18</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-git-pipeline:1.0.0-b18</id>
+    <pubished>2017-01-19T08:40:02.000-08:00</pubished>
+    <updated>2017-01-19T08:40:02.000-08:00</updated>
+    <summary>Git Pipeline for Blue Ocean 1.0.0-b18</summary>
+  </entry>
+  <entry>
+    <title>GitHub Pipeline for Blue Ocean 1.0.0-b18</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-github-pipeline:1.0.0-b18</id>
+    <pubished>2017-01-19T08:39:46.000-08:00</pubished>
+    <updated>2017-01-19T08:39:46.000-08:00</updated>
+    <summary>GitHub Pipeline for Blue Ocean 1.0.0-b18</summary>
+  </entry>
+  <entry>
+    <title>i18n for Blue Ocean 1.0.0-b18</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-i18n:1.0.0-b18</id>
+    <pubished>2017-01-19T08:33:12.000-08:00</pubished>
+    <updated>2017-01-19T08:33:12.000-08:00</updated>
+    <summary>i18n for Blue Ocean 1.0.0-b18</summary>
+  </entry>
+  <entry>
+    <title>JWT for Blue Ocean 1.0.0-b18</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-jwt:1.0.0-b18</id>
+    <pubished>2017-01-19T08:33:20.000-08:00</pubished>
+    <updated>2017-01-19T08:33:20.000-08:00</updated>
+    <summary>JWT for Blue Ocean 1.0.0-b18</summary>
+  </entry>
+  <entry>
+    <title>Personalization for Blue Ocean 1.0.0-b18</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-personalization:1.0.0-b18</id>
+    <pubished>2017-01-19T08:38:30.000-08:00</pubished>
+    <updated>2017-01-19T08:38:30.000-08:00</updated>
+    <summary>Personalization for Blue Ocean 1.0.0-b18</summary>
+  </entry>
+  <entry>
+    <title>Pipeline REST API for Blue Ocean 1.0.0-b18</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-pipeline-api-impl:1.0.0-b18</id>
+    <pubished>2017-01-19T08:34:12.000-08:00</pubished>
+    <updated>2017-01-19T08:34:12.000-08:00</updated>
+    <summary>Pipeline REST API for Blue Ocean 1.0.0-b18</summary>
+  </entry>
+  <entry>
+    <title>REST API for Blue Ocean 1.0.0-b18</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-rest:1.0.0-b18</id>
+    <pubished>2017-01-19T08:33:02.000-08:00</pubished>
+    <updated>2017-01-19T08:33:02.000-08:00</updated>
+    <summary>REST API for Blue Ocean 1.0.0-b18</summary>
+  </entry>
+  <entry>
+    <title>REST Implementation for Blue Ocean 1.0.0-b18</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-rest-impl:1.0.0-b18</id>
+    <pubished>2017-01-19T08:33:32.000-08:00</pubished>
+    <updated>2017-01-19T08:33:32.000-08:00</updated>
+    <summary>REST Implementation for Blue Ocean 1.0.0-b18</summary>
+  </entry>
+  <entry>
+    <title>Web for Blue Ocean 1.0.0-b18</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-web:1.0.0-b18</id>
+    <pubished>2017-01-19T08:32:22.000-08:00</pubished>
+    <updated>2017-01-19T08:32:22.000-08:00</updated>
+    <summary>Web for Blue Ocean 1.0.0-b18</summary>
+  </entry>
+  <entry>
+    <title>Config File Provider Plugin 2.15.5</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Config+File+Provider+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:config-file-provider:2.15.5</id>
+    <pubished>2017-01-19T05:16:12.000-08:00</pubished>
+    <updated>2017-01-19T05:16:12.000-08:00</updated>
+    <summary>Config File Provider Plugin 2.15.5</summary>
+  </entry>
+  <entry>
+    <title>Maven Artifact ChoiceListProvider (Nexus) 1.1.1</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Maven+Artifact+ChoiceListProvider+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:maven-artifact-choicelistprovider:1.1.1</id>
+    <pubished>2017-01-19T13:18:30.000-08:00</pubished>
+    <updated>2017-01-19T13:18:30.000-08:00</updated>
+    <summary>Maven Artifact ChoiceListProvider (Nexus) 1.1.1</summary>
+  </entry>
+  <entry>
+    <title>Nomad Plugin 0.4</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Nomad+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:nomad:0.4</id>
+    <pubished>2017-01-19T05:53:56.000-08:00</pubished>
+    <updated>2017-01-19T05:53:56.000-08:00</updated>
+    <summary>Nomad Plugin 0.4</summary>
+  </entry>
+  <entry>
+    <title>Puppet Enterprise Pipeline 1.3.1</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Puppet+Enterprise+Pipeline+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins.workflow:puppet-enterprise-pipeline:1.3.1</id>
+    <pubished>2017-01-19T03:01:54.000-08:00</pubished>
+    <updated>2017-01-19T03:01:54.000-08:00</updated>
+    <summary>Puppet Enterprise Pipeline 1.3.1</summary>
+  </entry>
+  <entry>
+    <title>SQLPlus Script Runner 1.0.4</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/SQLPlus+Script+Runner+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:sqlplus-script-runner:1.0.4</id>
+    <pubished>2017-01-18T17:54:38.000-08:00</pubished>
+    <updated>2017-01-18T17:54:38.000-08:00</updated>
+    <summary>SQLPlus Script Runner 1.0.4</summary>
+  </entry>
+  <entry>
+    <title>DotCi Plugin 2.39.1</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/DotCi+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.groupon.jenkins-ci.plugins:DotCi:2.39.1</id>
+    <pubished>2017-01-18T00:18:34.000-08:00</pubished>
+    <updated>2017-01-18T00:18:34.000-08:00</updated>
+    <summary>DotCi Plugin 2.39.1</summary>
+  </entry>
+  <entry>
+    <title>Android Signing Plugin 2.0.7 (new)</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Android+Signing+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:android-signing:2.0.7</id>
+    <pubished>2017-01-18T09:20:42.000-08:00</pubished>
+    <updated>2017-01-18T09:20:42.000-08:00</updated>
+    <summary>Android Signing Plugin 2.0.7</summary>
+  </entry>
+  <entry>
+    <title>Jenkins CVS Plug-in 2.13</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/CVS+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:cvs:2.13</id>
+    <pubished>2017-01-18T08:41:54.000-08:00</pubished>
+    <updated>2017-01-18T08:41:54.000-08:00</updated>
+    <summary>Jenkins CVS Plug-in 2.13</summary>
+  </entry>
+  <entry>
+    <title>Docker build step plugin 1.38</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Docker+build+step+plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:docker-build-step:1.38</id>
+    <pubished>2017-01-18T13:24:00.000-08:00</pubished>
+    <updated>2017-01-18T13:24:00.000-08:00</updated>
+    <summary>Docker build step plugin 1.38</summary>
+  </entry>
+  <entry>
+    <title>Durable Task Plugin 1.13</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Durable+Task+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:durable-task:1.13</id>
+    <pubished>2017-01-18T09:00:48.000-08:00</pubished>
+    <updated>2017-01-18T09:00:48.000-08:00</updated>
+    <summary>Durable Task Plugin 1.13</summary>
+  </entry>
+  <entry>
+    <title>ThoughtsLive: Hubot Pipeline Steps 1.0.0 (new)</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Hubot+Steps+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:hubot-steps:1.0.0</id>
+    <pubished>2017-01-18T13:21:10.000-08:00</pubished>
+    <updated>2017-01-18T13:21:10.000-08:00</updated>
+    <summary>ThoughtsLive: Hubot Pipeline Steps 1.0.0</summary>
+  </entry>
+  <entry>
+    <title>Ivy Plugin 1.27.1</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Ivy+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:ivy:1.27.1</id>
+    <pubished>2017-01-18T13:37:06.000-08:00</pubished>
+    <updated>2017-01-18T13:37:06.000-08:00</updated>
+    <summary>Ivy Plugin 1.27.1</summary>
+  </entry>
+  <entry>
+    <title>Maven Artifact ChoiceListProvider (Nexus) 1.1.0</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Maven+Artifact+ChoiceListProvider+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:maven-artifact-choicelistprovider:1.1.0</id>
+    <pubished>2017-01-18T14:23:06.000-08:00</pubished>
+    <updated>2017-01-18T14:23:06.000-08:00</updated>
+    <summary>Maven Artifact ChoiceListProvider (Nexus) 1.1.0</summary>
+  </entry>
+  <entry>
+    <title>OpenShift Sync 0.1.7</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/OpenShift+Sync+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.fabric8.jenkins.plugins:openshift-sync:0.1.7</id>
+    <pubished>2017-01-18T04:26:06.000-08:00</pubished>
+    <updated>2017-01-18T04:26:06.000-08:00</updated>
+    <summary>OpenShift Sync 0.1.7</summary>
+  </entry>
+  <entry>
+    <title>Openstack Cloud Plugin 2.17</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Openstack+Cloud+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:openstack-cloud:2.17</id>
+    <pubished>2017-01-18T03:59:28.000-08:00</pubished>
+    <updated>2017-01-18T03:59:28.000-08:00</updated>
+    <summary>Openstack Cloud Plugin 2.17</summary>
+  </entry>
+  <entry>
+    <title>Radiator View Plugin 1.29</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Radiator+View+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:radiatorviewplugin:1.29</id>
+    <pubished>2017-01-18T15:35:28.000-08:00</pubished>
+    <updated>2017-01-18T15:35:28.000-08:00</updated>
+    <summary>Radiator View Plugin 1.29</summary>
+  </entry>
+  <entry>
+    <title>DotCi Plugin 2.39.0</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/DotCi+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.groupon.jenkins-ci.plugins:DotCi:2.39.0</id>
+    <pubished>2017-01-17T08:57:32.000-08:00</pubished>
+    <updated>2017-01-17T08:57:32.000-08:00</updated>
+    <summary>DotCi Plugin 2.39.0</summary>
+  </entry>
+  <entry>
+    <title>Jenkins Priority Sorter Plugin 3.5.0</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Priority+Sorter+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:PrioritySorter:3.5.0</id>
+    <pubished>2017-01-17T11:35:56.000-08:00</pubished>
+    <updated>2017-01-17T11:35:56.000-08:00</updated>
+    <summary>Jenkins Priority Sorter Plugin 3.5.0</summary>
+  </entry>
+  <entry>
+    <title>GitHub Pull Request Coverage Status 1.2.0</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/GitHub+PR+Coverage+Status+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:github-pr-coverage-status:1.2.0</id>
+    <pubished>2017-01-17T14:02:28.000-08:00</pubished>
+    <updated>2017-01-17T14:02:28.000-08:00</updated>
+    <summary>GitHub Pull Request Coverage Status 1.2.0</summary>
+  </entry>
+  <entry>
+    <title>HockeyApp Plugin 1.2.2</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/HockeyApp+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:hockeyapp:1.2.2</id>
+    <pubished>2017-01-17T15:18:36.000-08:00</pubished>
+    <updated>2017-01-17T15:18:36.000-08:00</updated>
+    <summary>HockeyApp Plugin 1.2.2</summary>
+  </entry>
+  <entry>
+    <title>InfluxDB Plugin 1.10.2</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/InfluxDB+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:influxdb:1.10.2</id>
+    <pubished>2017-01-17T01:29:26.000-08:00</pubished>
+    <updated>2017-01-17T01:29:26.000-08:00</updated>
+    <summary>InfluxDB Plugin 1.10.2</summary>
+  </entry>
+  <entry>
+    <title>Maven Artifact ChoiceListProvider (Nexus) 1.0.5</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Maven+Artifact+ChoiceListProvider+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:maven-artifact-choicelistprovider:1.0.5</id>
+    <pubished>2017-01-17T15:00:50.000-08:00</pubished>
+    <updated>2017-01-17T15:00:50.000-08:00</updated>
+    <summary>Maven Artifact ChoiceListProvider (Nexus) 1.0.5</summary>
+  </entry>
+  <entry>
+    <title>OctopusDeploy Plugin 1.5.0</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/OctopusDeploy+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:hudson.plugins.octopusdeploy:octopusdeploy:1.5.0</id>
+    <pubished>2017-01-17T11:48:50.000-08:00</pubished>
+    <updated>2017-01-17T11:48:50.000-08:00</updated>
+    <summary>OctopusDeploy Plugin 1.5.0</summary>
+  </entry>
+  <entry>
+    <title>Pipeline: Groovy 2.24</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Groovy+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins.workflow:workflow-cps:2.24</id>
+    <pubished>2017-01-17T06:24:26.000-08:00</pubished>
+    <updated>2017-01-17T06:24:26.000-08:00</updated>
+    <summary>Pipeline: Groovy 2.24</summary>
+  </entry>
+  <entry>
+    <title>Jenkins Accurev plugin 0.7.7</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/AccuRev+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:accurev:0.7.7</id>
+    <pubished>2017-01-16T10:01:06.000-08:00</pubished>
+    <updated>2017-01-16T10:01:06.000-08:00</updated>
+    <summary>Jenkins Accurev plugin 0.7.7</summary>
+  </entry>
+  <entry>
+    <title>Jenkins Artifactory Plugin 2.9.0</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Artifactory+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:artifactory:2.9.0</id>
+    <pubished>2017-01-16T10:47:10.000-08:00</pubished>
+    <updated>2017-01-16T10:47:10.000-08:00</updated>
+    <summary>Jenkins Artifactory Plugin 2.9.0</summary>
+  </entry>
+  <entry>
+    <title>Jenkins Extreme Notification Plugin 1.3</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Extreme+Notification+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:extreme-notification:1.3</id>
+    <pubished>2017-01-16T14:23:56.000-08:00</pubished>
+    <updated>2017-01-16T14:23:56.000-08:00</updated>
+    <summary>Jenkins Extreme Notification Plugin 1.3</summary>
+  </entry>
+  <entry>
+    <title>Jenkins Git client plugin 2.2.1</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Git+Client+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:git-client:2.2.1</id>
+    <pubished>2017-01-16T02:29:58.000-08:00</pubished>
+    <updated>2017-01-16T02:29:58.000-08:00</updated>
+    <summary>Jenkins Git client plugin 2.2.1</summary>
+  </entry>
+  <entry>
+    <title>JMS Messaging Plugin 1.0.7</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/JMS+Messaging+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:jms-messaging:1.0.7</id>
+    <pubished>2017-01-16T07:22:34.000-08:00</pubished>
+    <updated>2017-01-16T07:22:34.000-08:00</updated>
+    <summary>JMS Messaging Plugin 1.0.7</summary>
+  </entry>
+  <entry>
+    <title>Monitoring 1.63.0</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Monitoring' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jvnet.hudson.plugins:monitoring:1.63.0</id>
+    <pubished>2017-01-15T18:21:10.000-08:00</pubished>
+    <updated>2017-01-15T18:21:10.000-08:00</updated>
+    <summary>Monitoring 1.63.0</summary>
+  </entry>
+  <entry>
+    <title>One-Shot Executor Plugin 1.2</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/One-Shot+Executor' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:one-shot-executor:1.2</id>
+    <pubished>2017-01-16T07:14:30.000-08:00</pubished>
+    <updated>2017-01-16T07:14:30.000-08:00</updated>
+    <summary>One-Shot Executor Plugin 1.2</summary>
+  </entry>
+  <entry>
+    <title>Resource Disposer Plugin 0.6</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Resource+Disposer+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:resource-disposer:0.6</id>
+    <pubished>2017-01-16T07:02:58.000-08:00</pubished>
+    <updated>2017-01-16T07:02:58.000-08:00</updated>
+    <summary>Resource Disposer Plugin 0.6</summary>
+  </entry>
+  <entry>
+    <title>Build Monitor View 1.11+build.201701152243</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Build+Monitor+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:build-monitor-plugin:1.11+build.201701152243</id>
+    <pubished>2017-01-15T14:45:42.000-08:00</pubished>
+    <updated>2017-01-15T14:45:42.000-08:00</updated>
+    <summary>Build Monitor View 1.11+build.201701152243</summary>
+  </entry>
+  <entry>
+    <title>Inedo ProGet Plugin. 0.7</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Inedo+ProGet+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.inedo.proget:inedo-proget:0.7</id>
+    <pubished>2017-01-15T10:28:10.000-08:00</pubished>
+    <updated>2017-01-15T10:28:10.000-08:00</updated>
+    <summary>Inedo ProGet Plugin. 0.7</summary>
+  </entry>
+  <entry>
+    <title>Job DSL 1.57</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:job-dsl:1.57</id>
+    <pubished>2017-01-15T14:07:36.000-08:00</pubished>
+    <updated>2017-01-15T14:07:36.000-08:00</updated>
+    <summary>Job DSL 1.57</summary>
+  </entry>
+  <entry>
+    <title>Jenkins Notification plugin 1.11</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Notification+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.tikalk.hudson.plugins:notification:1.11</id>
+    <pubished>2017-01-15T07:35:40.000-08:00</pubished>
+    <updated>2017-01-15T07:35:40.000-08:00</updated>
+    <summary>Jenkins Notification plugin 1.11</summary>
+  </entry>
+  <entry>
+    <title>Chef Sinatra Jenkins plugin 1.14</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Chef+Sinatra+Jenkins+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:sinatra-chef-builder:1.14</id>
+    <pubished>2017-01-15T02:55:46.000-08:00</pubished>
+    <updated>2017-01-15T02:55:46.000-08:00</updated>
+    <summary>Chef Sinatra Jenkins plugin 1.14</summary>
+  </entry>
+  <entry>
+    <title>Hyper.sh Slaves Plugin 0.1.7</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Hyper.sh+Slaves+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:sh.hyper.plugins:hyper-slaves:0.1.7</id>
+    <pubished>2017-01-14T05:29:30.000-08:00</pubished>
+    <updated>2017-01-14T05:29:30.000-08:00</updated>
+    <summary>Hyper.sh Slaves Plugin 0.1.7</summary>
+  </entry>
+  <entry>
+    <title>Amazon EC2 Container Service plugin 1.8</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Amazon+EC2+Container+Service+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.cloudbees.jenkins.plugins:amazon-ecs:1.8</id>
+    <pubished>2017-01-13T13:51:34.000-08:00</pubished>
+    <updated>2017-01-13T13:51:34.000-08:00</updated>
+    <summary>Amazon EC2 Container Service plugin 1.8</summary>
+  </entry>
+  <entry>
+    <title>CloudBees Amazon Web Services Credentials Plugin 1.17</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+AWS+Credentials+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:aws-credentials:1.17</id>
+    <pubished>2017-01-13T08:15:28.000-08:00</pubished>
+    <updated>2017-01-13T08:15:28.000-08:00</updated>
+    <summary>CloudBees Amazon Web Services Credentials Plugin 1.17</summary>
+  </entry>
+  <entry>
+    <title>AWS Elastic Beanstalk Deployment Plugin 0.3.14</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/AWSEB+Deployment+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:br.com.ingenieux.jenkins.plugins:awseb-deployment-plugin:0.3.14</id>
+    <pubished>2017-01-13T07:10:14.000-08:00</pubished>
+    <updated>2017-01-13T07:10:14.000-08:00</updated>
+    <summary>AWS Elastic Beanstalk Deployment Plugin 0.3.14</summary>
+  </entry>
+  <entry>
+    <title>Config File Provider Plugin 2.15.4</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Config+File+Provider+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:config-file-provider:2.15.4</id>
+    <pubished>2017-01-13T07:50:20.000-08:00</pubished>
+    <updated>2017-01-13T07:50:20.000-08:00</updated>
+    <summary>Config File Provider Plugin 2.15.4</summary>
+  </entry>
+  <entry>
+    <title>Delivery Pipeline Plugin 0.10.2</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Delivery+Pipeline+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:se.diabol.jenkins.pipeline:delivery-pipeline-plugin:0.10.2</id>
+    <pubished>2017-01-13T00:30:34.000-08:00</pubished>
+    <updated>2017-01-13T00:30:34.000-08:00</updated>
+    <summary>Delivery Pipeline Plugin 0.10.2</summary>
+  </entry>
+  <entry>
+    <title>XebiaLabs XL Deploy Plugin 6.1.0</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/XL+Deploy+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.xebialabs.deployit.ci:deployit-plugin:6.1.0</id>
+    <pubished>2017-01-13T02:17:18.000-08:00</pubished>
+    <updated>2017-01-13T02:17:18.000-08:00</updated>
+    <summary>XebiaLabs XL Deploy Plugin 6.1.0</summary>
+  </entry>
+  <entry>
+    <title>GitHub Pull Request Builder 1.34.0</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/GitHub+pull+request+builder+plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:ghprb:1.34.0</id>
+    <pubished>2017-01-13T05:27:46.000-08:00</pubished>
+    <updated>2017-01-13T05:27:46.000-08:00</updated>
+    <summary>GitHub Pull Request Builder 1.34.0</summary>
+  </entry>
+  <entry>
+    <title>JMS Messaging Plugin 1.0.5</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/JMS+Messaging+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:jms-messaging:1.0.5</id>
+    <pubished>2017-01-13T00:26:40.000-08:00</pubished>
+    <updated>2017-01-13T00:26:40.000-08:00</updated>
+    <summary>JMS Messaging Plugin 1.0.5</summary>
+  </entry>
+  <entry>
+    <title>Maven Artifact ChoiceListProvider (Nexus) 1.0.4</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Maven+Artifact+ChoiceListProvider+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:maven-artifact-choicelistprovider:1.0.4</id>
+    <pubished>2017-01-13T05:08:28.000-08:00</pubished>
+    <updated>2017-01-13T05:08:28.000-08:00</updated>
+    <summary>Maven Artifact ChoiceListProvider (Nexus) 1.0.4</summary>
+  </entry>
+  <entry>
+    <title>Openstack Cloud Plugin 2.16</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Openstack+Cloud+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:openstack-cloud:2.16</id>
+    <pubished>2017-01-13T07:45:24.000-08:00</pubished>
+    <updated>2017-01-13T07:45:24.000-08:00</updated>
+    <summary>Openstack Cloud Plugin 2.16</summary>
+  </entry>
+  <entry>
+    <title>Puppet Enterprise Pipeline 1.3.0</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Puppet+Enterprise+Pipeline+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins.workflow:puppet-enterprise-pipeline:1.3.0</id>
+    <pubished>2017-01-13T07:47:24.000-08:00</pubished>
+    <updated>2017-01-13T07:47:24.000-08:00</updated>
+    <summary>Puppet Enterprise Pipeline 1.3.0</summary>
+  </entry>
+  <entry>
+    <title>R Plugin 0.4</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/R+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.biouno.r:r:0.4</id>
+    <pubished>2017-01-13T03:59:10.000-08:00</pubished>
+    <updated>2017-01-13T03:59:10.000-08:00</updated>
+    <summary>R Plugin 0.4</summary>
+  </entry>
+  <entry>
+    <title>Resource Disposer Plugin 0.4</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Resource+Disposer+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:resource-disposer:0.4</id>
+    <pubished>2017-01-13T03:25:42.000-08:00</pubished>
+    <updated>2017-01-13T03:25:42.000-08:00</updated>
+    <summary>Resource Disposer Plugin 0.4</summary>
+  </entry>
+  <entry>
+    <title>Server Sent Events (SSE) Gateway Plugin 1.12</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/SSE+Gateway+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:sse-gateway:1.12</id>
+    <pubished>2017-01-13T12:50:36.000-08:00</pubished>
+    <updated>2017-01-13T12:50:36.000-08:00</updated>
+    <summary>Server Sent Events (SSE) Gateway Plugin 1.12</summary>
+  </entry>
+  <entry>
+    <title>Team Foundation Server Plug-in 5.3.1</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Team+Foundation+Server+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:tfs:5.3.1</id>
+    <pubished>2017-01-13T15:43:26.000-08:00</pubished>
+    <updated>2017-01-13T15:43:26.000-08:00</updated>
+    <summary>Team Foundation Server Plug-in 5.3.1</summary>
+  </entry>
+  <entry>
+    <title>Pipeline: Nodes and Processes 2.8</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Nodes+and+Processes+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins.workflow:workflow-durable-task-step:2.8</id>
+    <pubished>2017-01-13T05:34:46.000-08:00</pubished>
+    <updated>2017-01-13T05:34:46.000-08:00</updated>
+    <summary>Pipeline: Nodes and Processes 2.8</summary>
+  </entry>
+  <entry>
+    <title>XebiaLabs XL Release Plugin 6.1.0</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/XL+Release+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.xebialabs.ci:xlrelease-plugin:6.1.0</id>
+    <pubished>2017-01-13T03:29:32.000-08:00</pubished>
+    <updated>2017-01-13T03:29:32.000-08:00</updated>
+    <summary>XebiaLabs XL Release Plugin 6.1.0</summary>
+  </entry>
+  <entry>
+    <title>Blue Ocean beta 1.0.0-b17</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean:1.0.0-b17</id>
+    <pubished>2017-01-12T07:13:32.000-08:00</pubished>
+    <updated>2017-01-12T07:13:32.000-08:00</updated>
+    <summary>Blue Ocean beta 1.0.0-b17</summary>
+  </entry>
+  <entry>
+    <title>Common API for Blue Ocean 1.0.0-b17</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-commons:1.0.0-b17</id>
+    <pubished>2017-01-12T07:04:58.000-08:00</pubished>
+    <updated>2017-01-12T07:04:58.000-08:00</updated>
+    <summary>Common API for Blue Ocean 1.0.0-b17</summary>
+  </entry>
+  <entry>
+    <title>Config API for Blue Ocean 1.0.0-b17</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-config:1.0.0-b17</id>
+    <pubished>2017-01-12T07:12:50.000-08:00</pubished>
+    <updated>2017-01-12T07:12:50.000-08:00</updated>
+    <summary>Config API for Blue Ocean 1.0.0-b17</summary>
+  </entry>
+  <entry>
+    <title>Dashboard for Blue Ocean 1.0.0-b17</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-dashboard:1.0.0-b17</id>
+    <pubished>2017-01-12T07:10:06.000-08:00</pubished>
+    <updated>2017-01-12T07:10:06.000-08:00</updated>
+    <summary>Dashboard for Blue Ocean 1.0.0-b17</summary>
+  </entry>
+  <entry>
+    <title>Events API for Blue Ocean 1.0.0-b17</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-events:1.0.0-b17</id>
+    <pubished>2017-01-12T07:08:42.000-08:00</pubished>
+    <updated>2017-01-12T07:08:42.000-08:00</updated>
+    <summary>Events API for Blue Ocean 1.0.0-b17</summary>
+  </entry>
+  <entry>
+    <title>Git Pipeline for Blue Ocean 1.0.0-b17</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-git-pipeline:1.0.0-b17</id>
+    <pubished>2017-01-12T07:13:20.000-08:00</pubished>
+    <updated>2017-01-12T07:13:20.000-08:00</updated>
+    <summary>Git Pipeline for Blue Ocean 1.0.0-b17</summary>
+  </entry>
+  <entry>
+    <title>GitHub Pipeline for Blue Ocean 1.0.0-b17</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-github-pipeline:1.0.0-b17</id>
+    <pubished>2017-01-12T07:13:04.000-08:00</pubished>
+    <updated>2017-01-12T07:13:04.000-08:00</updated>
+    <summary>GitHub Pipeline for Blue Ocean 1.0.0-b17</summary>
+  </entry>
+  <entry>
+    <title>i18n for Blue Ocean 1.0.0-b17</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-i18n:1.0.0-b17</id>
+    <pubished>2017-01-12T07:06:58.000-08:00</pubished>
+    <updated>2017-01-12T07:06:58.000-08:00</updated>
+    <summary>i18n for Blue Ocean 1.0.0-b17</summary>
+  </entry>
+  <entry>
+    <title>JWT for Blue Ocean 1.0.0-b17</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-jwt:1.0.0-b17</id>
+    <pubished>2017-01-12T07:07:06.000-08:00</pubished>
+    <updated>2017-01-12T07:07:06.000-08:00</updated>
+    <summary>JWT for Blue Ocean 1.0.0-b17</summary>
+  </entry>
+  <entry>
+    <title>Personalization for Blue Ocean 1.0.0-b17</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-personalization:1.0.0-b17</id>
+    <pubished>2017-01-12T07:11:50.000-08:00</pubished>
+    <updated>2017-01-12T07:11:50.000-08:00</updated>
+    <summary>Personalization for Blue Ocean 1.0.0-b17</summary>
+  </entry>
+  <entry>
+    <title>Pipeline REST API for Blue Ocean 1.0.0-b17</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-pipeline-api-impl:1.0.0-b17</id>
+    <pubished>2017-01-12T07:07:40.000-08:00</pubished>
+    <updated>2017-01-12T07:07:40.000-08:00</updated>
+    <summary>Pipeline REST API for Blue Ocean 1.0.0-b17</summary>
+  </entry>
+  <entry>
+    <title>REST API for Blue Ocean 1.0.0-b17</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-rest:1.0.0-b17</id>
+    <pubished>2017-01-12T07:06:50.000-08:00</pubished>
+    <updated>2017-01-12T07:06:50.000-08:00</updated>
+    <summary>REST API for Blue Ocean 1.0.0-b17</summary>
+  </entry>
+  <entry>
+    <title>REST Implementation for Blue Ocean 1.0.0-b17</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-rest-impl:1.0.0-b17</id>
+    <pubished>2017-01-12T07:07:16.000-08:00</pubished>
+    <updated>2017-01-12T07:07:16.000-08:00</updated>
+    <summary>REST Implementation for Blue Ocean 1.0.0-b17</summary>
+  </entry>
+  <entry>
+    <title>Web for Blue Ocean 1.0.0-b17</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-web:1.0.0-b17</id>
+    <pubished>2017-01-12T07:06:10.000-08:00</pubished>
+    <updated>2017-01-12T07:06:10.000-08:00</updated>
+    <summary>Web for Blue Ocean 1.0.0-b17</summary>
+  </entry>
+  <entry>
+    <title>GitHub plugin 1.25.1</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/GitHub+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.coravy.hudson.plugins.github:github:1.25.1</id>
+    <pubished>2017-01-12T13:27:18.000-08:00</pubished>
+    <updated>2017-01-12T13:27:18.000-08:00</updated>
+    <summary>GitHub plugin 1.25.1</summary>
+  </entry>
+  <entry>
+    <title>Ivy Plugin 1.27</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Ivy+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:ivy:1.27</id>
+    <pubished>2017-01-12T01:18:42.000-08:00</pubished>
+    <updated>2017-01-12T01:18:42.000-08:00</updated>
+    <summary>Ivy Plugin 1.27</summary>
+  </entry>
+  <entry>
+    <title>Matrix Project Plugin 1.8</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Matrix+Project+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:matrix-project:1.8</id>
+    <pubished>2017-01-12T07:14:10.000-08:00</pubished>
+    <updated>2017-01-12T07:14:10.000-08:00</updated>
+    <summary>Matrix Project Plugin 1.8</summary>
+  </entry>
+  <entry>
+    <title>Pipeline: Model API 0.8.2</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Model+Definition+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkinsci.plugins:pipeline-model-api:0.8.2</id>
+    <pubished>2017-01-12T01:43:24.000-08:00</pubished>
+    <updated>2017-01-12T01:43:24.000-08:00</updated>
+    <summary>Pipeline: Model API 0.8.2</summary>
+  </entry>
+  <entry>
+    <title>Pipeline: Declarative Agent API 0.8.2</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Model+Definition+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkinsci.plugins:pipeline-model-declarative-agent:0.8.2</id>
+    <pubished>2017-01-12T01:43:46.000-08:00</pubished>
+    <updated>2017-01-12T01:43:46.000-08:00</updated>
+    <summary>Pipeline: Declarative Agent API 0.8.2</summary>
+  </entry>
+  <entry>
+    <title>Pipeline: Model Definition 0.8.2</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Model+Definition+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkinsci.plugins:pipeline-model-definition:0.8.2</id>
+    <pubished>2017-01-12T01:44:12.000-08:00</pubished>
+    <updated>2017-01-12T01:44:12.000-08:00</updated>
+    <summary>Pipeline: Model Definition 0.8.2</summary>
+  </entry>
+  <entry>
+    <title>Pipeline: Stage Tags Metadata 0.8.2</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Model+Definition+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkinsci.plugins:pipeline-stage-tags-metadata:0.8.2</id>
+    <pubished>2017-01-12T01:43:06.000-08:00</pubished>
+    <updated>2017-01-12T01:43:06.000-08:00</updated>
+    <summary>Pipeline: Stage Tags Metadata 0.8.2</summary>
+  </entry>
+  <entry>
+    <title>Startup Trigger 2.8</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Startup+Trigger' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:startup-trigger-plugin:2.8</id>
+    <pubished>2017-01-12T01:54:40.000-08:00</pubished>
+    <updated>2017-01-12T01:54:40.000-08:00</updated>
+    <summary>Startup Trigger 2.8</summary>
+  </entry>
+  <entry>
+    <title>Statistics Gatherer Plugin 1.1.0</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Statistics+Gatherer+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins.plugins.statistics.gatherer:statistics-gatherer:1.1.0</id>
+    <pubished>2017-01-12T12:12:18.000-08:00</pubished>
+    <updated>2017-01-12T12:12:18.000-08:00</updated>
+    <summary>Statistics Gatherer Plugin 1.1.0</summary>
+  </entry>
+  <entry>
+    <title>AWS Lambda Plugin 0.5.8</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/AWS+Lambda+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:aws-lambda:0.5.8</id>
+    <pubished>2017-01-10T16:28:52.000-08:00</pubished>
+    <updated>2017-01-10T16:28:52.000-08:00</updated>
+    <summary>AWS Lambda Plugin 0.5.8</summary>
+  </entry>
+  <entry>
+    <title>Blue Ocean beta 1.0.0-b16</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean:1.0.0-b16</id>
+    <pubished>2017-01-11T01:56:16.000-08:00</pubished>
+    <updated>2017-01-11T01:56:16.000-08:00</updated>
+    <summary>Blue Ocean beta 1.0.0-b16</summary>
+  </entry>
+  <entry>
+    <title>Common API for Blue Ocean 1.0.0-b16</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-commons:1.0.0-b16</id>
+    <pubished>2017-01-11T01:47:20.000-08:00</pubished>
+    <updated>2017-01-11T01:47:20.000-08:00</updated>
+    <summary>Common API for Blue Ocean 1.0.0-b16</summary>
+  </entry>
+  <entry>
+    <title>Config API for Blue Ocean 1.0.0-b16</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-config:1.0.0-b16</id>
+    <pubished>2017-01-11T01:55:32.000-08:00</pubished>
+    <updated>2017-01-11T01:55:32.000-08:00</updated>
+    <summary>Config API for Blue Ocean 1.0.0-b16</summary>
+  </entry>
+  <entry>
+    <title>Dashboard for Blue Ocean 1.0.0-b16</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-dashboard:1.0.0-b16</id>
+    <pubished>2017-01-11T01:52:42.000-08:00</pubished>
+    <updated>2017-01-11T01:52:42.000-08:00</updated>
+    <summary>Dashboard for Blue Ocean 1.0.0-b16</summary>
+  </entry>
+  <entry>
+    <title>Events API for Blue Ocean 1.0.0-b16</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-events:1.0.0-b16</id>
+    <pubished>2017-01-11T01:51:18.000-08:00</pubished>
+    <updated>2017-01-11T01:51:18.000-08:00</updated>
+    <summary>Events API for Blue Ocean 1.0.0-b16</summary>
+  </entry>
+  <entry>
+    <title>Git Pipeline for Blue Ocean 1.0.0-b16</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-git-pipeline:1.0.0-b16</id>
+    <pubished>2017-01-11T01:56:02.000-08:00</pubished>
+    <updated>2017-01-11T01:56:02.000-08:00</updated>
+    <summary>Git Pipeline for Blue Ocean 1.0.0-b16</summary>
+  </entry>
+  <entry>
+    <title>GitHub Pipeline for Blue Ocean 1.0.0-b16</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-github-pipeline:1.0.0-b16</id>
+    <pubished>2017-01-11T01:55:50.000-08:00</pubished>
+    <updated>2017-01-11T01:55:50.000-08:00</updated>
+    <summary>GitHub Pipeline for Blue Ocean 1.0.0-b16</summary>
+  </entry>
+  <entry>
+    <title>i18n for Blue Ocean 1.0.0-b16</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-i18n:1.0.0-b16</id>
+    <pubished>2017-01-11T01:49:24.000-08:00</pubished>
+    <updated>2017-01-11T01:49:24.000-08:00</updated>
+    <summary>i18n for Blue Ocean 1.0.0-b16</summary>
+  </entry>
+  <entry>
+    <title>JWT for Blue Ocean 1.0.0-b16</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-jwt:1.0.0-b16</id>
+    <pubished>2017-01-11T01:49:32.000-08:00</pubished>
+    <updated>2017-01-11T01:49:32.000-08:00</updated>
+    <summary>JWT for Blue Ocean 1.0.0-b16</summary>
+  </entry>
+  <entry>
+    <title>Personalization for Blue Ocean 1.0.0-b16</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-personalization:1.0.0-b16</id>
+    <pubished>2017-01-11T01:54:32.000-08:00</pubished>
+    <updated>2017-01-11T01:54:32.000-08:00</updated>
+    <summary>Personalization for Blue Ocean 1.0.0-b16</summary>
+  </entry>
+  <entry>
+    <title>Pipeline REST API for Blue Ocean 1.0.0-b16</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-pipeline-api-impl:1.0.0-b16</id>
+    <pubished>2017-01-11T01:50:06.000-08:00</pubished>
+    <updated>2017-01-11T01:50:06.000-08:00</updated>
+    <summary>Pipeline REST API for Blue Ocean 1.0.0-b16</summary>
+  </entry>
+  <entry>
+    <title>REST API for Blue Ocean 1.0.0-b16</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-rest:1.0.0-b16</id>
+    <pubished>2017-01-11T01:49:14.000-08:00</pubished>
+    <updated>2017-01-11T01:49:14.000-08:00</updated>
+    <summary>REST API for Blue Ocean 1.0.0-b16</summary>
+  </entry>
+  <entry>
+    <title>REST Implementation for Blue Ocean 1.0.0-b16</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-rest-impl:1.0.0-b16</id>
+    <pubished>2017-01-11T01:49:42.000-08:00</pubished>
+    <updated>2017-01-11T01:49:42.000-08:00</updated>
+    <summary>REST Implementation for Blue Ocean 1.0.0-b16</summary>
+  </entry>
+  <entry>
+    <title>Web for Blue Ocean 1.0.0-b16</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-web:1.0.0-b16</id>
+    <pubished>2017-01-11T01:48:36.000-08:00</pubished>
+    <updated>2017-01-11T01:48:36.000-08:00</updated>
+    <summary>Web for Blue Ocean 1.0.0-b16</summary>
+  </entry>
+  <entry>
+    <title>Codebeamer xUnit Importer Plugin 1.5</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Codebeamer+xUnit+Importer+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:codebeamer-xunit-importer:1.5</id>
+    <pubished>2017-01-11T01:23:02.000-08:00</pubished>
+    <updated>2017-01-11T01:23:02.000-08:00</updated>
+    <summary>Codebeamer xUnit Importer Plugin 1.5</summary>
+  </entry>
+  <entry>
+    <title>Docker Commons Plugin 1.6</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Docker+Commons+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:docker-commons:1.6</id>
+    <pubished>2017-01-11T13:52:06.000-08:00</pubished>
+    <updated>2017-01-11T13:52:06.000-08:00</updated>
+    <summary>Docker Commons Plugin 1.6</summary>
+  </entry>
+  <entry>
+    <title>Fortify on Demand Uploader Plugin 2.0.8</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Fortify+On+Demand+Uploader+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:fortify-on-demand-uploader:2.0.8</id>
+    <pubished>2017-01-11T14:18:52.000-08:00</pubished>
+    <updated>2017-01-11T14:18:52.000-08:00</updated>
+    <summary>Fortify on Demand Uploader Plugin 2.0.8</summary>
+  </entry>
+  <entry>
+    <title>Hyper.sh Slaves Plugin 0.1.6</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Hyper.sh+Slaves+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:sh.hyper.plugins:hyper-slaves:0.1.6</id>
+    <pubished>2017-01-11T13:22:46.000-08:00</pubished>
+    <updated>2017-01-11T13:22:46.000-08:00</updated>
+    <summary>Hyper.sh Slaves Plugin 0.1.6</summary>
+  </entry>
+  <entry>
+    <title>Memory Map Plugin 2.2.0</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Memory+Map+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:net.praqma:memory-map:2.2.0</id>
+    <pubished>2017-01-11T07:10:42.000-08:00</pubished>
+    <updated>2017-01-11T07:10:42.000-08:00</updated>
+    <summary>Memory Map Plugin 2.2.0</summary>
+  </entry>
+  <entry>
+    <title>Folders Plugin 5.16</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Folders+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:cloudbees-folder:5.16</id>
+    <pubished>2017-01-10T02:35:58.000-08:00</pubished>
+    <updated>2017-01-10T02:35:58.000-08:00</updated>
+    <summary>Folders Plugin 5.16</summary>
+  </entry>
+  <entry>
+    <title>Fortify on Demand Uploader Plugin 2.0.7</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Fortify+On+Demand+Uploader+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:fortify-on-demand-uploader:2.0.7</id>
+    <pubished>2017-01-10T07:25:50.000-08:00</pubished>
+    <updated>2017-01-10T07:25:50.000-08:00</updated>
+    <summary>Fortify on Demand Uploader Plugin 2.0.7</summary>
+  </entry>
+  <entry>
+    <title>GitHub API Plugin 1.84</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/GitHub+API+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:github-api:1.84</id>
+    <pubished>2017-01-10T02:26:42.000-08:00</pubished>
+    <updated>2017-01-10T02:26:42.000-08:00</updated>
+    <summary>GitHub API Plugin 1.84</summary>
+  </entry>
+  <entry>
+    <title>OpenShift Login Plugin 0.10</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/OpenShift+Login+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.openshift.jenkins:openshift-login:0.10</id>
+    <pubished>2017-01-10T07:00:06.000-08:00</pubished>
+    <updated>2017-01-10T07:00:06.000-08:00</updated>
+    <summary>OpenShift Login Plugin 0.10</summary>
+  </entry>
+  <entry>
+    <title>P4 Plugin 1.4.13</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/P4+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:p4:1.4.13</id>
+    <pubished>2017-01-10T06:49:10.000-08:00</pubished>
+    <updated>2017-01-10T06:49:10.000-08:00</updated>
+    <summary>P4 Plugin 1.4.13</summary>
+  </entry>
+  <entry>
+    <title>Pipeline: Model API 0.8</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Model+Definition+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkinsci.plugins:pipeline-model-api:0.8</id>
+    <pubished>2017-01-09T23:59:30.000-08:00</pubished>
+    <updated>2017-01-09T23:59:30.000-08:00</updated>
+    <summary>Pipeline: Model API 0.8</summary>
+  </entry>
+  <entry>
+    <title>Pipeline: Declarative Agent API 0.8</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Model+Definition+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkinsci.plugins:pipeline-model-declarative-agent:0.8</id>
+    <pubished>2017-01-09T23:59:56.000-08:00</pubished>
+    <updated>2017-01-09T23:59:56.000-08:00</updated>
+    <summary>Pipeline: Declarative Agent API 0.8</summary>
+  </entry>
+  <entry>
+    <title>Pipeline: Model Definition 0.8</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Model+Definition+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkinsci.plugins:pipeline-model-definition:0.8</id>
+    <pubished>2017-01-10T00:00:22.000-08:00</pubished>
+    <updated>2017-01-10T00:00:22.000-08:00</updated>
+    <summary>Pipeline: Model Definition 0.8</summary>
+  </entry>
+  <entry>
+    <title>Pipeline: Stage Tags Metadata 0.8</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Model+Definition+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkinsci.plugins:pipeline-stage-tags-metadata:0.8</id>
+    <pubished>2017-01-09T23:59:14.000-08:00</pubished>
+    <updated>2017-01-09T23:59:14.000-08:00</updated>
+    <summary>Pipeline: Stage Tags Metadata 0.8</summary>
+  </entry>
+  <entry>
+    <title>Jenkins REPO plugin 1.10.6</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Repo+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:repo:1.10.6</id>
+    <pubished>2017-01-10T05:36:02.000-08:00</pubished>
+    <updated>2017-01-10T05:36:02.000-08:00</updated>
+    <summary>Jenkins REPO plugin 1.10.6</summary>
+  </entry>
+  <entry>
+    <title>Pipeline: Nodes and Processes 2.7</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Nodes+and+Processes+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins.workflow:workflow-durable-task-step:2.7</id>
+    <pubished>2017-01-10T07:56:54.000-08:00</pubished>
+    <updated>2017-01-10T07:56:54.000-08:00</updated>
+    <summary>Pipeline: Nodes and Processes 2.7</summary>
+  </entry>
+  <entry>
+    <title>Pipeline: Step API 2.7</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Step+API+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins.workflow:workflow-step-api:2.7</id>
+    <pubished>2017-01-10T07:26:44.000-08:00</pubished>
+    <updated>2017-01-10T07:26:44.000-08:00</updated>
+    <summary>Pipeline: Step API 2.7</summary>
+  </entry>
+  <entry>
+    <title>Pipeline: Supporting APIs 2.12</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Supporting+APIs+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins.workflow:workflow-support:2.12</id>
+    <pubished>2017-01-10T07:36:06.000-08:00</pubished>
+    <updated>2017-01-10T07:36:06.000-08:00</updated>
+    <summary>Pipeline: Supporting APIs 2.12</summary>
+  </entry>
+  <entry>
+    <title>Blue Ocean beta 1.0.0-b15</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean:1.0.0-b15</id>
+    <pubished>2017-01-09T09:13:52.000-08:00</pubished>
+    <updated>2017-01-09T09:13:52.000-08:00</updated>
+    <summary>Blue Ocean beta 1.0.0-b15</summary>
+  </entry>
+  <entry>
+    <title>Common API for Blue Ocean 1.0.0-b15</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-commons:1.0.0-b15</id>
+    <pubished>2017-01-09T09:05:58.000-08:00</pubished>
+    <updated>2017-01-09T09:05:58.000-08:00</updated>
+    <summary>Common API for Blue Ocean 1.0.0-b15</summary>
+  </entry>
+  <entry>
+    <title>Config API for Blue Ocean 1.0.0-b15</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-config:1.0.0-b15</id>
+    <pubished>2017-01-09T09:13:12.000-08:00</pubished>
+    <updated>2017-01-09T09:13:12.000-08:00</updated>
+    <summary>Config API for Blue Ocean 1.0.0-b15</summary>
+  </entry>
+  <entry>
+    <title>Dashboard for Blue Ocean 1.0.0-b15</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-dashboard:1.0.0-b15</id>
+    <pubished>2017-01-09T09:10:20.000-08:00</pubished>
+    <updated>2017-01-09T09:10:20.000-08:00</updated>
+    <summary>Dashboard for Blue Ocean 1.0.0-b15</summary>
+  </entry>
+  <entry>
+    <title>Events API for Blue Ocean 1.0.0-b15</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-events:1.0.0-b15</id>
+    <pubished>2017-01-09T09:08:54.000-08:00</pubished>
+    <updated>2017-01-09T09:08:54.000-08:00</updated>
+    <summary>Events API for Blue Ocean 1.0.0-b15</summary>
+  </entry>
+  <entry>
+    <title>Git Pipeline for Blue Ocean 1.0.0-b15 (new)</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-git-pipeline:1.0.0-b15</id>
+    <pubished>2017-01-09T09:13:40.000-08:00</pubished>
+    <updated>2017-01-09T09:13:40.000-08:00</updated>
+    <summary>Git Pipeline for Blue Ocean 1.0.0-b15</summary>
+  </entry>
+  <entry>
+    <title>GitHub Pipeline for Blue Ocean 1.0.0-b15 (new)</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-github-pipeline:1.0.0-b15</id>
+    <pubished>2017-01-09T09:13:28.000-08:00</pubished>
+    <updated>2017-01-09T09:13:28.000-08:00</updated>
+    <summary>GitHub Pipeline for Blue Ocean 1.0.0-b15</summary>
+  </entry>
+  <entry>
+    <title>i18n for Blue Ocean 1.0.0-b15</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-i18n:1.0.0-b15</id>
+    <pubished>2017-01-09T09:07:58.000-08:00</pubished>
+    <updated>2017-01-09T09:07:58.000-08:00</updated>
+    <summary>i18n for Blue Ocean 1.0.0-b15</summary>
+  </entry>
+  <entry>
+    <title>JWT for Blue Ocean 1.0.0-b15</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-jwt:1.0.0-b15</id>
+    <pubished>2017-01-09T09:08:06.000-08:00</pubished>
+    <updated>2017-01-09T09:08:06.000-08:00</updated>
+    <summary>JWT for Blue Ocean 1.0.0-b15</summary>
+  </entry>
+  <entry>
+    <title>Personalization for Blue Ocean 1.0.0-b15</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-personalization:1.0.0-b15</id>
+    <pubished>2017-01-09T09:12:10.000-08:00</pubished>
+    <updated>2017-01-09T09:12:10.000-08:00</updated>
+    <summary>Personalization for Blue Ocean 1.0.0-b15</summary>
+  </entry>
+  <entry>
+    <title>Pipeline REST API for Blue Ocean 1.0.0-b15</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-pipeline-api-impl:1.0.0-b15</id>
+    <pubished>2017-01-09T09:08:30.000-08:00</pubished>
+    <updated>2017-01-09T09:08:30.000-08:00</updated>
+    <summary>Pipeline REST API for Blue Ocean 1.0.0-b15</summary>
+  </entry>
+  <entry>
+    <title>REST API for Blue Ocean 1.0.0-b15</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-rest:1.0.0-b15</id>
+    <pubished>2017-01-09T09:07:50.000-08:00</pubished>
+    <updated>2017-01-09T09:07:50.000-08:00</updated>
+    <summary>REST API for Blue Ocean 1.0.0-b15</summary>
+  </entry>
+  <entry>
+    <title>REST Implementation for Blue Ocean 1.0.0-b15</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-rest-impl:1.0.0-b15</id>
+    <pubished>2017-01-09T09:08:14.000-08:00</pubished>
+    <updated>2017-01-09T09:08:14.000-08:00</updated>
+    <summary>REST Implementation for Blue Ocean 1.0.0-b15</summary>
+  </entry>
+  <entry>
+    <title>Web for Blue Ocean 1.0.0-b15</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Blue+Ocean+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:io.jenkins.blueocean:blueocean-web:1.0.0-b15</id>
+    <pubished>2017-01-09T09:07:12.000-08:00</pubished>
+    <updated>2017-01-09T09:07:12.000-08:00</updated>
+    <summary>Web for Blue Ocean 1.0.0-b15</summary>
+  </entry>
+  <entry>
+    <title>Coverity plugin 1.8.1</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Coverity+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:coverity:1.8.1</id>
+    <pubished>2017-01-09T04:25:00.000-08:00</pubished>
+    <updated>2017-01-09T04:25:00.000-08:00</updated>
+    <summary>Coverity plugin 1.8.1</summary>
+  </entry>
+  <entry>
+    <title>JGiven Jenkins Plugin 0.13.1</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/JGiven+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:jgiven:0.13.1</id>
+    <pubished>2017-01-09T07:16:02.000-08:00</pubished>
+    <updated>2017-01-09T07:16:02.000-08:00</updated>
+    <summary>JGiven Jenkins Plugin 0.13.1</summary>
+  </entry>
+  <entry>
+    <title>Liquibase Runner 1.2.1</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Liquibase+Runner' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:liquibase-runner:1.2.1</id>
+    <pubished>2017-01-09T04:30:52.000-08:00</pubished>
+    <updated>2017-01-09T04:30:52.000-08:00</updated>
+    <summary>Liquibase Runner 1.2.1</summary>
+  </entry>
+  <entry>
+    <title>Mashup Portlets 1.0.7</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Mashup+Portlets' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:javagh.jenkins:mashup-portlets-plugin:1.0.7</id>
+    <pubished>2017-01-09T12:47:06.000-08:00</pubished>
+    <updated>2017-01-09T12:47:06.000-08:00</updated>
+    <summary>Mashup Portlets 1.0.7</summary>
+  </entry>
+  <entry>
+    <title>Server Sent Events (SSE) Gateway Plugin 1.11</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/SSE+Gateway+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:sse-gateway:1.11</id>
+    <pubished>2017-01-09T03:25:00.000-08:00</pubished>
+    <updated>2017-01-09T03:25:00.000-08:00</updated>
+    <summary>Server Sent Events (SSE) Gateway Plugin 1.11</summary>
+  </entry>
+  <entry>
+    <title>EC2 Fleet Jenkins Plugin 1.1.2</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Amazon+EC2+Fleet+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.amazon.jenkins.fleet:ec2-fleet:1.1.2</id>
+    <pubished>2017-01-08T13:03:04.000-08:00</pubished>
+    <updated>2017-01-08T13:03:04.000-08:00</updated>
+    <summary>EC2 Fleet Jenkins Plugin 1.1.2</summary>
+  </entry>
+  <entry>
+    <title>Job and Node ownership plugin 0.9.1</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Ownership+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.synopsys.jenkinsci:ownership:0.9.1</id>
+    <pubished>2017-01-08T14:08:06.000-08:00</pubished>
+    <updated>2017-01-08T14:08:06.000-08:00</updated>
+    <summary>Job and Node ownership plugin 0.9.1</summary>
+  </entry>
+  <entry>
+    <title>Job DSL 1.56</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:job-dsl:1.56</id>
+    <pubished>2017-01-06T16:32:10.000-08:00</pubished>
+    <updated>2017-01-06T16:32:10.000-08:00</updated>
+    <summary>Job DSL 1.56</summary>
+  </entry>
+  <entry>
+    <title>Liquibase Runner 1.2.0</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Liquibase+Runner' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:liquibase-runner:1.2.0</id>
+    <pubished>2017-01-07T06:52:44.000-08:00</pubished>
+    <updated>2017-01-07T06:52:44.000-08:00</updated>
+    <summary>Liquibase Runner 1.2.0</summary>
+  </entry>
+  <entry>
+    <title>Cloud Statistics Plugin 0.6</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Cloud+Statistics+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:cloud-stats:0.6</id>
+    <pubished>2017-01-06T02:23:50.000-08:00</pubished>
+    <updated>2017-01-06T02:23:50.000-08:00</updated>
+    <summary>Cloud Statistics Plugin 0.6</summary>
+  </entry>
+  <entry>
+    <title>Config File Provider Plugin 2.15.3</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Config+File+Provider+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:config-file-provider:2.15.3</id>
+    <pubished>2017-01-06T03:36:16.000-08:00</pubished>
+    <updated>2017-01-06T03:36:16.000-08:00</updated>
+    <summary>Config File Provider Plugin 2.15.3</summary>
+  </entry>
+  <entry>
+    <title>Cucumber reports 3.4.0</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Cucumber+Reports+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:net.masterthought.jenkins:cucumber-reports:3.4.0</id>
+    <pubished>2017-01-06T08:30:30.000-08:00</pubished>
+    <updated>2017-01-06T08:30:30.000-08:00</updated>
+    <summary>Cucumber reports 3.4.0</summary>
+  </entry>
+  <entry>
+    <title>TraceTronic ECU-TEST Plugin 1.15</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/TraceTronic+ECU-TEST+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:de.tracetronic.jenkins.plugins:ecutest:1.15</id>
+    <pubished>2017-01-06T08:38:16.000-08:00</pubished>
+    <updated>2017-01-06T08:38:16.000-08:00</updated>
+    <summary>TraceTronic ECU-TEST Plugin 1.15</summary>
+  </entry>
+  <entry>
+    <title>External Monitor Job Type Plugin 1.7</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Monitoring+external+jobs' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:external-monitor-job:1.7</id>
+    <pubished>2017-01-06T09:00:38.000-08:00</pubished>
+    <updated>2017-01-06T09:00:38.000-08:00</updated>
+    <summary>External Monitor Job Type Plugin 1.7</summary>
+  </entry>
+  <entry>
+    <title>Fortify on Demand Uploader Plugin 2.0.6</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Fortify+On+Demand+Uploader+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:fortify-on-demand-uploader:2.0.6</id>
+    <pubished>2017-01-06T08:49:22.000-08:00</pubished>
+    <updated>2017-01-06T08:49:22.000-08:00</updated>
+    <summary>Fortify on Demand Uploader Plugin 2.0.6</summary>
+  </entry>
+  <entry>
+    <title>HTML Publisher plugin 1.12</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/HTML+Publisher+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:htmlpublisher:1.12</id>
+    <pubished>2017-01-06T10:21:54.000-08:00</pubished>
+    <updated>2017-01-06T10:21:54.000-08:00</updated>
+    <summary>HTML Publisher plugin 1.12</summary>
+  </entry>
+  <entry>
+    <title>MicroDocs Integration Plugin 1.2</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/MICRODOCS+INTEGRATION+PLUGIN' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.maxxton:microdocs-integration:1.2</id>
+    <pubished>2017-01-06T02:43:16.000-08:00</pubished>
+    <updated>2017-01-06T02:43:16.000-08:00</updated>
+    <summary>MicroDocs Integration Plugin 1.2</summary>
+  </entry>
+  <entry>
+    <title>StepCounter Plugin 2.0.0</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Step+Counter+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:stepcounter:2.0.0</id>
+    <pubished>2017-01-06T05:43:48.000-08:00</pubished>
+    <updated>2017-01-06T05:43:48.000-08:00</updated>
+    <summary>StepCounter Plugin 2.0.0</summary>
+  </entry>
+  <entry>
+    <title>Seapine Surround SCM Plug-in 1.10</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Surround+SCM+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:Surround-SCM-plugin:1.10</id>
+    <pubished>2017-01-05T02:05:18.000-08:00</pubished>
+    <updated>2017-01-05T02:05:18.000-08:00</updated>
+    <summary>Seapine Surround SCM Plug-in 1.10</summary>
+  </entry>
+  <entry>
+    <title>Docker build step plugin 1.37</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Docker+build+step+plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:docker-build-step:1.37</id>
+    <pubished>2017-01-05T02:41:50.000-08:00</pubished>
+    <updated>2017-01-05T02:41:50.000-08:00</updated>
+    <summary>Docker build step plugin 1.37</summary>
+  </entry>
+  <entry>
+    <title>Fortify on Demand Uploader Plugin 2.0.5</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Fortify+On+Demand+Uploader+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:fortify-on-demand-uploader:2.0.5</id>
+    <pubished>2017-01-05T10:34:56.000-08:00</pubished>
+    <updated>2017-01-05T10:34:56.000-08:00</updated>
+    <summary>Fortify on Demand Uploader Plugin 2.0.5</summary>
+  </entry>
+  <entry>
+    <title>Pipeline: Multibranch with defaults 1.1</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Multibranch+Defaults+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:pipeline-multibranch-defaults:1.1</id>
+    <pubished>2017-01-05T10:09:32.000-08:00</pubished>
+    <updated>2017-01-05T10:09:32.000-08:00</updated>
+    <summary>Pipeline: Multibranch with defaults 1.1</summary>
+  </entry>
+  <entry>
+    <title>Pipeline: Nodes and Processes 2.6</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Nodes+and+Processes+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins.workflow:workflow-durable-task-step:2.6</id>
+    <pubished>2017-01-05T05:04:58.000-08:00</pubished>
+    <updated>2017-01-05T05:04:58.000-08:00</updated>
+    <summary>Pipeline: Nodes and Processes 2.6</summary>
+  </entry>
+  <entry>
+    <title>Static Analysis Utilities 1.82</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Static+Code+Analysis+Plug-ins' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jvnet.hudson.plugins:analysis-core:1.82</id>
+    <pubished>2017-01-04T14:36:04.000-08:00</pubished>
+    <updated>2017-01-04T14:36:04.000-08:00</updated>
+    <summary>Static Analysis Utilities 1.82</summary>
+  </entry>
+  <entry>
+    <title>GitHub Pull Request Coverage Status 1.1.1</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/GitHub+PR+Coverage+Status+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:github-pr-coverage-status:1.1.1</id>
+    <pubished>2017-01-03T16:16:18.000-08:00</pubished>
+    <updated>2017-01-03T16:16:18.000-08:00</updated>
+    <summary>GitHub Pull Request Coverage Status 1.1.1</summary>
+  </entry>
+  <entry>
+    <title>GitLab Plugin 1.4.4</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/GitLab+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:gitlab-plugin:1.4.4</id>
+    <pubished>2017-01-04T04:05:26.000-08:00</pubished>
+    <updated>2017-01-04T04:05:26.000-08:00</updated>
+    <summary>GitLab Plugin 1.4.4</summary>
+  </entry>
+  <entry>
+    <title>Job Parameter Summary Plugin 0.4</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Job+Parameter+Summary+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:job-parameter-summary:0.4</id>
+    <pubished>2017-01-04T02:43:26.000-08:00</pubished>
+    <updated>2017-01-04T02:43:26.000-08:00</updated>
+    <summary>Job Parameter Summary Plugin 0.4</summary>
+  </entry>
+  <entry>
+    <title>Splunk Plugin 1.4.2</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Splunk+Plugin+for+Jenkins' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.splunk.splunkins:splunk-devops:1.4.2</id>
+    <pubished>2017-01-04T02:08:54.000-08:00</pubished>
+    <updated>2017-01-04T02:08:54.000-08:00</updated>
+    <summary>Splunk Plugin 1.4.2</summary>
+  </entry>
+  <entry>
+    <title>Splunk Plugin Extension 1.4.2</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Splunk+Plugin+for+Pipeline+Job+Support' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.splunk.splunkins:splunk-devops-extend:1.4.2</id>
+    <pubished>2017-01-04T02:10:10.000-08:00</pubished>
+    <updated>2017-01-04T02:10:10.000-08:00</updated>
+    <summary>Splunk Plugin Extension 1.4.2</summary>
+  </entry>
+  <entry>
+    <title>Warnings Plug-in 4.59</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Warnings+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jvnet.hudson.plugins:warnings:4.59</id>
+    <pubished>2017-01-04T14:42:52.000-08:00</pubished>
+    <updated>2017-01-04T14:42:52.000-08:00</updated>
+    <summary>Warnings Plug-in 4.59</summary>
+  </entry>
+  <entry>
+    <title>Static Analysis Collector Plug-in 1.50</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Analysis+Collector+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jvnet.hudson.plugins:analysis-collector:1.50</id>
+    <pubished>2017-01-03T02:37:16.000-08:00</pubished>
+    <updated>2017-01-03T02:37:16.000-08:00</updated>
+    <summary>Static Analysis Collector Plug-in 1.50</summary>
+  </entry>
+  <entry>
+    <title>Jenkins Ansible plugin 0.6.2</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Ansible+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:ansible:0.6.2</id>
+    <pubished>2017-01-03T14:29:46.000-08:00</pubished>
+    <updated>2017-01-03T14:29:46.000-08:00</updated>
+    <summary>Jenkins Ansible plugin 0.6.2</summary>
+  </entry>
+  <entry>
+    <title>Fabric Beta Publisher 1.5</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Fabric+Beta+Publisher+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:egor-n:fabric-beta-publisher:1.5</id>
+    <pubished>2017-01-03T03:26:24.000-08:00</pubished>
+    <updated>2017-01-03T03:26:24.000-08:00</updated>
+    <summary>Fabric Beta Publisher 1.5</summary>
+  </entry>
+  <entry>
+    <title>Job DSL 1.55</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:job-dsl:1.55</id>
+    <pubished>2017-01-03T15:07:28.000-08:00</pubished>
+    <updated>2017-01-03T15:07:28.000-08:00</updated>
+    <summary>Job DSL 1.55</summary>
+  </entry>
+  <entry>
+    <title>Mesos Plugin 0.14.0</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Mesos+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:mesos:0.14.0</id>
+    <pubished>2017-01-03T15:41:26.000-08:00</pubished>
+    <updated>2017-01-03T15:41:26.000-08:00</updated>
+    <summary>Mesos Plugin 0.14.0</summary>
+  </entry>
+  <entry>
+    <title>Pipeline: AWS Steps 1.4</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+AWS+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:de.taimos:pipeline-aws:1.4</id>
+    <pubished>2017-01-03T04:30:54.000-08:00</pubished>
+    <updated>2017-01-03T04:30:54.000-08:00</updated>
+    <summary>Pipeline: AWS Steps 1.4</summary>
+  </entry>
+  <entry>
+    <title>Pipeline Maven Integration Plugin 0.5</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Maven+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:pipeline-maven:0.5</id>
+    <pubished>2017-01-03T02:18:52.000-08:00</pubished>
+    <updated>2017-01-03T02:18:52.000-08:00</updated>
+    <summary>Pipeline Maven Integration Plugin 0.5</summary>
+  </entry>
+  <entry>
+    <title>Puppet Enterprise Pipeline 1.2.3</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Puppet+Enterprise+Pipeline+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins.workflow:puppet-enterprise-pipeline:1.2.3</id>
+    <pubished>2017-01-03T04:03:42.000-08:00</pubished>
+    <updated>2017-01-03T04:03:42.000-08:00</updated>
+    <summary>Puppet Enterprise Pipeline 1.2.3</summary>
+  </entry>
+  <entry>
+    <title>Script Security Plugin 1.25</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Script+Security+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:script-security:1.25</id>
+    <pubished>2017-01-03T03:24:32.000-08:00</pubished>
+    <updated>2017-01-03T03:24:32.000-08:00</updated>
+    <summary>Script Security Plugin 1.25</summary>
+  </entry>
+  <entry>
+    <title>Test Odyssey Plugin for Jenkins 2.0.1</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Test-Odyssey+Execution+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.ekatechserv:testodyssey-execution:2.0.1</id>
+    <pubished>2017-01-03T09:48:40.000-08:00</pubished>
+    <updated>2017-01-03T09:48:40.000-08:00</updated>
+    <summary>Test Odyssey Plugin for Jenkins 2.0.1</summary>
+  </entry>
+  <entry>
+    <title>VectorCAST Execution 0.15</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/VectorCAST+Execution+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:vectorcast-execution:0.15</id>
+    <pubished>2017-01-03T00:52:36.000-08:00</pubished>
+    <updated>2017-01-03T00:52:36.000-08:00</updated>
+    <summary>VectorCAST Execution 0.15</summary>
+  </entry>
+  <entry>
+    <title>White Source Jenkins plugin 1.7.3</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Whitesource+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:whitesource:1.7.3</id>
+    <pubished>2017-01-03T10:46:34.000-08:00</pubished>
+    <updated>2017-01-03T10:46:34.000-08:00</updated>
+    <summary>White Source Jenkins plugin 1.7.3</summary>
+  </entry>
+  <entry>
+    <title>AppDynamics Dashboard Plugin for Jenkins 1.0.14</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/AppDynamics+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:appdynamics-dashboard:1.0.14</id>
+    <pubished>2017-01-02T13:08:12.000-08:00</pubished>
+    <updated>2017-01-02T13:08:12.000-08:00</updated>
+    <summary>AppDynamics Dashboard Plugin for Jenkins 1.0.14</summary>
+  </entry>
+  <entry>
+    <title>AWS Lambda Plugin 0.5.7</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/AWS+Lambda+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:aws-lambda:0.5.7</id>
+    <pubished>2017-01-02T14:02:56.000-08:00</pubished>
+    <updated>2017-01-02T14:02:56.000-08:00</updated>
+    <summary>AWS Lambda Plugin 0.5.7</summary>
+  </entry>
+  <entry>
+    <title>Cloud Statistics Plugin 0.5</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Cloud+Statistics+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:cloud-stats:0.5</id>
+    <pubished>2017-01-02T05:06:52.000-08:00</pubished>
+    <updated>2017-01-02T05:06:52.000-08:00</updated>
+    <summary>Cloud Statistics Plugin 0.5</summary>
+  </entry>
+  <entry>
+    <title>Jenkins Git client plugin 2.2.0</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Git+Client+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:git-client:2.2.0</id>
+    <pubished>2017-01-02T09:00:08.000-08:00</pubished>
+    <updated>2017-01-02T09:00:08.000-08:00</updated>
+    <summary>Jenkins Git client plugin 2.2.0</summary>
+  </entry>
+  <entry>
+    <title>Openstack Cloud Plugin 2.15</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Openstack+Cloud+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:openstack-cloud:2.15</id>
+    <pubished>2017-01-02T05:19:30.000-08:00</pubished>
+    <updated>2017-01-02T05:19:30.000-08:00</updated>
+    <summary>Openstack Cloud Plugin 2.15</summary>
+  </entry>
+  <entry>
+    <title>vSphere Plugin 2.15</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/vSphere+Cloud+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:vsphere-cloud:2.15</id>
+    <pubished>2017-01-02T00:41:28.000-08:00</pubished>
+    <updated>2017-01-02T00:41:28.000-08:00</updated>
+    <summary>vSphere Plugin 2.15</summary>
+  </entry>
+  <entry>
+    <title>Jenkins Ansible plugin 0.6.1</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Ansible+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:ansible:0.6.1</id>
+    <pubished>2017-01-01T10:00:02.000-08:00</pubished>
+    <updated>2017-01-01T10:00:02.000-08:00</updated>
+    <summary>Jenkins Ansible plugin 0.6.1</summary>
+  </entry>
+  <entry>
+    <title>InfluxDB Plugin 1.10.1</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/InfluxDB+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:influxdb:1.10.1</id>
+    <pubished>2016-12-30T02:08:00.000-08:00</pubished>
+    <updated>2016-12-30T02:08:00.000-08:00</updated>
+    <summary>InfluxDB Plugin 1.10.1</summary>
+  </entry>
+  <entry>
+    <title>RocketChat Notifier 0.4.1</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/RocketChat+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:rocketchatnotifier:0.4.1</id>
+    <pubished>2016-12-30T02:11:50.000-08:00</pubished>
+    <updated>2016-12-30T02:11:50.000-08:00</updated>
+    <summary>RocketChat Notifier 0.4.1</summary>
+  </entry>
+  <entry>
+    <title>Security Inspector Plugin 0.2</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Security+Inspector+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:security-inspector:0.2</id>
+    <pubished>2016-12-30T14:04:02.000-08:00</pubished>
+    <updated>2016-12-30T14:04:02.000-08:00</updated>
+    <summary>Security Inspector Plugin 0.2</summary>
+  </entry>
+  <entry>
+    <title>Bitbucket Branch Source Plugin 1.9</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Bitbucket+Branch+Source+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:cloudbees-bitbucket-branch-source:1.9</id>
+    <pubished>2016-12-28T05:20:38.000-08:00</pubished>
+    <updated>2016-12-28T05:20:38.000-08:00</updated>
+    <summary>Bitbucket Branch Source Plugin 1.9</summary>
+  </entry>
+  <entry>
+    <title>Pipeline: Milestone Step 1.3</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Milestone+Step+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:pipeline-milestone-step:1.3</id>
+    <pubished>2016-12-28T05:10:16.000-08:00</pubished>
+    <updated>2016-12-28T05:10:16.000-08:00</updated>
+    <summary>Pipeline: Milestone Step 1.3</summary>
+  </entry>
+  <entry>
+    <title>RocketChat Notifier 0.4.0</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/RocketChat+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:rocketchatnotifier:0.4.0</id>
+    <pubished>2016-12-28T02:28:38.000-08:00</pubished>
+    <updated>2016-12-28T02:28:38.000-08:00</updated>
+    <summary>RocketChat Notifier 0.4.0</summary>
+  </entry>
+  <entry>
+    <title>Assembla merge request builder 1.1.6</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Assembla+Merge+Request+Builder+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:assembla-merge-request-builder:1.1.6</id>
+    <pubished>2016-12-26T16:06:10.000-08:00</pubished>
+    <updated>2016-12-26T16:06:10.000-08:00</updated>
+    <summary>Assembla merge request builder 1.1.6</summary>
+  </entry>
+  <entry>
+    <title>Config File Provider Plugin 2.15</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Config+File+Provider+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:config-file-provider:2.15</id>
+    <pubished>2016-12-27T04:56:30.000-08:00</pubished>
+    <updated>2016-12-27T04:56:30.000-08:00</updated>
+    <summary>Config File Provider Plugin 2.15</summary>
+  </entry>
+  <entry>
+    <title>Managed Scripts 1.3</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Managed+Script+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkinsci.plugins:managed-scripts:1.3</id>
+    <pubished>2016-12-27T05:36:40.000-08:00</pubished>
+    <updated>2016-12-27T05:36:40.000-08:00</updated>
+    <summary>Managed Scripts 1.3</summary>
+  </entry>
+  <entry>
+    <title>ontrack Jenkins plug-in 2.28.0</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Ontrack+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:ontrack:2.28.0</id>
+    <pubished>2016-12-27T01:17:50.000-08:00</pubished>
+    <updated>2016-12-27T01:17:50.000-08:00</updated>
+    <summary>ontrack Jenkins plug-in 2.28.0</summary>
+  </entry>
+  <entry>
+    <title>Jenkins S3 publisher plugin 0.10.11</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/S3+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:s3:0.10.11</id>
+    <pubished>2016-12-27T06:53:52.000-08:00</pubished>
+    <updated>2016-12-27T06:53:52.000-08:00</updated>
+    <summary>Jenkins S3 publisher plugin 0.10.11</summary>
+  </entry>
+  <entry>
+    <title>The SourceClear Installer Plugin 1.0.2</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/SourceClear+Installer+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.srcclr.jenkins:srcclr-installer:1.0.2</id>
+    <pubished>2016-12-26T23:45:46.000-08:00</pubished>
+    <updated>2016-12-26T23:45:46.000-08:00</updated>
+    <summary>The SourceClear Installer Plugin 1.0.2</summary>
+  </entry>
+  <entry>
+    <title>Job DSL 1.54</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:job-dsl:1.54</id>
+    <pubished>2016-12-24T07:23:48.000-08:00</pubished>
+    <updated>2016-12-24T07:23:48.000-08:00</updated>
+    <summary>Job DSL 1.54</summary>
+  </entry>
+  <entry>
+    <title>Pipeline GitHub Notify Step Plugin 1.0.1</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Githubnotify+Step+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:pipeline-githubnotify-step:1.0.1</id>
+    <pubished>2016-12-24T06:46:46.000-08:00</pubished>
+    <updated>2016-12-24T06:46:46.000-08:00</updated>
+    <summary>Pipeline GitHub Notify Step Plugin 1.0.1</summary>
+  </entry>
+  <entry>
+    <title>AppDynamics Dashboard Plugin for Jenkins 1.0.13</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/AppDynamics+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:appdynamics-dashboard:1.0.13</id>
+    <pubished>2016-12-23T01:58:36.000-08:00</pubished>
+    <updated>2016-12-23T01:58:36.000-08:00</updated>
+    <summary>AppDynamics Dashboard Plugin for Jenkins 1.0.13</summary>
+  </entry>
+  <entry>
+    <title>Email Extension Plugin 2.53</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Email-ext+plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:email-ext:2.53</id>
+    <pubished>2016-12-23T10:31:16.000-08:00</pubished>
+    <updated>2016-12-23T10:31:16.000-08:00</updated>
+    <summary>Email Extension Plugin 2.53</summary>
+  </entry>
+  <entry>
+    <title>InfluxDB Plugin 1.10</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/InfluxDB+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:influxdb:1.10</id>
+    <pubished>2016-12-23T02:42:30.000-08:00</pubished>
+    <updated>2016-12-23T02:42:30.000-08:00</updated>
+    <summary>InfluxDB Plugin 1.10</summary>
+  </entry>
+  <entry>
+    <title>JMS Messaging Plugin 1.0.4</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/JMS+Messaging+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:jms-messaging:1.0.4</id>
+    <pubished>2016-12-23T07:30:02.000-08:00</pubished>
+    <updated>2016-12-23T07:30:02.000-08:00</updated>
+    <summary>JMS Messaging Plugin 1.0.4</summary>
+  </entry>
+  <entry>
+    <title>Sonargraph Integration Jenkins Plugin 2.0.0</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Sonargraph+Integration+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:sonargraph-integration:2.0.0</id>
+    <pubished>2016-12-23T11:42:56.000-08:00</pubished>
+    <updated>2016-12-23T11:42:56.000-08:00</updated>
+    <summary>Sonargraph Integration Jenkins Plugin 2.0.0</summary>
+  </entry>
+  <entry>
+    <title>Jenkins Kiuwan plugin 1.4.2</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/Kiuwan+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:org.jenkins-ci.plugins:kiuwanJenkinsPlugin:1.4.2</id>
+    <pubished>2016-12-22T03:16:24.000-08:00</pubished>
+    <updated>2016-12-22T03:16:24.000-08:00</updated>
+    <summary>Jenkins Kiuwan plugin 1.4.2</summary>
+  </entry>
+  <entry>
+    <title>MQ Notifier 1.2.0</title>
+    <link href='https://wiki.jenkins-ci.org/display/JENKINS/MQ+Notifier+Plugin' rel='alternate' type='text/html' />
+    <id>urn:63067410335c11e0bc8e0800200c9a66:com.sonymobile.jenkins.plugins.mq:mq-notifier:1.2.0</id>
+    <pubished>2016-12-22T02:03:52.000-08:00</pubished>
+    <updated>2016-12-22T02:03:52.000-08:00</updated>
+    <summary>MQ Notifier 1.2.0</summary>
+  </entry>
+</feed>

@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Converting Conditional Build Steps to Jenkins Pipeline
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container blog-post no-margin">
+<div class="row body">
+<div class="col-md-11 col-md-offset-1 main-content" id="content">
+<div id="content-top">
+<h1>
+<a href="/blog/2017/01/19/converting-conditional-to-pipeline/" title="Converting Conditional Build Steps to Jenkins Pipeline">
+Converting Conditional Build Steps to Jenkins Pipeline
+</a>
+</h1>
+<!-- starting partial tweetbutton.html.haml -->
+<div style="float: right; clear: all;">
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/share">
+Tweet
+</a>
+</div>
+
+<!-- ending partial tweetbutton.html.haml -->
+<span class="submitted">
+Published on
+2017-01-19
+by
+<a href="https://github.com/bitwiseman">Liam Newman</a>
+</span>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This is a guest post by <a href="https://github.com/bitwiseman">Liam Newman</a>,
+Technical Evangelist at <a href="https://cloudbees.com">CloudBees</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect1">
+<h2 id="introduction"><a class="anchor" href="#introduction"></a>Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>With all the new developments in
+<a href="https://jenkins.io/doc/book/pipeline/">Jenkins Pipeline</a> (and
+<a href="https://jenkins.io/blog/2017/01/12/declarative-pipeline-beta-2/">Declarative Pipeline on the horizon</a>),
+it&#8217;s easy to forget what we did to create "pipelines" before
+<strong>Pipeline</strong>.
+There are number of plugins, some that have been around since the very beginning,
+that enable users to create "pipelines" in Jenkins.
+For example, basic job chaining worked well in many cases, and the
+<a href="https://plugins.jenkins.io/parameterized-trigger">Parameterized Trigger plugin</a>
+made chaining more flexible.
+However, creating chained jobs with conditional behavior was
+still one of the harder things to do in Jenkins.</p>
+</div>
+<div class="paragraph">
+<p>The
+<a href="https://plugins.jenkins.io/conditional-buildstep">Conditional BuildStep plugin</a>
+is a powerful tool that has allowed Jenkins users to write Jenkins jobs with complex conditional logic.
+In this post, we&#8217;ll take a look at how we might converting Freestyle jobs that
+include conditional build steps to Jenkins Pipeline.
+Unlike Freestyle jobs, implementing conditional operations in Jenkins Pipeline is trivial,
+but matching the behavior of complex conditional build steps will require a bit more care.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="graphical-programming"><a class="anchor" href="#graphical-programming"></a>Graphical Programming</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Conditional BuildStep plugin lets users add conditional logic to Freestyle
+jobs from within the Jenkins web UI.  It does this by:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Adding two types of Conditional BuildStep ("Single" and "Multiple") -
+these build steps contain one or more other build steps to be run when the configured
+condition is met</p>
+</li>
+<li>
+<p>Adding a set of Condition operations -
+these control whether the Conditional BuildStep execute the contained step(s)</p>
+</li>
+<li>
+<p>Leveraging the Token Macro facility -
+these provide values to the Conditions for evaluation</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In the example below, this project will run the shell script step when the value of the
+<code>REQUESTED_ACTION</code> token equals "greeting".</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/2017-01-19/freestyle-conditional-param.png" alt="Freestyle Job Parameters" width="800">
+</div>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/2017-01-19/freestyle-conditional-config.png" alt="Freestyle Job Conditional BuildStep" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s the output when I run this project with <code>REQUESTED_ACTION</code> set to "greeting":</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>Run condition [Strings match] enabling prebuild for step [Execute shell]
+Strings match run condition: string 1=[greeting], string 2=[greeting]
+Run condition [Strings match] enabling perform for step [Execute shell]
+[freestyle-conditional] $ /bin/sh -xe /var/folders/hp/f7yc_mwj2tq1hmbv_5n10v2c0000gn/T/hudson5963233933358491209.sh
++ echo 'Hello, bitwiseman!'
+Hello, bitwiseman!
+Finished: SUCCESS</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And when I pass the value "silence":</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>Run condition [Strings match] enabling prebuild for step [Execute shell]
+Strings match run condition: string 1=[silence], string 2=[greeting]
+Run condition [Strings match] preventing perform for step [Execute shell]
+Finished: SUCCESS</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is a simple example but the conditional step can contain any regular build step.
+When combined with other plugins, it can control whether to send notifications,
+gather data from other sources, wait for user feedback, or call other projects.</p>
+</div>
+<div class="paragraph">
+<p>The Conditional BuildStep plugin does a great job of leveraging strengths of
+the Jenkins web UI, Freestyle jobs, and UI-based programming,
+but it is also hampered by their limitations.
+The Jenkins web UI can be clunky and confusing at times.
+Like the steps in any Freestyle job, these conditional steps are only
+stored and viewable in Jenkins.
+They are not versioned with other product or build code and can&#8217;t be code reviewed.
+Like any number of UI-based programming tools, it has to make trade-offs between clarity
+and flexibility: more options or clearer presentation.
+There&#8217;s only so much space on the screen.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="converting-to-pipeline"><a class="anchor" href="#converting-to-pipeline"></a>Converting to Pipeline</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins Pipeline, on the other hand, enables users to implement their pipeline as code.
+Pipeline code can be written directly in the Jenkins Web UI or in any text editor.
+It is a full-featured programming language,
+which gives users access to much broader set of conditional statements
+without the restrictions of UI-based programming.</p>
+</div>
+<div class="paragraph">
+<p>So, taking the example above, the Pipeline equivalent is:</p>
+</div>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent any
+    parameters {
+        choice(
+            <span style="color:#777">// choices are a string of newline separated values</span>
+            <span style="color:#777">// https://issues.jenkins-ci.org/browse/JENKINS-41180</span>
+            <span style="color:#606">choices</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">greeting\nsilence</span><span style="color:#710">'</span></span>,
+            <span style="color:#606">description</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>,
+            <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">REQUESTED_ACTION</span><span style="color:#710">'</span></span>)
+    }
+
+    stages {
+        stage (<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Speak</span><span style="color:#710">'</span></span>) {
+            when {
+                <span style="color:#777">// Only say hello if a &quot;greeting&quot; is requested</span>
+                expression { params.REQUESTED_ACTION == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">greeting</span><span style="color:#710">'</span></span> }
+            }
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello, bitwiseman!</span><span style="color:#710">&quot;</span></span>
+            }
+        }
+    }
+}</code></pre>
+</div></div>  <div class="pipeline-script-expand">
+    <a href="#" onclick="javascript:$(this).parent().siblings('.pipeline-script').toggle(); return false;">Toggle Pipeline Script</a>
+    <em>(Advanced)</em>
+  </div>
+  <div class="listingblock pipeline-script"
+        style="display: none">
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">properties ([
+    parameters ([
+        choice (
+            <span style="color:#777">// choices are a string of newline separated values</span>
+            <span style="color:#777">// https://issues.jenkins-ci.org/browse/JENKINS-41180</span>
+            <span style="color:#606">choices</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">greeting\nsilence</span><span style="color:#710">'</span></span>,
+            <span style="color:#606">description</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>,
+            name : <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">REQUESTED_ACTION</span><span style="color:#710">'</span></span>)
+    ])
+])
+
+node {
+    stage (<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Speak</span><span style="color:#710">'</span></span>) {
+        <span style="color:#777">// Only say hello if a &quot;greeting&quot; is requested</span>
+        <span style="color:#080;font-weight:bold">if</span> (params.REQUESTED_ACTION == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">greeting</span><span style="color:#710">'</span></span>) {
+            echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Hello, bitwiseman!</span><span style="color:#710">&quot;</span></span>
+        }
+    }
+}</code></pre>
+</div></div></div>
+<div class="paragraph">
+<p>When I run this project with <code>REQUESTED_ACTION</code> set to "greeting", here&#8217;s the output:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>[Pipeline] node
+Running on osx_mbp in /Users/bitwiseman/jenkins/agents/osx_mbp/workspace/pipeline-conditional
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Speak)
+[Pipeline] echo
+Hello, bitwiseman!
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When I pass the value "silence", the only change is "Hello, bitwiseman!" is not printed.</p>
+</div>
+<div class="paragraph">
+<p>Some might argue that the Pipeline code is a bit harder to understand on first reading.
+Others would say the UI is just as confusing if not more so.
+Either way, the Pipeline representation is considerably more compact than the Jenkins UI presentation.
+Pipeline also lets us add helpful comments, which we can&#8217;t do in the Freestyle UI.
+And we can easily put this Pipeline in a <code>Jenkinsfile</code> to be code-reviewed, checked-in, and versioned
+along with the rest of our code.</p>
+</div>
+<div class="sect2">
+<h3 id="conditions"><a class="anchor" href="#conditions"></a>Conditions</h3>
+<div class="paragraph">
+<p>The previous example showed the "Strings match" condition and its Pipeline equivalent.
+Let&#8217;s look at couple more interesting conditions and their Jenkins Pipeline equivalents.</p>
+</div>
+<div class="sect3">
+<h4 id="boolean-condition"><a class="anchor" href="#boolean-condition"></a>Boolean condition</h4>
+<div class="paragraph">
+<p>You might think that a boolean condition would be the simplest condition, but it isn&#8217;t.
+Since it works with string values from tokens, the Conditional BuildStep plugin offers
+a number of ways to indicate true or false.
+Truth is a case insensitive match of one of the following:
+<code>1</code> (the number one), <code>Y</code>, <code>YES</code>, <code>T</code>, <code>TRUE</code>, <code>ON</code> or <code>RUN</code>.</p>
+</div>
+<div class="paragraph">
+<p>Pipeline can duplicate these, but depending on the scenario we might consider
+whether a simpler expression would suffice.</p>
+</div>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">when {
+    <span style="color:#777">// case insensitive regular expression for truthy values</span>
+    expression { <span style="color:#080;font-weight:bold">return</span> token ==~ <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">(?i)(Y|YES|T|TRUE|ON|RUN)</span><span style="color:#404">/</span></span> }
+}
+steps {
+    <span style="color:#777">/* step */</span>
+}</code></pre>
+</div></div>  <div class="pipeline-script-expand">
+    <a href="#" onclick="javascript:$(this).parent().siblings('.pipeline-script').toggle(); return false;">Toggle Pipeline Script</a>
+    <em>(Advanced)</em>
+  </div>
+  <div class="listingblock pipeline-script"
+        style="display: none">
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy"><span style="color:#777">// case insensitive regular expression for truthy values</span>
+<span style="color:#080;font-weight:bold">if</span> (token ==~ <span style="background-color:hsla(300,100%,50%,0.06)"><span style="color:#404">/</span><span style="color:#808">(?i)(Y|YES|T|TRUE|ON|RUN)</span><span style="color:#404">/</span></span>) {
+    <span style="color:#777">/* step */</span>
+}</code></pre>
+</div></div></div>
+</div>
+<div class="sect3">
+<h4 id="logical-or-of-conditions"><a class="anchor" href="#logical-or-of-conditions"></a>Logical "OR" of conditions</h4>
+<div class="paragraph">
+<p>This condition wraps other conditions.
+It takes their results as inputs and performs a logical "or" of the results.
+The <code>AND</code> and <code>NOT</code> conditions do the same, performing their respective operations.</p>
+</div>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">when {
+    <span style="color:#777">// A or B</span>
+    expression { <span style="color:#080;font-weight:bold">return</span> A || B }
+}
+steps {
+    <span style="color:#777">/* step */</span>
+}</code></pre>
+</div></div>  <div class="pipeline-script-expand">
+    <a href="#" onclick="javascript:$(this).parent().siblings('.pipeline-script').toggle(); return false;">Toggle Pipeline Script</a>
+    <em>(Advanced)</em>
+  </div>
+  <div class="listingblock pipeline-script"
+        style="display: none">
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy"><span style="color:#777">// A or B</span>
+<span style="color:#080;font-weight:bold">if</span> (A || B) {
+    <span style="color:#777">/* step */</span>
+}</code></pre>
+</div></div></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tokens"><a class="anchor" href="#tokens"></a>Tokens</h3>
+<div class="paragraph">
+<p>Tokens can be considerably more work than conditions.
+There are more of them and they cover a much broader range of behaviors.
+The previous example showed one of the simpler cases, accessing a build parameter,
+where the token has a direct equivalent in Pipeline.
+However, many tokens don&#8217;t have direct equivalents,
+some take a parameters (adding to their complexity),
+and some provide information that is simply not exposed in Pipeline yet.
+So, determining how to migrate tokens needs to be done on case-by-case basis.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s look at a few examples.</p>
+</div>
+<div class="sect3">
+<h4 id="file-token"><a class="anchor" href="#file-token"></a>"FILE" token</h4>
+<div class="paragraph">
+<p><strong>Expands to the contents of a file. The file path is relative to the build workspace root.</strong></p>
+</div>
+<div class="paragraph">
+<p><em>${FILE,path="PATH"}</em></p>
+</div>
+<div class="paragraph">
+<p>This token maps directly to the <code>readFile</code> step.
+The only difference is the file path for <code>readFile</code> is relative to the
+current working directory on the agent, but that is the workspace root by default.
+No problem.</p>
+</div>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">when {
+    expression { <span style="color:#080;font-weight:bold">return</span> readFile(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">pom.xml</span><span style="color:#710">'</span></span>).contains(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">mycomponent</span><span style="color:#710">'</span></span>) }
+}
+steps {
+    <span style="color:#777">/* step */</span>
+}</code></pre>
+</div></div>  <div class="pipeline-script-expand">
+    <a href="#" onclick="javascript:$(this).parent().siblings('.pipeline-script').toggle(); return false;">Toggle Pipeline Script</a>
+    <em>(Advanced)</em>
+  </div>
+  <div class="listingblock pipeline-script"
+        style="display: none">
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy"><span style="color:#080;font-weight:bold">if</span> (readFile(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">pom.xml</span><span style="color:#710">'</span></span>).contains(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">mycomponent</span><span style="color:#710">'</span></span>)) {
+    <span style="color:#777">/* step */</span>
+}</code></pre>
+</div></div></div>
+</div>
+<div class="sect3">
+<h4 id="git_branch"><a class="anchor" href="#git_branch"></a>GIT_BRANCH</h4>
+<div class="paragraph">
+<p><strong>Expands to the name of the branch that was built.</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>Parameters</strong> (descriptions omitted): <em>all</em>, <em>fullName</em>.</p>
+</div>
+<div class="paragraph">
+<p>This information may or may not be exposed in Pipeline.  If you&#8217;re using the
+<a href="https://plugins.jenkins.io/workflow-multibranch">Pipeline Multibranch plugin</a>
+<code>env.BRANCH_NAME</code> will give similar basic information, but doesn&#8217;t offer the parameters.
+There are also
+<a href="https://issues.jenkins-ci.org/browse/JENKINS-35230">several</a>
+<a href="https://issues.jenkins-ci.org/browse/JENKINS-24141">issues</a>
+filed around <code>GIT_*</code> tokens in Pipeline.
+Until they are addressed fully, we can follow the pattern shown in
+<a href="https://github.com/jenkinsci/pipeline-examples/blob/master/pipeline-examples/gitcommit/gitcommit.groovy">pipeline-examples</a>,
+executing a shell to get the information we need.</p>
+</div>
+<div class="listingblock">
+<div class="title">Pipeline</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">GIT_BRANCH = sh(<span style="color:#606">returnStdout</span>: <span style="color:#069">true</span>, <span style="color:#606">script</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">git rev-parse --abbrev-ref HEAD</span><span style="color:#710">'</span></span>).trim()</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="changes_since_last_success"><a class="anchor" href="#changes_since_last_success"></a>CHANGES_SINCE_LAST_SUCCESS</h4>
+<div class="paragraph">
+<p><strong>Displays the changes since the last successful build.</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>Parameters</strong> (descriptions omitted):
+<em>reverse</em>, <em>format</em>, <em>changesFormat</em>, <em>showPaths</em>, <em>pathFormat</em>,
+<em>showDependencies</em>, <em>dateFormat</em>, <em>regex</em>, <em>replace</em>, <em>default</em>.</p>
+</div>
+<div class="paragraph">
+<p>Not only is the information provided by this token not exposed in Pipeline,
+the token has ten optional parameters, including format strings and regular expression
+searches. There are a number of ways we might get similar information in Pipeline.
+Each have their own particular limitations and ways they differ from the token output.
+Then we&#8217;ll need to consider how each of the parameters changes the output.
+If nothing else, translating this token is clearly beyond the scope of this post.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="slightly-more-complex-example"><a class="anchor" href="#slightly-more-complex-example"></a>Slightly More Complex Example</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Let&#8217;s do one more example that shows some of these conditions and tokens.
+This time we&#8217;ll perform different build steps depending on what branch we&#8217;re building.
+We&#8217;ll take two build parameters: <code>BRANCH_PATTERN</code> and <code>FORCE_FULL_BUILD</code>.
+Based on <code>BRANCH_PATTERN</code>, we&#8217;ll checkout a repository.
+If we&#8217;re building on the <code>master</code> branch or the user checked <code>FORCE_FULL_BUILD</code>,
+we&#8217;ll call three other builds in parallel
+(<code>full-build-linux</code>, <code>full-build-mac</code>, and <code>full-build-windows</code>),
+wait for them to finish, and report the result.
+If we&#8217;re not building on the <code>master</code> branch and the user did not check <code>FORCE_FULL_BUILD</code>,
+we&#8217;ll print a message saying we skipped the full builds.</p>
+</div>
+<div class="sect2">
+<h3 id="freestyle"><a class="anchor" href="#freestyle"></a>Freestyle</h3>
+<div class="paragraph">
+<p>Here&#8217;s the configuration for Freestyle version.
+(It&#8217;s pretty long.  Feel free to <a href="#longer-pipeline">skip down to the Pipeline version</a>):</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The Pipeline version of this job determines the <code>GIT_BRANCH</code> branch by
+running a shell script that returns the current local branch name.
+This means that the Pipeline version must checkout to a local branch (not a detached head).</p>
+</div>
+<div class="paragraph">
+<p>Freestyle version of this job does not require a local branch, <code>GIT_BRANCH</code> is set automatically.
+However, to maintain functional parity, the Freestyle version of this job includes
+"Checkout to Specific Local Branch" as well.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/2017-01-19/freestyle-conditional-long-full.png" alt="Longer Freestyle Job" width="800">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="longer-pipeline"><a class="anchor" href="#longer-pipeline"></a>Pipeline</h3>
+<div class="paragraph">
+<p>Here&#8217;s the equivalent Pipeline:</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Freestyle version of this job is not stored in source control.</p>
+</div>
+<div class="paragraph">
+<p>In general, the Pipeline version of this job would be stored in source control,
+would <code>checkout scm</code>, and would run that same repository.
+However, to maintain functional parity, the Pipeline version shown does a checkout
+from source control but is not stored in that repository.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="pipeline-block">  <div class="listingblock pipeline-declarative">
+    <div class="title">Jenkinsfile (Declarative Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">pipeline {
+    agent any
+    parameters {
+        string (
+            <span style="color:#606">defaultValue</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">*</span><span style="color:#710">'</span></span>,
+            <span style="color:#606">description</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>,
+            name : <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">BRANCH_PATTERN</span><span style="color:#710">'</span></span>)
+        booleanParam (
+            <span style="color:#606">defaultValue</span>: <span style="color:#069">false</span>,
+            <span style="color:#606">description</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>,
+            name : <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">FORCE_FULL_BUILD</span><span style="color:#710">'</span></span>)
+    }
+
+    stages {
+        stage (<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Prepare</span><span style="color:#710">'</span></span>) {
+            steps {
+                checkout([<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">GitSCM</span><span style="color:#710">'</span></span>,
+                    <span style="color:#B06;font-weight:bold">branches</span>: [[<span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">origin/</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>BRANCH_PATTERN<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>]],
+                    <span style="color:#606">doGenerateSubmoduleConfigurations</span>: <span style="color:#069">false</span>,
+                    <span style="color:#606">extensions</span>: [[<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">LocalBranch</span><span style="color:#710">'</span></span>]],
+                    <span style="color:#B06;font-weight:bold">submoduleCfg</span>: <span style="color:#339;font-weight:bold">[]</span>,
+                    <span style="color:#606">userRemoteConfigs</span>: [[
+                        <span style="color:#606">credentialsId</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">bitwiseman_github</span><span style="color:#710">'</span></span>,
+                        <span style="color:#606">url</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">https://github.com/bitwiseman/hermann</span><span style="color:#710">'</span></span>]]])
+            }
+        }
+
+        stage (<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) {
+            when {
+                expression {
+                    GIT_BRANCH = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">origin/</span><span style="color:#710">'</span></span> + sh(<span style="color:#606">returnStdout</span>: <span style="color:#069">true</span>, <span style="color:#606">script</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">git rev-parse --abbrev-ref HEAD</span><span style="color:#710">'</span></span>).trim()
+                    <span style="color:#080;font-weight:bold">return</span> GIT_BRANCH == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">origin/master</span><span style="color:#710">'</span></span> || params.FORCE_FULL_BUILD
+                }
+            }
+            steps {
+                <span style="color:#777">// Freestyle build trigger calls a list of jobs</span>
+                <span style="color:#777">// Pipeline build() step only calls one job</span>
+                <span style="color:#777">// To run all three jobs in parallel, we use &quot;parallel&quot; step</span>
+                <span style="color:#777">// https://jenkins.io/doc/pipeline/examples/#jobs-in-parallel</span>
+                parallel (
+                    <span style="color:#606">linux</span>: {
+                        build <span style="color:#606">job</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">full-build-linux</span><span style="color:#710">'</span></span>, <span style="color:#606">parameters</span>: [string(<span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">GIT_BRANCH_NAME</span><span style="color:#710">'</span></span>, <span style="color:#606">value</span>: GIT_BRANCH)]
+                    },
+                    <span style="color:#606">mac</span>: {
+                        build <span style="color:#606">job</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">full-build-mac</span><span style="color:#710">'</span></span>, <span style="color:#606">parameters</span>: [string(<span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">GIT_BRANCH_NAME</span><span style="color:#710">'</span></span>, <span style="color:#606">value</span>: GIT_BRANCH)]
+                    },
+                    <span style="color:#606">windows</span>: {
+                        build <span style="color:#606">job</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">full-build-windows</span><span style="color:#710">'</span></span>, <span style="color:#606">parameters</span>: [string(<span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">GIT_BRANCH_NAME</span><span style="color:#710">'</span></span>, <span style="color:#606">value</span>: GIT_BRANCH)]
+                    },
+                    <span style="color:#606">failFast</span>: <span style="color:#069">false</span>)
+            }
+        }
+        stage (<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build Skipped</span><span style="color:#710">'</span></span>) {
+            when {
+                expression {
+                    GIT_BRANCH = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">origin/</span><span style="color:#710">'</span></span> + sh(<span style="color:#606">returnStdout</span>: <span style="color:#069">true</span>, <span style="color:#606">script</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">git rev-parse --abbrev-ref HEAD</span><span style="color:#710">'</span></span>).trim()
+                    <span style="color:#080;font-weight:bold">return</span> !(GIT_BRANCH == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">origin/master</span><span style="color:#710">'</span></span> || params.FORCE_FULL_BUILD)
+                }
+            }
+            steps {
+                echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Skipped full build.</span><span style="color:#710">'</span></span>
+            }
+        }
+    }
+}</code></pre>
+</div></div>  <div class="pipeline-script-expand">
+    <a href="#" onclick="javascript:$(this).parent().siblings('.pipeline-script').toggle(); return false;">Toggle Pipeline Script</a>
+    <em>(Advanced)</em>
+  </div>
+  <div class="listingblock pipeline-script"
+        style="display: none">
+    <div class="title">Jenkinsfile (Scripted Pipeline)</div>
+    <div class="content">
+  <pre class="CodeRay highlight nowrap"><code class="language-groovy" data-lang="groovy">properties ([
+    parameters ([
+        string (
+            <span style="color:#606">defaultValue</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">*</span><span style="color:#710">'</span></span>,
+            <span style="color:#606">description</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>,
+            name : <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">BRANCH_PATTERN</span><span style="color:#710">'</span></span>),
+        booleanParam (
+            <span style="color:#606">defaultValue</span>: <span style="color:#069">false</span>,
+            <span style="color:#606">description</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>,
+            name : <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">FORCE_FULL_BUILD</span><span style="color:#710">'</span></span>)
+    ])
+])
+
+node {
+    stage (<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Prepare</span><span style="color:#710">'</span></span>) {
+        checkout([<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">GitSCM</span><span style="color:#710">'</span></span>,
+            <span style="color:#B06;font-weight:bold">branches</span>: [[<span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">origin/</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>BRANCH_PATTERN<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>]],
+            <span style="color:#606">doGenerateSubmoduleConfigurations</span>: <span style="color:#069">false</span>,
+            <span style="color:#606">extensions</span>: [[<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">LocalBranch</span><span style="color:#710">'</span></span>]],
+            <span style="color:#B06;font-weight:bold">submoduleCfg</span>: <span style="color:#339;font-weight:bold">[]</span>,
+            <span style="color:#606">userRemoteConfigs</span>: [[
+                <span style="color:#606">credentialsId</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">bitwiseman_github</span><span style="color:#710">'</span></span>,
+                <span style="color:#606">url</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">https://github.com/bitwiseman/hermann</span><span style="color:#710">'</span></span>]]])
+    }
+
+    stage (<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Build</span><span style="color:#710">'</span></span>) {
+        GIT_BRANCH = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">origin/</span><span style="color:#710">'</span></span> + sh(<span style="color:#606">returnStdout</span>: <span style="color:#069">true</span>, <span style="color:#606">script</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">git rev-parse --abbrev-ref HEAD</span><span style="color:#710">'</span></span>).trim()
+        <span style="color:#080;font-weight:bold">if</span> (GIT_BRANCH == <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">origin/master</span><span style="color:#710">'</span></span> || params.FORCE_FULL_BUILD) {
+
+            <span style="color:#777">// Freestyle build trigger calls a list of jobs</span>
+            <span style="color:#777">// Pipeline build() step only calls one job</span>
+            <span style="color:#777">// To run all three jobs in parallel, we use &quot;parallel&quot; step</span>
+            <span style="color:#777">// https://jenkins.io/doc/pipeline/examples/#jobs-in-parallel</span>
+            parallel (
+                <span style="color:#606">linux</span>: {
+                    build <span style="color:#606">job</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">full-build-linux</span><span style="color:#710">'</span></span>, <span style="color:#606">parameters</span>: [string(<span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">GIT_BRANCH_NAME</span><span style="color:#710">'</span></span>, <span style="color:#606">value</span>: GIT_BRANCH)]
+                },
+                <span style="color:#606">mac</span>: {
+                    build <span style="color:#606">job</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">full-build-mac</span><span style="color:#710">'</span></span>, <span style="color:#606">parameters</span>: [string(<span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">GIT_BRANCH_NAME</span><span style="color:#710">'</span></span>, <span style="color:#606">value</span>: GIT_BRANCH)]
+                },
+                <span style="color:#606">windows</span>: {
+                    build <span style="color:#606">job</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">full-build-windows</span><span style="color:#710">'</span></span>, <span style="color:#606">parameters</span>: [string(<span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">GIT_BRANCH_NAME</span><span style="color:#710">'</span></span>, <span style="color:#606">value</span>: GIT_BRANCH)]
+                },
+                <span style="color:#606">failFast</span>: <span style="color:#069">false</span>)
+
+        } <span style="color:#080;font-weight:bold">else</span> {
+            echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Skipped full build.</span><span style="color:#710">'</span></span>
+        }
+    }
+}</code></pre>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="conclusion"><a class="anchor" href="#conclusion"></a>Conclusion</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As I said before, the Conditional BuildStep plugin is great.
+It provides a clear, easy to understand way to add conditional logic to any Freestyle job.
+Before Pipeline, it was one of the few plugins to do this and it remains one of the most popular plugins.
+Now that we have Pipeline, we can implement conditional logic directly in code.</p>
+</div>
+<div class="paragraph">
+<p>This is blog post discussed how to approach converting conditional build steps to Pipeline
+and showed a couple concrete examples.  Overall, I&#8217;m pleased with the results so far.
+I found scenarios which could not easily be migrated to Pipeline, but even those
+are only more difficult, rather than impossible.</p>
+</div>
+<div class="paragraph">
+<p>The next thing to do is add a section to the
+<a href="https://jenkins.io/doc/book/">Jenkins Handbook</a> documenting the Pipeline
+equivalent of all of the Conditions and the most commonly used Tokens.
+Look for it soon!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="links"><a class="anchor" href="#links"></a>Links</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://plugins.jenkins.io/conditional-buildstep">Conditional BuildStep plugin</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//blog/2017/2017-01-19-converting-conditional-to-pipeline.adoc" title="Edit /blog/2017/2017-01-19-converting-conditional-to-pipeline.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//blog/2017/2017-01-19-converting-conditional-to-pipeline.adoc" title="View /blog/2017/2017-01-19-converting-conditional-to-pipeline.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

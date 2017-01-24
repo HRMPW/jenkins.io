@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Jenkins Upgrade Guide
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="active nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  .row {
+    margin-right: 5em;
+    margin-left: 5em;
+  }
+  .toc {
+      float: right;
+  }
+</style>
+<div class="container">
+<div class="row body">
+<h1>
+Jenkins Upgrade Guide
+</h1>
+<div class="sect1">
+<h2 id="upgrading-to-jenkins-lts-2-19-x"><a class="anchor" href="#upgrading-to-jenkins-lts-2-19-x"></a>Upgrading to Jenkins LTS 2.19.x</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Each section covers the upgrade from the previous LTS release, the section on 2.19.1 covers the upgrade from 2.7.4.</p>
+</div>
+<div class="sect2">
+<h3 id="upgrading-to-jenkins-lts-2-19-4"><a class="anchor" href="#upgrading-to-jenkins-lts-2-19-4"></a>Upgrading to Jenkins LTS 2.19.4</h3>
+<div class="sect3">
+<h4 id="jnlp-agent-protocol-options-weren-t-correctly-persisted"><a class="anchor" href="#jnlp-agent-protocol-options-weren-t-correctly-persisted"></a>JNLP agent protocol options weren&#8217;t correctly persisted</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-39465">JENKINS-39465</a></p>
+</div>
+<div class="paragraph">
+<p>The JNLP agent protocol configuration could not be loaded from disk after a Jenkins restart.</p>
+</div>
+<div class="paragraph">
+<p>If you customized these settings since 2.19.1, review that they are configured as expected.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="honor-code-jenkins-model-jenkins-slaveagentport-code-again"><a class="anchor" href="#honor-code-jenkins-model-jenkins-slaveagentport-code-again"></a>Honor <code>jenkins.model.Jenkins.slaveAgentPort</code> again</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-38187">JENKINS-38187</a></p>
+</div>
+<div class="paragraph">
+<p>A regression in Jenkins 2.0 caused Jenkins to ignore the System property <code>jenkins.model.Jenkins.slaveAgentPort</code>.</p>
+</div>
+<div class="paragraph">
+<p>The previous behavior has been restored, and a new System property <code>jenkins.model.Jenkins.slaveAgentPort</code> added that, if set, will enforce the JNLP agent port on every Jenkins startup, and will not allow the value to be changed through the UI.</p>
+</div>
+<div class="paragraph">
+<p>It can still be changed via Groovy scripting for troubleshooting purposes, but any change will be reverted on startup.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="text-boxes-on-configuration-screens-will-no-longer-stretch-to-accomodate-long-lines"><a class="anchor" href="#text-boxes-on-configuration-screens-will-no-longer-stretch-to-accomodate-long-lines"></a>Text boxes on configuration screens will no longer stretch to accomodate long lines</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-27367">JENKINS-27367</a></p>
+</div>
+<div class="paragraph">
+<p>The layout of job configuration screens will no longer break if users don&#8217;t insert extra line breaks to break long lines. Instead, the text box will allow horizontal scrolling.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="don-t-spawn-numerous-threads-on-the-agent-build-history-page"><a class="anchor" href="#don-t-spawn-numerous-threads-on-the-agent-build-history-page"></a>Don&#8217;t spawn numerous threads on the agent build history page</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-23244">JENKINS-23244</a></p>
+</div>
+<div class="paragraph">
+<p>The build history for specific agents has long caused numerous potentially long-running threads to spawn. This has been fixed.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="memory-leak-on-dashboard-fixed"><a class="anchor" href="#memory-leak-on-dashboard-fixed"></a>Memory leak on dashboard fixed</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-10912">JENKINS-10912</a></p>
+</div>
+<div class="paragraph">
+<p>A memory leak on the dashboard (view pages) was fixed, so that browser memory use will no longer grow unbounded.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="upgrading-to-jenkins-lts-2-19-3"><a class="anchor" href="#upgrading-to-jenkins-lts-2-19-3"></a>Upgrading to Jenkins LTS 2.19.3</h3>
+<div class="sect3">
+<h4 id="expansion-of-the-serialization-blacklist"><a class="anchor" href="#expansion-of-the-serialization-blacklist"></a>Expansion of the serialization blacklist</h4>
+<div class="paragraph">
+<p><a href="https://wiki.jenkins-ci.org/display/SECURITY/Jenkins+Security+Advisory+2016-11-16">Security Advisory 2016-11-16</a></p>
+</div>
+<div class="paragraph">
+<p>The major part of the security fix is an expansion of the serialization blacklist used for remoting (Jenkins CLI and master/agent communication) and Xstream (XML configuration and data files).</p>
+</div>
+<div class="paragraph">
+<p>It is possible that legitimate uses of classes in blacklisted packages will no longer work. This will be indicated by any of the following in exception messages in logs:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">Rejected: com.sun.jndi.rmi.EvilClass
+Refusing to unmarshal com.sun.jndi.rmi.EvilClass for security reasons
+Refusing to marshal com.sun.jndi.rmi.EvilClass for security reasons</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In these examples, <code>com.sun.jndi.rmi.EvilClass</code> is a placeholder for a real class name.</p>
+</div>
+<div class="paragraph">
+<p>It is possible to customize the blacklist used by setting the <code>hudson.remoting.ClassFilter.DEFAULTS_OVERRIDE_LOCATION</code> System property for the Jenkins master <code>java</code> invocation. It is expected to be set to the path to a file containing a complete, custom blacklist overriding the default one.</p>
+</div>
+<div class="paragraph">
+<p>The default blacklist is defined in <a href="https://github.com/jenkinsci/remoting/blob/remoting-3.2/src/main/java/hudson/remoting/ClassFilter.java#L57&#8230;&#8203;L79"><code>ClassFilter.java</code> in the remoting component</a>. In a configuration file as used for <code>hudson.remoting.ClassFilter.DEFAULTS_OVERRIDE_LOCATION</code>, the default blacklist would look like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">^bsh[.].*
+^com[.]google[.]inject[.].*
+^com[.]mchange[.]v2[.]c3p0[.].*
+^com[.]sun[.]jndi[.].*
+^com[.]sun[.]corba[.].*
+^com[.]sun[.]javafx[.].*
+^com[.]sun[.]org[.]apache[.]regex[.]internal[.].*
+^java[.]awt[.].*
+^java[.]rmi[.].*
+^javax[.]management[.].*
+^javax[.]naming[.].*
+^javax[.]script[.].*
+^javax[.]swing[.].*
+^org[.]apache[.]commons[.]beanutils[.].*
+^org[.]apache[.]commons[.]collections[.]functors[.].*
+^org[.]apache[.]myfaces[.].*
+^org[.]apache[.]wicket[.].*
+.*org[.]apache[.]xalan.*
+^org[.]codehaus[.]groovy[.]runtime[.].*
+^org[.]hibernate[.].*
+^org[.]python[.].*
+^org[.]springframework[.](?!(\p{Alnum}+[.])*\p{Alnum}*Exception$).*
+^sun[.]rmi[.].*</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To check whether any given class name is blacklisted, run the following command in <em>Manage Jenkins » Script Console</em>, replacing <code>com.sun.jndi.rmi.EvilClass</code> with the class name you want to check:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">hudson.remoting.ClassFilter.DEFAULT.isBlacklisted('com.sun.jndi.rmi.EvilClass')</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Removing or relaxing entries on this blacklist must be done carefully as to not open yourself up to known exploits. A possible alternative could be to disable the CLI via HTTP and JNLP agent port (see below) to prevent its unauthenticated use.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="disabling-the-cli"><a class="anchor" href="#disabling-the-cli"></a>Disabling the CLI</h4>
+<div class="paragraph">
+<p>Another change in Jenkins 2.19.3 is the new feature to disable the CLI over HTTP and JNLP by setting the System property <code>jenkins.CLI.disabled</code> to <code>true</code>. This is a more convenient alternative to run the <a href="https://github.com/jenkinsci-cert/SECURITY-218/">Groovy script provided as a workaround to SECURITY-218 and SECURITY-360</a> for users who do not want to allow unauthenticated access to the Jenkins CLI even with the security fix.</p>
+</div>
+<div class="paragraph">
+<p>While the CLI can be used using the Jenkins integrated SSH daemon as well, this requires authentication, so it&#8217;s not a vector for unauthenticated attacks. To disable this feature as well, disable the SSH server port in <em>Manage Jenkins » Configure Jenkins » SSH Server</em>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="upgrading-to-jenkins-lts-2-19-2"><a class="anchor" href="#upgrading-to-jenkins-lts-2-19-2"></a>Upgrading to Jenkins LTS 2.19.2</h3>
+<div class="sect3">
+<h4 id="fixes-to-cli-over-http"><a class="anchor" href="#fixes-to-cli-over-http"></a>Fixes to CLI over HTTP</h4>
+<div class="paragraph">
+<p>CLI over HTTP (when the JNLP port is disabled) now works with CSRF protection enabled and does not need explicitly setting <code>hudson.diyChunking</code>. So any workarounds applied for previous versions of Jenkins to make the CLI work can now be reverted.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="upgrading-to-jenkins-lts-2-19-1"><a class="anchor" href="#upgrading-to-jenkins-lts-2-19-1"></a>Upgrading to Jenkins LTS 2.19.1</h3>
+<div class="sect3">
+<h4 id="plugin-dependency-resolution-fix"><a class="anchor" href="#plugin-dependency-resolution-fix"></a>Plugin dependency resolution fix</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-21486">JENKINS-21486</a></p>
+</div>
+<div class="paragraph">
+<p>Previous versions allowed Jenkins to run with invalid plugin configurations. For example, plugins depending on other plugins were loaded even if those dependencies were outdated, or disabled. This could result in difficult to debug errors at run time.</p>
+</div>
+<div class="paragraph">
+<p>Now, Jenkins will refuse to load plugins with unsatisfied dependencies. Diagnostic messages explaining this will be written to the Jenkins log during startup, and we strongly recommend monitoring that after upgrading.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="form-autocompletion-disabled"><a class="anchor" href="#form-autocompletion-disabled"></a>Form autocompletion disabled</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-18435">JENKINS-18435</a></p>
+</div>
+<div class="paragraph">
+<p>A long-standing problem with JavaScript-heavy configuration forms was that submitting a form, then using the web browser Back button to return to the form resulted in the wrong form contents. Submitting the form again would then result in unexpectedly broken configuration.</p>
+</div>
+<div class="paragraph">
+<p>To work around this problem, we disabled autocompletion for almost all form fields.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="agent-protocol-selection-in-security-configuration"><a class="anchor" href="#agent-protocol-selection-in-security-configuration"></a>Agent protocol selection in security configuration</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-37032">JENKINS-37032</a></p>
+</div>
+<div class="paragraph">
+<p>The Configure Global Security form now includes options to enable/disable specific agent protocol versions, along with short descriptions of each protocol. There is no general guidance on when to customize the status of specific protocols, but it may be needed in the future.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="hiding-the-java-web-start-launcher"><a class="anchor" href="#hiding-the-java-web-start-launcher"></a>Hiding the Java Web Start launcher</h4>
+<div class="paragraph">
+<p><a href="https://issues.jenkins-ci.org/browse/JENKINS-36996">JENKINS-36996</a></p>
+</div>
+<div class="paragraph">
+<p>By default, new Jenkins 2 instances will have the JNLP agent port disabled. As this is a requirement for the JNLP Web Start launch method for build agents to work, this form option will now be hidden if the port is disabled. To make it show up, just enable the JNLP agent port in the Global Security Configuration.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//doc/upgrade-guide/2.19.adoc" title="Edit /doc/upgrade-guide/2.19.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//doc/upgrade-guide/2.19.adoc" title="View /doc/upgrade-guide/2.19.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

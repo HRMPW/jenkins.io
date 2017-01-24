@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Refactoring a Jenkins plugin for compatibility with Pipeline jobs
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container blog-post no-margin">
+<div class="row body">
+<div class="col-md-11 col-md-offset-1 main-content" id="content">
+<div id="content-top">
+<h1>
+<a href="/blog/2016/05/25/update-plugin-for-pipeline/" title="Refactoring a Jenkins plugin for compatibility with Pipeline jobs">
+Refactoring a Jenkins plugin for compatibility with Pipeline jobs
+</a>
+</h1>
+<!-- starting partial tweetbutton.html.haml -->
+<div style="float: right; clear: all;">
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/share">
+Tweet
+</a>
+</div>
+
+<!-- ending partial tweetbutton.html.haml -->
+<span class="submitted">
+Published on
+2016-05-25
+by
+<a href="https://github.com/cprice404">Chris Price</a>
+</span>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This is a guest post by <a href="https://github.com/cprice404">Chris Price</a>.
+Chris is a software engineer at <a href="https://puppet.com">Puppet</a>, and has been
+spending some time lately on automating performance testing using the latest
+Jenkins features.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>In this blog post, I&#8217;m going to attempt to provide some step-by-step notes on
+how to refactor an existing Jenkins plugin to make it compatible with the new
+Jenkins Pipeline jobs.  Before we get to the fun stuff, though, a little
+background.</p>
+</div>
+<div class="sect2">
+<h3 id="how-d-i-end-up-here"><a class="anchor" href="#how-d-i-end-up-here"></a>How&#8217;d I end up here?</h3>
+<div class="paragraph">
+<p>Recently, I started working on a project to automate some performance tests for
+my company&#8217;s products.  We use the awesome <a href="http://gatling.io/#/">Gatling</a> load
+testing tool for these tests, but we&#8217;ve largely been handling the testing very
+manually to date, due to a lack of bandwidth to get them automated in a clean,
+maintainable, extensible way.  We have a years-old Jenkins server where we use
+the <a href="https://wiki.jenkins-ci.org/display/JENKINS/Gatling+Plugin">gatling jenkins
+plugin</a> to track the
+history of certain tests over time, but the setup of the Jenkins instance was
+very delicate and not easy to reproduce, so it had fallen into a state of
+disrepair.</p>
+</div>
+<div class="paragraph">
+<p>Over the last few days I&#8217;ve been putting some effort into getting things more
+automated and repeatable so that we can really maximize the value that we&#8217;re
+getting out of the performance tests.  With some encouragement from the fine
+folks in the <code>#jenkins</code> <a href="/content/chat">IRC channel</a>, I ended up exploring
+the <a href="https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin">JobDSL
+plugin</a> and the new <a href="/doc/pipeline">Pipeline jobs</a>.  Combining those two
+things with some Puppet code to provision a Jenkins server via the
+<a href="https://github.com/jenkinsci/puppet-jenkins">jenkins puppet module</a> gave me
+a really nice way to completely automate my Jenkins setup and get a seed job in
+place that would create my perf testing jobs.  And the Pipeline job format is
+just an <strong>awesome</strong> fit for what I wanted to do in terms of being able to easily
+monitor the stages of my performance tests, and to make the job definitions
+modular so that it would be really easy to create new performance testing jobs
+with slight variations.</p>
+</div>
+<div class="paragraph">
+<p>So everything&#8217;s going GREAT up to this point.  I&#8217;m really happy with how it&#8217;s
+all shaping up.  But then&#8230;&#8203; (you knew there was a "but" coming, right?) I
+started trying to figure out how to add the
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Gatling+Plugin">Gatling Jenkins
+plugin</a> to the Pipeline jobs, and kind of ran into a wall.</p>
+</div>
+<div class="paragraph">
+<p>As best as I could tell from my Googling, the plugin was probably going to
+require some modifications in order to be able to be used with Pipeline jobs.
+However, I wasn&#8217;t able to find any really cohesive documentation that
+definitively confirmed that or explained how everything fits together.</p>
+</div>
+<div class="paragraph">
+<p>Eventually, I got it all sorted out.  So, in hopes of saving the next person a
+little time, and encouraging plugin authors to invest the time to get their
+plugins working with Pipeline, here are some notes about what I learned.</p>
+</div>
+<div class="paragraph">
+<p><strong>Spoiler:</strong> if you&#8217;re just interested in looking at the individual git commits that
+I made on may way to getting the plugin working with Pipeline, have a look at
+<a href="https://github.com/cprice404/gatling-plugin/commits/feature/master/compatibility-with-jenkins-pipeline.individual-commits">this github
+branch</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="creating-a-pipeline-step"><a class="anchor" href="#creating-a-pipeline-step"></a>Creating a pipeline step</h3>
+<div class="paragraph">
+<p>The main task that the Gatling plugin performs is to archive Gatling reports
+after a run.  I figured that the end game for this exercise was that I was going
+to end up with a Pipeline "step" that I could include in my Pipeline scripts, to
+trigger the archiving of the reports.  So my first thought was to look for an
+existing plugin / Pipeline "step" that was doing something roughly similar, so
+that I could use it as a model.  The Pipeline "Snippet Generator" feature
+(create a pipeline job, scroll down to the "Definition" section of its
+configuration, and check the "Snippet Generator" checkbox) is really helpful for
+figuring out stuff like this; it is automatically populated with all of the
+steps that are valid on your server (based on which plugins you have installed),
+so you can use it to verify whether or not your custom "step" is recognized, and
+also to look at examples of existing steps.</p>
+</div>
+<div class="paragraph">
+<p>Looking through the list of existing steps, I figured that the <code>archive</code> step
+was pretty likely to be similar to what I needed for the gatling plugin:</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/update-plugin-for-pipeline-tutorial/05_snippet_generator_archive.png" alt="archive snippet"></span></p>
+</div>
+<div class="paragraph">
+<p>So, I started poking around to see what magic it was that made that <code>archive</code>
+step show up there.  There are some mentions of this in the
+<a href="https://github.com/jenkinsci/pipeline-plugin/blob/6cffbecd874b924677ce3b3c5b1e0e2f45689cc5/DEVGUIDE.md#build-steps">pipeline-plugin
+DEVGUIDE.md</a> and the
+<a href="https://github.com/jenkinsci/workflow-step-api-plugin/blob/ee8f181c5561d70207a6b84b4d91ca24312c8a39/README.md">workflow-step-api-plugin
+README.md</a>, but the real breakthrough for me was finding the <a href="https://github.com/jenkinsci/workflow-basic-steps-plugin/blob/300fe6c02b41f072e50a501cfec3e2f425048446/src/main/java/org/jenkinsci/plugins/workflow/steps/ArtifactArchiverStep.java#L37-L53">definition of the
+<code>archive</code> step in the <code>workflow-basic-steps-plugin</code> source
+code</a>.</p>
+</div>
+<div class="paragraph">
+<p>With that as an example, I was able to start poking at getting a
+<code>gatlingArchive</code> step to show up in the Snippet Generator.  The first thing that
+I needed to do was to <a href="https://github.com/cprice404/gatling-plugin/commit/b321192bc635eee529ff70e4795591c4594f3664">update the <code>gatling-plugin</code> project&#8217;s <code>pom.xml</code> to depend
+on a recent enough version of Jenkins, as well as specify dependencies on the
+appropriate pipeline
+plugins</a></p>
+</div>
+<div class="paragraph">
+<p>Once that was out of the way, I noticed that the <code>archive</code> step had some tests
+written for it, using what looks to be a pretty awesome test API for pipeline
+jobs and plugins.  Based on <a href="https://github.com/jenkinsci/workflow-basic-steps-plugin/blob/300fe6c02b41f072e50a501cfec3e2f425048446/src/test/java/org/jenkinsci/plugins/workflow/steps/ArtifactArchiverStepTest.java#L26-L44">those <code>archive</code>
+tests</a>,
+I added
+<a href="https://github.com/cprice404/gatling-plugin/commit/ed9df4b54c36cee467b3a82e42cb2111e93f9df5">a
+skeleton for a test for the <code>gatlingArchive</code> step</a> that I was about to write.</p>
+</div>
+<div class="paragraph">
+<p>Then, I moved on to
+<a href="https://github.com/cprice404/gatling-plugin/commit/3de3485be591c7b750ec2671e74558a79efc4319">actually
+creating the step</a>.  The meat of the code was this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">GatlingArchiverStep</span> <span style="color:#088;font-weight:bold">extends</span> AbstractStepImpl {
+    <span style="color:#007">@DataBoundConstructor</span>
+    <span style="color:#088;font-weight:bold">public</span> GatlingArchiverStep() {}
+
+    <span style="color:#007">@Extension</span>
+    <span style="color:#088;font-weight:bold">public</span> <span style="color:#088;font-weight:bold">static</span> <span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">DescriptorImpl</span> <span style="color:#088;font-weight:bold">extends</span> AbstractStepDescriptorImpl {
+        <span style="color:#088;font-weight:bold">public</span> DescriptorImpl() { <span style="color:#950">super</span>(GatlingArchiverStepExecution.class); }
+
+        <span style="color:#007">@Override</span>
+        <span style="color:#088;font-weight:bold">public</span> <span style="color:#0a8;font-weight:bold">String</span> getFunctionName() {
+            <span style="color:#080;font-weight:bold">return</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">gatlingArchive</span><span style="color:#710">&quot;</span></span>;
+        }
+
+        <span style="color:#007">@Nonnull</span>
+        <span style="color:#007">@Override</span>
+        <span style="color:#088;font-weight:bold">public</span> <span style="color:#0a8;font-weight:bold">String</span> getDisplayName() {
+            <span style="color:#080;font-weight:bold">return</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Archive Gatling reports</span><span style="color:#710">&quot;</span></span>;
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that in that commit I also added a <code>config.jelly</code> file.  This is how you
+define the UI for your step, which will show up in the Snippet Generator.  In
+the case of this Gatling step there&#8217;s really not much to configure, so my
+<code>config.jelly</code> is basically empty.</p>
+</div>
+<div class="paragraph">
+<p>With that (and the rest of the code from that commit) in place, I was able to
+fire up the development Jenkins server (via <code>mvn hpi:run</code>, and note that you
+need to go into the "Manage Plugins" screen on your development server and
+install the Pipeline plugin once before any of this will work) and visit the
+Snippet Generator to see if my step showed up in the dropdown:</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/update-plugin-for-pipeline-tutorial/10_snippet_generator.png" alt="gatlingArchive snippet"></span></p>
+</div>
+<div class="paragraph">
+<p>GREAT SUCCESS!</p>
+</div>
+<div class="paragraph">
+<p>This step doesn&#8217;t actually <strong>do</strong> anything yet, but it&#8217;s recognized by Jenkins and
+can be included in your pipeline scripts at that point, so, we&#8217;re on our way!</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="the-code-step-code-metastep"><a class="anchor" href="#the-code-step-code-metastep"></a>The <code>step</code> metastep</h3>
+<div class="paragraph">
+<p>The step that we created above is a first-class DSL addition that can be used in
+Pipeline scripts.  There&#8217;s another way to make your plugin work usable from a
+Pipeline job, without making it a first-class build step.  This is by use of the
+<code>step</code> "metastep", mentioned in the <a href="https://github.com/jenkinsci/pipeline-plugin/blob/893e3484a25289c59567c6724f7ce19e3d23c6ee/DEVGUIDE.md#build-steps">pipeline-plugin
+DEVGUIDE</a>.
+When using this approach, you simply refactor your <code>Builder</code> or <code>Publisher</code> to
+extend <code>SimpleBuildStep</code>, and then you can reference the build step from the
+Pipeline DSL using the <code>step</code> method.</p>
+</div>
+<div class="paragraph">
+<p>In the Jenkins GUI, go to the config screen for a Pipeline job and click on the
+Snippet Generator checkbox.  Select <em>step: General Build Step</em> from the
+dropdown, and then have a look at the options that appear in the <em>Build Step</em>
+dropdown.  To compare with our previous work, let&#8217;s see what "Archive the
+artifacts" looks like:</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/update-plugin-for-pipeline-tutorial/15_archive_metastep_snippet.png" alt="archive metastep plugin"></span></p>
+</div>
+<div class="paragraph">
+<p>From the snippet generator we can see that it&#8217;s possible to trigger an Archive
+action with syntax like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">step([<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ArtifactArchiver</span><span style="color:#710">'</span></span>, <span style="color:#B06;font-weight:bold">artifacts</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">foo*</span><span style="color:#710">'</span></span>, <span style="color:#606">excludes</span>: <span style="color:#069">null</span>])</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is the "metastep".  It&#8217;s a way to trigger any build action that implements
+<code>SimpleBuildStep</code>, without having to actually implement a real "step" that
+extends the Pipeline DSL like we did above.  In many cases, it might only make
+sense to do one or the other in your plugin; you probably don&#8217;t really need
+both.</p>
+</div>
+<div class="paragraph">
+<p>For the purposes of this tutorial, we&#8217;re going to do both.  For a couple of reasons:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Why the heck not?  :)  It&#8217;s a good demonstration of how the metastep stuff
+works.</p>
+</li>
+<li>
+<p>Because implementing the "for realz" step will be a lot easier if the Gatling
+action that we&#8217;re trying to call from our <code>gatlingArchive()</code> syntax is using the
+newer Jenkins APIs that are required for subclasses of <code>SimpleBuildStep</code>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><code>GatlingPublisher</code> is the main build action that we&#8217;re interested in using in
+Pipeline jobs.  So, with all of that in mind, here&#8217;s our next goal: get
+<code>step([$class: 'GatlingPublisher', ...)</code> showing up in the Snippet Generator.</p>
+</div>
+<div class="paragraph">
+<p>The <a href="https://github.com/jenkinsci/jenkins/blob/jenkins-1.651.2/core/src/main/java/jenkins/tasks/SimpleBuildStep.java#L51-L66">javadocs for the SimpleBuildStep
+class</a>
+have some notes on what you need to do when porting an existing <code>Builder</code> or
+<code>Publisher</code> over to implement the <code>SimpleBuildStep</code> interface.  In all
+likelihood, most of what you&#8217;re going to end up doing is to replace occurrences
+of <code>AbstractBuild</code> with references to the <code>Run</code> class, and replace occurrences
+of <code>AbstractProject</code> with references to the <code>Job</code> class.  The APIs are pretty
+similar, so it&#8217;s not too hard to do once you understand that that&#8217;s the game.
+There is some discussion of this in the <a href="https://github.com/jenkinsci/pipeline-plugin/blob/893e3484a25289c59567c6724f7ce19e3d23c6ee/DEVGUIDE.md#historical-background">pipeline-plugin
+DEVGUIDE</a>.</p>
+</div>
+<div class="paragraph">
+<p>For the Gatling plugin, my
+<a href="https://github.com/cprice404/gatling-plugin/commit/288041c696840ea8eaf21705caf756d3d4bb1f94">initial
+efforts to port the <code>GatlingPublisher</code> over to implement <code>SimpleBuildStep</code></a> only
+required the <code>AbstractBuild</code> &#8594; <code>Run</code> refactor.</p>
+</div>
+<div class="paragraph">
+<p>After making these changes, I fired up the development Jenkins server, and, voila!</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/update-plugin-for-pipeline-tutorial/20_gatling_metastep_snippet.png" alt="gatling metastep snippet"></span></p>
+</div>
+<div class="paragraph">
+<p>So, now, we can add a line like this to a Pipeline build script:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">step([<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">GatlingPublisher</span><span style="color:#710">'</span></span>, <span style="color:#B06;font-weight:bold">enabled</span>: <span style="color:#069">true</span>])</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And it&#8217;ll effectively be the same as if we&#8217;d added the Gatling "Post-Build
+Action" to an old-school Freestyle project.</p>
+</div>
+<div class="paragraph">
+<p>Well&#8230;&#8203; mostly.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="build-actions-vs-project-actions"><a class="anchor" href="#build-actions-vs-project-actions"></a>Build Actions vs. Project Actions</h3>
+<div class="paragraph">
+<p>At this point our modified Gatling plugin should work the same way as it always
+did in a Freestyle build, but in a Pipeline build, it only partially works.
+Specifically, the Gatling plugin implements two different "Actions" to surface
+things in the Jenkins GUI: a "Build" action, which adds the Gatling icon to the
+left sidebar in the GUI when you&#8217;re viewing an individual build in the build
+history of a job, and a "Project" action, which adds that same icon to the left
+sidebar of the GUI of the main page for a job.  The "Project" action also adds a
+"floating panel" on the main job page, which shows a graph of the historical
+data for the Gatling runs.</p>
+</div>
+<div class="paragraph">
+<p>In a Pipeline job, though, assuming we&#8217;ve added a call to the metastep, we&#8217;re
+only seeing the "Build" actions.  Part of this is because, in the last round of
+changes that I linked, we only modified the "Build" action, and not the
+"Project" action.  Running the metastep in a Pipeline job has no visible effect
+at all on the project/job page at this point.  So that&#8217;s what we&#8217;ll tackle next.</p>
+</div>
+<div class="paragraph">
+<p>The key thing to know about getting "Project" actions working in a Pipeline job
+is that, with a Pipeline job, there is no way for Jenkins to know up front what
+steps or actions are going to be involved in a job.  It&#8217;s only after the job
+runs once that Jenkins has a chance to introspect what all the steps were.  As
+such, there&#8217;s no list of Builders or Publishers that it knows about up front to
+call <code>getProjectAction</code> on, like it would with a Freestyle job.</p>
+</div>
+<div class="paragraph">
+<p>This is where
+<a href="https://github.com/jenkinsci/jenkins/blob/jenkins-1.651.2/core/src/main/java/jenkins/tasks/SimpleBuildStep.java#L81-L97"><code>SimpleBuildStep.LastBuildAction</code></a>
+comes into play.  This is an interface that you can add to your Build actions,
+which give them their own <code>getProjectActions</code> method that Jenkins recognizes and
+will call when rendering the project page after the job has been run at least
+once.</p>
+</div>
+<div class="paragraph">
+<p>So, effectively, what we need to do is to
+<a href="https://github.com/cprice404/gatling-plugin/commit/34d811add49ba7f07149a70000c380aadd2407bc">get
+rid of the <code>getProjectAction</code> method on our <code>Publisher</code> class, modify the Build
+action to implement <code>SimpleBuildStep.LastBuildAction</code>, and encapsulate our
+Project action instances in the Build action</a>.</p>
+</div>
+<div class="paragraph">
+<p>The build action class now constructs an instance of the Project action and
+makes it accessible via <code>getProjectActions</code> (which comes from the
+<code>LastBuildAction</code> interface):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">GatlingBuildAction</span> <span style="color:#088;font-weight:bold">implements</span> <span style="color:#0a8;font-weight:bold">Action</span>, SimpleBuildStep.LastBuildAction {
+    <span style="color:#088;font-weight:bold">public</span> GatlingBuildAction(Run&lt;?, ?&gt; build, <span style="color:#0a8;font-weight:bold">List</span>&lt;BuildSimulation&gt; sims) {
+        <span style="color:#950">this</span>.build = build;
+        <span style="color:#950">this</span>.simulations = sims;
+
+        <span style="color:#0a8;font-weight:bold">List</span>&lt;GatlingProjectAction&gt; projectActions = <span style="color:#080;font-weight:bold">new</span> <span style="color:#0a8;font-weight:bold">ArrayList</span>&lt;&gt;();
+        projectActions.add(<span style="color:#080;font-weight:bold">new</span> GatlingProjectAction(build.getParent()));
+        <span style="color:#950">this</span>.projectActions = projectActions;
+    }
+
+    <span style="color:#007">@Override</span>
+    <span style="color:#088;font-weight:bold">public</span> <span style="color:#0a8;font-weight:bold">Collection</span>&lt;? <span style="color:#088;font-weight:bold">extends</span> <span style="color:#0a8;font-weight:bold">Action</span>&gt; getProjectActions() {
+        <span style="color:#080;font-weight:bold">return</span> <span style="color:#950">this</span>.projectActions;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After making these changes, if we run the development Jenkins server, we can see
+that after the first successful run of the Pipeline job that calls the
+<code>GatlingPublisher</code> metastep, the Gatling icon indeed shows up in the sidebar on
+the main project page, and the floating box with the graph shows up as well:</p>
+</div>
+<div class="paragraph">
+<p><span class="image center"><img src="/images/post-images/update-plugin-for-pipeline-tutorial/25_gatling_project_page.png" alt="gatling project page"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="making-our-dsl-step-do-something"><a class="anchor" href="#making-our-dsl-step-do-something"></a>Making our DSL step do something</h3>
+<div class="paragraph">
+<p>So at this point we&#8217;ve got the metastep syntax working from end-to-end, and
+we&#8217;ve got a valid Pipeline DSL step (<code>gatlingArchive()</code>) that we can use in our
+Pipeline scripts without breaking anything&#8230;&#8203; but our custom step doesn&#8217;t
+actually do anything.  Here&#8217;s the part where we tie it all together&#8230;&#8203; and it&#8217;s
+pretty easy!  All we need to do is to <a href="https://github.com/cprice404/gatling-plugin/commit/d81229f86a8e3cb0a0496ed2c71b6b94f4707720">make our step "Execution" class
+instantiate a Publisher and call <code>perform</code> on
+it</a>.</p>
+</div>
+<div class="paragraph">
+<p>As per the
+<a href="https://github.com/jenkinsci/pipeline-plugin/blob/893e3484a25289c59567c6724f7ce19e3d23c6ee/DEVGUIDE.md#variable-substitutions">notes
+in the pipeline-plugin DEVGUIDE</a>, we can use the <code>@StepContextParameter</code>
+annotation to inject in the objects that we need to pass to the Publisher&#8217;s
+<code>perform</code> method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">GatlingArchiverStepExecution</span> <span style="color:#088;font-weight:bold">extends</span> AbstractSynchronousNonBlockingStepExecution&lt;<span style="color:#0a8;font-weight:bold">Void</span>&gt; {
+
+    <span style="color:#007">@StepContextParameter</span>
+    <span style="color:#088;font-weight:bold">private</span> <span style="color:#088;font-weight:bold">transient</span> TaskListener listener;
+
+    <span style="color:#007">@StepContextParameter</span>
+    <span style="color:#088;font-weight:bold">private</span> <span style="color:#088;font-weight:bold">transient</span> FilePath ws;
+
+    <span style="color:#007">@StepContextParameter</span>
+    <span style="color:#088;font-weight:bold">private</span> <span style="color:#088;font-weight:bold">transient</span> Run build;
+
+    <span style="color:#007">@StepContextParameter</span>
+    <span style="color:#088;font-weight:bold">private</span> <span style="color:#088;font-weight:bold">transient</span> Launcher launcher;
+
+    <span style="color:#007">@Override</span>
+    <span style="color:#088;font-weight:bold">protected</span> <span style="color:#0a8;font-weight:bold">Void</span> run() <span style="color:#088;font-weight:bold">throws</span> <span style="color:#C00;font-weight:bold">Exception</span> {
+        listener.getLogger().println(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Running Gatling archiver step.</span><span style="color:#710">&quot;</span></span>);
+
+        GatlingPublisher publisher = <span style="color:#080;font-weight:bold">new</span> GatlingPublisher(<span style="color:#069">true</span>);
+        publisher.perform(build, ws, launcher, listener);
+
+        <span style="color:#080;font-weight:bold">return</span> <span style="color:#069">null</span>;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After these changes, we can fire up the development Jenkins server, and hack up
+our Pipeline script to call <code>gatlingArchive()</code> instead of the metastep
+<code>step([$class: 'GatlingPublisher', enabled: true])</code> syntax.  One of these is
+nicer to type and read than the other, but I&#8217;ll leave that as an exercise for
+the reader.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="fin"><a class="anchor" href="#fin"></a>Fin</h3>
+<div class="paragraph">
+<p>With that, our plugin now works just as well in the brave new Pipeline world as
+it did in the olden days of Freestyle builds.  I hope these notes save someone
+else a little bit of time and googling on your way to writing (or porting) an
+awesome plugin for Jenkins Pipeline jobs!</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="links"><a class="anchor" href="#links"></a>Links</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://jenkins.io/solutions/pipeline/">Jenkins Pipeline Overview</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/pipeline-plugin/blob/master/DEVGUIDE.md">Pipeline Plugin Developer Guide</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/jenkins">Jenkins Source Code</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/workflow-step-api-plugin">Workflow Step API Plugin</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/workflow-basic-steps-plugin">Workflow Basic Steps Plugin</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//blog/2016/2016-05-25-update-plugin-for-pipeline.adoc" title="Edit /blog/2016/2016-05-25-update-plugin-for-pipeline.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//blog/2016/2016-05-25-update-plugin-for-pipeline.adoc" title="View /blog/2016/2016-05-25-update-plugin-for-pipeline.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

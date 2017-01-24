@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Jenkins in the Embedded World
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="active dropdown nav-item">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="active dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<!-- starting partial jumbotron.html.haml -->
+<div class="featured featured_87 jumbotron jumbotron-fluid">
+<div class="container">
+<div class="rog">
+<div class="col-md-1"></div>
+<div class="col-md-7">
+<a href="/solutions/embedded">
+<h2>
+Jenkins in the Embedded World
+</h2>
+<p>
+
+</p>
+</a>
+<div class="col-md-5"></div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ending partial jumbotron.html.haml -->
+<div class="container">
+<div class="row body">
+<div class="col-md-8">
+<div class="solution_content">
+<div class="paragraph">
+<p>Jenkins is an extensible framework, which can be applied to many areas
+including embedded software and even hardware development.  With proper
+configuration, Jenkins can be operated with hardware peripherals attached to
+build agents to accelerate development of all kinds of embedded use-cases.</p>
+</div>
+<div class="paragraph">
+<p>This page provides a brief overview of using Jenkins for automation with
+embedded and hardware projects.</p>
+</div>
+<div class="sect1">
+<h2 id="use-cases"><a class="anchor" href="#use-cases"></a>Use-cases</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="working-with-tools"><a class="anchor" href="#working-with-tools"></a>Working with tools</h3>
+<div class="paragraph">
+<p>Jenkins has plugins for integration with common tools such as GCC, Microsoft
+Visual Studio, etc. Currently there are not domain-specific embedded
+development or electronic design automation tool integrations. Jenkins can
+however integrate with practically any tool which can provide a command-line
+interface via its shell/batch scripting integration.</p>
+</div>
+<div class="paragraph">
+<p>These command line tools can be invoked directly, assuming the build agent
+being used has the appropriate environment set up. To help configure the
+environments, a few of the following approaches can be considered:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Machine-specific variables (e.g. <code>LM_LICENSE_FILE</code> or port specifications for
+peripherals) can be configured in Agent configuration in the <em>Environment
+Variables</em> section. Once the variable is modified, the build agent should be
+reconnected.</p>
+</li>
+<li>
+<p>In order to integrate setup the tool environment, consider
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Custom+Tools+Plugin">Custom Tools Plugin</a>.</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/EnvInject+Plugin">EnvInject Plugin</a> allows to setup custom environments at the job level.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="working-with-fpga-boards-and-hardware-peripherals"><a class="anchor" href="#working-with-fpga-boards-and-hardware-peripherals"></a>Working with FPGA boards and hardware peripherals</h3>
+<div class="paragraph">
+<p>Interaction with FPGA boards can be done via CLI tools as well. Care must be
+taken in configuring Jenkins to prevent conflicts between parallel builds
+attempting to access the same shared external peripherals at the same time.
+There are a few plugins which can help manage concurrent peripherals access
+such as the:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Throttle+Concurrent+Builds+Plugin">Throttle Concurrent Builds Plugin</a> allows preventing hardware and license usage conflicts.</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Timeout+Plugin">Timeout Plugin</a> helps prevent tools (e.g. cable drives) which might hang for whatever reason, blocking a Jenkins build indefinitely.</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Naginator+Plugin">Naginator Plugin</a> enables conditional restarting of builds in case of flakey hardware issues.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="working-with-computing-grids"><a class="anchor" href="#working-with-computing-grids"></a>Working with computing grids</h3>
+<div class="paragraph">
+<p>Jenkins has a limited support of computing grids, ideally for highly
+parallelized tests and builds it would be useful to provision Jenkins agents
+from computing grids</p>
+</div>
+<div class="paragraph">
+<p>There is a
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/lsf-cloud+Plugin">LSF Cloud
+Plugin</a> for <a href="https://en.wikipedia.org/wiki/Platform_LSF">LSF</a>, but for other
+grids there is no open source plugins currently available.</p>
+</div>
+<div class="paragraph">
+<p>As a workaround, Jenkins jobs can invoke CLI tools in order to utilize
+computing grid resources.  Builds from such jobs should be able submit task
+on computing grids, wait until their completion and then collect the
+execution results.</p>
+</div>
+<div class="paragraph">
+<p>Such jobs can be implemented, but due to double scheduling there are many
+potential issues with stability of the instances (e.g. runaway grid tasks if
+Jenkins server shuts down during the build).  Currently these issues must be
+handled by the job itself.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="publishing-reports-in-custom-formats"><a class="anchor" href="#publishing-reports-in-custom-formats"></a>Publishing reports in custom formats</h3>
+<div class="paragraph">
+<p>Jenkins does not have specific plugins for parsing reports from many tools.
+In such case the general recommendation is to convert the reports to formats
+supported by exising Jenkins plugins.</p>
+</div>
+<div class="paragraph">
+<p>For tools which generate some form of XML-based reports, formatting of those
+reports can be implemented with an XSLT converter. Consider the following plugins for incorporating generated reports into Jenkins:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Unit testing results: <a href="https://wiki.jenkins-ci.org/display/JENKINS/xUnit+Plugin">xUnit
+Plugin</a>, which
+provides a "Custom report" handler to convert any XML to JUnit formatted reports for Jenkins</p>
+</li>
+<li>
+<p>Timing analysis reports: <a href="https://wiki.jenkins-ci.org/display/JENKINS/Performance+Plugin">Performance
+plugin</a>
+(support JMeter-alike reports)</p>
+</li>
+<li>
+<p>Code coverage: <a href="https://wiki.jenkins-ci.org/display/JENKINS/Cobertura+Plugin">Cobertura
+Plugin</a> or
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Emma+Plugin">Emma Plugin</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="presentations"><a class="anchor" href="#presentations"></a>Presentations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Presentation by <a href="https://github.com/oleg-nenashev/">Oleg Nenashev</a> at Jenkins User Conference 2015 in London.</p>
+</div>
+<center>
+  <iframe width="560" height="315" frameborder="0"
+  src="https://speakerdeck.com/player/0e8b573ef5d84ec1abaf664ca6d791b8"></iframe>
+</center>
+<div class="paragraph">
+<p>Presentation by Robert Martin at Jenkins User Conference 2014 in Berlin.</p>
+</div>
+<center>
+  <iframe width="560" height="315" frameborder="0"
+    src="https://www.youtube-nocookie.com/embed/AB5RTabEtEI?rel=0"></iframe>
+</center>
+<div class="sect2">
+<h3 id="more-presentations"><a class="anchor" href="#more-presentations"></a>More presentations</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://fosdem.org/2016/schedule/event/kernelci/">"kernelci.org: The</a> by Milo Casagrande at FOSDEM 2016.
+KernelCI uses Jenkins as a backend automation engine.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="solution_blogs">
+<!-- starting partial blogs.html.haml -->
+
+<!-- ending partial blogs.html.haml -->
+</div>
+</div>
+<div class="col-md-4">
+<!-- starting partial news.html.haml -->
+<div>
+<h4>Jenkins ♥ Embedded Articles</h4>
+<div class="content">
+<div class="item-list">
+<ul class="ji-dated-list">
+<li class="post">
+<a class="article" href="https://www.cloudbees.com/jenkins/juc-2015/presentations/JUC-2015-Europe-Jenkins-Based-CI-for-Nenashev.pdf">
+<h6 class="title">Jenkins-Based CI for Heterogeneous Hardware/Software Projects</h6>
+</a>
+<div class="url">www.cloudbees.com</div>
+</li>
+<li class="post">
+<a class="article" href="https://www.cloudbees.com/blog/multi-stage-ci-jenkins-embedded-world">
+<h6 class="title">Multi-Stage-CI with Jenkins in an Embedded World</h6>
+</a>
+<div class="url">www.cloudbees.com</div>
+</li>
+<li class="post">
+<a class="article" href="http://www.testandverification.com/VerificationFutures/2015/Alan_Fitch.pdf">
+<h6 class="title">CI for FPGA D&V</h6>
+</a>
+<div class="url">www.testandverification.com</div>
+</li>
+<li class="post">
+<a class="article" href="http://www.verilab.com/files/dvcon2012_ci_gray_mcgregor.pdf">
+<h6 class="title">A 30 Minute Project Makeover Using Continuous Integration</h6>
+</a>
+<div class="url">www.verilab.com</div>
+</li>
+<li class="post">
+<a class="article" href="https://www.cloudbees.com/jenkins/juc-2015/presentations/JUC-2015-Europe-The-Famous-Cows-Woodall.pdf">
+<h6 class="title">The Famous Cows of Cambridge: A Non-Standard Use Case for Jenkins</h6>
+</a>
+<div class="url">www.cloudbees.com</div>
+</li>
+<li class="post">
+<a class="article" href="http://www.synopsys.com/news/pubs/snug/2013/canada/a1_danjou_paper.pdf">
+<h6 class="title">FPGA CI with Jenkins (requires SNUG account)</h6>
+</a>
+<div class="url">www.synopsys.com</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- ending partial news.html.haml -->
+</div>
+</div>
+</div>
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//solutions/embedded.adoc" title="Edit /solutions/embedded.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//solutions/embedded.adoc" title="View /solutions/embedded.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

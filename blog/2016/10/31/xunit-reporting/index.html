@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+xUnit and Pipeline
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container blog-post no-margin">
+<div class="row body">
+<div class="col-md-11 col-md-offset-1 main-content" id="content">
+<div id="content-top">
+<h1>
+<a href="/blog/2016/10/31/xunit-reporting/" title="xUnit and Pipeline">
+xUnit and Pipeline
+</a>
+</h1>
+<!-- starting partial tweetbutton.html.haml -->
+<div style="float: right; clear: all;">
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/share">
+Tweet
+</a>
+</div>
+
+<!-- ending partial tweetbutton.html.haml -->
+<span class="submitted">
+Published on
+2016-10-31
+by
+<a href="https://github.com/bitwiseman">Liam Newman</a>
+</span>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This is a guest post by <a href="https://github.com/bitwiseman">Liam Newman</a>,
+Technical Evangelist at <a href="http://cloudbees.com">CloudBees</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/JUnit+Plugin">JUnit plugin</a>
+is the go-to test result reporter for many Jenkins projects,
+but the it is not the only one available.  The
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/xUnit+Plugin">xUnit plugin</a>
+is a viable alternative that supports JUnit and many other test result file formats.</p>
+</div>
+<div class="sect2">
+<h3 id="introduction"><a class="anchor" href="#introduction"></a>Introduction</h3>
+<div class="paragraph">
+<p>No matter the project, you need to gather and report test results.
+JUnit is one of the most widely supported formats for recording test results.
+For a scenarios where your tests are stable and your framework can produce JUnit output,
+this makes the JUnit plugin ideal for reporting results in Jenkins.
+It will consume results from a specified file or path, create a report,
+and if it finds test failures it will set the the job state to "unstable" or "failed".</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/2016-10-27/job-7-report.png" alt="Test reporting with JUnit" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>There are also plenty of scenarios where the JUnit plugin is not enough.
+If your project has some failing tests that will take some time to fix,
+or if there are some flaky tests,
+the JUnit plugin&#8217;s simplistic view of test failures may be difficult to work with.</p>
+</div>
+<div class="paragraph">
+<p>No problem, the Jenkins plugin model lets us replace the JUnit
+plugin functionality with similar
+functionality from another plugin and Jenkins Pipeline lets us do this in safe
+stepwise fashion where we can test and debug each of our changes.</p>
+</div>
+<div class="paragraph">
+<p>In this article, I will show you how to replace the JUnit plugin with the
+xUnit plugin in Pipeline code to address a few common test reporting scenarios.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="initial-setup"><a class="anchor" href="#initial-setup"></a>Initial Setup</h3>
+<div class="paragraph">
+<p>I&#8217;m going to use the "JS-Nightwatch.js" sample project from my
+<a href="/blog/2016/08/29/sauce-pipeline/">previous post</a> to demonstrate a couple
+common scenarios that the xUnit handles better.
+I already have the latest
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/JUnit+Plugin">JUnit plugin</a>
+and
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/xUnit+Plugin">xUnit plugin</a>
+installed on my Jenkins server.</p>
+</div>
+<div class="paragraph">
+<p>I&#8217;ll be keeping my changes in
+link:<a href="https://github.com/bitwiseman/JS-Nightwatch.js">my fork</a>
+of the "JS-Nightwatch.js" sample project on GitHub, under the
+"<a href="https://github.com/bitwiseman/JS-Nightwatch.js/tree/blog/xunit">blog/xunit</a>" branch.</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s what the Jenkinsfile looked like at the end of that previous post and what
+the report page looks like after a few runs:</p>
+</div>
+<div class="listingblock">
+<div class="title">Jenkinsfile</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">node {
+    stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Build</span><span style="color:#710">&quot;</span></span>
+    checkout scm
+
+    <span style="color:#777">// Install dependencies</span>
+    sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">npm install</span><span style="color:#710">'</span></span>
+
+    stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Test</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#777">// Add sauce credentials</span>
+    sauce(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">f0a6b8ad-ce30-4cba-bf9a-95afbc470a8a</span><span style="color:#710">'</span></span>) {
+        <span style="color:#777">// Start sauce connect</span>
+        sauceconnect(<span style="color:#606">options</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>, <span style="color:#606">useGeneratedTunnelIdentifier</span>: <span style="color:#069">false</span>, <span style="color:#606">verboseLogging</span>: <span style="color:#069">false</span>) {
+
+            <span style="color:#777">// List of browser configs we'll be testing against.</span>
+            <span style="color:#080;font-weight:bold">def</span> platform_configs = [
+                <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">chrome</span><span style="color:#710">'</span></span>,
+                <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">firefox</span><span style="color:#710">'</span></span>,
+                <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ie</span><span style="color:#710">'</span></span>,
+                <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">edge</span><span style="color:#710">'</span></span>
+            ].join(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">,</span><span style="color:#710">'</span></span>)
+
+            <span style="color:#777">// Nightwatch.js supports color ouput, so wrap this step for ansi color</span>
+            wrap([<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">AnsiColorBuildWrapper</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">colorMapName</span><span style="color:#710">'</span></span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">XTerm</span><span style="color:#710">'</span></span>]) {
+                <span style="color:#777">// Run selenium tests using Nightwatch.js</span>
+                <span style="color:#777">// Ignore error codes. The junit publisher will cover setting build status.</span>
+                sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">./node_modules/.bin/nightwatch -e </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>platform_configs<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> || true</span><span style="color:#710">&quot;</span></span>
+            }
+
+            junit <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">reports/**</span><span style="color:#710">'</span></span>
+
+            step([<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">SauceOnDemandTestPublisher</span><span style="color:#710">'</span></span>])
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/2016-10-27/job-7-console.png" alt="JUnit plugin console output" width="800">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="switching-from-junit-to-xunit"><a class="anchor" href="#switching-from-junit-to-xunit"></a>Switching from JUnit to xUnit</h3>
+<div class="paragraph">
+<p>I&#8217;ll start by replacing JUnit with xUnit in my pipeline.
+I use the Snippet Generator to create the step with the right parameters.
+The main downside of using the xUnit plugin is that while it is Pipeline compatible,
+it still uses the more verbose <code>step()</code> syntax and has some very rough edges around that, too.
+I&#8217;ve filed
+<a href="https://issues.jenkins-ci.org/browse/JENKINS-37611">JENKINS-37611</a>
+but in the meanwhile, we&#8217;ll work with what we have.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">// Original JUnit step</span>
+junit <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">reports/**</span><span style="color:#710">'</span></span>
+
+<span style="color:#777">// Equivalent xUnit step - generated (reformatted)</span>
+step([<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">XUnitBuilder</span><span style="color:#710">'</span></span>, <span style="color:#B06;font-weight:bold">testTimeMargin</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">3000</span><span style="color:#710">'</span></span>, <span style="color:#606">thresholdMode</span>: <span style="color:#00D">1</span>,
+    <span style="color:#606">thresholds</span>: [
+        [<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">FailedThreshold</span><span style="color:#710">'</span></span>, <span style="color:#B06;font-weight:bold">failureNewThreshold</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>, <span style="color:#606">failureThreshold</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>, <span style="color:#606">unstableNewThreshold</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>, <span style="color:#606">unstableThreshold</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">1</span><span style="color:#710">'</span></span>],
+        [<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">SkippedThreshold</span><span style="color:#710">'</span></span>, <span style="color:#B06;font-weight:bold">failureNewThreshold</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>, <span style="color:#606">failureThreshold</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>, <span style="color:#606">unstableNewThreshold</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>, <span style="color:#606">unstableThreshold</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>]],
+    <span style="color:#606">tools</span>: [
+        [<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">JUnitType</span><span style="color:#710">'</span></span>, <span style="color:#B06;font-weight:bold">deleteOutputFiles</span>: <span style="color:#069">false</span>, <span style="color:#606">failIfNotNew</span>: <span style="color:#069">false</span>, <span style="color:#606">pattern</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">reports/**</span><span style="color:#710">'</span></span>, <span style="color:#606">skipNoTestFiles</span>: <span style="color:#069">false</span>, <span style="color:#606">stopProcessingIfError</span>: <span style="color:#069">true</span>]]
+    ])
+
+<span style="color:#777">// Equivalent xUnit step - cleaned</span>
+step([<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">XUnitBuilder</span><span style="color:#710">'</span></span>,
+    <span style="color:#B06;font-weight:bold">thresholds</span>: [[<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">FailedThreshold</span><span style="color:#710">'</span></span>, <span style="color:#B06;font-weight:bold">unstableThreshold</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">1</span><span style="color:#710">'</span></span>]],
+    <span style="color:#606">tools</span>: [[<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">JUnitType</span><span style="color:#710">'</span></span>, <span style="color:#B06;font-weight:bold">pattern</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">reports/**</span><span style="color:#710">'</span></span>]]])</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If I replace the <code>junit</code> step in my Jenkinsfile with that last step above,
+it produces a report and job result identical to the JUnit plugin but using the xUnit plugin.  Easy!</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">node {
+    stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Build</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#777">// ... snip ...</span>
+
+    stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Test</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#777">// Add sauce credentials</span>
+    sauce(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">f0a6b8ad-ce30-4cba-bf9a-95afbc470a8a</span><span style="color:#710">'</span></span>) {
+        <span style="color:#777">// Start sauce connect</span>
+        sauceconnect(<span style="color:#606">options</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#710">'</span></span>, <span style="color:#606">useGeneratedTunnelIdentifier</span>: <span style="color:#069">false</span>, <span style="color:#606">verboseLogging</span>: <span style="color:#069">false</span>) {
+
+            <span style="color:#777">// ... snip ...</span>
+
+            <span style="color:#777">// junit 'reports/**'</span>
+            step([<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">XUnitBuilder</span><span style="color:#710">'</span></span>,
+                <span style="color:#B06;font-weight:bold">thresholds</span>: [[<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">FailedThreshold</span><span style="color:#710">'</span></span>, <span style="color:#B06;font-weight:bold">unstableThreshold</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">1</span><span style="color:#710">'</span></span>]],
+                <span style="color:#606">tools</span>: [[<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">JUnitType</span><span style="color:#710">'</span></span>, <span style="color:#B06;font-weight:bold">pattern</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">reports/**</span><span style="color:#710">'</span></span>]]])
+
+            <span style="color:#777">// ... snip ...</span>
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/2016-10-27/job-8-summary.png" alt="Test reporting with xUnit" width="800">
+</div>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/2016-10-27/job-8-console.png" alt="xUnit plugin console output" width="800">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="accept-a-baseline"><a class="anchor" href="#accept-a-baseline"></a>Accept a Baseline</h3>
+<div class="paragraph">
+<p>Most projects don&#8217;t start off with automated tests passing or even running.
+They start with a people hacking and prototyping, and eventually they start to write tests.
+As new tests are written, having tests checked-in, running, and failing can be valuable information.
+With the xUnit plugin we can accept a baseline of failed cases and drive that number down over time.</p>
+</div>
+<div class="paragraph">
+<p>I&#8217;ll start by changing the Jenkinsfile to fail jobs only if the number of failures is greater than an expected baseline,
+in this case four failures. When I run the job with this change, the reported numbers remain the same, but the job passes.</p>
+</div>
+<div class="listingblock">
+<div class="title">Jenkinsfile</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">// The rest of the Jenkinsfile is unchanged.</span>
+<span style="color:#777">// Only the xUnit step() call is modified.</span>
+step([<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">XUnitBuilder</span><span style="color:#710">'</span></span>,
+    <span style="color:#B06;font-weight:bold">thresholds</span>: [[<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">FailedThreshold</span><span style="color:#710">'</span></span>, <span style="color:#B06;font-weight:bold">failureThreshold</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">4</span><span style="color:#710">'</span></span>]],
+    <span style="color:#606">tools</span>: [[<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">JUnitType</span><span style="color:#710">'</span></span>, <span style="color:#B06;font-weight:bold">pattern</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">reports/**</span><span style="color:#710">'</span></span>]]])</code></pre>
+</div>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/2016-10-27/job-9-summary.png" alt="Accept a baseline of failing tests." width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Next, I can also check that the plugin reports the job as failed if more failures occur.
+Since this is sample code, I&#8217;ll do this by adding another failing test and checking the job
+reports as failed.</p>
+</div>
+<div class="listingblock">
+<div class="title">tests/guineaPig.js</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="javascript"><span style="color:#777">// ... snip ...</span>
+
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Guinea Pig Assert Title 0 - D</span><span style="color:#710">'</span></span>: <span style="color:#080;font-weight:bold">function</span>(client) { <span style="color:#777">/* ... */</span> },
+
+    <span style="color:#606"><span style="color:#404">'</span><span>Guinea Pig Assert Title 0 - E</span><span style="color:#404">'</span></span>: <span style="color:#080;font-weight:bold">function</span>(client) {
+        client
+            .url(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">https://saucelabs.com/test/guinea-pig</span><span style="color:#710">'</span></span>)
+            .waitForElementVisible(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">body</span><span style="color:#710">'</span></span>, <span style="color:#00D">1000</span>)
+            <span style="color:#777">//.assert.title('I am a page title - Sauce Labs');</span>
+            .assert.title(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">I am a page title - Sauce Labs - Cause a Failure</span><span style="color:#710">'</span></span>);
+    },
+
+    <span style="color:#06B;font-weight:bold">afterEach</span>: <span style="color:#080;font-weight:bold">function</span>(client, done) { <span style="color:#777">/* ... */</span> }
+
+<span style="color:#777">// ... snip ...</span></code></pre>
+</div>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/2016-10-27/job-10-summary.png" alt="All tests pass!" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>In a real project, we&#8217;d make fixes over a number of commits bringing the number of failures down and adjusting our baseline.
+Since this is a sample, I&#8217;ll just make all tests pass and set the job failure threshold for failed and skipped cases to zero.</p>
+</div>
+<div class="listingblock">
+<div class="title">Jenkinsfile</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">// The rest of the Jenkinsfile is unchanged.</span>
+<span style="color:#777">// Only the xUnit step() call is modified.</span>
+step([<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">XUnitBuilder</span><span style="color:#710">'</span></span>,
+    <span style="color:#B06;font-weight:bold">thresholds</span>: [
+        [<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">SkippedThreshold</span><span style="color:#710">'</span></span>, <span style="color:#B06;font-weight:bold">failureThreshold</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">0</span><span style="color:#710">'</span></span>],
+        [<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">FailedThreshold</span><span style="color:#710">'</span></span>, <span style="color:#B06;font-weight:bold">failureThreshold</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">0</span><span style="color:#710">'</span></span>]],
+    <span style="color:#606">tools</span>: [[<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">JUnitType</span><span style="color:#710">'</span></span>, <span style="color:#B06;font-weight:bold">pattern</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">reports/**</span><span style="color:#710">'</span></span>]]])</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">tests/guineaPig.js</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="javascript"><span style="color:#777">// ... snip ...</span>
+
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Guinea Pig Assert Title 0 - D</span><span style="color:#710">'</span></span>: <span style="color:#080;font-weight:bold">function</span>(client) { <span style="color:#777">/* ... */</span> },
+
+    <span style="color:#606"><span style="color:#404">'</span><span>Guinea Pig Assert Title 0 - E</span><span style="color:#404">'</span></span>: <span style="color:#080;font-weight:bold">function</span>(client) {
+        client
+            .url(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">https://saucelabs.com/test/guinea-pig</span><span style="color:#710">'</span></span>)
+            .waitForElementVisible(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">body</span><span style="color:#710">'</span></span>, <span style="color:#00D">1000</span>)
+            .assert.title(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">I am a page title - Sauce Labs</span><span style="color:#710">'</span></span>);
+    },
+
+    <span style="color:#06B;font-weight:bold">afterEach</span>: <span style="color:#080;font-weight:bold">function</span>(client, done) { <span style="color:#777">/* ... */</span> }
+
+<span style="color:#777">// ... snip ...</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">tests/guineaPig_1.js</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="javascript"><span style="color:#777">// ... snip ...</span>
+
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Guinea Pig Assert Title 1 - A</span><span style="color:#710">'</span></span>: <span style="color:#080;font-weight:bold">function</span>(client) {
+        client
+            .url(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">https://saucelabs.com/test/guinea-pig</span><span style="color:#710">'</span></span>)
+            .waitForElementVisible(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">body</span><span style="color:#710">'</span></span>, <span style="color:#00D">1000</span>)
+            .assert.title(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">I am a page title - Sauce Labs</span><span style="color:#710">'</span></span>);
+    },
+
+<span style="color:#777">// ... snip ...</span></code></pre>
+</div>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/2016-10-27/job-12-summary.png" alt="All tests pass!" width="800">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="allow-for-flakiness"><a class="anchor" href="#allow-for-flakiness"></a>Allow for Flakiness</h3>
+<div class="paragraph">
+<p>We&#8217;ve all known the frustration of having one flaky test that fails once every ten jobs.
+You want to keep it active so you can working isolating the source of the problem,
+but you also don&#8217;t want to destablize your CI pipeline or reject commits that are actually okay.
+You could move the test to a separate job that runs the "flaky" tests,
+but in my experience that just leads to a job that is always in a failed state
+and a pile of flaky tests no one looks at.</p>
+</div>
+<div class="paragraph">
+<p>With the xUnit plugin, we can keep the this flaky test in main test suite but allow
+the our job to still pass.</p>
+</div>
+<div class="paragraph">
+<p>I&#8217;ll start by adding a sample flaky test.  After a few runs, we can see the test
+fails intermittently and causes the job to fail too.</p>
+</div>
+<div class="listingblock">
+<div class="title">tests/guineaPigFlaky.js</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="javascript"><span style="color:#777">// New test file: tests/guineaPigFlaky.js</span>
+<span style="color:#080;font-weight:bold">var</span> https = require(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">https</span><span style="color:#710">'</span></span>);
+<span style="color:#080;font-weight:bold">var</span> SauceLabs = require(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">saucelabs</span><span style="color:#710">&quot;</span></span>);
+
+module.exports = {
+
+    <span style="color:#606"><span style="color:#404">'</span><span>@tags</span><span style="color:#404">'</span></span>: [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">guineaPig</span><span style="color:#710">'</span></span>],
+
+    <span style="color:#606"><span style="color:#404">'</span><span>Guinea Pig Flaky Assert Title 0</span><span style="color:#404">'</span></span>: <span style="color:#080;font-weight:bold">function</span>(client) {
+        <span style="color:#080;font-weight:bold">var</span> expectedTitle = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">I am a page title - Sauce Labs</span><span style="color:#710">'</span></span>;
+        <span style="color:#777">// Fail every fifth minute</span>
+        <span style="color:#080;font-weight:bold">if</span> (Math.floor(Date.now() / (<span style="color:#00D">1000</span> * <span style="color:#00D">60</span>)) % <span style="color:#00D">5</span> === <span style="color:#00D">0</span>) {
+            expectedTitle += <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20"> - Cause failure</span><span style="color:#710">&quot;</span></span>;
+        }
+
+        client
+            .url(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">https://saucelabs.com/test/guinea-pig</span><span style="color:#710">'</span></span>)
+            .waitForElementVisible(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">body</span><span style="color:#710">'</span></span>, <span style="color:#00D">1000</span>)
+            .assert.title(expectedTitle);
+    }
+
+    <span style="color:#06B;font-weight:bold">afterEach</span>: <span style="color:#080;font-weight:bold">function</span>(client, done) {
+        client.customSauceEnd();
+
+        setTimeout(<span style="color:#080;font-weight:bold">function</span>() {
+            done();
+        }, <span style="color:#00D">1000</span>);
+
+    }
+
+};</code></pre>
+</div>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/2016-10-27/job-17-summary.png" alt="The pain of flaky tests failing the build" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>I can almost hear my teammates screaming in frustration just looking at this report.
+To allow specific tests to be unstable but not others,
+I&#8217;m going to add a guard "suite completed" test to the suites that should be stable,
+and keep flaky test on it&#8217;s own.
+Then I&#8217;ll tell xUnit to allow for a number of failed tests, but no skipped ones.
+If any test fails other than the ones I allow to be flaky,
+it will also result in one or more skipped tests and will fail the build.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">// The rest of the Jenkinsfile is unchanged.</span>
+<span style="color:#777">// Only the xUnit step() call is modified.</span>
+step([<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">XUnitBuilder</span><span style="color:#710">'</span></span>,
+    <span style="color:#B06;font-weight:bold">thresholds</span>: [
+        [<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">SkippedThreshold</span><span style="color:#710">'</span></span>, <span style="color:#B06;font-weight:bold">failureThreshold</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">0</span><span style="color:#710">'</span></span>],
+        <span style="color:#777">// Allow for a significant number of failures</span>
+        <span style="color:#777">// Keeping this threshold so that overwhelming failures are guaranteed</span>
+        <span style="color:#777">//     to still fail the build</span>
+        [<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">FailedThreshold</span><span style="color:#710">'</span></span>, <span style="color:#B06;font-weight:bold">failureThreshold</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">10</span><span style="color:#710">'</span></span>]],
+    <span style="color:#606">tools</span>: [[<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">JUnitType</span><span style="color:#710">'</span></span>, <span style="color:#B06;font-weight:bold">pattern</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">reports/**</span><span style="color:#710">'</span></span>]]])</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">tests/guineaPig.js</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="javascript"><span style="color:#777">// ... snip ...</span>
+
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Guinea Pig Assert Title 0 - E</span><span style="color:#710">'</span></span>: <span style="color:#080;font-weight:bold">function</span>(client) { <span style="color:#777">/* ... */</span> },
+
+    <span style="color:#606"><span style="color:#404">'</span><span>Guinea Pig Assert Title 0 - Suite Completed</span><span style="color:#404">'</span></span>: <span style="color:#080;font-weight:bold">function</span>(client) {
+      <span style="color:#777">// No assertion needed</span>
+    },
+
+    <span style="color:#06B;font-weight:bold">afterEach</span>: <span style="color:#080;font-weight:bold">function</span>(client, done) { <span style="color:#777">/* ... */</span> }
+
+<span style="color:#777">// ... snip ...</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">tests/guineaPig_1.js</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="javascript"><span style="color:#777">// ... snip ...</span>
+
+    <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Guinea Pig Assert Title 1 - E</span><span style="color:#710">'</span></span>: <span style="color:#080;font-weight:bold">function</span>(client) { <span style="color:#777">/* ... */</span> },
+
+    <span style="color:#606"><span style="color:#404">'</span><span>Guinea Pig Assert Title 1 - Suite Completed</span><span style="color:#404">'</span></span>: <span style="color:#080;font-weight:bold">function</span>(client) {
+      <span style="color:#777">// No assertion needed</span>
+    },
+
+    <span style="color:#06B;font-weight:bold">afterEach</span>: <span style="color:#080;font-weight:bold">function</span>(client, done) { <span style="color:#777">/* ... */</span> }
+
+<span style="color:#777">// ... snip ...</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After a few more runs, you can see the flaky test is still being flaky,
+but it is no longer failing the build.  Meanwhile, if another test fails,
+it will cause the "suite completed" test to be skipped, failing the job.
+If this were a real project, the test owner could instrument and eventually fix
+the test.  When they were confident they had stabilized the test the could add
+a "suite completed" test after it to enforce it passing without changes to other
+tests or framework.</p>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/2016-10-27/job-19-summary.png" alt="Flaky tests don't have to fail the build" width="800">
+</div>
+</div>
+<div class="imageblock center">
+<div class="content">
+<img src="/images/post-images/2016-10-27/job-18-report.png" alt="Results from flaky test" width="800">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="conclusion"><a class="anchor" href="#conclusion"></a>Conclusion</h3>
+<div class="paragraph">
+<p>This post has shown how to migrate from the JUnit plugin to the
+xUnit plugin on an existing project in Jenkins pipeline.  It also covered how to
+use the features of xUnit plugin to get more meaningful and effective Jenkins
+reporting behavior.</p>
+</div>
+<div class="paragraph">
+<p>What I didn&#8217;t show was how many other formats xUnit supports - from CCPUnit to MSTest.  You can
+also write your own XSL for result formats not on the known/supported list.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="links"><a class="anchor" href="#links"></a>Links</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/xUnit+Plugin">xUnit plugin</a></p>
+</li>
+<li>
+<p><a href="https://github.com/bitwiseman/JS-Nightwatch.js">bitwiseman/JS-Nightwatch.js</a></p>
+</li>
+<li>
+<p><a href="https://github.com/saucelabs-sample-test-frameworks">saucelabs-sample-test-frameworks</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//blog/2016/2016-10-31-xunit-reporting.adoc" title="Edit /blog/2016/2016-10-31-xunit-reporting.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//blog/2016/2016-10-31-xunit-reporting.adoc" title="View /blog/2016/2016-10-31-xunit-reporting.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

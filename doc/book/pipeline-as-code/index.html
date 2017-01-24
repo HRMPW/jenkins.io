@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Pipeline as Code
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<style>
+  .row {
+    margin-right: 5em;
+    margin-left: 5em;
+  }
+  .toc {
+      float: right;
+  }
+</style>
+<div class="container">
+<div class="row body">
+<h1>
+Pipeline as Code
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#pipeline-as-code">Pipeline as Code</a>
+<ul class="sectlevel2">
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#example">Example</a></li>
+<li><a href="#continuous-delivery-with-pipeline">Continuous Delivery with Pipeline</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="pipeline-as-code"><a class="anchor" href="#pipeline-as-code"></a>Pipeline as Code</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="introduction"><a class="anchor" href="#introduction"></a>Introduction</h3>
+<div class="paragraph">
+<p><em>Pipeline as Code</em> describes a set of features that allow Jenkins users to
+define pipelined job processes with code, stored and versioned in a source
+repository.  These features allow Jenkins to discover, manage, and run jobs for
+multiple source repositories and branches&#8201;&#8212;&#8201;eliminating the need for manual job
+creation and management.</p>
+</div>
+<div class="paragraph">
+<p>To use <em>Pipeline as Code</em>, projects must contain a file named <code>Jenkinsfile</code> in
+the repository root, which contains a "Pipeline script."</p>
+</div>
+<div class="paragraph">
+<p>Additionally, one of the enabling jobs needs to be configured in Jenkins:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Multibranch Pipeline</em>: build multiple branches of a <em>single</em> repository automatically</p>
+</li>
+<li>
+<p><em>Organization Folders</em>: scan a <strong>GitHub Organization</strong> or <strong>Bitbucket Team</strong> to
+discover an organization&#8217;s repositories, automatically creating managed
+<em>Multibranch Pipeline</em> jobs for them</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Fundamentally, an organization&#8217;s repositories can be viewed as a hierarchy,
+where each repository may have child elements of branches and pull requests.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example Repository Structure</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>+--- GitHub Organization
+    +--- Project 1
+        +--- master
+        +--- feature-branch-a
+        +--- feature-branch-b
+    +--- Project 2
+        +--- master
+        +--- pull-request-1
+        +--- etc...</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code>Prior to _Multibranch Pipeline_ jobs and _Organization Folders_,
+link:https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Folders+Plugin[Folders]
+could be used to create this hierarchy in Jenkins by organizing repositories
+into folders containing jobs for each individual branch.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><em>Multibranch Pipeline</em> and <em>Organization Folders</em> eliminate the manual process
+by detecting branches and repositories, respectively, and creating appropriate
+folders with jobs in Jenkins automatically.</p>
+</div>
+<div class="sect3">
+<h4 id="the-jenkinsfile"><a class="anchor" href="#the-jenkinsfile"></a>The Jenkinsfile</h4>
+<div class="paragraph">
+<p>Presence of the <code>Jenkinsfile</code> in the root of a repository makes it eligible for
+Jenkins to automatically manage and execute jobs based on repository branches.</p>
+</div>
+<div class="paragraph">
+<p>The <code>Jenkinsfile</code> should contain a Pipeline script, specifying the steps to
+execute the job.  The script has all the power of Pipeline available, from
+something as simple as invoking a Maven builder, to a series of interdependent
+steps, which have coordinated parallel execution with deployment and validation
+phases.</p>
+</div>
+<div class="paragraph">
+<p>A simple way to get started with Pipeline is to use the <em>Snippet Generator</em>
+available in the configuration screen for a Jenkins <em>Pipeline</em> job.  Using the
+<em>Snippet Generator</em>, you can create a Pipeline script as you might through the
+dropdowns in other Jenkins jobs.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="folder-computation"><a class="anchor" href="#folder-computation"></a>Folder Computation</h4>
+<div class="paragraph">
+<p><em>Multibranch Pipeline</em> projects and <em>Organization Folders</em> extend the existing
+folder functionality by introducing <em>computed</em> folders.  Computed folders
+automatically run a process to manage the folder contents.  This computation, in
+the case of <em>Multibranch Pipeline</em> projects, creates child items for each
+eligible branch within the child.  For <em>Organization Folders</em>, computation
+populates child items for repositories as individual <em>Multibranch Pipelines</em>.</p>
+</div>
+<div class="paragraph">
+<p>Folder computation may happen automatically via webhook callbacks, as branches
+and repositories are created or removed.  Computation may also be triggered by
+the <em>Build Trigger</em> defined in the configuration, which will automatically run a
+computation task after a period of inactivity (this defaults to run after one
+day).</p>
+</div>
+<div class="imageblock image-border">
+<div class="content">
+<img src="/doc/book/resources/pipeline-as-code/folder-computation-build-trigger-schedule.png" alt="folder computation build trigger schedule">
+</div>
+</div>
+<div class="paragraph">
+<p>Information about the last execution of the folder computation is available in
+the <strong>Folder Computation</strong> section.</p>
+</div>
+<div class="imageblock image-border">
+<div class="content">
+<img src="/doc/book/resources/pipeline-as-code/folder-computation-main.png" alt="folder computation main" width="75%">
+</div>
+</div>
+<div class="paragraph">
+<p>The log from the last attempt to compute the folder is available from this page.
+If folder computation doesn&#8217;t result in an expected set of repositories, the log
+may have useful information to diagnose the problem.</p>
+</div>
+<div class="imageblock image-border">
+<div class="content">
+<img src="/doc/book/resources/pipeline-as-code/folder-computation-log.png" alt="folder computation log" width="75%">
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configuration"><a class="anchor" href="#configuration"></a>Configuration</h3>
+<div class="paragraph">
+<p>Both <em>Multibranch Pipeline</em> projects and <em>Organization Folders</em> have
+configuration options to allow precise selection of repositories.  These
+features also allow selection of two types of credentails to use when connecting
+to the remote systems:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>scan</em> credentials, which are used for accessing the GitHub or Bitbucket APIs</p>
+</li>
+<li>
+<p><em>checkout</em> credentials, which are used when the repository is cloned from the
+remote system; it may be useful to choose an SSH key or <em>"- anonymous -"</em>,
+which uses the default credentials configured for the OS user</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+If you are using a <em>GitHub Organization</em>, you should <a href="https://github.com/settings/tokens/new?scopes=repo,public_repo,admin:repo_hook,admin:org_hook&amp;description=Jenkins+Access">create a GitHub access token</a> to use to avoid storing your password in Jenkins and prevent any issues when using the GitHub API.
+When using a GitHub access token, you must use standard <em>Username with password</em> credentials, where the username is the same as your GitHub username and the password is your access token.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="multibranch-pipeline-projects"><a class="anchor" href="#multibranch-pipeline-projects"></a>Multibranch Pipeline Projects</h4>
+<div class="paragraph">
+<p><em>Multibranch Pipeline</em> projects are one of the fundamental enabling features for
+<em>Pipeline as Code</em>.  Changes to the build or deployment procedure can evolve
+with project requirements and the job always reflects the current state of the
+project.  It also allows you to configure different jobs for different branches
+of the same project, or to forgo a job if appropriate.  The <code>Jenkinsfile</code> in the
+root directory of a branch or pull request identifies a multibranch project.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<em>Multibranch Pipeline</em> projects expose the name of the branch being built with
+the <code>BRANCH_NAME</code> environment variable and provide a special <code>checkout scm</code>
+Pipeline command, which is guaranteed to check out the specific commit that the
+Jenkinsfile originated.  If the Jenkinsfile needs to check out the repository
+for any reason, make sure to use <code>checkout scm</code>, as it also accounts for
+alternate origin repositories to handle things like pull requests.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To create a <em>Multibranch Pipeline</em>, go to: <em>New Item &#8594; Multibranch Pipeline</em>.
+Configure the SCM source as appropriate.  There are options for many different
+types of repositories and services including Git, Mercurial, Bitbucket, and
+GitHub.  If using GitHub, for example, click <strong>Add source</strong>, select GitHub and
+configure the appropriate owner, scan credentials, and repository.</p>
+</div>
+<div class="paragraph">
+<p>Other options available to <em>Multibranch Pipeline</em> projects are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>API endpoint</strong> - an alternate API endpoint to use a self-hosted GitHub Enterprise</p>
+</li>
+<li>
+<p><strong>Checkout credentials</strong> - alternate credentials to use when checking out the code (cloning)</p>
+</li>
+<li>
+<p><strong>Include branches</strong> - a regular expression to specify branches to include</p>
+</li>
+<li>
+<p><strong>Exclude branches</strong> - a regular expression to specify branches to exclude; note that this will take precedence over includes</p>
+</li>
+<li>
+<p><strong>Property strategy</strong> - if necessary, define custom properties for each branch</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>After configuring these items and saving the configuration, Jenkins will
+automatically scan the repository and import appropriate branches.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="organization-folders"><a class="anchor" href="#organization-folders"></a>Organization Folders</h4>
+<div class="paragraph">
+<p>Organization Folders offer a convenient way to allow Jenkins to automatically manage which repositories are automatically included in Jenkins.
+Particularly, if your organization utilizes <em>GitHub Organizations</em> or <em>Bitbucket Teams</em>, any time a developer creates a new repository
+with a <code>Jenkinsfile</code>, Jenkins will automatically detect it and create a <em>Multibranch Pipeline</em> project for it.
+This alleviates the need for administrators or developers to manually create projects for these new repositories.</p>
+</div>
+<div class="paragraph">
+<p>To create an <em>Organization Folder</em> in Jenkins, go to: <strong>New Item &#8594; GitHub Organization</strong> or <strong>New Item &#8594; Bitbucket Team</strong> and follow the configuration steps for each item,
+making sure to specify appropriate <em>Scan Credentials</em> and a specific <strong>owner</strong> for the GitHub Organization or Bitbucket Team name, respectively.</p>
+</div>
+<div class="paragraph">
+<p>Other options available are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Repository name pattern</strong> - a regular expression to specify which repositories are <strong>included</strong></p>
+</li>
+<li>
+<p><strong>API endpoint</strong> - an alternate API endpoint to use a self-hosted GitHub Enterprise</p>
+</li>
+<li>
+<p><strong>Checkout credentials</strong> - alternate credentials to use when checking out the code (cloning)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>After configuring these items and saving the configuration, Jenkins will automatically scan the organization and import appropriate repositories and resulting branches.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="orphaned-item-strategy"><a class="anchor" href="#orphaned-item-strategy"></a>Orphaned Item Strategy</h4>
+<div class="paragraph">
+<p>Computed folders can remove items immediately or leave them based on a desired retention strategy.
+By default, items will be removed as soon as the folder computation determines they are no longer present.
+If your organization requires these items remain available for a longer period of time, simply configure the Orphaned Item Strategy appropriately.
+It may be useful to keep items in order to examine build results of a branch after it&#8217;s been removed, for example.</p>
+</div>
+<div class="imageblock image-border">
+<div class="content">
+<img src="/doc/book/resources/pipeline-as-code/orphaned-item-strategy.png" alt="orphaned item strategy">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="icon-and-view-strategy"><a class="anchor" href="#icon-and-view-strategy"></a>Icon and View Strategy</h4>
+<div class="paragraph">
+<p>You may also configure an icon to use for the folder display.
+For example, it might be useful to display an aggregate health of the child builds.
+Alternately, you might reference the same icon you use in your GitHub organization account.</p>
+</div>
+<div class="imageblock image-border">
+<div class="content">
+<img src="/doc/book/resources/pipeline-as-code/folder-icon.png" alt="folder icon">
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="example"><a class="anchor" href="#example"></a>Example</h3>
+<div class="paragraph">
+<p>To demonstrate using an Organization Folder to manage repositories, we&#8217;ll use
+the fictitious organization: CloudBeers, Inc..</p>
+</div>
+<div class="paragraph">
+<p>Go to <strong>New Item</strong>.
+Enter <em>cloudbeers</em> for the item name.
+Select <strong>GitHub Organization</strong> and click <strong>OK</strong>.</p>
+</div>
+<div class="imageblock image-border">
+<div class="content">
+<img src="/doc/book/resources/pipeline-as-code/screenshot1.png" alt="screenshot1">
+</div>
+</div>
+<div class="paragraph">
+<p>Optionally, enter a better descriptive name for the <em>Description</em>, such as <em>CloudBeers GitHub</em>.
+In the <em>Repository Sources</em> section, complete the section for "GitHub Organization".
+Make sure the <strong>owner</strong> matches the GitHub Organization name exactly, in our case it must be: <em>cloudbeers</em>.
+This defaults to the same value that was entered for the item name in the first step.
+Next, select or add new "Scan credentials" - we&#8217;ll enter our GitHub username and access token as the password.</p>
+</div>
+<div class="imageblock image-border">
+<div class="content">
+<img src="/doc/book/resources/pipeline-as-code/screenshot2.png" alt="screenshot2">
+</div>
+</div>
+<div class="paragraph">
+<p>After saving, the "Folder Computation" will run to scan for eligible repositories, followed by multibranch builds.</p>
+</div>
+<div class="imageblock image-border">
+<div class="content">
+<img src="/doc/book/resources/pipeline-as-code/screenshot3.png" alt="screenshot3">
+</div>
+</div>
+<div class="paragraph">
+<p>Refresh the page after the job runs to ensure the view of repositories has been updated.</p>
+</div>
+<div class="imageblock image-border">
+<div class="content">
+<img src="/doc/book/resources/pipeline-as-code/screenshot4.png" alt="screenshot4">
+</div>
+</div>
+<div class="paragraph">
+<p>A this point, you&#8217;re finished with basic project configuration and can now explore your imported repositories.
+You can also investigate the results of the jobs run as part of the initial <em>Folder Computation</em>.</p>
+</div>
+<div class="imageblock image-border">
+<div class="content">
+<img src="/doc/book/resources/pipeline-as-code/screenshot5.png" alt="screenshot5">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="continuous-delivery-with-pipeline"><a class="anchor" href="#continuous-delivery-with-pipeline"></a>Continuous Delivery with Pipeline</h3>
+<div class="sect3">
+<h4 id="introduction-2"><a class="anchor" href="#introduction-2"></a>Introduction</h4>
+<div class="paragraph">
+<p>Continuous delivery allows organizations to deliver software with lower risk.
+The path to continuous delivery starts by modeling the software delivery
+pipeline used within the organization and then focusing on the automation of it
+all. Early, directed feedback, enabled by pipeline automation enables software
+delivery more quickly over traditional methods of delivery.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins is the Swiss army knife in the software delivery toolchain. Developers
+and operations (DevOps) personnel have different mindsets and use different
+tools to get their respective jobs done. Since Jenkins integrates with a huge
+variety of toolsets, it serves as the intersection point between development and
+operations teams.</p>
+</div>
+<div class="paragraph">
+<p>Many organizations have been orchestrating pipelines with existing Jenkins
+plugins for several years. As their automation sophistication and their own
+Jenkins experience increases, organizations inevitably want to move beyond
+simple pipelines and create complex flows specific to their delivery process.</p>
+</div>
+<div class="paragraph">
+<p>These Jenkins users require a feature that treats complex pipelines as a
+first-class object, and so the <a href="https://wiki.jenkins-ci.org/display/JENKINS/Pipeline+Plugin">Pipeline
+plugin</a> was developed .</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="pre-requisites"><a class="anchor" href="#pre-requisites"></a>Pre-requisites</h4>
+<div class="paragraph">
+<p>Continuous delivery is a process - rather than a tool - and requires a mindset
+and culture that must percolate from the top-down within an organization. Once
+the organization has bought into the philosophy, the next and most difficult
+part is mapping the flow of software as it makes its way from development to
+production.</p>
+</div>
+<div class="paragraph">
+<p>The root of such a pipeline will always be an orchestration tool like a Jenkins,
+but there are some key requirements that such an integral part of the pipeline
+must satisfy before it can be tasked with enterprise-critical processes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Zero or low downtime disaster recovery</strong>: A commit, just as a mythical hero,
+encounters harder and longer challenges as it makes its way down the pipeline.
+It is not unusual to see pipeline executions that last days. A hardware or a
+Jenkins failure on day six of a seven-day pipeline has serious consequences
+for on-time delivery of a product.</p>
+</li>
+<li>
+<p><strong>Audit runs and debug ability</strong>: Build managers like to see the exact execution
+flow through the pipeline, so they can easily debug issues.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To ensure a tool can scale with an organization and suitably automate existing delivery pipelines without changing them, the tool should also support:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Complex pipelines</strong>: Delivery pipelines are typically more complex than
+canonical examples (linear process: Dev&#8594;Test&#8594;Deploy, with a couple of
+operations at each stage). Build managers want constructs that help
+parallelize parts of the flow, run loops, perform retries and so forth. Stated
+differently, build managers want programming constructs to define pipelines.</p>
+</li>
+<li>
+<p><strong>Manual interventions</strong>: Pipelines cross intra-organizational boundaries
+necessitating manual handoffs and interventions. Build managers seek
+capabilities such as being able to pause a pipeline for a human to intervene
+and make manual decisions.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The Pipeline plugin allows users to create such a pipeline through a new job
+type called Pipeline. The flow definition is captured in a Groovy script, thus
+adding control flow capabilities such as loops, forks and retries. Pipeline
+allows for stages with the option to set concurrencies, preventing multiple
+builds of the same pipeline from trying to access the same resource at the same
+time.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="concepts"><a class="anchor" href="#concepts"></a>Concepts</h4>
+<div class="paragraph">
+<div class="title">Pipeline Job Type</div>
+<p>There is just one job to capture the entire software delivery pipeline in an
+organization. Of course, you can still connect two Pipeline job types together
+if you want. A Pipeline job type uses a Groovy-based DSL for job definitions.
+    The DSL affords the advantage of defining jobs programmatically:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">node(<span style="color:#F00;background-color:#FAA">‘</span>linux<span style="color:#F00;background-color:#FAA">’</span>){
+  git <span style="color:#606">url</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">https://github.com/jglick/simple-maven-project-with-tests.git</span><span style="color:#710">'</span></span>
+  <span style="color:#080;font-weight:bold">def</span> mvnHome = tool <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">M3</span><span style="color:#710">'</span></span>
+  env.PATH = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>mvnHome<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">/bin:</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>env.PATH<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">mvn -B clean verify</span><span style="color:#710">'</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Stages</div>
+<p>Intra-organizational (or conceptual) boundaries are captured through a primitive
+called "stages." A deployment pipeline consists of various stages, where each
+subsequent stage builds on the previous one. The idea is to spend as few
+resources as possible early in the pipeline and find obvious issues, rather than
+spend a lot of computing resources for something that is ultimately discovered
+to be broken.</p>
+</div>
+<div id="throttled-concurrent" class="imageblock">
+<div class="content">
+<img src="/doc/book/resources/pipeline-as-code/stage-concurrency.png" alt="stage concurrency">
+</div>
+<div class="title">Figure 1. Throttled stage concurrency with Pipeline</div>
+</div>
+<div class="paragraph">
+<p>Consider a simple pipeline with three stages. A naive implementation of this
+pipeline can sequentially trigger each stage on every commit. Thus, the
+deployment step is triggered immediately after the Selenium test steps are
+complete. However, this would mean that the deployment from commit two overrides
+the last deployment in motion from commit one. The right approach is for commits
+two and three to wait for the deployment from commit one to complete,
+consolidate all the changes that have happened since commit one and trigger the
+deployment. If there is an issue, developers can easily figure out if the issue
+was introduced in commit two or commit three.</p>
+</div>
+<div class="paragraph">
+<p>Pipeline provides this functionality by enhancing the stage primitive.  For
+example, a stage can have a concurrency level of one defined to indicate that at
+any point only one thread should be running through the stage. This achieves the
+desired state of running a deployment as fast as it should run.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"> stage <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Production</span><span style="color:#710">'</span></span>, <span style="color:#606">concurrency</span>: <span style="color:#00D">1</span>
+ node {
+     unarchive <span style="color:#606">mapping</span>: [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">target/x.war</span><span style="color:#710">'</span></span> : <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">x.war</span><span style="color:#710">'</span></span>]
+     deploy <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">target/x.war</span><span style="color:#710">'</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">production</span><span style="color:#710">'</span></span>
+     echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Deployed to http://localhost:8888/production/</span><span style="color:#710">'</span></span>
+ }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Gates and Approvals</div>
+<p>Continuous delivery means having binaries in a release ready state whereas
+continuous deployment means pushing the binaries to production - or automated
+deployments. Although continuous deployment is a sexy term and a desired state,
+in reality organizations still want a human to give the final approval before
+bits are pushed to production.  This is captured through the "input" primitive
+in Pipeline. The input step can wait indefinitely for a human to intervene.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">input <span style="color:#606">message</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Does http://localhost:8888/staging/ look good?</span><span style="color:#710">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Deployment of Artifacts to Staging/Production</div>
+<p>Deployment of binaries is the last mile in a pipeline. The numerous servers
+employed within the organization and available in the market make it difficult
+to employ a uniform deployment step. Today, these are solved by third-party
+deployer products whose job it is to focus on deployment of a particular stack
+to a data center. Teams can also write their own extensions to hook into the
+Pipeline job type and make the deployment easier.</p>
+</div>
+<div class="paragraph">
+<p>Meanwhile, job creators can write a plain old Groovy function to define any
+custom steps that can deploy (or undeploy) artifacts from production.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">deploy</span>(war, id) {
+    sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">cp </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>war<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> /tmp/webapps/</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>id<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">.war</span><span style="color:#710">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Restartable flows</div>
+<p>All Pipelines are resumable, so if Jenkins needs to be restarted while a flow is
+running, it should resume at the same point in its execution after Jenkins
+starts back up. Similarly, if a flow is running a lengthy sh or bat step when an
+agent unexpectedly disconnects, no progress should be lost when connectivity is
+restored.</p>
+</div>
+<div class="paragraph">
+<p>There are some cases when a flow build will have done a great deal of work and
+proceeded to a point where a transient error occurred: one which does not
+reflect the inputs to this build, such as source code changes. For example,
+after completing a lengthy build and test of a software component, final
+deployment to a server might fail because of network problems.</p>
+</div>
+<div class="paragraph">
+<div class="title">Pipeline Stage View</div>
+<p>When you have complex builds pipelines, it is useful to see the progress of each
+stage and to see where build failures are occurring in the pipeline. This can
+enable users to debug which tests are failing at which stage or if there are
+other problems in their pipeline. Many organization also want to make their
+pipelines user-friendly for non-developers without having to develop a homegrown
+UI, which can prove to be a lengthy and ongoing development effort.</p>
+</div>
+<div class="paragraph">
+<p>The Pipeline Stage View feature offers extended visualization of Pipeline build
+history on the index page of a flow project. This visualization also includes
+helpful metrics like average run time by stage and by build, and a user-friendly
+interface for interacting with input steps.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/doc/book/resources/pipeline-as-code/workflow-big-responsive.png" alt="workflow big responsive">
+</div>
+<div class="title">Figure 2. Pipeline Stage View plugin</div>
+</div>
+<div class="paragraph">
+<p>The only prerequisite for this plugin is a pipeline with defined stages in the
+flow. There can be as many stages as you desired and they can be in a linear
+sequence, and the stage names will be displayed as columns in the Stage View
+interface.</p>
+</div>
+<div class="sect4">
+<h5 id="artifact-traceability-and-with-fingerprints"><a class="anchor" href="#artifact-traceability-and-with-fingerprints"></a>Artifact traceability and with fingerprints</h5>
+<div class="paragraph">
+<p>Traceability is important for DevOps teams who need to be able to trace code
+from commit to deployment. It enables impact analysis by showing relationships
+between artifacts and allows for visibility into the full lifecycle of an
+artifact, from its code repository to where the artifact is eventually deployed
+in production.</p>
+</div>
+<div class="paragraph">
+<p>Jenkins and the Pipeline feature support tracking versions of artifacts using
+file fingerprinting, which allows users to trace which downstream builds are
+using any given artifact. To fingerprint with Pipeline, simply add a
+"fingerprint: true" argument to any artifact archiving step. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">step([<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ArtifactArchiver</span><span style="color:#710">'</span></span>, <span style="color:#B06;font-weight:bold">artifacts</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">**/target/*.war’, fingerprint: true])</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>will archive any WAR artifacts created in the Pipeline and fingerprint them for
+traceability. This trace log of this artifact and a list of all fingerprinted
+artifacts in a build will then be available in the left-hand menu of Jenkins:</p>
+</div>
+<div class="paragraph">
+<p>To find where an artifact is used and deployed to, simply follow the "more
+details" link through the artifact’s name and view the entires for the artifact
+in its "Usage" list.</p>
+</div>
+<div id="fingerprinting" class="imageblock">
+<div class="content">
+<img src="/doc/book/resources/pipeline-as-code/fingerprinting.png" alt="fingerprinting">
+</div>
+<div class="title">Figure 3. Fingerprint of a WAR</div>
+</div>
+<div class="paragraph">
+<p>For more information, visit the
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Fingerprint">fingerprint
+documentation</a> to learn more about how fingerprints work.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//doc/book/pipeline-as-code.adoc" title="Edit /doc/book/pipeline-as-code.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//doc/book/pipeline-as-code.adoc" title="View /doc/book/pipeline-as-code.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

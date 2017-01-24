@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Writing Plugins for Pipeline
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="active nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container">
+<div class="row">
+<div class="col-lg-3">
+<div class="sidebar-nav">
+<h4>
+Pipeline Guided Tour
+</h4>
+<ul>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/pipeline/tour/hello-world">
+Creating your first Pipeline
+</a>
+</li>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/pipeline/tour/agents">
+Controlling your agents and workspaces
+</a>
+</li>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/pipeline/tour/environment">
+Environment variables
+</a>
+</li>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/pipeline/tour/running-multiple-steps">
+Running multiple steps
+</a>
+</li>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/pipeline/tour/reporting-test-results-and-storing-artifacts">
+Reporting test results and storing artifacts
+</a>
+</li>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/pipeline/tour/post">
+Cleaning Up and Notifications
+</a>
+</li>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/pipeline/tour/parallelism">
+Running Parallel Steps
+</a>
+</li>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/pipeline/tour/deployment">
+Deployment
+</a>
+</li>
+</ul>
+<h4>
+Pipeline Resources
+</h4>
+<ul>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/pipeline/steps">
+Pipeline Steps reference
+</a>
+</li>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/book/pipeline/reference">
+Declarative Pipeline reference
+</a>
+</li>
+</ul>
+<h4>
+User Handbook
+</h4>
+<ul>
+<li>
+<a href="/doc/book/getting-started">
+Getting Started with Jenkins
+</a>
+</li>
+<li>
+<a href="/doc/book/using">
+Using Jenkins
+</a>
+</li>
+<li>
+<a href="/doc/book/managing">
+Managing Jenkins
+</a>
+</li>
+<li>
+<a href="/doc/book/best-practice">
+Best Practices
+</a>
+</li>
+<li>
+<a href="/doc/book/pipeline">
+Pipeline
+</a>
+</li>
+<li>
+<a href="/doc/book/use-case">
+Jenkins Use-Cases
+</a>
+</li>
+<li>
+<a href="/doc/book/operating">
+Operating Jenkins
+</a>
+</li>
+<li>
+<a href="/doc/book/scaling">
+Scaling Jenkins
+</a>
+</li>
+<li>
+<a href="/doc/book/appendix">
+Appendix
+</a>
+</li>
+<li>
+<a href="/doc/book/glossary">
+Glossary
+</a>
+</li>
+</ul>
+<h4>
+Developers
+</h4>
+<h5>
+Writing plugins
+</h5>
+<ul>
+<li>
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Extend+Jenkins">
+Extend Jenkins
+</a>
+</li>
+<li>
+<a href="https://hrmpw.github.io/jenkins.io/doc/book/pipeline/dev-guide">
+Extend Pipeline
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Extension+points">
+Extension points
+</a>
+</li>
+</ul>
+<h5>
+JavaDoc
+</h5>
+<ul>
+<li>
+<a href="http://javadoc.jenkins.io/">
+Latest
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-2.32">
+2.32
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-2.19">
+2.19
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-2.7">
+2.7
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.651">
+1.651
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.642">
+1.642
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.625">
+1.625
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.609">
+1.609
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.596">
+1.596
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.580">
+1.580
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.565">
+1.565
+</a>
+</li>
+<li>
+<a href="http://javadoc.jenkins.io/archive/jenkins-1.554">
+1.554
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-lg-9">
+<h1>
+Writing Plugins for Pipeline
+</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#extension-points-accessible-via-metastep">Extension points accessible via metastep</a>
+<ul class="sectlevel2">
+<li><a href="#general-guidelines">General guidelines</a></li>
+<li><a href="#scms">SCMs</a></li>
+<li><a href="#build-steps">Build steps</a></li>
+<li><a href="#build-wrappers">Build wrappers</a></li>
+</ul>
+</li>
+<li><a href="#triggers">Triggers</a></li>
+<li><a href="#clouds">Clouds</a></li>
+<li><a href="#custom-steps">Custom steps</a></li>
+<li><a href="#historical-background">Historical background</a></li>
+</ul>
+</div>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you are maintaining (or creating) a plugin and wish its features to work smoothly with Pipeline, there are a number of special considerations.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="extension-points-accessible-via-metastep"><a class="anchor" href="#extension-points-accessible-via-metastep"></a>Extension points accessible via metastep</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Several common types of plugin features (<code>@Extension`s) can be invoked from a Pipeline script without any special plugin dependencies so long as you use newer Jenkins core APIs.
+Then there is “metastep” in Pipeline (`step</code>, <code>checkout</code>, <code>wrap</code>) which loads the extension by class name and calls it.</p>
+</div>
+<div class="sect2">
+<h3 id="general-guidelines"><a class="anchor" href="#general-guidelines"></a>General guidelines</h3>
+<div class="paragraph">
+<p>There are several considerations common to the various metasteps.</p>
+</div>
+<div class="sect3">
+<h4 id="jenkins-core-dependency"><a class="anchor" href="#jenkins-core-dependency"></a>Jenkins core dependency</h4>
+<div class="paragraph">
+<p>First, make sure the baseline Jenkins version in your <code>pom.xml</code> is sufficiently new.</p>
+</div>
+<div class="paragraph">
+<p>Suggested versions for:
+- [Basic usage](#user-content-basic-update)
+- [Build wrappers](#user-content-build-wrappers-1)</p>
+</div>
+<div class="paragraph">
+<p>This introduces some new API methods, and deprecates some old ones.</p>
+</div>
+<div class="paragraph">
+<p>If you are nervous about making your plugin depend on a recent Jenkins version,
+remember that you can always create a branch from your previous release (setting the version to <code>x.y.1-SNAPSHOT</code>) that works with older versions of Jenkins and <code>git cherry-pick -x</code> trunk changes into it as needed;
+or merge from one branch to another if that is easier.
+(<code>mvn -B release:prepare release:perform</code> works fine on a branch and knows to increment just the last version component.)</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="more-general-apis"><a class="anchor" href="#more-general-apis"></a>More general APIs</h4>
+<div class="paragraph">
+<p>Replace <code>AbstractBuild.getProject</code> with <code>Run.getParent</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>BuildListener</code> has also been replaced with <code>TaskListener</code> in new method overloads.</p>
+</div>
+<div class="paragraph">
+<p>If you need a <code>Node</code> where the build is running to replace <code>getBuiltOn</code>, you can use <code>FilePath.toComputer</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>TransientProjectActionFactory</code> can be replaced by <code>TransientActionFactory&lt;Job&gt;</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="variable-substitutions"><a class="anchor" href="#variable-substitutions"></a>Variable substitutions</h4>
+<div class="paragraph">
+<p>There is no equivalent to <code>AbstractBuild.getBuildVariables()</code> for <code>WorkflowRun</code> (any Groovy local variables are not accessible as such).
+Also, <code>WorkflowRun.getEnvironment(TaskListener)</code> <em>is</em> implemented, but only yields the initial build environment, irrespective of <code>withEnv</code> blocks and the like.
+(To get the <em>contextual</em> environment in a <code>Step</code>, you can inject <code>EnvVars</code> using <code>@StepContextParameter</code>;
+pending [JENKINS-29144](<a href="https://issues.jenkins-ci.org/browse/JENKINS-29144" class="bare">issues.jenkins-ci.org/browse/JENKINS-29144</a>) there is no equivalent for a <code>SimpleBuildStep</code>.
+A <code>SimpleBuildWrapper</code> does have access to an <code>initialEnvironment</code> if required.)</p>
+</div>
+<div class="paragraph">
+<p>Anyway code run from Pipeline should take any configuration values as literal strings and make no attempt to perform variable substitution (including via the <code>token-macro</code> plugin),
+since the script author would be using Groovy facilities (<code>"like ${this}"</code>) for any desired dynamic behavior.
+To have a single code fragment support both Pipeline and traditional builds, you can use idioms such as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span style="color:#088;font-weight:bold">private</span> <span style="color:#088;font-weight:bold">final</span> <span style="color:#0a8;font-weight:bold">String</span> location;
+<span style="color:#088;font-weight:bold">public</span> <span style="color:#0a8;font-weight:bold">String</span> getLocation() {
+    <span style="color:#080;font-weight:bold">return</span> location;
+}
+<span style="color:#007">@DataBoundSetter</span> <span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">void</span> setLocation(<span style="color:#0a8;font-weight:bold">String</span> location) {
+    <span style="color:#950">this</span>.location = location;
+}
+<span style="color:#088;font-weight:bold">private</span> <span style="color:#0a8;font-weight:bold">String</span> actualLocation(Run&lt;?,?&gt; build, TaskListener listener) {
+    <span style="color:#080;font-weight:bold">if</span> (build <span style="color:#080;font-weight:bold">instanceof</span> AbstractBuild) {
+        EnvVars env = build.getEnvironment(listener);
+        env.overrideAll(((AbstractBuild) build).getBuildVariables());
+        <span style="color:#080;font-weight:bold">return</span> env.expand(location);
+    } <span style="color:#080;font-weight:bold">else</span> {
+        <span style="color:#080;font-weight:bold">return</span> location;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>[JENKINS-35671](<a href="https://issues.jenkins-ci.org/browse/JENKINS-35671" class="bare">issues.jenkins-ci.org/browse/JENKINS-35671</a>) would simplify this.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="constructor-vs-setters"><a class="anchor" href="#constructor-vs-setters"></a>Constructor vs. setters</h4>
+<div class="paragraph">
+<p>It is a good idea to replace a lengthy <code>@DataBoundConstructor</code> with a short one taking just truly mandatory parameters (such as a server location).
+For all optional parameters, create a public setter marked with <code>@DataBoundSetter</code> (with any non-null default value set in the constructor or field initializer).
+This allows most parameters to be left at their default values in a Pipeline script, not to mention simplifying ongoing code maintenance because it is much easier to introduce new options this way.</p>
+</div>
+<div class="paragraph">
+<p>For Java-level compatibility, leave any previous constructors in place, but mark them <code>@Deprecated</code>.
+Also remove <code>@DataBoundConstructor</code> from them (there can be only one).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="handling-default-values"><a class="anchor" href="#handling-default-values"></a>Handling default values</h4>
+<div class="paragraph">
+<p>To ensure <em>Snippet Generator</em> enumerates only those options the user has actually customized from their form defaults, ensure that Jelly <code>default</code> attributes match the property defaults as seen from the getter.
+For a cleaner XStream serial form in freestyle projects, it is best for the default value to also be represented as a null in the Java field.
+So for example if you want a textual property which can sensibly default to blank, your configuration form would look like</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="xml"><span style="color:#070;font-weight:bold">&lt;f:entry</span> <span style="color:#b48">field</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">stuff</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">title</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">${%Stuff}</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+    <span style="color:#070;font-weight:bold">&lt;f:textbox</span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;/f:entry&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and your <code>Describable</code> should use</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span style="color:#088;font-weight:bold">private</span> <span style="color:#007">@CheckForNull</span> <span style="color:#0a8;font-weight:bold">String</span> stuff;
+<span style="color:#088;font-weight:bold">public</span> <span style="color:#007">@CheckForNull</span> <span style="color:#0a8;font-weight:bold">String</span> getStuff() {
+    <span style="color:#080;font-weight:bold">return</span> stuff;
+}
+<span style="color:#007">@DataBoundSetter</span> <span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">void</span> setStuff(<span style="color:#007">@CheckForNull</span> <span style="color:#0a8;font-weight:bold">String</span> stuff) {
+    <span style="color:#950">this</span>.stuff = <span style="color:#0a8;font-weight:bold">Util</span>.fixNull(stuff);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you want a nonblank default, it is a little more complicated.
+If you do not care about XStream hygiene, for example because the <code>Describable</code> is a Pipeline <code>Step</code> (or is only being used as part of one):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="xml"><span style="color:#070;font-weight:bold">&lt;f:entry</span> <span style="color:#b48">field</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">stuff</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">title</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">${%Stuff}</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+    <span style="color:#070;font-weight:bold">&lt;f:textbox</span> <span style="color:#b48">default</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">${descriptor.defaultStuff}</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">/&gt;</span>
+<span style="color:#070;font-weight:bold">&lt;/f:entry&gt;</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span style="color:#088;font-weight:bold">private</span> <span style="color:#007">@Nonnull</span> <span style="color:#0a8;font-weight:bold">String</span> stuff = DescriptorImpl.defaultStuff;
+<span style="color:#088;font-weight:bold">public</span> <span style="color:#007">@Nonnull</span> <span style="color:#0a8;font-weight:bold">String</span> getStuff() {
+    <span style="color:#080;font-weight:bold">return</span> stuff;
+}
+<span style="color:#007">@DataBoundSetter</span> <span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">void</span> setStuff(<span style="color:#007">@Nonnull</span> <span style="color:#0a8;font-weight:bold">String</span> stuff) {
+    <span style="color:#950">this</span>.stuff = stuff;
+}
+<span style="color:#007">@Extension</span> <span style="color:#088;font-weight:bold">public</span> <span style="color:#088;font-weight:bold">static</span> <span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">DescriptorImpl</span> <span style="color:#088;font-weight:bold">extends</span> <span style="color:#0a8;font-weight:bold">Descriptor</span>&lt;Whatever&gt; {
+    <span style="color:#088;font-weight:bold">public</span> <span style="color:#088;font-weight:bold">static</span> <span style="color:#088;font-weight:bold">final</span> <span style="color:#0a8;font-weight:bold">String</span> defaultStuff = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">junk</span><span style="color:#710">&quot;</span></span>;
+    <span style="color:#777">// …</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>(The <code>Descriptor</code> is the most convenient place to put a constant for use from a Jelly view: <code>descriptor</code> is always defined even if <code>instance</code> is null, and Jelly/JEXL allows a <code>static</code> field to be loaded using instance-field notation.
+From a Groovy view you could use any syntax supported by Java to refer to a constant, but Jelly in Jenkins is weaker: <code>getStatic</code> will not work on classes defined in plugins.)</p>
+</div>
+<div class="paragraph">
+<p>To make sure the field is omitted from the XStream form when unmodified, you can use the same <code>Descriptor</code> and configuration form but null out the default:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span style="color:#088;font-weight:bold">private</span> <span style="color:#007">@CheckForNull</span> <span style="color:#0a8;font-weight:bold">String</span> stuff;
+<span style="color:#088;font-weight:bold">public</span> <span style="color:#007">@Nonnull</span> <span style="color:#0a8;font-weight:bold">String</span> getStuff() {
+    <span style="color:#080;font-weight:bold">return</span> stuff == <span style="color:#069">null</span> ? DescriptorImpl.defaultStuff : stuff;
+}
+<span style="color:#007">@DataBoundSetter</span> <span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">void</span> setStuff(<span style="color:#007">@Nonnull</span> <span style="color:#0a8;font-weight:bold">String</span> stuff) {
+    <span style="color:#950">this</span>.stuff = stuff.equals(DescriptorImpl.defaultStuff) ? <span style="color:#069">null</span> : stuff;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>None of these considerations apply to mandatory parameters with no default, which should be requested in the <code>@DataBoundConstructor</code> and have a simple getter.
+(You could still have a <code>default</code> in the configuration form as a hint to new users, as a complement to a full description in <code>help-stuff.html</code>, but the value chosen will always be saved.)</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="handling-secrets"><a class="anchor" href="#handling-secrets"></a>Handling secrets</h4>
+<div class="paragraph">
+<p>If your plugin ever stored secrets (such as passwords) in a plain <code>String</code>-valued fields, it was already insecure and should at least have been using <code>Secret</code>.
+<code>Secret</code>-valued fields are more secure, but are not really appropriate for projects defined in source code, like Pipeline jobs.</p>
+</div>
+<div class="paragraph">
+<p>Instead you should integrate with the [Credentials plugin](<a href="https://wiki.jenkins-ci.org/display/JENKINS/Credentials+Plugin" class="bare">wiki.jenkins-ci.org/display/JENKINS/Credentials+Plugin</a>). Then your builder etc. would typically have a <code>credentialsId</code> field which just refers to the ID of the credentials.
+(The user can pick a mnemonic ID for use in scripted jobs.)
+Typically the <code>config.jelly</code> used in <em>Snippet Generator</em> will have a <code>&lt;c:select/&gt;</code> control,
+backed by a <code>doFillCredentialsId</code> web method on the <code>Descriptor</code> to enumerate credentials currently available of the intended type (such as <code>StandardUsernamePasswordCredentials</code>) and perhaps restricted to some domain (such as a hostname obtained via a <code>@QueryParameter</code> from a nearby form field).
+At runtime, you will look up the credentials by ID and use them.</p>
+</div>
+<div class="paragraph">
+<p>Plugins formerly using <code>Secret</code> will generally need to use an <code>@Initializer</code> to migrate the configuration of freestyle projects to use Credentials instead.</p>
+</div>
+<div class="paragraph">
+<p>The details of adopting Credentials are too numerous to list here.
+Pending a proper developer’s guide, it is best to follow the example of well-maintained plugins which have already made such a conversion.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="defining-symbols"><a class="anchor" href="#defining-symbols"></a>Defining symbols</h4>
+<div class="paragraph">
+<p>By default, scripts making use of your plugin will need to refer to the (simple) Java class name of the extension.
+For example, if you defined</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">ForgetBuilder</span> <span style="color:#088;font-weight:bold">extends</span> Builder <span style="color:#088;font-weight:bold">implements</span> SimpleBuildStep {
+    <span style="color:#088;font-weight:bold">private</span> <span style="color:#088;font-weight:bold">final</span> <span style="color:#0a8;font-weight:bold">String</span> what;
+    <span style="color:#007">@DataBoundConstructor</span> <span style="color:#088;font-weight:bold">public</span> ForgetBuilder(<span style="color:#0a8;font-weight:bold">String</span> what) {<span style="color:#950">this</span>.what = what;}
+    <span style="color:#088;font-weight:bold">public</span> <span style="color:#0a8;font-weight:bold">String</span> getWhat() {<span style="color:#080;font-weight:bold">return</span> what;}
+    <span style="color:#007">@Override</span> <span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">void</span> perform(Run build, FilePath workspace, Launcher launcher,
+            TaskListener listener) <span style="color:#088;font-weight:bold">throws</span> <span style="color:#C00;font-weight:bold">InterruptedException</span>, <span style="color:#C00;font-weight:bold">IOException</span> {
+        listener.getLogger().println(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">What was </span><span style="color:#710">&quot;</span></span> + what + <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">?</span><span style="color:#710">&quot;</span></span>);
+    }
+    <span style="color:#007">@Extension</span> <span style="color:#088;font-weight:bold">public</span> <span style="color:#088;font-weight:bold">static</span> <span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">DescriptorImpl</span> <span style="color:#088;font-weight:bold">extends</span> BuildStepDescriptor&lt;Builder&gt; {
+        <span style="color:#007">@Override</span> <span style="color:#088;font-weight:bold">public</span> <span style="color:#0a8;font-weight:bold">String</span> getDisplayName() {<span style="color:#080;font-weight:bold">return</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Forget things</span><span style="color:#710">&quot;</span></span>;}
+        <span style="color:#007">@Override</span> <span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">boolean</span> isApplicable(<span style="color:#0a8;font-weight:bold">Class</span>&lt;? <span style="color:#088;font-weight:bold">extends</span> AbstractProject&gt; t) {<span style="color:#080;font-weight:bold">return</span> <span style="color:#069">true</span>;}
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>then scripts would use this builder as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">step([<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">ForgetBuilder</span><span style="color:#710">'</span></span>, <span style="color:#B06;font-weight:bold">what</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">everything</span><span style="color:#710">'</span></span>])</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To make for a more attractive and mnemonic usage style, you can depend on <code>org.jenkins-ci:symbol-annotation</code>
+and add a <code>@Symbol</code> to your <code>Descriptor</code>, uniquely identifying it among extensions of its kind
+(in this example, `SimpleBuildStep`s):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span style="color:#777">// …</span>
+<span style="color:#007">@Symbol</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">forget</span><span style="color:#710">&quot;</span></span>)
+<span style="color:#007">@Extension</span> <span style="color:#088;font-weight:bold">public</span> <span style="color:#088;font-weight:bold">static</span> <span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">DescriptorImpl</span> <span style="color:#088;font-weight:bold">extends</span> BuildStepDescriptor&lt;Builder&gt; {
+<span style="color:#777">// …</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now when users of sufficiently new versions of Pipeline wish to run your builder, they can use a shorter syntax:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">forget <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">everything</span><span style="color:#710">'</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>@Symbol`s are not limited to extensions used at “top level” by metasteps such as `step</code>.
+Any <code>Descriptor</code> can have an associated symbol.
+Therefore if your plugin uses other `Describable`s for any kind of structured configuration,
+you should also annotate those implementations.
+For example if you have defined an extension point</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span style="color:#088;font-weight:bold">public</span> <span style="color:#088;font-weight:bold">abstract</span> Timeframe <span style="color:#088;font-weight:bold">extends</span> AbstractDescribableImpl&lt;Timeframe&gt; <span style="color:#088;font-weight:bold">implements</span> ExtensionPoint {
+    <span style="color:#088;font-weight:bold">public</span> <span style="color:#088;font-weight:bold">abstract</span> <span style="color:#339;font-weight:bold">boolean</span> areWeThereYet();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>with some implementations such as</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span style="color:#007">@Extension</span> <span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">Immediately</span> <span style="color:#088;font-weight:bold">extends</span> Timeframe {
+    <span style="color:#007">@DataBoundConstructor</span> <span style="color:#088;font-weight:bold">public</span> Immediately() {}
+    <span style="color:#007">@Override</span> <span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">boolean</span> areWeThereYet() {<span style="color:#080;font-weight:bold">return</span> <span style="color:#069">true</span>;}
+    <span style="color:#007">@Symbol</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">now</span><span style="color:#710">&quot;</span></span>)
+    <span style="color:#007">@Extension</span> <span style="color:#088;font-weight:bold">public</span> <span style="color:#088;font-weight:bold">static</span> DescriptorImpl <span style="color:#088;font-weight:bold">extends</span> <span style="color:#0a8;font-weight:bold">Descriptor</span>&lt;Timeframe&gt; {
+        <span style="color:#007">@Override</span> <span style="color:#088;font-weight:bold">public</span> <span style="color:#0a8;font-weight:bold">String</span> getDisplayName() {<span style="color:#080;font-weight:bold">return</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Right now</span><span style="color:#710">&quot;</span></span>;}
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span style="color:#007">@Extension</span> <span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">class</span> <span style="color:#B06;font-weight:bold">HoursAway</span> <span style="color:#088;font-weight:bold">extends</span> Timeframe {
+    <span style="color:#088;font-weight:bold">private</span> <span style="color:#088;font-weight:bold">final</span> <span style="color:#339;font-weight:bold">long</span> hours;
+    <span style="color:#007">@DataBoundConstructor</span> <span style="color:#088;font-weight:bold">public</span> HoursAway(<span style="color:#339;font-weight:bold">long</span> hours) {<span style="color:#950">this</span>.hours = hours;}
+    <span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">long</span> getHours() {<span style="color:#080;font-weight:bold">return</span> hours;}
+    <span style="color:#007">@Override</span> <span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">boolean</span> areWeThereYet() {<span style="color:#777">/* … */</span>}
+    <span style="color:#007">@Symbol</span>(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">soon</span><span style="color:#710">&quot;</span></span>)
+    <span style="color:#007">@Extension</span> <span style="color:#088;font-weight:bold">public</span> <span style="color:#088;font-weight:bold">static</span> DescriptorImpl <span style="color:#088;font-weight:bold">extends</span> <span style="color:#0a8;font-weight:bold">Descriptor</span>&lt;Timeframe&gt; {
+        <span style="color:#007">@Override</span> <span style="color:#088;font-weight:bold">public</span> <span style="color:#0a8;font-weight:bold">String</span> getDisplayName() {<span style="color:#080;font-weight:bold">return</span> <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Pretty soon</span><span style="color:#710">&quot;</span></span>;}
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>which are selectable in your configuration</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span style="color:#088;font-weight:bold">private</span> Timeframe when = <span style="color:#080;font-weight:bold">new</span> Immediately();
+<span style="color:#088;font-weight:bold">public</span> Timeframe getWhen() {<span style="color:#080;font-weight:bold">return</span> when;}
+<span style="color:#007">@DataBoundSetter</span> <span style="color:#088;font-weight:bold">public</span> <span style="color:#339;font-weight:bold">void</span> setWhen(Timeframe when) {<span style="color:#950">this</span>.when = when;}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>then a script could select a timeframe using the symbols you have defined:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">forget <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">nothing</span><span style="color:#710">'</span></span> <span style="color:#777">// whenever</span>
+forget <span style="color:#606">what</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">something</span><span style="color:#710">'</span></span>, <span style="color:#606">when</span>: now()
+forget <span style="color:#606">what</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">everything else</span><span style="color:#710">'</span></span>, <span style="color:#606">when</span>: soon(<span style="color:#00D">1</span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><em>Snippet Generator</em> will offer the simplified syntax wherever available.
+Freestyle project configuration will ignore the symbol, though a future version of the Job DSL plugin may take advantage of it.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="scms"><a class="anchor" href="#scms"></a>SCMs</h3>
+<div class="paragraph">
+<p>See the [user documentation](<a href="https://github.com/jenkinsci/workflow-scm-step-plugin/blob/master/README.md" class="bare">github.com/jenkinsci/workflow-scm-step-plugin/blob/master/README.md</a>) for background. The <code>checkout</code> metastep uses an <code>SCM</code>.</p>
+</div>
+<div class="paragraph">
+<p>As the author of an SCM plugin, there are some changes you should make to ensure your plugin can be used from pipelines.
+You can use <code>mercurial-plugin</code> as a relatively straightforward code example.</p>
+</div>
+<div class="sect3">
+<h4 id="basic-update"><a class="anchor" href="#basic-update"></a>Basic update</h4>
+<div class="paragraph">
+<p>Make sure your Jenkins baseline is at least 1.568 (or 1.580.1, the next LTS).
+Check your plugin for compilation warnings relating to <code>hudson.scm.*</code> classes to see outstanding changes you need to make.
+Most importantly, various methods in <code>SCM</code> which formerly took an <code>AbstractBuild</code> now take a more generic <code>Run</code> (i.e., potentially a Pipeline build) plus a <code>FilePath</code> (i.e., a workspace).
+Use the specified workspace rather than the former <code>build.getWorkspace()</code>, which only worked for traditional projects with a single workspace.
+Similarly, some methods formerly taking <code>AbstractProject</code> now take the more generic <code>Job</code>.
+Be sure to use <code>@Override</code> wherever possible to make sure you are using the right overloads.</p>
+</div>
+<div class="paragraph">
+<p>Note that <code>changelogFile</code> may now be null in <code>checkout</code>.
+If so, just skip changelog generation.
+<code>checkout</code> also now takes an <code>SCMRevisionState</code> so you can know what to compare against without referring back to the build.</p>
+</div>
+<div class="paragraph">
+<p><code>SCMDescriptor.isApplicable</code> should be switched to the <code>Job</code> overload.
+Typically you will unconditionally return <code>true</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="checkout-key"><a class="anchor" href="#checkout-key"></a>Checkout key</h4>
+<div class="paragraph">
+<p>You should override the new <code>getKey</code>.
+This allows a Pipeline job to match up checkouts from build to build so it knows how to look for changes.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="browser-selection"><a class="anchor" href="#browser-selection"></a>Browser selection</h4>
+<div class="paragraph">
+<p>You may override the new <code>guessBrowser</code>, so that scripts do not need to specify the changelog browser to display.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="commit-triggers"><a class="anchor" href="#commit-triggers"></a>Commit triggers</h4>
+<div class="paragraph">
+<p>If you have a commit trigger, generally an <code>UnprotectedRootAction</code> which schedules builds, it will need a few changes.
+Use <code>SCMTriggerItem</code> rather than the deprecated <code>SCMedItem</code>; use <code>SCMTriggerItem.SCMTriggerItems.asSCMTriggerItem</code> rather than checking <code>instanceof</code>.
+Its <code>getSCMs</code> method can be used to enumerate configured SCMs, which in the case of a pipeline will be those run in the last build.
+Use its <code>getSCMTrigger</code> method to look for a configured trigger (for example to check <code>isIgnorePostCommitHooks</code>).</p>
+</div>
+<div class="paragraph">
+<p>Ideally you will already be integrated with the <code>scm-api</code> plugin and implementing <code>SCMSource</code>; if not, now is a good time to try it.
+In the future pipelines may take advantage of this API to support automatic creation of subprojects for each detected branch.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="explicit-integration"><a class="anchor" href="#explicit-integration"></a>Explicit integration</h4>
+<div class="paragraph">
+<p>If you want to provide a smoother experience for Pipeline users than is possible via the generic <code>scm</code> step,
+you can add a (perhaps optional) dependency on <code>workflow-scm-step</code> to your plugin.
+Define a <code>SCMStep</code> using <code>SCMStepDescriptor</code> and you can define a friendly, script-oriented syntax.
+You still need to make the aforementioned changes, since at the end you are just preconfiguring an <code>SCM</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="build-steps"><a class="anchor" href="#build-steps"></a>Build steps</h3>
+<div class="paragraph">
+<p>See the [user documentation](<a href="https://github.com/jenkinsci/workflow-basic-steps-plugin/blob/master/CORE-STEPS.md" class="bare">github.com/jenkinsci/workflow-basic-steps-plugin/blob/master/CORE-STEPS.md</a>) for background. The metastep is <code>step</code>.</p>
+</div>
+<div class="paragraph">
+<p>To add support for use of a <code>Builder</code> or <code>Publisher</code> from a pipeline, depend on Jenkins 1.577+, typically 1.580.1 ([tips](#basic-update)).
+Then implement <code>SimpleBuildStep</code>, following the guidelines in [its Javadoc](<a href="http://javadoc.jenkins-ci.org/jenkins/tasks/SimpleBuildStep.html" class="bare">javadoc.jenkins-ci.org/jenkins/tasks/SimpleBuildStep.html</a>).
+Also prefer <code>@DataBoundSetter`s to a sprawling `@DataBoundConstructor</code> ([tips](#constructor-vs-setters)).</p>
+</div>
+<div class="sect3">
+<h4 id="mandatory-workspace-context"><a class="anchor" href="#mandatory-workspace-context"></a>Mandatory workspace context</h4>
+<div class="paragraph">
+<p>Note that a <code>SimpleBuildStep</code> is designed to work also in a freestyle project, and thus assumes that a <code>FilePath workspace</code> is available (as well as some associated services, like a <code>Launcher</code>).
+That is always true in a freestyle build, but is a potential limitation for use from a Pipeline build.
+For example, you might legitimately want to take some action outside the context of any workspace:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">win64</span><span style="color:#710">'</span></span>) {
+  bat <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">make all</span><span style="color:#710">'</span></span>
+  archive <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">myapp.exe</span><span style="color:#710">'</span></span>
+}
+input <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Ready to tell the world?</span><span style="color:#710">'</span></span> <span style="color:#777">// could pause indefinitely, do not tie up a slave</span>
+step([<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">FunkyNotificationBuilder</span><span style="color:#710">'</span></span>, <span style="color:#B06;font-weight:bold">artifact</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">myapp.exe</span><span style="color:#710">'</span></span>]) <span style="color:#777">// ← FAILS!</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Even if <code>FunkyNotificationBuilder</code> implements <code>SimpleBuildStep</code>, the above will fail, because the <code>workspace</code> required by <code>SimpleBuildStep.perform</code> is missing.
+You could grab an arbitrary workspace just to run the builder:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">win64</span><span style="color:#710">'</span></span>) {
+  bat <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">make all</span><span style="color:#710">'</span></span>
+  archive <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">myapp.exe</span><span style="color:#710">'</span></span>
+}
+input <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Ready to tell the world?</span><span style="color:#710">'</span></span>
+node {
+  step([<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">FunkyNotificationBuilder</span><span style="color:#710">'</span></span>, <span style="color:#B06;font-weight:bold">artifact</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">myapp.exe</span><span style="color:#710">'</span></span>]) <span style="color:#777">// OK</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>but if the <code>workspace</code> is being ignored anyway (in this case because <code>FunkyNotificationBuilder</code> only cares about artifacts that have already been archived), it may be better to just write a custom step (described below).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="run-listeners-vs-publishers"><a class="anchor" href="#run-listeners-vs-publishers"></a>Run listeners vs. publishers</h4>
+<div class="paragraph">
+<p>For code which genuinely has to run after the build completes, there is <code>RunListener</code>.
+If the behavior of this hook needs to be customizable at the job level, the usual technique would be to define a <code>JobProperty</code>.
+(One distinction from freestyle projects is that in the case of Pipeline there is no way to introspect the “list of build steps” or “list of publishers” or “list of build wrappers” so any decisions based on such metadata are impossible.)</p>
+</div>
+<div class="paragraph">
+<p>In most other cases, you just want some code to run after some <em>portion</em> of the build completes, which is typically handled with a <code>Publisher</code> if you wish to share a code base with freestyle projects.
+For regular <code>Publisher`s, which are run as part of the build, a Pipeline script would use the `step</code> metastep. There are two subtypes:
+* <code>Recorder`s generally should be placed inline with other build steps in whatever order makes sense.
+* `Notifier`s can be placed in a `finally</code> block, or you can use the <code>catchError</code> step. [This document](<a href="https://github.com/jenkinsci/workflow-basic-steps-plugin/blob/master/CORE-STEPS.md#interacting-with-build-status" class="bare">github.com/jenkinsci/workflow-basic-steps-plugin/blob/master/CORE-STEPS.md#interacting-with-build-status</a>) goes into depth.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="build-wrappers"><a class="anchor" href="#build-wrappers"></a>Build wrappers</h3>
+<div class="paragraph">
+<p>Here the metastep is <code>wrap</code>.
+To add support for a <code>BuildWrapper</code>, depend on Jenkins 1.599+ (typically 1.609.1), and implement <code>SimpleBuildWrapper</code>, following the guidelines in [its Javadoc](<a href="http://javadoc.jenkins-ci.org/jenkins/tasks/SimpleBuildWrapper.html" class="bare">javadoc.jenkins-ci.org/jenkins/tasks/SimpleBuildWrapper.html</a>).</p>
+</div>
+<div class="paragraph">
+<p>Like <code>SimpleBuildStep</code>, wrappers written this way always require a workspace.
+If that would be constricting, consider writing a custom step instead.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="triggers"><a class="anchor" href="#triggers"></a>Triggers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Replace <code>Trigger&lt;AbstractProject&gt;</code> with <code>Trigger&lt;X&gt;</code> where <code>X</code> is <code>Job</code> or perhaps <code>ParameterizedJob</code> or <code>SCMTriggerItem</code> and implement <code>TriggerDescriptor.isApplicable</code> accordingly.</p>
+</div>
+<div class="paragraph">
+<p>Use <code>EnvironmentContributor</code> rather than <code>RunListener.setUpEnvironment</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="clouds"><a class="anchor" href="#clouds"></a>Clouds</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Do not necessarily need any special integration, but are encouraged to use <code>OnceRetentionStrategy</code> from <code>durable-task</code> to allow Pipeline builds to survive restarts.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="custom-steps"><a class="anchor" href="#custom-steps"></a>Custom steps</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Plugins can also implement custom Pipeline steps with specialized behavior.
+See [here](<a href="https://github.com/jenkinsci/workflow-step-api-plugin/blob/master/README.md" class="bare">github.com/jenkinsci/workflow-step-api-plugin/blob/master/README.md</a>) for more.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="historical-background"><a class="anchor" href="#historical-background"></a>Historical background</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Traditional Jenkins <code>Job`s are defined in a fairly deep type hierarchy: `FreestyleProject</code> → <code>Project</code> → <code>AbstractProject</code> → <code>Job</code> → <code>AbstractItem</code> → <code>Item</code>.
+(As well as paired <code>Run</code> types: <code>FreestyleBuild</code>, etc.)
+In older versions of Jenkins, much of the interesting implementation was in <code>AbstractProject</code> (or <code>AbstractBuild</code>), which was packed full of assorted features not present in <code>Job</code> (or <code>Run</code>).
+Some of these features were also needed by Pipeline, like having a programmatic way to start a build (optionally with parameters), or lazy-load build records, or integrate with SCM triggers.
+Others were not applicable to Pipeline, like declaring a single SCM and a single workspace per build, or being tied to a specific label, or running a linear sequence of build steps within the scope of a single Java method call, or having a simple list of build steps and wrappers whose configuration is guaranteed to remain the same from build to build.</p>
+</div>
+<div class="paragraph">
+<p><code>WorkflowJob</code> directly extends <code>Job</code> since it cannot act like an <code>AbstractProject</code>.
+Therefore some refactoring was needed, to make the relevant features available to other <code>Job</code> types without code or API duplication.
+Rather than introduce yet another level into the type hierarchy (and freezing for all time the decision about which features are more “generic” than others), mixins were introduced.
+Each encapsulates a set of related functionality originally tied to <code>AbstractProject</code> but now also usable from <code>WorkflowJob</code> (and potentially other future <code>Job</code> types).</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ParameterizedJobMixIn</code> allows a job to be scheduled to the queue (the older <code>BuildableItem</code> was inadequate), taking care also of build parameters and the REST build trigger.</p>
+</li>
+<li>
+<p><code>SCMTriggerItem</code> integrates with <code>SCMTrigger</code>, including a definition of which SCM or SCMs a job is using, and how it should perform polling. It also allows various plugins to interoperate with the Multiple SCMs plugin without needing an explicit dependency. Supersedes and deprecates <code>SCMedItem</code>.</p>
+</li>
+<li>
+<p><code>LazyBuildMixIn</code> handles the plumbing of lazy-loading build records (a system introduced in Jenkins 1.485).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For Pipeline compatibility, plugins formerly referring to <code>AbstractProject</code>/<code>AbstractBuild</code> will generally need to start dealing with <code>Job</code>/<code>Run</code> but may also need to refer to <code>ParameterizedJobMixIn</code> and/or <code>SCMTriggerItem</code>.
+(<code>LazyBuildMixIn</code> is rarely needed from outside code, as the methods defined in <code>Job</code>/<code>Run</code> suffice for typical purposes.)</p>
+</div>
+<div class="paragraph">
+<p>Future improvements to Pipeline may well require yet more implementation code to be extracted from <code>AbstractProject</code>/<code>AbstractBuild</code>.
+The main constraint is the need to retain binary compatibility.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//doc/book/pipeline/dev-guide.adoc" title="Edit /doc/book/pipeline/dev-guide.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//doc/book/pipeline/dev-guide.adoc" title="View /doc/book/pipeline/dev-guide.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

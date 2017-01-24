@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Automating test runs on hardware with Pipeline as Code
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container blog-post no-margin">
+<div class="row body">
+<div class="col-md-11 col-md-offset-1 main-content" id="content">
+<div id="content-top">
+<h1>
+<a href="/blog/2016/04/07/pipeline-for-runs-on-hardware/" title="Automating test runs on hardware with Pipeline as Code">
+Automating test runs on hardware with Pipeline as Code
+</a>
+</h1>
+<!-- starting partial tweetbutton.html.haml -->
+<div style="float: right; clear: all;">
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/share">
+Tweet
+</a>
+</div>
+
+<!-- ending partial tweetbutton.html.haml -->
+<span class="submitted">
+Published on
+2016-04-07
+by
+<a href="https://github.com/oleg-nenashev">Oleg Nenashev</a>
+</span>
+</div>
+<div class="paragraph">
+<p>In addition to Jenkins development, during last 8 years I&#8217;ve been involved into continuous integration for hardware and embedded projects.
+At JUC2015/London
+<a href="https://www.cloudbees.com/jenkins/juc-2015/presentations/JUC-2015-Europe-Jenkins-Based-CI-for-Nenashev.pdf">I have conducted a talk</a> about common automation challenges in the area.</p>
+</div>
+<div class="paragraph">
+<p>In this blog post I would like to concentrate on <a href="/doc/pipeline/">Pipeline</a> (formerly known as Workflow), which is a new ecosystem in Jenkins that allows implementing jobs in a domain specific language.
+It is in the suggested plugins list in the upcoming <a href="/2.0/">Jenkins 2.0 release</a>.</p>
+</div>
+<div class="paragraph">
+<p>The first time I tried Pipeline two and half years ago, it unfortunately did not work for my use-cases at all.
+I was very disappointed but tried it again a year later.
+This time, the plugin had become much more stable and useful.
+It had also attracted more contributors and started evolving more rapidly with the development of plugins extending the Pipeline ecosystem.</p>
+</div>
+<div class="paragraph">
+<p>Currently, Pipeline a powerful tool available for Jenkins users to implement a variety of software delivery pipelines in code.
+I would like to highlight several Pipeline features which may be interesting to Jenkins users working specifically with embedded and hardware projects.</p>
+</div>
+<div class="sect1">
+<h2 id="introduction"><a class="anchor" href="#introduction"></a>Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In Embedded projects it&#8217;s frequently required to run tests on specific hardware peripherals: development boards, prototypes, etc.
+It may be required for both software and hardware areas, and especially for products involving both worlds.
+CI and CD methodologies require continuous integration and system testing, and Jenkins comes to help here.
+Jenkins is an automation framework, which can be adjusted to reliably work with hardware attached to its nodes.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="area-challenges"><a class="anchor" href="#area-challenges"></a>Area challenges</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Generally, any peripheral hardware device can be attached to a Jenkins node.
+Since Jenkins nodes require Java only, almost every development machine can be attached.
+Below you can find a common connection scheme:</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="/images/post-images/pipeline-as-code-for-hardware/connectBoard.png" alt="Connecting the external device" width="550">
+</div>
+</div>
+<div class="paragraph">
+<p>After the connection, Jenkins jobs could invoke common EDA tools via command-line interfaces.
+It can be easily done by a <em>Execute shell</em> build steps in free-style projects.
+Such testing scheme is commonly affected by the following issues:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Nodes with peripherals are being shared across several projects.
+Jenkins must ensure the correctness of access (e.g. by throttling the access).</p>
+<div class="ulist">
+<ul>
+<li>
+<p>In a single Freestyle project builds utilize the node for a long period. If you synthesize the item before the run, much of the peripheral utilization file may be wasted.</p>
+</li>
+<li>
+<p>The issue can be solved by one of concurrency management plugins:
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Throttle+Concurrent+Builds+Plugin">Throttle Concurrent Builds</a>, <a href="https://wiki.jenkins-ci.org/display/JENKINS/Lockable+Resources+Plugin">Lockable Resources</a>
+ or
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Exclusion-Plugin">Exclusions</a>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Test parallelization on multiple nodes requires using of multiple projects or
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Matrix+Project+Plugin">Matrix configurations</a>, so it causes job chaining again.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>These build chains can be created via
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Parameterized+Trigger+Plugin">Parameterized Trigger</a> and
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Copy+Artifact+Plugin">Copy Artifacts</a>, but it complicates job management and build history investigation.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Hardware infrastructure is usually flaky.
+If it fails during the build due to any reason, it&#8217;s hard to diagnose the issue and re-run the project if the issue comes from hardware.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Build+Failure+Analyzer">Build Failure Analyzer</a> allows to identify the root cause of a build failure (e.g. by build log parsing).</p>
+</li>
+<li>
+<p><a href="https://wiki.jenkins-ci.org/display/JENKINS/Conditional+BuildStep+Plugin">Conditional Build Step</a> and
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Flexible+Publish+Plugin">Flexible Publish</a> plugins allow altering the build flow according to the analysis results.</p>
+</li>
+<li>
+<p>Combination of the plugins above is possible, but it makes job configurations extremely large.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Tests on hardware peripherals may take much time.
+If an infrastructure fails, we may have to restart the run from scratch.
+So the builds should be robust against infrastructure issues including network failures and Jenkins master restarts.</p>
+</li>
+<li>
+<p>Tests on hardware should be reproducible, so the environment and input parameters should be controlled well.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Jenkins supports
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Workspace+Cleanup+Plugin">cleaning workspaces</a>, so it can get rid of temporary files generated by previous runs.</p>
+</li>
+<li>
+<p>Jenkins provides support of slaves connected via containers (e.g.
+  <a href="https://wiki.jenkins-ci.org/display/JENKINS/Docker+Plugin">Docker</a>) or VMs, which allow creating clean environments for every new run.
+It&#8217;s important for 3rd-party tools, which may modify files outside the workspace: user home directory, temporary files, etc.</p>
+</li>
+<li>
+<p>These environments still need to be connected to hardware peripherals, which may be a serious obstacle for Jenkins admins</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The classic automation approaches in Jenkins are based on Free-style and Multi-configuration project types.
+Links to various articles on this topic are collected on the
+<a href="/solutions/embedded/">HW/Embedded Solution page</a>Embedded on the Jenkins website.
+Tests automation on hardware peripherals has been covered in several publications by Robert Martin, Steve Harris, JL Gray, Gordon McGregor, Martin d’Anjou, and Sarah Woodall.
+There is also a top-level overview of classic approaches made by me at JUC2015/London (a bit outdated now).</p>
+</div>
+<div class="paragraph">
+<p>On the other hand, there is no previous publications, which would address <a href="/doc/pipeline/">Pipeline</a> usage for the Embedded area.
+In this post I want to address this use-case.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="pipeline-as-code-for-test-runs-on-hardware"><a class="anchor" href="#pipeline-as-code-for-test-runs-on-hardware"></a>Pipeline as Code for test runs on hardware</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Pipeline as Code is an approach for describing complex automation flows in software lifecycles: build, delivery, deployment, etc.
+It is being advertised in Continuous Delivery and DevOps methodologies.</p>
+</div>
+<div class="paragraph">
+<p>In Jenkins there are two most popular plugins:
+<a href="/doc/pipeline/">Pipeline</a> and <a href="https://wiki.jenkins-ci.org/display/JENKINS/Job+DSL+Plugin">Job DSL</a>.
+JobDSL Plugin internally generates common freestyle jobs according to the script, so it&#8217;s functionality is similar to the classic approaches.
+Pipeline is fundamentally different, because it provides a new engine controlling flows independently from particular nodes and workspaces.
+So it provides a higher job description level, which was not available in Jenkins before.</p>
+</div>
+<div class="paragraph">
+<p>Below you can find an example of Pipeline scripts, which runs tests on FPGA board. The id of this board comes from build parameters (<em>fpgaId</em>). In this script we also presume that all nodes have pre-installed tools (Xilinx ISE in this case).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">// Run on node having my_fpga label</span>
+node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">linux &amp;&amp; ml509</span><span style="color:#710">&quot;</span></span>) {
+  git <span style="color:#606">url</span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://github.com/oleg-nenashev/pipeline_hw_samples</span><span style="color:#710">&quot;</span></span>
+  sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">make all</span><span style="color:#710">&quot;</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>But such scenario could be also implemented in a Free-style project.
+What would we get from Pipeline plugin?</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="getting-added-value-from-pipeline-as-code"><a class="anchor" href="#getting-added-value-from-pipeline-as-code"></a>Getting added-value from Pipeline as code</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Pipeline provides much added-value features for hardware-based tests.
+I would like to highlight the following advantages:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Robustness against restarts of Jenkins master.</p>
+</li>
+<li>
+<p>Robustness against network disconnects. <code>sh()</code> steps are based on the
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Durable+Task+Plugin">Durable Task plugin</a>, so Jenkins can safely continue the execution flow once the node reconnects to the master.</p>
+</li>
+<li>
+<p>It&#8217;s possible to run tasks on multiple nodes without creating complex flows based on job triggers and copy artifact steps, etc. It can be achieved via combination of <code>parallel()</code> and <code>node()</code> steps.</p>
+</li>
+<li>
+<p>Ability to store the shared logic in standalone Pipeline libraries</p>
+</li>
+<li>
+<p>etc.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>First two advantages allow to improve the robustness of Jenkins nodes against infrastructure failures.
+It is critical for long-running tests on hardware.</p>
+</div>
+<div class="paragraph">
+<p>Last two advantages address the flexibility of Pipeline flows.
+There are also plugins for freestyle projects, but they are not flexible enough.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="utilizing-pipeline-features"><a class="anchor" href="#utilizing-pipeline-features"></a>Utilizing Pipeline features</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The sample Pipeline script above is very simple.
+We would like to get some added value from Jenkins.</p>
+</div>
+<div class="sect2">
+<h3 id="general-improvements"><a class="anchor" href="#general-improvements"></a>General improvements</h3>
+<div class="paragraph">
+<p>Let&#8217;s enhance the script by using several features being provided by pipeline in order to get visualization of stages, report publishing and build notifications.</p>
+</div>
+<div class="paragraph">
+<p>We also want to minimize the time being spent on the node with the attached FPGA board.
+So we will split the bitfile generation and further runs to two different nodes in this case: a general purpose linux node, and the node with the hardware attached.</p>
+</div>
+<div class="paragraph">
+<p>You can find the resulting Pipeline script below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#777">// Synthesize on any node</span>
+<span style="color:#080;font-weight:bold">def</span> imageId=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>
+node(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">linux</span><span style="color:#710">&quot;</span></span>) {
+  stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Prepare environment</span><span style="color:#710">&quot;</span></span>
+  git <span style="color:#606">url</span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://github.com/oleg-nenashev/pipeline_hw_samples</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#777">// Construct the bitfile image ID from commit ID</span>
+  sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">git rev-parse HEAD &gt; GIT_COMMIT</span><span style="color:#710">'</span></span>
+  imageId= <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">myprj-</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>fpgaId<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">-</span><span style="color:#710">&quot;</span></span> + readFile(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">GIT_COMMIT</span><span style="color:#710">'</span></span>).take(<span style="color:#00D">6</span>)
+
+  stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Synthesize project</span><span style="color:#710">&quot;</span></span>
+  sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">make FPGA_TYPE=</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">$</span>fpgaId</span><span style="color:#D20"> synthesize_for_fpga</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#777">/* We archive the bitfile before running the test, so it won't be lost it if something happens with the FPGA run stage. */</span>
+  archive <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">target/image_</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>fpgaId<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">.bit</span><span style="color:#710">&quot;</span></span>
+  stash <span style="color:#606">includes</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">target/image_</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>fpgaId<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">.bit</span><span style="color:#710">&quot;</span></span>, <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">bitfile</span><span style="color:#710">'</span></span>
+}
+
+<span style="color:#777">/* Run on a node with 'my_fpga' label.
+In this example it means that the Jenkins node contains the attacked FPGA of such type.*/</span>
+node (<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">linux &amp;&amp; </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">$</span>fpgaId</span><span style="color:#710">&quot;</span></span>) {
+  stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Blast bitfile</span><span style="color:#710">&quot;</span></span>
+  git <span style="color:#606">url</span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">http://github.com/oleg-nenashev/pipeline_hw_samples</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">def</span> artifact=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">target/image_</span><span style="color:#710">'</span></span>+fpgaId+<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">.bit</span><span style="color:#710">'</span></span>
+  echo <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Using </span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>artifact<span style="font-weight:bold;color:#666">}</span></span><span style="color:#710">&quot;</span></span>
+  unstash <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">bitfile</span><span style="color:#710">'</span></span>
+  sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">make FPGA_TYPE=</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">$</span>fpgaId</span><span style="color:#D20"> impact</span><span style="color:#710">&quot;</span></span>
+
+  <span style="color:#777">/* We run automatic tests.
+  Then we report test results from the generated JUnit report. */</span>
+  stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Auto Tests</span><span style="color:#710">&quot;</span></span>
+  sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">make FPGA_TYPE=</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">$</span>fpgaId</span><span style="color:#D20"> tests</span><span style="color:#710">&quot;</span></span>
+  sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">perl scripts/convertToJunit.pl --from=target/test-results/* --to=target/report_</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>fpgaId<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">.xml --classPrefix=</span><span style="color:#b0b">\&quot;</span><span style="color:#D20">myprj-</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>fpgaId<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">.</span><span style="color:#b0b">\&quot;</span><span style="color:#710">&quot;</span></span>
+  step([<span style="color:#F00;background-color:#FAA">$</span><span style="color:#339;font-weight:bold">class</span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">JUnitResultArchiver</span><span style="color:#710">&quot;</span></span>, <span style="color:#B06;font-weight:bold">testResults</span>:<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">target/report_</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>fpgaId<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20">.xml</span><span style="color:#710">&quot;</span></span>])
+
+  stage <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Finalization</span><span style="color:#710">&quot;</span></span>
+  sh <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">make FPGA_TYPE=</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">$</span>fpgaId</span><span style="color:#D20"> flush_fpga</span><span style="color:#710">&quot;</span></span>
+  hipchatSend(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="font-weight:bold;color:#666">${</span>imageId<span style="font-weight:bold;color:#666">}</span></span><span style="color:#D20"> testing has been completed</span><span style="color:#710">&quot;</span></span>)
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As you may see, the pipeline script mostly consists of various calls of command-line tools via the <code>sh()</code> command.
+All EDA tools provide great CLIs, so we do not need special plugins in order to invoke common operations from Jenkins.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Makefile above is a sample stuff for demo purposes.
+It implements a set of unrelated routines merged into a single file without dependency declarations.
+Never write such makefiles.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>It is possible to continue expanding the pipeline in such way.
+<a href="https://github.com/jenkinsci/pipeline-examples">Pipeline Examples</a>
+contain examples for common cases: build parallelization, code sharing between pipelines, error handling, etc.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="lessons-learned"><a class="anchor" href="#lessons-learned"></a>Lessons learned</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>During last 2 years I&#8217;ve been using Pipeline for Hardware test automation several times.
+The first attempts were not very successful, but the ecosystem has been evolving rapidly.
+I feel Pipeline has become a really powerful tool, but there are several missing features.
+I would like to mention the following ones:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Shared resource management across different pipelines</strong>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Runs of a single Pipeline job can be synchronized using the <code>concurrency</code> parameter of the <code>stage()</code> step</p>
+</li>
+<li>
+<p>It can be done by the incoming Pipeline integration in the
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Lockable+Resources+Plugin">Lockable Resources plugin</a>
+(<a href="https://issues.jenkins-ci.org/browse/JENKINS-30269">JENKINS-30269</a>).</p>
+</li>
+<li>
+<p>Another case is integration with
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Throttle+Concurrent+Builds+Plugin">Throttle Concurrent Builds plugin</a>, which is an effective engine for limiting the license utilization in automation infrastructures
+(<a href="https://issues.jenkins-ci.org/browse/JENKINS-31801">JENKINS-31801</a>).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Better support of CLI tools</strong>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>EDA tools frequently need a complex environment, which should be deployed on nodes somehow.</p>
+</li>
+<li>
+<p>Integration with
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Custom+Tools+Plugin">Custom Tools Plugin</a> seems to be the best option, especially in the case of multiple tool versions
+(<a href="https://issues.jenkins-ci.org/browse/JENKINS-30680">JENKINS-30680</a>).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Pipeline package manager</strong> (<a href="https://issues.jenkins-ci.org/browse/JENKINS-34186">JENKINS-34186</a>)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Since there is almost no plugins for EDA tools in Jenkins, developers need to implement similar tasks at multiple jobs.</p>
+</li>
+<li>
+<p>A common approach is to keep the shared "functions" in libraries.</p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/workflow-plugin/blob/master/cps-global-lib/README.md">Pipeline Global Library</a> and
+<a href="https://github.com/jenkinsci/workflow-remote-loader-plugin">Pipeline Remote Loader</a> can be used, but they do not provide features like dependency management.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Pipeline debugger</strong> (<a href="https://issues.jenkins-ci.org/browse/JENKINS-34185">JENKINS-34185</a>)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Hardware test runs are very slow, so it is difficult to troubleshoot and fix issues in the Pipeline code if you have to run every build from scratch.</p>
+</li>
+<li>
+<p>There are several features in Pipeline, which simplify the development, but we still need an IDE-alike implementation for complex scripts.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="conclusions"><a class="anchor" href="#conclusions"></a>Conclusions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins is a powerful <strong>automation framework</strong>, which can be used in many areas.
+Even though Jenkins has no dedicated plugins for test runs on hardware, it provides many general-purpose "building blocks", which allow implementing almost any flow.
+That&#8217;s why Jenkins is so popular in the hardware and embedded areas.</p>
+</div>
+<div class="paragraph">
+<p>Pipeline as code can greatly simplify the implementation of complex flows in Jenkins.
+It continues to evolve and extend support of use-cases.
+if you&#8217;re developing embedded projects, consider Pipeline as a durable, extensible and versatile means of implementing your automation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="what-s-next"><a class="anchor" href="#what-s-next"></a>What&#8217;s next?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Jenkins automation server dominates in the HW/Embedded area, but unfortunately there is not so much experience sharing for these use-cases.
+So Jenkins community encourages everybody to share the experience in this area by writing docs and articles for Jenkins website and other resources.</p>
+</div>
+<div class="paragraph">
+<p>This is just a a first blog post on this topic.
+I am planning to provide more examples of Pipeline usage for Embedded and Hardware tests in the future posts.
+The next post will be about concurrency and shared resource management in Pipelines.</p>
+</div>
+<div class="paragraph">
+<p>I am also going to talk about running tests on hardware at the
+<a href="https://www.eventbrite.com/e/accelerating-automotive-innovation-with-continuous-integration-delivery-tickets-20809772590">upcoming Automotive event</a> in Stuttgart on April 26th.
+This event is being held by
+<a href="https://www.cloudbees.com/">CloudBees</a>, but there will be several talks addressing Jenkins open-source as well.</p>
+</div>
+<div class="paragraph">
+<p>If you want to share your experience about Jenkins usage in Hardware/Embedded areas, consider submitting a talk for the
+<a href="https://jenkins-cfp.herokuapp.com/events/jenkins-world-2016">Jenkins World conference</a> or join/organize a
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Jenkins+Area+Meetup">Jenkins Area Meetup</a> in your city.
+There is also a
+<a href="http://www.meetup.com/Jenkins-online-meetup/">Jenkins Online Meetup</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="links"><a class="anchor" href="#links"></a>Links</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Related articles and events:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/solutions/embedded/">HW/Embedded Solution page</a></p>
+</li>
+<li>
+<p><a href="https://www.cloudbees.com/jenkins/juc-2015/presentations/JUC-2015-Europe-Jenkins-Based-CI-for-Nenashev.pdf">Jenkins-Based CI for Heterogeneous Hardware/Software Projects</a></p>
+</li>
+<li>
+<p><a href="https://www.eventbrite.com/e/accelerating-automotive-innovation-with-continuous-integration-delivery-tickets-20809772590">Accelerating Automotive Innovation with Continuous Integration &amp; Delivery</a> - meetup in Stuttgart</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Pipeline:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/solutions/pipeline">Pipeline page</a></p>
+</li>
+<li>
+<p><a href="https://speakerdeck.com/onenashev/spb-jenkins-meetup-number-1-jenkins-2-dot-0-i-pipeline-as-code-eng">Jenkins 2.0 and Pipeline as code overview</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/workflow-plugin/blob/master/TUTORIAL.md">Pipeline Tutorial</a></p>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/pipeline-examples">Pipeline Examples</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//blog/2016/2016-04-07-pipeline-for-runs-on-hardware.adoc" title="Edit /blog/2016/2016-04-07-pipeline-for-runs-on-hardware.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//blog/2016/2016-04-07-pipeline-for-runs-on-hardware.adoc" title="View /blog/2016/2016-04-07-pipeline-for-runs-on-hardware.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>

@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Jenkins 2.0 Online JAM Wrap-up
+</title>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="Jenkins is an open source automation server" name="description">
+<link href="/sites/default/files/jenkins_favicon.ico" rel="shortcut icon" type="image/x-icon">
+<!-- starting partial scriptlinks.html.haml -->
+<link href="https://hrmpw.github.io/jenkins.io/css/font-awesome.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/assets/bower/tether/css/tether.min.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/font-icons.css" media="screen" rel="stylesheet">
+<link href="https://hrmpw.github.io/jenkins.io/css/jenkins.css" media="screen" rel="stylesheet">
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/jquery/jquery.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/tether/js/tether.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://hrmpw.github.io/jenkins.io/assets/bower/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<!-- ending partial scriptlinks.html.haml -->
+</head>
+<body>
+<!-- starting partial toptoolbar.html.haml -->
+<script>
+  $(function () {
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox();
+    });
+  })
+</script>
+<div id="ji-hover-layer"></div>
+<div class="ji-toolbar-offset"></div>
+<div class="fixed top">
+<nav class="navbar navbar-dark bg-inverse" id="ji-toolbar">
+<a class="fixed navbar-brand" href="https://hrmpw.github.io/jenkins.io" id="home-logo">
+Jenkins
+</a>
+<ul class="nav navbar-nav">
+<li class="nav-item fixed">
+<div class="btn-group" id="download-menu">
+<a aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+Downloads
+</a>
+<!-- starting partial downloadlist.html.haml -->
+<div class="dropdown-menu">
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<h3>
+LTS Release
+</h3>
+<p>
+LTS (Long-Term Support) releases are chosen every 12 weeks from the
+stream of regular releases as the stable release for that time period.
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/LTS+Release+Line">
+Learn more…
+</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<h3>
+Weekly Release
+</h3>
+<p>
+A new release is produced weekly to deliver bug fixes and features to
+users and plugin developers.
+</p>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.32.1
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/_/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins-lts">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/stable">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse-stable/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat-stable/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian-stable/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer#stable">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog-stable">Changelog</a>
+|
+<a class="item" href="/doc/upgrade-guide">Upgrade Guide</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war-stable/">Past Releases</a>
+</p>
+</div>
+<div class="col-md-6 text-xs-center">
+<div class="btn-group">
+<a class="btn btn-primary chromeOnly" href="http://mirrors.jenkins.io/war/latest/jenkins.war">
+<i class="icon-box-add"></i>
+2.42
+.war
+</a>
+<button aria-expanded="false" aria-haspopup="true" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" data-trigger="hover"></button>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="https://registry.hub.docker.com/u/jenkinsci/jenkins/">
+<span class="icon"></span>
+<span class="title">
+Docker
+</span>
+</a>
+<a class="dropdown-item" href="http://www.freshports.org/devel/jenkins">
+<span class="icon"></span>
+<span class="title">
+FreeBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://packages.gentoo.org/packages/dev-util/jenkins-bin">
+<span class="icon"></span>
+<span class="title">
+Gentoo
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-os-x-installer">
+<span class="icon"></span>
+<span class="title">
+Mac OS X
+</span>
+</a>
+<a class="dropdown-item" href="http://openports.se/devel/jenkins/devel">
+<span class="icon"></span>
+<span class="title">
+OpenBSD
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/opensuse/">
+<span class="icon"></span>
+<span class="title">
+openSUSE
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/redhat/">
+<span class="icon"></span>
+<span class="title">
+Red Hat/Fedora/CentOS
+</span>
+</a>
+<a class="dropdown-item" href="https://pkg.jenkins.io/debian/">
+<span class="icon"></span>
+<span class="title">
+Ubuntu/Debian
+</span>
+</a>
+<a class="dropdown-item" href="/content/thank-you-downloading-windows-installer">
+<span class="icon"></span>
+<span class="title">
+Windows
+</span>
+</a>
+</div>
+</div>
+<p class="details">
+<a class="item" href="/changelog">Changelog</a>
+|
+<a class="item" href="http://mirrors.jenkins.io/war/">Past Releases</a>
+</p>
+</div>
+</div>
+</div>
+
+<!-- ending partial downloadlist.html.haml -->
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/node">
+Blog
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/doc">
+Documentation
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://plugins.jenkins.io/">
+Plugins
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Use-cases
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/android">
+Android
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/c">
+C/C++
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/docker">
+Docker
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/embedded">
+Embedded
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/github">
+GitHub
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/java">
+Java
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/pipeline">
+Continuous Delivery
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/python">
+Python
+</a>
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/solutions/ruby">
+Ruby
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/participate">
+Participate
+</a>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="/projects" role="button">
+Sub-projects
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://hrmpw.github.io/jenkins.io/projects/">
+Overview
+</a>
+<a class="dropdown-item feature" href="/projects/blueocean/">
+Blue Ocean
+</a>
+<a class="dropdown-item feature" href="/projects/gsoc/">
+Google Summer of Code
+</a>
+<a class="dropdown-item feature" href="/projects/infrastructure/">
+Infrastructure
+</a>
+<a class="dropdown-item feature" href="/projects/jam/">
+Jenkins Area Meetups
+</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
+Resources
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item feature" href="https://accounts.jenkins.io/" title="Create/manage your account for accessing wiki, issue tracker, etc">
+Account Management
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/chat" title="Chat with the rest of the Jenkins community on IRC">
+Chat
+</a>
+<a class="dropdown-item feature" href="https://issues.jenkins-ci.org/">
+Issue Tracker
+</a>
+<a class="dropdown-item" href="https://hrmpw.github.io/jenkins.io/content/mailing-lists" title="Browse Jenkins mailing list archives and/or subscribe to lists">
+Mailing Lists
+</a>
+<a class="dropdown-item feature" href="https://wiki.jenkins-ci.org/">
+Wiki
+</a>
+</div>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/security">
+Security
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/press">
+Press
+</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="https://hrmpw.github.io/jenkins.io/conduct">
+Conduct
+</a>
+</li>
+</ul>
+</nav>
+</div>
+<div id="ji-top-peg">
+<a href="https://github.com/jenkinsci" id="ji-fork-tag">
+<img alt="Fork us on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;">
+</a>
+</div>
+
+<!-- ending partial toptoolbar.html.haml -->
+<div class="container blog-post no-margin">
+<div class="row body">
+<div class="col-md-11 col-md-offset-1 main-content" id="content">
+<div id="content-top">
+<h1>
+<a href="/blog/2016/05/10/jenkins-20-vjam/" title="Jenkins 2.0 Online JAM Wrap-up">
+Jenkins 2.0 Online JAM Wrap-up
+</a>
+</h1>
+<!-- starting partial tweetbutton.html.haml -->
+<div style="float: right; clear: all;">
+<a class="twitter-share-button" data-lang="en" href="https://twitter.com/share">
+Tweet
+</a>
+</div>
+
+<!-- ending partial tweetbutton.html.haml -->
+<span class="submitted">
+Published on
+2016-05-10
+by
+<a href="https://github.com/rtyler">R. Tyler Croy</a>
+</span>
+</div>
+<div class="paragraph">
+<p>Last week we hosted our first ever
+<a href="http://www.meetup.com/Jenkins-online-meetup/">Online JAM</a> with the debut
+topic of: <a href="/2.0/">Jenkins 2.0</a>. <a href="https://github.com/alyssat">Alyssa</a>, our
+Events officer, and I pulled together a
+<a href="http://www.meetup.com/Jenkins-online-meetup/events/230154841/">series of
+sessions</a> focusing on some of the most notable aspects of Jenkins 2 with:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A Jenkins 2.0 keynote from project founder
+<a href="https://github.com/kohsuke">Kohsuke Kawaguchi</a></p>
+</li>
+<li>
+<p>An overview of "Pipeline as Code" from <a href="https://github.com/hrmpw">Patrick
+Wolf</a></p>
+</li>
+<li>
+<p>A deep-dive into Pipeline and related plugins like Multibranch, etc from
+<a href="https://github.com/jglick">Jesse Glick</a> and
+<a href="https://github.com/kishorebhatia">Kishore Bhatia</a></p>
+</li>
+<li>
+<p>An overview of new user experience changes in 2.0 from
+<a href="https://github.com/kzantow">Keith Zantow</a></p>
+</li>
+<li>
+<p>A quick lightning talk about documentation by yours truly</p>
+</li>
+<li>
+<p>Wrapping up the sessions, was Kohsuke again, talking about the road beyond
+Jenkins 2.0 and what big projects he sees on the horizon.</p>
+</li>
+</ul>
+</div>
+<center>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/emV60CcDVV0" frameborder="0" allowfullscreen></iframe>
+</center>
+<div class="paragraph">
+<p>The event was really interesting for me, and I hope informative for those who
+participated in the live stream and Q&amp;A session. I look forward to hosting more
+Virtual JAM events in the future, and I hope you will
+<strong><a href="http://www.meetup.com/Jenkins-online-meetup/">join us!</a></strong></p>
+</div>
+<div class="sect2">
+<h3 id="questions-and-answers"><a class="anchor" href="#questions-and-answers"></a>Questions and Answers</h3>
+<div class="paragraph">
+<p>Below are a collection of questions and answers, that were posed during the
+Virtual JAM. Many of these were answered during the course of the sessions, but
+for posterity all are included below.</p>
+</div>
+<div class="sect3">
+<h4 id="pipeline"><a class="anchor" href="#pipeline"></a>Pipeline</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>What kind of DSL is used behind pipeline as code? Groovy or allow freely use
+different languages as a user prefer?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Pipeline uses a Groovy-based domain specific language.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>How do you test your very own pipeline DSL?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Replay helps in testing/debugging while creating pipelines and at the branch
+level. There are some ideas which <a href="https://github.com/jglick">Jesse Glick</a>
+has proposed for testing <code>Jenkinsfile</code> and Pipeline libraries captured in
+<a href="https://issues.jenkins-ci.org/browse/JENKINS-33925">JENKINS-33925</a>.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Isn&#8217;t "Survive Jenkins restart" exclusive to [CloudBees] Jenkins Enterprise?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>No, this feature does not need
+<a href="https://www.cloudbees.com/products/cloudbees-jenkins-platform">CloudBees
+Jenkins Enterprise</a>. All features shown
+during the virtual JAM are free and open source. CloudBees' Jenkins Enterprise
+product does support restarting from a specified stage however, and that is not
+open source.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>How well is jenkins 2.0 integrate with github for tracking job definitions?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Using the
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/GitHub+Organization+Folder+Pluginp">GitHub
+Organization Folder plugin</a>, Jenkins can automatically detect a <code>Jenkinsfile</code> in
+source repositories to create Pipeline projects.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Please make the ability for re-run failed stages Open Source too :)</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>This has been passed on to our friends at CloudBees for consideration :)</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>If <code>Jenkinsfile</code> is in the repo, co-located with code, does this mean Jenkins can
+auto-detect new jobs for different branches?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>This is possible using the
+<a href="/doc/pipeline/#creating-multibranch-pipelines">Pipeline Multibranch plugin</a>.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>What documentation sources are there for Pipeline?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Our <a href="/doc/">documentation section</a> contains a number of pagesaround Pipeline.
+There is also additional documentation and examples in the plugin&#8217;s
+<a href="https://github.com/jenkinsci/pipeline-plugin">git repository</a> and the
+<a href="https://github.com/jenkinsci/pipeline-examples">jenkinsci/pipeline-examples</a>
+repository. (contributions welcome!)</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Where we can find the DSL method documentation?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>There is generated <a href="/doc/pipeline/steps">documentation on jenkins.io</a> which
+incldues steps from all public plugins. Inside of a running Jenkins instance,
+you can also navigate to
+<a href="http://localhost:8080/workflow-cps-snippetizer/dslReference">JENKINS_URL/workflow-cps-snippetizer/dslReference</a>
+to see the documentation for the plugins which are installed in that instance.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>If Pipeline is not support some plugins (there is a lot actually), I needed
+SonarQube Runner but unfortunately it&#8217;s not supported yet, in Job DSL plugin i
+can use "Configure Block" and cover any plugin via XML, how i can achieve the
+same with a Pipeline?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Not at this time</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Is there a possibility to create custom tooltips i.e. with a quick reference or
+a link to internal project documentation? Might be useful i.e. for junior team
+members who need to refer to external docs.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Not generally. Though in the case of Pipeline global libraries, you can create
+descriptions of vars/functions like <code>standardBuild</code> in the demo, and these will
+appear in Snippet Generator under Global Variables.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Oh pipeline supports joining jobs? It&#8217;s really good, but I cannot find document
+at <a href="https://jenkins.io/doc/" class="bare">https://jenkins.io/doc/</a> could you tell me where is it?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>There is a <code>build</code> step, but the Pipeline system is optimized for single-job
+pipelines</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>We have multiple projects that we would like to follow the same pipeline.  How
+would I write a common pipeline that can be shared across multiple projects.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>You may want to look at implementing some additional steps using the
+<a href="https://github.com/jenkinsci/pipeline-examples/tree/master/global-library-examples">Pipeline Global
+Library</a> feature. This would allow you to define
+organization-specific extensions to the Pipeline DSL to abstract away common
+patterns between projects.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>How much flexibility is there with creating context / setting environment
+variables or changing / modifying build tool options when calling a web hook /
+api to parameterize pipelines for example to target deployments to different env
+using same pipeline</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Various environment variables are exposed under the <code>env</code> variable in the Groovy
+DSL which would allow you to construct logic as simple or as complex as
+necessary to achieve your goal.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>When you set up the job for the first time, does it build every branch in git,
+or is there a way to stop it from building old branches?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Not at this time, the best way to prevent older branches from being built is to
+remove the <code>Jenkinsfile</code> in those branches. Alternatively, you could use the
+"include" or "exclude" patterns when setting up the SCM configuration of your
+multibranch Pipeline. See also
+<a href="https://issues.jenkins-ci.org/browse/JENKINS-32396">JENKINS-32396</a>.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Similar to GitHub organizations, will BitBucket "projects" (ways of organizing
+collections of repos) be supported?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Yes, these are supported via the
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Bitbucket+Branch+Source+Plugin">Bitbucket
+Branch Source plugin</a>.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>How do you handle build secrets with the pipeline plugin? Using unique
+credentials stored in the credentials plugin per project and/or branch?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>This can be accomplished by using the
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Credentials+Binding+Plugin">Credentials
+Binding plugin</a>.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Similar to GitHub Orgs, are Gitlab projects supported in the same way?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>GitLab projects are not explicitly supported at this time, but the extension
+points which the GitHub Organization Folder plugin uses could be extended in a
+similar manner for GitLab. See also <a href="https://issues.jenkins-ci.org/browse/JENKINS-34396">JENKINS-34396</a></p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Is Perforce scm supported by the Pipeline plugin?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>As a SCM source for discovering a <code>Jenkinsfile</code>, not at this time. The
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/P4+Plugin">P4</a>
+plugin does provide some <code>p4</code> steps which can be used in a Pipeline script
+however, <a href="/doc/pipeline/steps/p4">see here for documentation</a>.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Is Mercurial supported with multibranch?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Yes, it is.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Can <code>Jenkinsfile</code> detect when it&#8217;s running against a pull request vs an approved commit, so that it can perform a different type of build?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Yes, via the <code>env</code> variables provided in the DSL scope. Using an <code>if</code> statement,
+one could guard specific behaviors with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span style="color:#080;font-weight:bold">if</span> (env.CHANGE_ID != <span style="color:#069">null</span>) {
+    <span style="color:#777">/* do things! */</span>
+}</code></pre>
+</div>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Let&#8217;s say I&#8217;m building RPMs with Jenkins and use build number as an RPM
+version/release number. Is there a way to maintain build numbers and leverage
+versioning of <code>Jenkinsfile</code>?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Through the <code>env</code> variable, it&#8217;s possible to utilize <code>env.BUILD_NUMBER</code> or the
+SCM commit ID, etc.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Love the snippet generator! Any chance of separating it out from the pipeline
+into a separate page on its own, available in the left nav?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Yes, this is tracked in
+<a href="https://issues.jenkins-ci.org/browse/JENKINS-31831">JENKINS-31831</a></p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Any tips on pre-creating the admin user credential and selecting plugins to
+automate the Jenkins install?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>There are various <a href="https://github.com/jenkinsci/puppet-jenkins">configuration
+management modules</a> which provide parts of this functionality.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>I&#8217;m looking at the pipeline syntax (in Jenkins 2.0) how do I detect a
+<code>step([...])</code> has failed and create a notification inside the <code>Jenkinsfile</code>?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>This can be done by wrapping a step invocation with a Groovy <code>try/catch</code> block.
+See also <a href="https://issues.jenkins-ci.org/browse/JENKINS-28119">JENKINS-28119</a></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="user-interface-experience"><a class="anchor" href="#user-interface-experience"></a>User Interface/Experience</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Is the user experience same as before when we replace the Jenkins.war(1.x to
+2.x) in an existing (with security in place) installation?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>You will get the new UI features like redesigned configuration forms, but the
+initial setup wizard will be skipped. In its stead, Jenkins will offer to
+install Pipeline-related functionality.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Is it possible to use custom defined syntax highlighting ?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Within the Pipeline script editor itself, no. It is using the
+<a href="https://ace.c9.io/">ACE editor</a> system,
+so it may be possible for a plugin to change the color scheme used.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Can you elaborate on what the Blue Ocean UI is? Is there a link or more
+information on it?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Blue Ocean is the name of user experience an design project, unfortunately at
+this point in time there is not more information available on it.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="general"><a class="anchor" href="#general"></a>General</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>How well this integrate with cloud environment?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>The Jenkins master and agents can run easily in any public cloud environment
+that supports running Java applications. Through the
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Amazon+EC2+Plugin">EC2</a>,
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/JClouds+Plugin">JClouds</a>,
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Azure+Slave+Plugin">Azure</a>, or
+any other plugins which extend the cloud
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Extension+points#Extensionpoints-hudson.slaves.Cloud">extension
+point</a>, it is possible to dynamically provision new build agents on a configured
+cloud provider.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Are help texts and other labels and messages updated for other localizations /
+languages as well?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Practically every string in Jenkins core is localizable. The extent to which those
+strings have been translated depends on contributors by speakers of those
+languages to the project. If you want to contribute translations, this
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Internationalization#Internationalization-Whattranslatorsneedtoknow%2Fdo">wiki
+page</a> should get you started.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Any additional WinRM/Windows remoting functionality in 2.0?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>No</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Is there a CLI to find all the jobs created by a specific user?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>No, out-of-the-box Jenkins does not keep track of which user created which jobs.
+The functionality provided by the
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/Ownership+Plugin">Ownership</a>
+plugin may be of interest though.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Please consider replacing terms like "master" and "slave" with "primary" and
+"secondary".</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>"slave" has been replaced with "agent" in Jenkins 2.0</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>We&#8217;ve been making tutorial videos on Jenkins for awhile (mostly geared toward
+passing the upcoming CCJPE). Because of that we&#8217;re using 1.625.2 (since that is
+what is listed on the exam), but should we instead base the videos on 2.0?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>As of right now all of the
+<a href="https://www.cloudbees.com/jenkins-certification">Jenkins Certification</a> work done by CloudBees is
+focused around the Jenkins LTS 1.625.x.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<footer id="footer">
+<div class="container">
+<div class="row">
+<div class="links col-lg-8 col-md-12 col-sm-12">
+<ul class="major-areas">
+<li class="area solo col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Resources</h5>
+<ul class="resources">
+<li>
+<a href="/content/event-calendar">
+Events
+</a>
+</li>
+<li>
+<a href="/doc">
+Documentation
+</a>
+</li>
+<li>
+<a href="/node">
+Blog
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Solutions</h5>
+<ul>
+<li>
+<a href="/solutions/android">
+Android
+</a>
+</li>
+<li>
+<a href="/solutions/c">
+C/C++
+</a>
+</li>
+<li>
+<a href="/solutions/docker">
+Docker
+</a>
+</li>
+<li>
+<a href="/solutions/embedded">
+Embedded
+</a>
+</li>
+<li>
+<a href="/solutions/github">
+GitHub
+</a>
+</li>
+<li>
+<a href="/solutions/java">
+Java
+</a>
+</li>
+<li>
+<a href="/solutions/pipeline">
+Continuous Delivery
+</a>
+</li>
+<li>
+<a href="/solutions/python">
+Python
+</a>
+</li>
+<li>
+<a href="/solutions/ruby">
+Ruby
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Project</h5>
+<ul class="project">
+<li>
+<a href="https://issues.jenkins-ci.org">
+Issue tracker
+</a>
+</li>
+<li>
+<a href="https://wiki.jenkins-ci.org">
+Wiki
+</a>
+</li>
+<li>
+<a href="https://github.com/jenkinsci">
+GitHub
+</a>
+</li>
+<li>
+<a href="https://ci.jenkins.io">
+Jenkins on Jenkins
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li class="area multi col-md-3 col-sm-6 col-xs-6">
+<div class="div-mar">
+<h5>Community</h5>
+<ul class="community">
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-users">
+Users mailing list
+</a>
+</li>
+<li>
+<a href="https://groups.google.com/forum/#!forum/jenkinsci-dev">
+Developers mailing list
+</a>
+</li>
+<li>
+<a href="https://twitter.com/jenkinsci">
+Twitter
+</a>
+</li>
+<li>
+<a href="https://reddit.com/r/jenkinsci">
+Reddit
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 footer-left">
+<p class="box">
+<a href="https://github.com/jenkins-infra/jenkins.io/edit/master/content//blog/2016/2016-05-10-jenkins-20-vjam.adoc" title="Edit /blog/2016/2016-05-10-jenkins-20-vjam.adoc on GitHub">
+Improve this page
+</a>
+|
+<a href="https://github.com/jenkins-infra/jenkins.io/commits/master/content//blog/2016/2016-05-10-jenkins-20-vjam.adoc" title="View /blog/2016/2016-05-10-jenkins-20-vjam.adoc history on GitHub">
+Page history
+</a>
+</p>
+<div class="license-box">
+<div id="creativecommons">
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">
+<p>
+<img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png">
+</p>
+</a>
+<p>
+The content driving this site is licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<!-- starting partial footer.html.haml -->
+<script>
+ (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+ga('create', 'UA-4216293-5', 'auto');
+ga('send', 'pageview');
+ga('set', 'anonymizeIp', true);
+
+</script>
+
+<script>
+  !function(d,s,id) {
+    var js, fjs=d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id=id;
+      js.src="//platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,"script","twitter-wjs");
+</script>
+
+<!-- ending partial footer.html.haml -->
+</body>
+</html>
